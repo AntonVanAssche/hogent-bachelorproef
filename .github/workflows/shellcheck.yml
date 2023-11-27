@@ -1,0 +1,25 @@
+name: Shellcheck
+
+on:
+  push:
+    paths:
+      - "src/**.sh"
+      - "src/**.sh"
+  pull_request:
+    paths:
+      - "doc/**.sh"
+      - "src/**.sh"
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run shellcheck on scripts.
+      run: |
+        shopt -s nullglob
+        scripts=$(grep -r --include \*.sh . -l)
+        for s in "${scripts[@]}; do shellcheck "${f}"; done
