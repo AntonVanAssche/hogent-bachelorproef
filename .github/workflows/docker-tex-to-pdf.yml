@@ -15,16 +15,24 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build -t bpimg -f docker/Dockerfile .
+      run: |
+        cd doc/
+        docker build -t bpimg -f docker/Dockerfile .
 
     - name: Build the proposal
-      run: docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh voorstel
+      run: |
+        cd doc/
+        docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh voorstel
 
     - name: Build the thesis
-      run: docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh bachproef
+      run: |
+        cd doc/
+        docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh bachproef
 
     - name: Build the poster
-      run: docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh poster
+      run: |
+        cd doc/
+        docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh poster
 
     - uses: actions/upload-artifact@v3
       name: Upload artifacts
