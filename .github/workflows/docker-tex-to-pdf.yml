@@ -14,9 +14,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Navigate to the working directory
-      run: cd doc/
-
     - name: Build the Docker image
       run: docker build -t bpimg -f docker/Dockerfile .
 
