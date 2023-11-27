@@ -21,7 +21,7 @@ jobs:
         # '<number> <unit>', e.g. 5 days, 2 years, 90 seconds,
         # parsed by Moment.js
         age: '2 days'
-        
+
         # Tagged artifacts (releases) are always kept
         skip-tags: true
 
