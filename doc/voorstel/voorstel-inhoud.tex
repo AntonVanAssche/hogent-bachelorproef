@@ -48,25 +48,30 @@ Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur v
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+In deze studie zal een onderzoek gebeuren de bijdrage van een configuratie inventaris van Linux-systemen, bij het initiele proces van incident response bij een cyberaanval. Het onderzoek zal bestaan uit vijf fasen, zoals weergegeven in figuur~\ref{fig:chart}.
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+De eerste fase, literatuurstudie, richt zich op een diepgaand literatuuronderzoek om de impact van cybersecurity-incidenten te vergelijken tussen bedrijven met en zonder een uitgebreide inventaris. Het resultaat omvat een literatuurstudie die niet alleen de impact belicht, maar ook eigenschappen van Linux-toestellen identificeert die relevant zijn voor de inventaris.
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+De tweede fase, risico-analyse, concentreert zich op een kritische evaluatie van de ge\"edentificeerde Linux-toesteleigenschappen binnen de inventaris. Via een diepgaande risico-analyse worden de impact van deze eigenschappen op het incidentresponseproces en hun bruikbaarheid geëvalueerd. De risico-analyse omvat tevens een beoordeling van mogelijke kosten, waaronder financiële, energetische en tijdsinvesteringen, om het inventarisatieproces te verwezenlijken. Het resultaat van deze fase is een lijst van eigenschappen die een positieve bijdrage leveren aan het incident response proces, en een lijst van eigenschappen die een negatieve impact hebben op het incident response proces. Deze lijsten zullen worden gebruikt in de volgende fase.
 
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
+Tijdens de derde fase, Proof-of-Concept, staat de ontwikkeling van een Bash-script centraal, gekoppeld aan het opzetten van een Proof-of-Concept omgeving. Het Bash-script beoogt een inventaris op te stellen met de in fase 2 geselecteerde eigenschappen. Testen vinden plaats op twee verschillende machines - een Red Hat Enterprise Linux (RHEL) webserver en een Debian mariadb database server met RAID 5-configuratie, in een virtuele omgeving met behulp van Vagrant. Het resultaat van deze fase is een werkend Bash-script dat een inventaris van een Linux-toestel opstelt, en een Proof-of-Concept omgeving waarin het Bash-script wordt uitgevoerd op een geautomatiseerde manier.
 
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
+Na het uitvoeren van het Proof-of-Concept worden de resultaten geanalyseerd, dat de basis zal vormen voor de conclusie, waarbij de focus ligt op de kwaliteit en bruikbaarheid van de inventaris. Beoordelingscriteria omvatten de volledigheid van de inventaris, de aanwezigheid van fouten en de impact op het incidentresponseproces. De conclusie biedt beknopt, maar helder inzicht in de bevindingen en antwoordt op de onderzoeksvraag.
 
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
+De afsluitende fase richt zich op de voltooiing van de paper. Ontbrekende hoofdstukken worden aangevuld, en de tekst wordt nauwkeurig nagelezen. Het resultaat is een voltooide scriptie die voldoet aan alle vereiste normen en essenti\"ele hoofdstukken omvat.
+
+\begin{figure}
+    \includegraphics[width=.49\textwidth]
+    {graphics/methodologie_flowchart.png}
+    \caption{\label{fig:chart}Flowchart van de verschillende fasen in de methodologie}
+\end{figure}
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
+De verwachte resultaten van dit onderzoek omvatten een aanzienlijke bijdrage aan het incident response proces bij cyberaanvallen. Door het automatisch genereren van een gedetailleerde inventaris van Linux-systemen kunnen organisaties strategischer redeneren over de kritieke en minder kritieke systemen. Hierdoor wordt de efficiëntie van incident response verhoogd, met een gerichte aanpak op basis van de verzamelde gegevens.
 
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
+Het inventaris automatiseren draagt bij aan het actueel houden van de inventaris, waardoor deze direct beschikbaar is wanneer nodig. Dit komt vooral van pas bij het identificeren van de meest kritische systemen tijdens een cybersecurity-incident, waardoor de reactietijd wordt verkort en de schade beperkt.
 
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
-
+Hoewel grotere bedrijven vaak hun volledige stack automatiseren met tools zoals Ansible, kan de ontwikkelde methode met name waardevol zijn voor kleine en middelgrote ondernemingen. KMO's hebben doorgaans beperktere middelen en kunnen niet altijd profiteren van uitgebreide automatiseringsoplossingen. Daarom kan het geautomatiseerde inventarisatieproces een cruciale rol spelen in het versterken van de cybersecuritymaatregelen van KMO's, waar handmatige inventarisatie vaak tijdrovend en foutgevoelig is.
