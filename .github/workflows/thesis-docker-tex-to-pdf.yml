@@ -4,11 +4,11 @@ on:
   push:
     branches: [ "master" ]
     paths:
-      - "doc/**"
+      - "doc/bachproef/**"
   pull_request:
     branches: [ "master" ]
     paths:
-      - "doc/**"
+      - "doc/backproef/**"
 
 jobs:
 
@@ -23,20 +23,10 @@ jobs:
         cd doc/
         docker build -t bpimg -f docker/Dockerfile .
 
-    - name: Build the proposal
-      run: |
-        cd doc/
-        docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh voorstel
-
     - name: Build the thesis
       run: |
         cd doc/
         docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh bachproef
-
-    - name: Build the poster
-      run: |
-        cd doc/
-        docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh poster
 
     - uses: actions/upload-artifact@v3
       name: Upload artifacts
