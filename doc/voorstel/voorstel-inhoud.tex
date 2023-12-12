@@ -3,75 +3,99 @@
 \section{Introductie}%
 \label{sec:introductie}
 
-Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
+In het begin van 2023, op 6 januari, werd de NIS-richtlijn, wat staat voor "Network and Information Security", opgevolgd door zijn nieuwe versie, NIS2.
+Deze update bracht verschillende nieuwe voorschriften met zich mee op het gebied van cyberbeveiliging, en het aantal sectoren dat aan deze richtlijnen moet voldoen, werd aanzienlijk uitgebreid.
 
-\begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
-\end{itemize}
+De lidstaten van de Europese Unie hebben tot oktober 2024~\autocite{NIS2Directive2022} de tijd om deze nieuwe richtlijnen in hun nationale wetgeving te implementeren.
+Dit geeft bedrijven een beperkte periode om hun processen aan te passen aan deze nieuwe wetgeving, een uitdaging die vooral voor KMO's problematisch kan zijn, gezien hun vaak beperkte middelen.
 
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
+Een van de essenti\"ele vereisten van deze richtlijnen is dat bedrijven verplicht zijn om een ``inventory of assets'' op te stellen voor alle systemen en operaties die ze gebruiken.
+Deze bachelorproef richt zich specifiek op het bieden van een oplossing voor KMO's, die nu wel moeten voldoen aan deze richtlijnen, voor het inventariseren van Linux-systemen, waarbij de focus ligt op het vergemakkelijken van het naleven van deze nieuwe regelgeving.
 
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
-
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
-
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
+Om dit te bereiken, zal een script of tool worden ontwikkeld die automatisch op elke Linux-server kan worden uitgevoerd.
+Deze tool biedt vervolgens een gedetailleerde inventaris van het systeem en de configuratie van verschillende applicaties.
+Het uiteindelijke doel is om deze tool uit te voeren op vijf verschillende servers met specifieke use cases.
+Op basis hiervan zal worden geconcludeerd of het implementeren van deze tool nuttig is voor KMO's.
 
 %---------- Stand van zaken ---------------------------------------------------
 
-\section{State-of-the-art}%
-\label{sec:state-of-the-art}
+\section{Literatuurstudie}%
+\label{sec:litaratuurstudie}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+Volgens een studie uit 2022~\autocite{Kotenko2022} is het opstellen van een configuratie inventaris essentieel voor het beoordelen van cybersecurityrisico's.
+Aan de hand van een inventaris kan men potenti\"ele kwetsbaarheden gaan identificeren en de passende maatregelen gaan treffen.
+Ook wordt er benadrukt dat het inventaris kan gebruikt worden om mogelijke cyberaanvalspaden te identificeren en het voorkomen van verliezen door cyberaanvallen.
+Het regelmatig herevalu\"eren van het inventaris wordt benadrukt als een proactieve benadering om potenti\"ele incidenten te voorkomen.
+Dit benadrukt het belang van een nauwkeurige inventarisatie voor het implementeren van geautomatiseerde detectie- en bewakingsmaatregelen.
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
-
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
-
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
-
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
-
-% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
-% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
-%   geen onderdeel is van de zin.
-% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
-%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
-%   ...'')
-
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
+In een boek geschreven door Antal~\autocite{Antal2010} worden verschillende systeemeigenschappen genoemd die essentieel zijn voor een inventaris.
+Hoewel het boek niet specifiek gericht is op Linux-systemen, biedt het een algemeen overzicht van cruciale aspecten van een inventaris.
+Hierbij wordt de configuratie van het besturingssysteem benadrukt, inclusief details zoals de kernel- en besturingssysteemversie.
+Verder wordt het belang van het aantal geïnstalleerde applicaties en hun configuratie benoemd als significant in het inventarisatieproces.
+Daarnaast wordt de netwerkconfiguratie, waaronder IP-adressen en firewallconfiguratie, als essentieel beschouwd.
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
 
-In deze studie zal een onderzoek gebeuren de bijdrage van een configuratie inventaris van Linux-systemen, bij het initiele proces van incident response bij een cyberaanval. Het onderzoek zal bestaan uit vijf fasen, zoals weergegeven in figuur~\ref{fig:chart}.
+In deze studie wordt onderzoek gedaan naar de bijdrage van een configuratie-inventaris van Linux-systemen aan het initi\"ele proces van incident response bij een cyberaanval.
+Het onderzoek zal bestaan uit zes fasen, zoals weergegeven in figuur~\ref{fig:flowchart}.
 
-De eerste fase, literatuurstudie, richt zich op een diepgaand literatuuronderzoek om de impact van cybersecurity-incidenten te vergelijken tussen bedrijven met en zonder een uitgebreide inventaris. Het resultaat omvat een literatuurstudie die niet alleen de impact belicht, maar ook eigenschappen van Linux-toestellen identificeert die relevant zijn voor de inventaris.
+\subsection{Fase 1: Literatuurstudie}%
+\label{sub:literatuurstudie}
 
-De tweede fase, risico-analyse, concentreert zich op een kritische evaluatie van de ge\"edentificeerde Linux-toesteleigenschappen binnen de inventaris. Via een diepgaande risico-analyse worden de impact van deze eigenschappen op het incidentresponseproces en hun bruikbaarheid geëvalueerd. De risico-analyse omvat tevens een beoordeling van mogelijke kosten, waaronder financiële, energetische en tijdsinvesteringen, om het inventarisatieproces te verwezenlijken. Het resultaat van deze fase is een lijst van eigenschappen die een positieve bijdrage leveren aan het incident response proces, en een lijst van eigenschappen die een negatieve impact hebben op het incident response proces. Deze lijsten zullen worden gebruikt in de volgende fase.
+De eerste fase omvat een grondige literatuurstudie die zich richt op het vergelijken van de impact van cyberbeveiligingsincidenten tussen bedrijven met en zonder een uitgebreide inventaris.
+Deze fase duurt 2 weken in beslag nemen, en resulteert in een literatuurstudie die niet alleen de impact belicht, maar ook eigenschappen van Linux-systemen identificeert die relevant zijn voor het inventaris.
 
-Tijdens de derde fase, Proof-of-Concept, staat de ontwikkeling van een Bash-script centraal, gekoppeld aan het opzetten van een Proof-of-Concept omgeving. Het Bash-script beoogt een inventaris op te stellen met de in fase 2 geselecteerde eigenschappen. Testen vinden plaats op twee verschillende machines - een Red Hat Enterprise Linux (RHEL) webserver en een Debian mariadb database server met RAID 5-configuratie, in een virtuele omgeving met behulp van Vagrant. Het resultaat van deze fase is een werkend Bash-script dat een inventaris van een Linux-toestel opstelt, en een Proof-of-Concept omgeving waarin het Bash-script wordt uitgevoerd op een geautomatiseerde manier.
+\subsection{Fase 2: Risico-analyse}%
+\label{sub:risico_analyse}
 
-Na het uitvoeren van het Proof-of-Concept worden de resultaten geanalyseerd, dat de basis zal vormen voor de conclusie, waarbij de focus ligt op de kwaliteit en bruikbaarheid van de inventaris. Beoordelingscriteria omvatten de volledigheid van de inventaris, de aanwezigheid van fouten en de impact op het incidentresponseproces. De conclusie biedt beknopt, maar helder inzicht in de bevindingen en antwoordt op de onderzoeksvraag.
+De tweede fase richt zich op een risico-analyse, waarbij de ge\"identificeerde Linux-systeem\\eigenschappen binnen het inventaris kritisch worden ge\"evalueerd.
+Via een diepgaande risico-\\analyse worden de impact van deze eigenschappen op het incidentresponseproces en hun bruikbaarheid beoordeeld.
+Ook deze fase zal 2 weken in beslag nemen, en resulteert in een lijst van eigenschappen die een positieve bijdrage leveren aan het incidentresponseproces en een lijst van eigenschappen die een negatieve impact hebben.
 
-De afsluitende fase richt zich op de voltooiing van de paper. Ontbrekende hoofdstukken worden aangevuld, en de tekst wordt nauwkeurig nagelezen. Het resultaat is een voltooide scriptie die voldoet aan alle vereiste normen en essenti\"ele hoofdstukken omvat.
+\subsection{Fase 3: Ontwikkeling van de tool}%
+\label{sub:ontwikkeling_van_de_tool}
 
-\begin{figure}
+De derde fase omvat de ontwikkeling van de tool, een Bash-script dat de eigenschappen van fase 2 gebruikt om een inventaris van het Linux-systeem op te stellen.
+Het resultaat is een werkend Bash-script dat ongeveer 3 weken in beslag neemt.
+
+\subsection{Fase 4: Proof-of-Concept}%
+\label{sub:proof_of_concept}
+
+Na de ontwikkelingsfase volgt de Proof-of-\\Concept, waarbij een omgeving wordt opgezet met 5 Linux-servers met elk hun specifieke taak.
+Deze fase zal ongeveer 1 week duren en omvat het testen van het script op de opgezette omgeving, resulterend in een inventaris van de omgeving.
+
+\subsection{Fase 5: Analyse van de resultaten}%
+\label{sub:analyse_van_de_resultaten}
+
+Na het uitvoeren van het Proof-of-\\Concept worden de resultaten geanalyseerd.
+Deze analyse vormt de basis voor de conclusie, waarbij de focus ligt op de kwaliteit en bruikbaarheid van de inventaris.
+Beoordelingscriteria omvatten de volledigheid van de inventaris, de aanwezigheid van fouten en de impact op het incidentresponseproces.
+Deze fase duurt 1 week.
+
+\subsection{Fase 6: Afronding van de scriptie}%
+\label{sub:afronding_van_de_scriptie}
+
+De afsluitende fase richt zich op de voltooiing van de paper.
+Ontbrekende hoofdstukken worden aangevuld, en de tekst wordt nauwkeurig nagelezen.
+Het resultaat is een voltooide scriptie die voldoet aan alle vereiste normen en essenti\"ele hoofdstukken omvat.
+Deze fase neemt 2 weken in beslag.
+
+\begin{figure}[h!]
     \includegraphics[width=.49\textwidth]
     {graphics/methodologie_flowchart.png}
-    \caption{\label{fig:chart}Flowchart van de verschillende fasen in de methodologie}
+    \caption{\label{fig:flowchart}Flowchart fasen methodologie}
 \end{figure}
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-De verwachte resultaten van dit onderzoek omvatten een aanzienlijke bijdrage aan het incident response proces bij cyberaanvallen. Door het automatisch genereren van een gedetailleerde inventaris van Linux-systemen kunnen organisaties strategischer redeneren over de kritieke en minder kritieke systemen. Hierdoor wordt de efficiëntie van incident response verhoogd, met een gerichte aanpak op basis van de verzamelde gegevens.
+De literatuurstudie heeft duidelijk de voordelen van een uitgebreide inventaris aangetoond bij het incident response proces na een cyberaanval.
+De risico-\\analyse heeft kritieke eigenschappen van Linux-systemen ge\"identificeerd voor inventarisatie, waarbij een evenwicht is gezocht tussen positieve bijdragen aan het incident response proces en mogelijke negatieve effecten.
 
-Het inventaris automatiseren draagt bij aan het actueel houden van de inventaris, waardoor deze direct beschikbaar is wanneer nodig. Dit komt vooral van pas bij het identificeren van de meest kritische systemen tijdens een cybersecurity-incident, waardoor de reactietijd wordt verkort en de schade beperkt.
+De ontwikkelde tool biedt een praktische oplossing voor het inventariseren van Linux-systemen te automatiseren.
+Tijdens de Proof-of-Concept fase is aangetoond dat het script effectief is.
+De inventarisatie was volledig en nauwkeurig, wat de potentie benadrukt om het incident response proces te versterken.
 
-Hoewel grotere bedrijven vaak hun volledige stack automatiseren met tools zoals Ansible, kan de ontwikkelde methode met name waardevol zijn voor kleine en middelgrote ondernemingen. KMO's hebben doorgaans beperktere middelen en kunnen niet altijd profiteren van uitgebreide automatiseringsoplossingen. Daarom kan het geautomatiseerde inventarisatieproces een cruciale rol spelen in het versterken van de cybersecuritymaatregelen van KMO's, waar handmatige inventarisatie vaak tijdrovend en foutgevoelig is.
