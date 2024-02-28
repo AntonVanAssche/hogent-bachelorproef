@@ -1,0 +1,54 @@
+- name: Configure srv2
+  hosts: srv2
+  tasks:
+    - name: Install nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+    - name: Install the PHP script test.php
+      ansible.builtin.copy:
+        src: /vagrant/ansible/files/index.php
+        dest: /var/www/html/index.php
+
+- name: Configure srv3
+  hosts: srv3
+  tasks:
+    - name: Install mariadb-server
+      ansible.builtin.package:
+        name: mariadb-server
+        state: present
+    - name: Copy the database creation script (db.sql) to the server
+      ansible.builtin.copy:
+        src: /vagrant/ansible/files/db.sql
+        dest: /tmp/
+    - name: Create a database user
+      community.mysql.mysql_user:
+        name: '{{ db_user }}'
+        password: '{{ db_password }}'
+        host: localhost
+        priv: '*.*:ALL'
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        state: present
+  handlers:
+    - name: Create the database
+      community.mysql.mysql_db:
+        name: '{{ db_name }}'
+        state: import
+        target: /tmp/db.sql
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Configure srv4
+  hosts: srv4
+  roles:
+    - prometheus.prometheus.prometheus
+    - cloudalchemy.grafana
+
+- name: Install Node Exporter on all servers
+  hosts:
+    - srv1
+    - srv2
+    - srv3
+    - srv4
+    - srv5
+  roles:
+    - prometheus.prometheus.node_exporter
