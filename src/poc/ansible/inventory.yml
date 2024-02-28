@@ -1,0 +1,21 @@
+servers:
+  vars:
+    ansible_user: vagrant
+    ansible_become: true
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+  hosts:
+    srv1:
+      ansible_host: 172.16.128.1
+      ansible_ssh_private_key_file: /vagrant/.vagrant/machines/srv1/virtualbox/private_key
+    srv2:
+      ansible_host: 172.16.128.2
+      ansible_ssh_private_key_file: /vagrant/.vagrant/machines/srv2/virtualbox/private_key
+    srv3:
+      ansible_host: 172.16.128.3
+      ansible_ssh_private_key_file: /vagrant/.vagrant/machines/srv3/virtualbox/private_key
+    srv4:
+      ansible_host: 172.16.128.4
+      ansible_ssh_private_key_file: /vagrant/.vagrant/machines/srv4/virtualbox/private_key
+    srv5:
+      ansible_host: 172.16.128.5
+      ansible_ssh_private_key_file: /vagrant/.vagrant/machines/srv5/virtualbox/private_key
