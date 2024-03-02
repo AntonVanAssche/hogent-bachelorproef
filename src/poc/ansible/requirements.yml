@@ -1,6 +1,6 @@
 ---
 roles:
   - name: cloudalchemy.grafana
-  - name: bertvv.dhcp
+  - name: bertvv.bind
 collections:
   - name: prometheus.prometheus

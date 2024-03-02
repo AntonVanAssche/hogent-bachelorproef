@@ -1,4 +1,23 @@
 ---
+- name: Update all APT packages on each server
+  hosts:
+    - srv1
+    - srv2
+    - srv3
+    - srv4
+    - srv5
+  tasks:
+    - name: Install updates
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+        update_cache: yes
+
+- name: Configure srv1
+  hosts: srv1
+  roles:
+    - bertvv.bind
+
 - name: Configure srv2
   hosts: srv2
   tasks:
