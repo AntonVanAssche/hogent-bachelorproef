@@ -52,3 +52,17 @@
     - srv5
   roles:
     - prometheus.prometheus.node_exporter
+
+- name: Configure DNS on each server
+  hosts:
+    - srv1
+    - srv2
+    - srv3
+    - srv4
+    - srv5
+  tasks:
+    - name: Configure DNS server
+      ansible.builtin.lineinfile:
+        path: /etc/resolv.conf
+        regexp: '^nameserver'
+        line: nameserver 172.16.128.1
