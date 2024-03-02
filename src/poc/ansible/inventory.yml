@@ -1,3 +1,4 @@
+---
 servers:
   vars:
     ansible_user: vagrant

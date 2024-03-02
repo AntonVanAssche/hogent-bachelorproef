@@ -1,3 +1,4 @@
+---
 - name: Configure srv2
   hosts: srv2
   tasks:
