@@ -3,10 +3,10 @@ name: Yaml Lint
 on:
   push:
     paths:
-      - "src/**.yml"
+      - src/**.yml
   pull_request:
     paths:
-      - "src/**.yml"
+      - src/**.yml
 jobs:
   lintAllTheThings:
     runs-on: ubuntu-latest
