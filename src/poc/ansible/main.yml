@@ -73,7 +73,6 @@
   hosts: srv4
   roles:
     - prometheus.prometheus.prometheus
-    - cloudalchemy.grafana
 
 - name: Install Node Exporter on all servers
   hosts:
