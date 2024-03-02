@@ -29,7 +29,7 @@ h1 {
 
 <?php
 // Variables
-$db_host='127.0.0.1';
+$db_host='172.16.128.3';
 $db_user='appuser';
 $db_name='appdb';
 $db_password='let me in';
