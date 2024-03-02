@@ -47,7 +47,9 @@
   tasks:
     - name: Install mariadb-server
       ansible.builtin.package:
-        name: mariadb-server
+        name:
+          - mariadb-server
+          - python3-mysqldb
         state: present
     - name: Copy the database creation script (db.sql) to the server
       ansible.builtin.copy:
@@ -57,11 +59,10 @@
       community.mysql.mysql_user:
         name: '{{ db_user }}'
         password: '{{ db_password }}'
-        host: localhost
+        host: '172.16.128.2'
         priv: '*.*:ALL'
         login_unix_socket: /var/run/mysqld/mysqld.sock
         state: present
-  handlers:
     - name: Create the database
       community.mysql.mysql_db:
         name: '{{ db_name }}'
