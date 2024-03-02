@@ -21,14 +21,26 @@
 - name: Configure srv2
   hosts: srv2
   tasks:
-    - name: Install nginx
+    - name: Install packages
       ansible.builtin.package:
-        name: nginx
+        name:
+          - apache2
+          - php
+          - libapache2-mod-php
+          - php-mysql
         state: present
     - name: Install the PHP script test.php
       ansible.builtin.copy:
         src: /vagrant/ansible/files/index.php
         dest: /var/www/html/index.php
+    - name: Remove default apache page
+      ansible.builtin.file:
+        path: /var/www/html/index.html
+        state: absent
+    - name: Restart service apache, in all cases
+      ansible.builtin.service:
+        name: apache2
+        state: restarted
 
 - name: Configure srv3
   hosts: srv3
