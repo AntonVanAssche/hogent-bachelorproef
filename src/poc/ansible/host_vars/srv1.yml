@@ -32,14 +32,14 @@ bind_zones:
       - name: srv3
         ip: 172.16.128.3
         aliases:
-          - grafana
+          - db
       - name: srv4
         ip: 172.16.128.4
         aliases:
-          - db
+          - prometheus
       - name: srv5
         ip: 172.16.128.5
         aliases:
-          - base
+          - grafana
     networks:
       - '172.16'
