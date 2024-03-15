@@ -4,3 +4,4 @@ roles:
   - name: bertvv.bind
 collections:
   - name: prometheus.prometheus
+  - name: vladgh.samba

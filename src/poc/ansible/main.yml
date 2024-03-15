@@ -84,6 +84,26 @@
   roles:
     - prometheus.prometheus.prometheus
 
+- name: Configure srv5
+  hosts: srv5
+  tasks:
+    - name: Ensure group "{{ samba_group }}" exists
+      ansible.builtin.group:
+        name: '{{ samba_group }}'
+        state: present
+      become: true
+    - name: Add the user 'james' with a bash shell, appending the group 'admins' and 'developers' to the user's groups
+      ansible.builtin.user:
+        name: james
+        password: "{{ 'james' | password_hash('sha512') }}"
+        shell: /bin/bash
+        groups: '{{ samba_group }}'
+        append: true
+      become: true
+    - name: Include Samba Server role
+      ansible.builtin.include_role:
+        name: vladgh.samba.server
+
 - name: Install Node Exporter on all servers
   hosts:
     - srv1

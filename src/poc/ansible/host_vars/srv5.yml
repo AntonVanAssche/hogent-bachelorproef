@@ -1,0 +1,14 @@
+samba_group: storage_group_01
+
+samba_users:
+  - name: james
+    password: james
+
+samba_shares:
+  - name: storage_01
+    comment: 'Storage server 01'
+    path: /mnt/storage_01/
+    read_only: 'no'
+    guest_ok: 'yes'
+    write_list: +'{{ samba_group }}'
+    group: '{{ samba_group }}'
