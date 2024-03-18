@@ -7,12 +7,50 @@
 
 % Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
 
-Dit hoofdstuk bevat je literatuurstudie. De inhoud gaat verder op de inleiding, maar zal het onderwerp van de bachelorproef *diepgaand* uitspitten. De bedoeling is dat de lezer na lezing van dit hoofdstuk helemaal op de hoogte is van de huidige stand van zaken (state-of-the-art) in het onderzoeksdomein. Iemand die niet vertrouwd is met het onderwerp, weet nu voldoende om de rest van het verhaal te kunnen volgen, zonder dat die er nog andere informatie moet over opzoeken \autocite{Pollefliet2011}.
+\section{Network and Information Security 2}%
+\label{sec:nis2}
 
-Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz.\ naar je bronnen. In \LaTeX{} kan dat met het commando \texttt{$\backslash${textcite\{\}}} of \texttt{$\backslash${autocite\{\}}}. Als argument van het commando geef je de ``sleutel'' van een ``record'' in een bibliografische databank in het Bib\LaTeX{}-formaat (een tekstbestand). Als je expliciet naar de auteur verwijst in de zin (narratieve referentie), gebruik je \texttt{$\backslash${}textcite\{\}}. Soms is de auteursnaam niet expliciet een onderdeel van de zin, dan gebruik je \texttt{$\backslash${}autocite\{\}} (referentie tussen haakjes). Dit gebruik je bv.~bij een citaat, of om in het bijschrift van een overgenomen afbeelding, broncode, tabel, enz. te verwijzen naar de bron. In de volgende paragraaf een voorbeeld van elk.
+\section{Huidige aanpak van asset management}%
+\label{sec:huidige_aanpak_van_asset_management}
 
-\textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
+\subsection{Infrastructure as Code}%
+\label{sub:ias}
 
-Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
+\subsection{Data Center Infrastructure Management}
+\label{sub:dcim}
 
-\lipsum[7-20]
+\subsection{IP Address Management}
+\label{sub:ipam}
+
+\subsection{Snipe-IT}
+\label{sub:snipe-it}
+
+Snip-IT is een open-source webapplicatie ontwikkeld door Grokability sinds 2013~\autocite{snipe-it-introduction}, die gericht is op IT-assetmanagement.
+Het idee achter Snipe-IT komt voort uit de vroegere aanpak van het bedrijf, toen het voornamelijk nog gebruik maakte van spreadsheets om hun bedrijfsmiddelen te inventariseren.
+Het doel was om een applicatie te ontwikkelen die deze taak op een meer georganiseerde en effici\"ente manier kon uitvoeren.
+
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]
+    {./graphics/snipe-dashboard.png}
+    \caption{\label{fig:snipe-it-dashboard}Snip-IT dashboard.}
+\end{figure}
+
+De software biedt een gebruiksvriendelijke webinterface waarmee bedrijfsmiddelen, licenties, garanties en meer gemakkelijk kunnen worden beheerd.
+Wanneer men kiest voor de self-hosted optie is de software gratis beschikbaar, terwijl ook verschillende cloud-gebaseerde optie beschikbaar zijn tegen een jaarlijkse bijdrage.
+Deze prijs varieert afhankelijk van de nodige features en support.
+Alle code en services gerelateerd aan Snipe-IT zijn vrij beschikbaar op GitHub~\autocite{snipe-it-github}.
+
+Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-features}, maar zijn niet beperkt tot:
+\begin{itemize}
+    \item Het eenvoudig bekijken van toegewezen bedrijfsmiddelen, inclusief informatie over wie ze gebruikt en hun fysieke locatie.
+    \item Het groeperen van gemeenschappelijke functies met behulp van Asset Models.
+    \item E-mailwaarschuwingen voor het verstrijken van garanties en licenties.
+    \item Snelle en eenvoudige controle van bedrijfsmiddelen.
+    \item Het gemakkelijk importeren en exporteren van assets.
+\end{itemize}
+
+\subsection{Nagios}
+\label{sub:nagios}
+
+\subsection{Lansweeper}
+\label{sub:lansweeper}
