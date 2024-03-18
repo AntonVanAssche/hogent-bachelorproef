@@ -1,38 +1,35 @@
-name: Docker Image CI
-
+---
+name: Build poster
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
     paths:
-      - "doc/poster/**"
+      - doc/poster/**
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
     paths:
-      - "doc/poster/**"
-
+      - doc/poster/**
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: |
-        cd doc/
-        docker build -t bpimg -f docker/Dockerfile .
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: |
+          cd doc/
+          docker build -t bpimg -f docker/Dockerfile .
+      - name: Build the poster
+        run: >
+          cd doc/
 
-    - name: Build the poster
-      run: |
-        cd doc/
-        docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh poster
-
-    - uses: actions/upload-artifact@v3
-      name: Upload artifacts
-      with:
-        name: output
-        path: |
-          doc/output/*.pdf
-          doc/output/*.log
-        if-no-files-found: error
+          docker run --rm -v "$PWD":/bp bpimg sh /bp/docker/render_thesis.sh poster
+      - uses: actions/upload-artifact@v3
+        name: Upload artifacts
+        with:
+          name: output
+          path: |
+            doc/output/*.pdf
+            doc/output/*.log
+          if-no-files-found: error
