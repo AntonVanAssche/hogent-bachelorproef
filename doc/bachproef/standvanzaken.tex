@@ -16,6 +16,30 @@
 \subsection{Infrastructure as Code}%
 \label{sub:ias}
 
+Sinds het ontslaan computernetwerken is het uitrollen en beheren van servers en netwerken een uitdagende taak geweest.
+Infrastructure as Code, IaS, is een begrip dat de laatste jaren steeds meer aan populariteit wint.
+Dit vooral omdat het de beheerders van deze netwerken toelaat om hun configuratie en infrastructuur vast te leggen in code, in plaats van manueel te moeten configureren.
+Binnen deze code kan men dan veel voorkomende, complexe taken automatisch gaan uitvoeren, en dit allemaal op een geteste en foutloze manier uit~\autocite{chef-what-is-ias}.
+
+IaS is gebasseerd drie fundamentele concepten~\autocite{chef-what-is-ias}:
+
+\begin{itemize}
+    \item Automatisering: manuele configuratie aanpassen, het uitrollen van nieuwe servers, wordt allemaal geautomatiseerd met behulp van code.
+    \item Testen: IT, DevOps, en SecOps processen kunnen met zekerheid worden uitgevoerd, omdat de code getest is.
+    \item Idempotentie: Processen worden niet alleen op nieuwe servers toegepast, maar ook op reeds bestaande om zo een consistente configuratie te behouden.
+\end{itemize}
+
+E\'en van de grootste voordelen van IaS is de verhoging van de effici\"entie~\autocite{splunk-common-benefits-of-ias}.
+Doordat veel taken geautomatiseerd worden, kunnen beheerders zich richten op andere, meer complexe taken.
+Zo heeft Red Hat in 2016 een casestudy gepubliceerd~\autocite{case-study-nasa-ias} waarin ze NASA's resultaten van hun overstap naar de IaS-tools Ansible en Ansible Tower hebben geanalyseerd.
+Hierin geven ze aan dat het updateproces van nasa.gov van meer dan 1 uur is teruggebracht tot minder dan 5 minuten.
+Het langdurige proces van het patchen van updates werd teruggebracht van een proces dat meerdere dagen in beslag nam naar een proces van ongeveer 45 minuten.
+
+Het Duitse Federaal Ministerie van Voedsel en Landbouw (Bundesanstalt f\"ur Landwirtschaft und Ern\"ahrung, of BLE), heeft ook bepaalde IT-toepassingen met 50\% kunnen versnellen dankzij een overstap naar een IaS-aanpak~\autocite{case-study-ble-ias}.
+In de studie bespreken ze kort waarom ze hebben besloten over te schakelen naar een IaS-aanpak en geven ze een paar voorbeelden van hoe ze voorheen te werk gingen en hoe ze dit met IaS hebben aangepakt.
+Tijdens de implementatie hebben ze 1.000 virtuele machines overgeschakeld van Debian en SUSE Linux naar Red Hat Enterprise Linux, ook bekend als RHEL.
+Deze machines worden beheerd met behulp van Satellite en geautomatiseerd met Ansible.
+
 \subsection{Data Center Infrastructure Management}
 \label{sub:dcim}
 
