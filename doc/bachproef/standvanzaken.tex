@@ -95,6 +95,7 @@ Met functionaliteiten voor zowel hardware- als software-inventarisatie, biedt La
 
 Het grote voordeel van Lansweeper ten opzichte van andere tools, zoals Snipe-IT, is dat het een volledig geautomatiseerde oplossing biedt~\autocite{lansweeper-features}.
 Dit betekent dat het platform in staat is om automatisch alle IT-assets binnen een netwerk te detecteren, zonder handmatige configuratie of de noodzaak om op elk systeem een agent te installeren~\autocite{lansweeper-getting-started}.
+Een scan zal essenti\"ele informatie verzamelen over het asset, zoals de versie van het besturingssysteem, de hostname van de machine, het MAC-adres en de laatst ingelogde gebruiker.
 Dit gebeurt met behulp van verschillende protocollen, waaronder SNMP.
 De gedetecteerde informatie wordt vervolgens opgeslagen in een centrale database en is toegankelijk via een gebruiksvriendelijke webinterface.
 
@@ -104,5 +105,10 @@ De gedetecteerde informatie wordt vervolgens opgeslagen in een centrale database
     \caption{\label{fig:lansweeper-dashboard}Lansweeper dashboard.}
 \end{figure}
 
-Gebruikers kunnen aangepaste rapporten genereren over verschillende aspecten van hun IT-infrastructuur, zoals hardwareconfiguraties, softwarelicenties, patchniveaus en meer.
+Gebruikers kunnen aangepaste rapporten genereren over verschillende aspecten van hun IT-infrastructuur, zoals hardwareconfiguraties, softwarelicenties, patchniveaus en meer~\autocite{lansweeper-features}.
 Deze rapporten zijn bruikbaar voor audits, nalevingscontroles en capaciteitsplanning.
+
+Naast het genereren van rapporten en het identificeren van nieuwe IT-assets, biedt Lansweeper ook de mogelijkheid om rogue devices op het netwerk te detecteren.
+Deze detectie gebeurt door continu het netwerk te scannen en alle gevonden assets te vergelijken met de resultaten in de database van bekende assets.
+Wanneer een apparaat wordt gedetecteerd dat niet voorkomt in de database, genereert Lansweeper een waarschuwing, waardoor beheerders en administrators actie kunnen ondernemen.
+Bovendien heeft Lansweeper de capaciteit om mogelijke beveiligingsrisico's te identificeren binnen uw inventaris door gebruik te maken van de NIST National Vulnerability Database~\autocite{lansweeper-cam}.
