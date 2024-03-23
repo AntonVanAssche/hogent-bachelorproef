@@ -1,0 +1,129 @@
+---
+- name: Update all APT packages on each server
+  hosts:
+    - srv1
+    - srv2
+    - srv3
+    - srv4
+    - srv5
+  tasks:
+    - name: Install updates
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+        update_cache: yes
+
+- name: Configure srv1
+  hosts: srv1
+  roles:
+    - bertvv.bind
+
+- name: Configure srv2
+  hosts: srv2
+  tasks:
+    - name: Install packages
+      ansible.builtin.package:
+        name:
+          - apache2
+          - php
+          - libapache2-mod-php
+          - php-mysql
+        state: present
+    - name: Install the PHP script test.php
+      ansible.builtin.copy:
+        src: /vagrant/ansible/files/index.php
+        dest: /var/www/html/index.php
+    - name: Remove default apache page
+      ansible.builtin.file:
+        path: /var/www/html/index.html
+        state: absent
+    - name: Restart service apache, in all cases
+      ansible.builtin.service:
+        name: apache2
+        state: restarted
+
+- name: Configure srv3
+  hosts: srv3
+  tasks:
+    - name: Install mariadb-server
+      ansible.builtin.package:
+        name:
+          - mariadb-server
+          - python3-mysqldb
+        state: present
+    - name: Allow remote connections
+      ansible.builtin.lineinfile:
+        path: /etc/mysql/mariadb.conf.d/50-server.cnf
+        regexp: '^bind-address'
+        line: bind-address            = 0.0.0.0
+    - name: Copy the database creation script (db.sql) to the server
+      ansible.builtin.copy:
+        src: /vagrant/ansible/files/db.sql
+        dest: /tmp/
+    - name: Create a database user
+      community.mysql.mysql_user:
+        name: '{{ db_user }}'
+        password: '{{ db_password }}'
+        host: '172.16.128.2'
+        priv: '*.*:ALL'
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+        state: present
+    - name: Create the database
+      community.mysql.mysql_db:
+        name: '{{ db_name }}'
+        state: import
+        target: /tmp/db.sql
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+    - name: Restart service mariadb, in all cases
+      ansible.builtin.service:
+        name: mariadb
+        state: restarted
+
+- name: Configure srv4
+  hosts: srv4
+  roles:
+    - prometheus.prometheus.prometheus
+
+- name: Configure srv5
+  hosts: srv5
+  tasks:
+    - name: Ensure group "{{ samba_group }}" exists
+      ansible.builtin.group:
+        name: '{{ samba_group }}'
+        state: present
+      become: true
+    - name: Add the user 'james' with a bash shell, appending the group 'admins' and 'developers' to the user's groups
+      ansible.builtin.user:
+        name: james
+        password: "{{ 'james' | password_hash('sha512') }}"
+        shell: /bin/bash
+        groups: '{{ samba_group }}'
+        append: true
+      become: true
+    - name: Include Samba Server role
+      ansible.builtin.include_role:
+        name: vladgh.samba.server
+
+- name: Install Node Exporter on all servers
+  hosts:
+    - srv1
+    - srv2
+    - srv3
+    - srv4
+    - srv5
+  roles:
+    - prometheus.prometheus.node_exporter
+
+- name: Configure DNS on each server
+  hosts:
+    - srv1
+    - srv2
+    - srv3
+    - srv4
+    - srv5
+  tasks:
+    - name: Configure DNS server
+      ansible.builtin.lineinfile:
+        path: /etc/resolv.conf
+        regexp: '^nameserver'
+        line: nameserver 172.16.128.1

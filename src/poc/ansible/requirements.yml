@@ -1,0 +1,7 @@
+---
+roles:
+  - name: cloudalchemy.grafana
+  - name: bertvv.bind
+collections:
+  - name: prometheus.prometheus
+  - name: vladgh.samba

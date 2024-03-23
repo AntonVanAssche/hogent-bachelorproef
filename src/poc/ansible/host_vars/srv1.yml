@@ -1,0 +1,45 @@
+bind_statistics_channels: true
+bind_statistics_allow: ['any']
+bind_listen_ipv4: ['any']
+bind_listen_ipv6: ['any']
+bind_allow_query: ['any']
+bind_recursion: true
+bind_allow_recursion: ['any']
+bind_forward_only: false
+bind_forwarders:
+  - 10.0.2.3
+  - 8.8.8.8
+  - 1.1.1.1
+bind_dnssec_enable: false
+bind_dnssec_validation: false
+bind_query_log: 'data/query.log'
+bind_zones:
+  - name: poc.lan
+    type: primary
+    primaries:
+      - 172.16.128.1
+    name_servers:
+      - srv1.poc.lan.
+    hosts:
+      - name: srv1
+        ip: 172.16.128.1
+        aliases:
+          - ns
+      - name: srv2
+        ip: 172.16.128.2
+        aliases:
+          - web
+      - name: srv3
+        ip: 172.16.128.3
+        aliases:
+          - db
+      - name: srv4
+        ip: 172.16.128.4
+        aliases:
+          - prometheus
+      - name: srv5
+        ip: 172.16.128.5
+        aliases:
+          - grafana
+    networks:
+      - '172.16'
