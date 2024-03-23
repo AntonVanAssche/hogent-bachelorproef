@@ -146,6 +146,50 @@ tr ' ' '\n' < /proc/cmdline | tee -a "${output_dir}/boot_parameters.txt"
 
 column -s, -t "${output_dir}/boot_parameters.txt"
 
+####################
+# Users and groups #
+####################
+
+passwd_file="/etc/passwd"
+[[ -f "${passwd_file}" ]] || error "passwd file not found." 1
+[[ -r "${passwd_file}" ]] || error "passwd file not readable." 1
+
+groups_file="/etc/group"
+[[ -f "${groups_file}" ]] || error "group file not found." 1
+[[ -r "${groups_file}" ]] || error "group file not readable." 1
+
+[[ -d "${output_dir}/users" ]] || mkdir -p "${output_dir}/users"
+[[ -d "${output_dir}/groups" ]] || mkdir -p "${output_dir}/groups"
+
+printf 'Username,UID,GID,Shell,Home\n' > "${output_dir}/users/users.csv"
+cut -d: -f1 ${passwd_file} | paste -d, - \
+    <(cut -d: -f3 ${passwd_file}) \
+    <(cut -d: -f4 ${passwd_file}) \
+    <(cut -d: -f7 ${passwd_file}) \
+    <(cut -d: -f6 ${passwd_file}) | \
+    sort -t, -n -k 2 >> \
+    "${output_dir}/users/users.csv"
+
+info "Users found on the system:"
+column -t -s, "${output_dir}/users/users.csv"
+
+info "Privileged users:"
+while IFS=':' read -r group _ _ user; do
+    case "${group}" in
+        wheel|sudo)
+            printf "%s\n" "${user}"
+    esac
+done < "${groups_file}"
+
+printf 'Groupname,GID,Members\n' > "${output_dir}/groups/groups.csv"
+cut -d: -f1 "${groups_file}" | paste -d, - \
+    <(cut -d: -f3 "${groups_file}") \
+    <(cut -d: -f4 "${groups_file}" | sed 's/,/ /g') >> \
+    "${output_dir}/groups/groups.csv"
+
+info "Groups found on the system:"
+column -t -s, "${output_dir}/groups/groups.csv"
+
 ############
 # Packages #
 ############
