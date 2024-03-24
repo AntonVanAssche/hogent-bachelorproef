@@ -144,8 +144,11 @@ column -t -s, "${output_dir}/users/users.csv"
 
 info "Users with login shells:"
 while read -r shell; do
-    info "Users with '${shell}':"
+    if [[ "${shell}" =~ ^#*$|^$ ]]; then
+        continue
+    fi
 
+    info "Users with '${shell}':"
     # ||: is required since the script will exit with 1
     # if no users are found with the shell.
     grep -E ":${shell}$" ${passwd_file} | cut -d: -f1 || :
