@@ -115,6 +115,21 @@ else
     mkdir -p "${output_dir}"
 fi
 
+############
+# Packages #
+############
+
+info "Package info:"
+
+printf 'Package,Version,Architecture\n' > "${output_dir}/packages.csv"
+while IFS=" " read -r pkg version arch source; do
+    printf "%s,%s,%s,%s\n" "${pkg}" "${version}" "${arch}" "${source}" >> \
+        "${output_dir}/packages.csv"
+done < <(dpkg-query -Wf '${Package} ${Version} ${Architecture} ${Source}\n')
+
+info "Packages found on the system:"
+column -t -s, "${output_dir}/packages.csv"
+
 [[ ${MAKE_TAR} -eq 1 ]] && {
     info "Creating tarball..."
     tar -cvf "${output_dir}.tar.gz" "${output_dir}" &> /dev/null && \
