@@ -159,6 +159,15 @@ while IFS=':' read -r group _ _ user; do
     esac
 done < "${groups_file}"
 
+info "Custom sudo rules:"
+printf 'Username,Privilege,Source\n' > "${output_dir}/users/sudoers.csv"
+while read -r user priv; do
+    printf "%s,%s,%s\n" "${user##*:}" "${priv}" "${user%%:*}" >> \
+        "${output_dir}/users/sudoers.csv"
+done < <(grep -E '^[^#]*ALL=\(ALL\)' /etc/sudoers /etc/sudoers.d/*)
+
+column -t -s, "${output_dir}/users/sudoers.csv"
+
 printf 'Groupname,GID,Members\n' > "${output_dir}/groups/groups.csv"
 cut -d: -f1 "${groups_file}" | paste -d, - \
     <(cut -d: -f3 "${groups_file}") \
