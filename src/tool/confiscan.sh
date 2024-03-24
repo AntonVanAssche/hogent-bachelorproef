@@ -181,6 +181,17 @@ while IFS=':' read -r group _ _ user; do
     esac
 done < "${groups_file}"
 
+info "Custom sudo rules for each user:"
+printf 'Username,Privilege\n' > "${output_dir}/users/sudoers.csv"
+while read -r user; do
+    while read -r priv; do
+        printf "%s,%s\n" "${user}" "${priv}" >> \
+            "${output_dir}/users/sudoers.csv"
+    done < <(sudo -U "${user}" -l | sed -n '/User/,$p' | sed 's/    //g' | tail -n +2)
+done < <(cut -d: -f1 ${passwd_file})
+
+column -t -s, "${output_dir}/users/sudoers.csv"
+
 printf 'Groupname,GID,Members\n' > "${output_dir}/groups/groups.csv"
 cut -d: -f1 "${groups_file}" | paste -d, - \
     <(cut -d: -f3 "${groups_file}") \
