@@ -162,7 +162,7 @@ done < "${groups_file}"
 printf 'Groupname,GID,Members\n' > "${output_dir}/groups/groups.csv"
 cut -d: -f1 "${groups_file}" | paste -d, - \
     <(cut -d: -f3 "${groups_file}") \
-    <(cut -d: -f4 "${groups_file}") >> \
+    <(cut -d: -f4 "${groups_file}" | sed 's/,/ /g') >> \
     "${output_dir}/groups/groups.csv"
 
 info "Groups found on the system:"
