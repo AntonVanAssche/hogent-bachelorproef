@@ -130,6 +130,61 @@ done < <(dpkg-query -Wf '${Package} ${Version} ${Architecture} ${Source}\n')
 info "Packages found on the system:"
 column -t -s, "${output_dir}/packages.csv"
 
+######################################
+# Disks, partitions and mount points #
+######################################
+
+info "Disk info:"
+printf 'Disk,Size,Bytes,Sectors\n' > "${output_dir}/disk_info.csv"
+fdisk -l | \
+    grep 'Disk /' | \
+    sed -e 's/Disk //;s/:/,/;s/GiB//;s/bytes//;s/sectors//;s/ //g' >> \
+        "${output_dir}/disk_info.csv"
+column -s, -t "${output_dir}/disk_info.csv"
+
+info "Partitions:"
+printf 'Device,Boot,Start,End,Sectors,Size,ID,Type\n' > "${output_dir}/partitions.csv"
+while IFS=',' read -r disk boot start end sectors size id type; do
+    type="$(printf '%s' "${type}" | sed 's/,/ /g')"
+
+    printf '%s,%s,%s,%s,%s,%s,%s,%s\n' \
+        "${disk}" "${boot}" "${start}" "${end}" \
+        "${sectors}" "${size}" "${id}" "${type}" >> \
+        "${output_dir}/partitions.csv"
+done < <(fdisk -l | grep -E '^/dev/' | tr -s '[:space:]' | sed 's/ /,/g')
+
+column -s, -t "${output_dir}/partitions.csv"
+
+info 'Used filesystems:'
+printf 'Filesystem,IsUsed\n' > "${output_dir}/used_filesystems.csv"
+while read -r is_used fs; do
+    if [[ "${is_used}" == "nodev" ]]; then
+        is_used="false"
+    else
+        # We need to swap the values, because when the first
+        # column within `/proc/filesystems` is empty, the second
+        # column is used to set `$is_used`.
+        fs="${is_used}"
+        is_used="true"
+    fi
+
+    printf '%s,%s\n' "${fs}" "${is_used}" >> \
+        "${output_dir}/used_filesystems.csv"
+done < /proc/filesystems
+
+column -s, -t "${output_dir}/used_filesystems.csv"
+
+info "Mount points:"
+printf 'Device,MountPoint,FSType,Options\n' > \
+    "${output_dir}/mount_points.csv"
+while read -r line; do
+    printf '%s\n' "${line}" | \
+        sed 's/,/:/g' | \
+        sed 's/ /,/g' | \
+        sed 's/:/ /g' >> \
+        "${output_dir}/mount_points.csv"
+done < /proc/mounts
+
 [[ ${MAKE_TAR} -eq 1 ]] && {
     info "Creating tarball..."
     tar -cvf "${output_dir}.tar.gz" "${output_dir}" &> /dev/null && \
