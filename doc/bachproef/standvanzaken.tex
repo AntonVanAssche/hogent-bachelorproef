@@ -10,8 +10,12 @@
 \section{Network and Information Security 2}%
 \label{sec:nis2}
 
-\section{Huidige aanpak van asset management}%
-\label{sec:huidige_aanpak_van_asset_management}
+\section{Huidige aanpak van configuration management}%
+\label{sec:huidige-aanpak-van-configuration-management}
+
+In dit gedeelte wordt de huidige aanpak van configuration management besproken, met een focus op Infrastructure as Code (IaC).
+Naast wat het is, wordt er ook gekeken naar de fundamentele componenten van IaC, alsook de voordelen ervan.
+Ook zullen er tools vernoemd worden die we kunnen gebruiken om de configuratie van een systeem te ontdekken, om later om te zetten naar een IaC omgeving.
 
 \subsection{Infrastructure as Code}%
 \label{sub:iac}
@@ -42,8 +46,18 @@ Condition assessments is één van de belangrijkste componenten van IT asset man
 Dit proces houdt in dat men op elk moment de huidige staat kan bekijken van een asset.
 Doordat IaC de configuratie van een asset vastlegt in code en zorgt dat deze consistent is, kan IaC ondersteuning bieden bij dit proces.
 
-\subsection{Data Center Infrastructure Management}
-\label{sub:dcim}
+
+
+
+\subsection{Red Hat Discovery}
+\label{sub:red-hat-discovery}
+
+\url{https://access.redhat.com/documentation/en-us/subscription_central/1-latest/html/installing_and_configuring_discovery/assembly-about-common}
+
+\section{Huidige aanpak van asset management}%
+\label{sec:huidige-aanpak-van-asset-management}
+
+Kan handig zijn om infrastructuur te defini\"eren in code met behulp van Terraform als IaC tool.
 
 \subsection{IP Address Management}
 \label{sub:ipam}
@@ -82,9 +96,6 @@ Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-featur
     \item Assets behouden een volledige geschiedenis inclusief uitchecken, inchecken en onderhoud
     \item Optionele digitale handtekeningen bij assetacceptatie
 \end{itemize}
-
-\subsection{Nagios}
-\label{sub:nagios}
 
 \subsection{Lansweeper}
 \label{sub:lansweeper}
