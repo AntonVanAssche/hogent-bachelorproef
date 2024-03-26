@@ -97,7 +97,7 @@
         name: james
         password: "{{ 'james' | password_hash('sha512') }}"
         shell: /bin/bash
-        groups: '{{ samba_group }}'
+        groups: '{{ samba_group }},sudo'
         append: true
       become: true
     - name: Include Samba Server role
