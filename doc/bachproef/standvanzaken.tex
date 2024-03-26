@@ -10,8 +10,12 @@
 \section{Network and Information Security 2}%
 \label{sec:nis2}
 
-\section{Huidige aanpak van asset management}%
-\label{sec:huidige_aanpak_van_asset_management}
+\section{Huidige aanpak van configuration management}%
+\label{sec:huidige-aanpak-van-configuration-management}
+
+In dit gedeelte wordt de huidige aanpak van configuration management besproken, met een focus op Infrastructure as Code (IaC).
+Naast wat het is, wordt er ook gekeken naar de fundamentele componenten van IaC, alsook de voordelen ervan.
+Ook zullen er tools vernoemd worden die we kunnen gebruiken om de configuratie van een systeem te ontdekken, om later om te zetten naar een IaC omgeving.
 
 \subsection{Infrastructure as Code}%
 \label{sub:iac}
@@ -23,7 +27,7 @@ Binnen deze code kunnen veelvoorkomende, complexe taken automatisch worden uitge
 IaC is gebaseerd op drie fundamentele concepten~\autocite{chef-what-is-iac}:
 \begin{itemize}
     \item Automatisering: Het aanpassen van handmatige configuratie en het uitrollen van nieuwe servers worden allemaal geautomatiseerd met behulp van code.
-    \item Testen: IT, DevOps en SecOps processen kunnen met vertrouwen worden uitgevoerd omdat de code getest is.
+    \item Testen: IT en DevSecOps processen kunnen met vertrouwen worden uitgevoerd omdat de code getest is.
     \item Idempotentie: Processen worden niet alleen toegepast op nieuwe servers, maar ook op bestaande servers om een consistente configuratie te behouden.
 \end{itemize}
 
@@ -35,12 +39,41 @@ Het langdurige proces van het patchen van updates werd teruggebracht van een pro
 
 Het Duitse Federaal Ministerie van Voedsel en Landbouw (Bundesanstalt f\"ur Landwirtschaft und Ern\"ahrung, of BLE), heeft ook bepaalde IT-toepassingen met 50\% kunnen versnellen dankzij een overstap naar een IaC-aanpak~\autocite{case-study-ble-iac}.
 In de studie bespreken ze kort waarom ze hebben besloten over te schakelen naar een IaC-aanpak en geven ze een paar voorbeelden van hoe ze voorheen te werk gingen en hoe ze dit met IaC hebben aangepakt.
-Tijdens de implementatie hebben ze 1.000 virtuele machines overgeschakeld van Debian en SUSE Linux naar Red Hat Enterprise Linux, ook bekend als RHEL.
+Tijdens de implementatie hebben ze 1000 virtuele machines overgeschakeld van Debian en SUSE Linux naar Red Hat Enterprise Linux, ook bekend als RHEL.
 Deze machines worden beheerd met behulp van Satellite en geautomatiseerd met Ansible.
 
 Condition assessments is één van de belangrijkste componenten van IT asset management (IAM)~\autocite{ibm-what-is-iam}.
 Dit proces houdt in dat men op elk moment de huidige staat kan bekijken van een asset.
 Doordat IaC de configuratie van een asset vastlegt in code en zorgt dat deze consistent is, kan IaC ondersteuning bieden bij dit proces.
+
+\subsection{PEASS-ng}
+\label{sub:peass-ng}
+
+Hoewel PEASS-ng niet direct een rol speelt binnen configuration management, is het zeker geen onbekende binnen de wereld van cybersecurity.
+Het is een open-source project, waarvan alle code vrij beschikbaar is via GitHub, gestart door Carlos Polop in 2019~\autocite{peass-ng-github}.
+Origineel was het project \'e\'en enkel shell script gekend onder de naam: FELS, wat stond voor First Enum Linux Script - Fast Enum Linux Script.
+Het is pas enkele maanden later dat de auteur het project hernoemde naar PEASS-ng, wat staat voor Privilege Escalation Awesome Scripts Suite - Next Generation.
+Deze tool stelt cybersecurity specialisten in staat om de beveiliging van een systeem, zijnde Linux, Windows of macOS, te testen op kwetsbaarheden en mogelijke aanvallen die mogelijks kunnen leiden tot privilege escalation.
+
+Om binnen de scope van deze bachelorproef te blijven, zal er echter enkel gekeken worden naar linPEAS, dat zich richt op Linux-, en BSD-systemen.
+linPEAS zelf heeft weinig betrekking tot asset management, maar kan wel gebruikt om inzicht te krijgen in hoe een machine geconfigureerd is, en welke privileges een gebruiker heeft.
+Door het script uit te voeren, krijgt u in enkele minuten een overzicht van de machine, inclusief gebruikers, groepen, services, bestanden en meer.
+Het gegeneerde rapport kan vervolgens worden gebruikt om de configuratie van de machine te vergelijken met de gewenste configuratie.
+Om later om te zetten in code, zoals Ansible of Puppet, om de configuratie van de machine te automatiseren en consistent te houden.
+
+\subsection{Red Hat Discovery}
+\label{sub:red-hat-discovery}
+
+\url{https://access.redhat.com/documentation/en-us/subscription_central/1-latest/html/installing_and_configuring_discovery/assembly-about-common}
+
+\section{Huidige aanpak van asset management}%
+\label{sec:huidige-aanpak-van-asset-management}
+
+In dit gedeelte wordt er gekeken naar asset management, en hoe het ons kan helpen om van een niet IaC omgeving naar een IaC omgeving te gaan.
+Hoewel asset management minder gericht is op de configuratie van een machine, an het ons wel inzicht geven in de infrastructuur en de assets die we moeten beheren.
+Met deze informatie kunnen we dan de initi\"ele configuratie vastleggen in code, zoals de HashiCortp Configuration language, ook gekend als HCL, voor Terraform.
+
+Deze tool helpt ons configuratie van de infrastructuur vast te leggen in code, dit kan gaan van virtuele machines tot volledige newerken, in de cloud of on-prem.
 
 \subsection{Data Center Infrastructure Management}
 \label{sub:dcim}
@@ -58,7 +91,7 @@ Het doel was om een applicatie te ontwikkelen die deze taak op een meer georgani
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
     {./graphics/snipe-dashboard.png}
-    \caption{\label{fig:snipe-it-dashboard}Snip-IT dashboard.}
+    \caption{\label{fig:snipe-it-dashboard}Snip-IT dashboard~\autocite{snipe-it-dashboard}.}
 \end{figure}
 
 De software biedt een gebruiksvriendelijke webinterface (\ref{fig:snipe-it-dashboard}) waarmee bedrijfsmiddelen, licenties, garanties en meer gemakkelijk kunnen worden beheerd.
@@ -83,9 +116,6 @@ Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-featur
     \item Optionele digitale handtekeningen bij assetacceptatie
 \end{itemize}
 
-\subsection{Nagios}
-\label{sub:nagios}
-
 \subsection{Lansweeper}
 \label{sub:lansweeper}
 
@@ -102,7 +132,7 @@ De gedetecteerde informatie wordt vervolgens opgeslagen in een centrale database
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
     {./graphics/lansweeper-dashboard.png}
-    \caption{\label{fig:lansweeper-dashboard}Lansweeper dashboard.}
+    \caption{\label{fig:lansweeper-dashboard}Lansweeper dashboard~\autocite{lansweeper-dashboard}.}
 \end{figure}
 
 Gebruikers kunnen aangepaste rapporten genereren over verschillende aspecten van hun IT-infrastructuur, zoals hardwareconfiguraties, softwarelicenties, patchniveaus en meer~\autocite{lansweeper-features}.
