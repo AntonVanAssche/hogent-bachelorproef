@@ -49,7 +49,7 @@ Doordat IaC de configuratie van een asset vastlegt in code en zorgt dat deze con
 \subsection{PEASS-ng}
 \label{sub:peass-ng}
 
-Hoewel PEASS-ng niet direct direct een rol speelt binnen configuration management, is het zeker een bekende binnen de wereld van cybersecurity.
+Hoewel PEASS-ng niet direct een rol speelt binnen configuration management, is het zeker geen onbekende binnen de wereld van cybersecurity.
 Het is een open-source project, waarvan alle code vrij beschikbaar is via GitHub, gestart door Carlos Polop in 2019~\autocite{peass-ng-github}.
 Origineel was het project \'e\'en enkel shell script gekend onder de naam: FELS, wat stond voor First Enum Linux Script - Fast Enum Linux Script.
 Het is pas enkele maanden later dat de auteur het project hernoemde naar PEASS-ng, wat staat voor Privilege Escalation Awesome Scripts Suite - Next Generation.
@@ -59,6 +59,7 @@ Om binnen de scope van deze bachelorproef te blijven, zal er echter enkel gekeke
 linPEAS zelf heeft weinig betrekking tot asset management, maar kan wel gebruikt om inzicht te krijgen in hoe een machine geconfigureerd is, en welke privileges een gebruiker heeft.
 Door het script uit te voeren, krijgt u in enkele minuten een overzicht van de machine, inclusief gebruikers, groepen, services, bestanden en meer.
 Het gegeneerde rapport kan vervolgens worden gebruikt om de configuratie van de machine te vergelijken met de gewenste configuratie.
+Om later om te zetten in code, zoals Ansible of Puppet, om de configuratie van de machine te automatiseren en consistent te houden.
 
 \subsection{Red Hat Discovery}
 \label{sub:red-hat-discovery}
@@ -68,7 +69,11 @@ Het gegeneerde rapport kan vervolgens worden gebruikt om de configuratie van de 
 \section{Huidige aanpak van asset management}%
 \label{sec:huidige-aanpak-van-asset-management}
 
-Kan handig zijn om infrastructuur te defini\"eren in code met behulp van Terraform als IaC tool.
+In dit gedeelte wordt er gekeken naar asset management, en hoe het ons kan helpen om van een niet IaC omgeving naar een IaC omgeving te gaan.
+Hoewel asset management minder gericht is op de configuratie van een machine, an het ons wel inzicht geven in de infrastructuur en de assets die we moeten beheren.
+Met deze informatie kunnen we dan de initi\"ele configuratie vastleggen in code, zoals de HashiCortp Configuration language, ook gekend als HCL, voor Terraform.
+
+Deze tool helpt ons configuratie van de infrastructuur vast te leggen in code, dit kan gaan van virtuele machines tot volledige newerken, in de cloud of on-prem.
 
 \subsection{Data Center Infrastructure Management}
 \label{sub:dcim}
