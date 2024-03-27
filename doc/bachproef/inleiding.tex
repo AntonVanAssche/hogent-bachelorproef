@@ -5,32 +5,42 @@
 \chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}%
 \label{ch:inleiding}
 
-De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
-
-\begin{itemize}
-  \item context, achtergrond
-  \item afbakenen van het onderwerp
-  \item verantwoording van het onderwerp, methodologie
-  \item probleemstelling
-  \item onderzoeksdoelstelling
-  \item onderzoeksvraag
-  \item \ldots
-\end{itemize}
+Om dit te bereiken, zal een script of tool worden ontwikkeld die automatisch op elke Linux-server kan worden uitgevoerd, en gekeken worden naar reeds bestaande oplossingen die we kunnen gebruiken.
+Deze tool biedt vervolgens een gedetailleerde inventaris van het systeem en de configuratie van verschillende applicaties.
+Het uiteindelijke doel is om deze tool uit te voeren op vijf verschillende servers met specifieke use cases.
+Op basis hiervan zal worden geconcludeerd of het implementeren van deze tool nuttig is voor KMO's.
 
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
 
-Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's'', systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
+In het begin van 2023, op 6 januari, werd de NIS-richtlijn, wat staat voor "Network and Information Security", opgevolgd door zijn nieuwe versie, NIS2.
+Deze update bracht verschillende nieuwe voorschriften met zich mee op het gebied van cyberbeveiliging, en het aantal sectoren dat aan deze richtlijnen moet voldoen, werd aanzienlijk uitgebreid.
+Enkele sectoren die onder de NIS2 richtlijnen vallen zijn, maar niet beperkt tot~\autocite{NIS2Directive2022}:
+\begin{itemize}
+    \item Energie: elektriciteit, olie, gas, stadsverwarming en waterstof
+    \item Transport: lucht, spoor, water en weg
+    \item Digital infrastructuur: Telecom, DNS, TLD, datacenters, vertrouwensdiensten, clouddiensten, \ldots
+    \item Digitale diensten: zoekmachines, online markten, sociale netwerken, \ldots
+\end{itemize}
+
+De lidstaten van de Europese Unie hebben tot oktober 2024~\autocite{NIS2Directive2022} de tijd om deze nieuwe richtlijnen in hun nationale wetgeving te implementeren.
+Dit geeft bedrijven een beperkte periode om hun processen aan te passen aan deze nieuwe wetgeving, een uitdaging die vooral voor kleine of middelgrote ondernemingen (KMO's) problematisch kan zijn, gezien hun vaak beperkte middelen.
+
+Een van de essenti\"ele vereisten van deze richtlijnen is dat bedrijven verplicht zijn om een ``inventory of assets'' op te stellen voor alle systemen en operaties die ze gebruiken.
+Deze bachelorproef richt zich specifiek op het bieden van een oplossing voor KMO's, binnen sectoren die nu wel moeten voldoen aan deze richtlijnen, voor het inventariseren van Linux-systemen hun configuratie, waarbij de focus ligt op het vergemakkelijken van het naleven van deze nieuwe regelgeving.
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
 
-Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
+Kan men met behulp van een script, geschreven in Bash, KMO's ondersteunen bij het inventariseren van Linux-servers en hun configuratie, om zo te voldoen aan de NIS2-richtlijnen?
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
 \label{sec:onderzoeksdoelstelling}
 
 Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
+
+Het resultaat van deze bachelorproef is een proof-of-concept, die KMO's ondersteunt in de vorm van een voorbeeldscript dat kan worden uitgevoerd op elke Linux-server, om zo te voldoen aan de nieuwe NIS2-richtlijnen.
+Waar een Bash script zal worden uitgevoerd op elke server, die vervolgens een inventaris van het systeem en de configuratie van verschillende applicaties zal genereren.
 
 \section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}%
 \label{sec:opzet-bachelorproef}
