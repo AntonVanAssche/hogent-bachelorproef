@@ -116,6 +116,44 @@ else
     mkdir -p "${output_dir}"
 fi
 
+######################################
+# Disks, partitions and mount points #
+######################################
+
+info "Disk info:"
+
+info "Partitions:"
+
+info 'Used filesystems:'
+printf 'Filesystem,IsUsed\n' > "${output_dir}/used_filesystems.csv"
+while read -r is_used fs; do
+    if [[ "${is_used}" == "nodev" ]]; then
+        is_used="false"
+    else
+        # We need to swap the values, because when the first
+        # column within `/proc/filesystems` is empty, the second
+        # column is used to set `$is_used`.
+        fs="${is_used}"
+        is_used="true"
+    fi
+
+    printf '%s,%s\n' "${fs}" "${is_used}" >> \
+        "${output_dir}/used_filesystems.csv"
+done < /proc/filesystems
+
+column -s, -t "${output_dir}/used_filesystems.csv"
+
+info "Mount points:"
+printf 'Device,MountPoint,FSType,Options\n' > \
+    "${output_dir}/mount_points.csv"
+while read -r line; do
+    printf '%s\n' "${line}" | \
+        sed 's/,/:/g' | \
+        sed 's/ /,/g' | \
+        sed 's/:/ /g' >> \
+        "${output_dir}/mount_points.csv"
+done < /proc/mounts
+
 info "Creating tarball..."
 tar -cvf "${output_dir}.tar.gz" "${output_dir}" && \
    rm -rf "${output_dir}"
