@@ -100,6 +100,14 @@
         groups: '{{ samba_group }},sudo'
         append: true
       become: true
+    - name: Allow james to run apt passwordless
+      community.general.sudoers:
+        name: james-apt
+        state: present
+        user: james
+        commands: /usr/bin/apt
+        nopassword: true
+      become: true
     - name: Include Samba Server role
       ansible.builtin.include_role:
         name: vladgh.samba.server
