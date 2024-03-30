@@ -179,10 +179,8 @@ printf 'Device,MountPoint,FSType,Options\n' > \
     "${output_dir}/mount_points.csv"
 while read -r line; do
     printf '%s\n' "${line}" | \
-        sed 's/,/:/g' | \
-        sed 's/ /,/g' | \
-        sed 's/:/ /g' >> \
-        "${output_dir}/mount_points.csv"
+        sed 's/,/:/g;s/ /,/g;s/:/ /g' >> \
+            "${output_dir}/mount_points.csv"
 done < /proc/mounts
 
 [[ ${MAKE_TAR} -eq 1 ]] && {
