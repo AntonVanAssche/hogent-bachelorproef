@@ -130,6 +130,74 @@ done < <(dpkg-query -Wf '${Package} ${Version} ${Architecture} ${Source}\n')
 info "Packages found on the system:"
 column -t -s, "${output_dir}/packages.csv"
 
+###########
+# Network #
+###########
+
+[[ -d "${output_dir}/network" ]] || mkdir -p "${output_dir}/network"
+
+info "Network devices:"
+printf 'Device,IPv4,Netmask,Broadcast,IPv6,Prefix,DHCP,DHCPServer\n' > \
+    "${output_dir}/network/network.csv"
+while read -r device; do
+    inet4="$(ifconfig "${device}" | awk '/inet / {print $2,$4,$6}' | sed 's/ ,/,/g;s/,,/,/g')"
+    inet6="$(ifconfig "${device}" | awk '/inet6 / {print $2,$4}' | sed 's/ ,/,/g;s/,,/,/g')"
+
+    IFS=' ' read -r ipv4 netmask broadcast <<< "${inet4}"
+    IFS=' ' read -r ipv6 prefix <<< "${inet6}"
+
+    [[ -z "${ipv4}" ]] && ipv4="N/A"
+    [[ -z "${netmask}" ]] && netmask="N/A"
+    [[ -z "${broadcast}" ]] && broadcast="N/A"
+    [[ -z "${ipv6}" ]] && ipv6="N/A"
+    [[ -z "${prefix}" ]] && prefix="N/A"
+
+    if [[ "$(grep "iface ${device} inet" "/etc/network/interfaces")" =~ "dhcp" ]]; then
+        dhcp="true"
+
+        # || : is used to prevent the script from exiting when no lease file is found.
+        lease_file="/var/lib/dhcp/dhclient.${device}.leases"
+        dhcp_server="N/A"
+        [[ -f "${lease_file}" ]] && {
+            dhcp_server="$(awk '/dhcp-server-identifier/ {print $3}' "${lease_file}" | \
+                tail -n1 | \
+                sed 's/;//g'
+            )" || :
+        }
+    else
+        dhcp="false"
+        dhcp_server="N/A"
+    fi
+
+    printf '%s,%s,%s,%s,%s,%s,%s,%s\n' \
+        "${device}" "${ipv4}" "${netmask}" "${broadcast}" \
+        "${ipv6}" "${prefix}" "${dhcp}" "${dhcp_server}" >> \
+        "${output_dir}/network/network.csv"
+done < <(ip -o link show | awk -F': ' '{print $2}')
+
+column -t -s, "${output_dir}/network/network.csv"
+
+info "Routing table:"
+printf 'Destination,Gateway,Genmask,Flags,Metric,Ref,Use,Iface\n' > \
+    "${output_dir}/network/routing.csv"
+
+while read -r line; do
+    printf '%s\n' "${line}" | \
+        awk '{print $1,$2,$3,$4,$5,$6,$7,$8}' | \
+        sed 's/ /\,/g' >> \
+        "${output_dir}/network/routing.csv"
+done < <(route -n | tail -n +3)
+
+column -t -s, "${output_dir}/network/routing.csv"
+
+info "Nameservers:"
+printf 'Nameserver\n' > "${output_dir}/network/nameservers.csv"
+while read -r nameserver; do
+    printf '%s\n' "${nameserver}" >> "${output_dir}/network/nameservers.csv"
+done < <(grep 'nameserver' /etc/resolv.conf | sed 's/nameserver //g')
+
+column -t -s, "${output_dir}/network/nameservers.csv"
+
 ######################################
 # Disks, partitions and mount points #
 ######################################
