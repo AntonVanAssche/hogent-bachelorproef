@@ -57,13 +57,6 @@ Examples:
 "
 }
 
-# Wrapper for 'command -v' to avoid spamming '> /dev/null'.
-# It also protects against user aliasses and functions.
-has() {
-    command=$(command -v "${1}") 2> /dev/null || error_out "${1} is required" 127
-    [[ -x ${command} ]] || error_out "${1} is not an executable" 1
-}
-
 info "You are running: ${NAME} v${VERSION}"
 while getopts ":hc:" opt; do
     case ${opt} in
