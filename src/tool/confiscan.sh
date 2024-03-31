@@ -90,6 +90,13 @@ fi
 [[ "${ID}" != "debian" ]] && error "Only Debian is supported." 1
 [[ "${UID}" -ne 0 ]] && error "Please run as root." 1
 
+required_packages=(iproute2 net-tools)
+for package in "${required_packages[@]}"; do
+    apt list --installed 2> /dev/null | \
+        grep -q "${package}" || \
+        error "Package: '${package}' is required." 1
+done
+
 if [[ -z ${config_file:-} ]]; then
     warn "No config file specified, using default: '/etc/."
     config_file="/etc/"
