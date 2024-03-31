@@ -30,6 +30,7 @@ NAME="ConfiScan"
 SCRIPT_NAME="${0##*/}"
 HOSTNAME="$(cat "/proc/sys/kernel/hostname")"
 REPLY=""
+MAKE_TAR=0
 
 error() {
     printf '%b' "${BRED}Error: ${DEFAULT}${1}\n"
@@ -50,22 +51,27 @@ usage() {
 Options:
     -h   Display help
     -c   Specify one, or more, config file(s)
+    -t   Create tarball of output directory
 
 Examples:
     ${SCRIPT_NAME} -h
     ${SCRIPT_NAME} -c /path/to/config,/path/to/config2
+    ${SCRIPT_NAME} -t
 "
 }
 
 info "You are running: ${NAME} v${VERSION}"
-while getopts ":hc:" opt; do
+while getopts ":hc:t" opt; do
     case ${opt} in
         h)
             usage
             exit 0
             ;;
         c)
-            config_file=${OPTARG}
+            config_file=${OPTARG:?}
+            ;;
+        t)
+            MAKE_TAR=1
             ;;
         \?)
             error "Invalid option: ${OPTARG}" 1
@@ -109,6 +115,8 @@ else
     mkdir -p "${output_dir}"
 fi
 
-info "Creating tarball..."
-tar -cvf "${output_dir}.tar.gz" "${output_dir}" && \
-   rm -rf "${output_dir}"
+[[ ${MAKE_TAR} -eq 1 ]] && {
+    info "Creating tarball..."
+    tar -cvf "${output_dir}.tar.gz" "${output_dir}" &> /dev/null && \
+        rm -rf "${output_dir}"
+}
