@@ -25,7 +25,7 @@ declare -r BYELLOW='\e[1;33m'      # yellow
 declare -r BBLUE='\e[1;34m'        # blue
 
 # Variables
-VERSION="0.1-devel"
+VERSION="0.2-devel"
 NAME="ConfiScan"
 SCRIPT_NAME="${0##*/}"
 HOSTNAME="$(cat "/proc/sys/kernel/hostname")"
@@ -114,6 +114,21 @@ if [[ -d "${output_dir}" ]]; then
 else
     mkdir -p "${output_dir}"
 fi
+
+############
+# Packages #
+############
+
+info "Package info:"
+
+printf 'Package,Version,Architecture\n' > "${output_dir}/packages.csv"
+while IFS=" " read -r pkg version arch source; do
+    printf "%s,%s,%s,%s\n" "${pkg}" "${version}" "${arch}" "${source}" >> \
+        "${output_dir}/packages.csv"
+done < <(dpkg-query -Wf '${Package} ${Version} ${Architecture} ${Source}\n')
+
+info "Packages found on the system:"
+column -t -s, "${output_dir}/packages.csv"
 
 [[ ${MAKE_TAR} -eq 1 ]] && {
     info "Creating tarball..."
