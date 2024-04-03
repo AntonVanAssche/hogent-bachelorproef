@@ -38,7 +38,7 @@ error() {
 }
 
 warn() {
-    printf '%b' "${BYELLOW}Warning: ${DEFAULT}${1}\n"
+    printf '%b' "${BYELLOW}Warning: ${DEFAULT}${1}\n" >&2
 }
 
 info() {
