@@ -33,7 +33,7 @@ REPLY=""
 MAKE_TAR=0
 
 error() {
-    printf '%b' "${BRED}Error: ${DEFAULT}${1}\n"
+    printf '%b' "${BRED}Error: ${DEFAULT}${1}\n" >&2
     exit "${2}"
 }
 
