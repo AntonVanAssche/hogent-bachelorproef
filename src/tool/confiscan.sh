@@ -205,6 +205,9 @@ done < <(grep 'nameserver' /etc/resolv.conf | sed 's/nameserver //g')
 
 column -t -s, "${output_dir}/network/nameservers.csv"
 
+info "Firewall rules:"
+iptables -L -n -v | tee "${output_dir}/network/iptables.txt"
+
 ######################################
 # Disks, partitions and mount points #
 ######################################
