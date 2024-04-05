@@ -261,6 +261,8 @@ while read -r line; do
             "${output_dir}/mount_points.csv"
 done < /proc/mounts
 
+column -t -s, "${output_dir}/mount_points.csv"
+
 [[ ${MAKE_TAR} -eq 1 ]] && {
     info "Creating tarball..."
     tar -cvf "${output_dir}.tar.gz" "${output_dir}" &> /dev/null && \
