@@ -25,7 +25,7 @@ declare -r BYELLOW='\e[1;33m'      # yellow
 declare -r BBLUE='\e[1;34m'        # blue
 
 # Variables
-VERSION="0.4-devel"
+VERSION="0.5-devel"
 NAME="ConfiScan"
 SCRIPT_NAME="${0##*/}"
 HOSTNAME="$(cat "/proc/sys/kernel/hostname")"
@@ -121,6 +121,30 @@ if [[ -d "${output_dir}" ]]; then
 else
     mkdir -p "${output_dir}"
 fi
+
+####################
+# Operating System #
+####################
+
+info "OS Information:"
+printf 'Hostname,OperatingSystem,Name,Version,Version_ID,Codename,Kernel\n' > \
+    "${output_dir}/os_info.csv"
+printf '%s,%s,%s,%s,%s,%s,%s\n' \
+    "${HOSTNAME}" \
+    "$(uname -o)" \
+    "${PRETTY_NAME}" \
+    "${VERSION_ID}" \
+    "${VERSION}" \
+    "${VERSION_CODENAME}" \
+    "$(uname -r)" >> \
+    "${output_dir}/os_info.csv"
+
+column -s, -t "${output_dir}/os_info.csv"
+
+info "Boot parameters:"
+tr ' ' '\n' < /proc/cmdline | tee -a "${output_dir}/boot_parameters.txt"
+
+column -s, -t "${output_dir}/boot_parameters.txt"
 
 ############
 # Packages #
