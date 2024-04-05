@@ -161,6 +161,14 @@ done < <(dpkg-query -Wf '${Package} ${Version} ${Architecture} ${Source}\n')
 info "Packages found on the system:"
 column -t -s, "${output_dir}/packages.csv"
 
+[[ -f /etc/apt/sources.list ]] || error "No sources.list file found." 2
+[[ -d /etc/apt/sources.list.d ]] || error "No sources.list.d directory found." 2
+
+info "Package repositories:"
+grep -E '^[a-zA-Z]' /etc/apt/sources.list /etc/apt/sources.list.d/* 2> /dev/null | \
+    sed 's/^[^:]*://' | \
+    tee "${output_dir}/repositories.txt"
+
 ###########
 # Network #
 ###########
