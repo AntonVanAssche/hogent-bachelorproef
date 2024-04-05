@@ -167,7 +167,7 @@ column -t -s, "${output_dir}/packages.csv"
 info "Package repositories:"
 grep -E '^[a-zA-Z]' /etc/apt/sources.list /etc/apt/sources.list.d/* 2> /dev/null | \
     sed 's/^[^:]*://' | \
-    tee "${output_dir}/repositories.txt"
+    tee "${output_dir}/repositories.txt" || :
 
 ###########
 # Network #
