@@ -33,12 +33,12 @@ REPLY=""
 MAKE_TAR=0
 
 error() {
-    printf '%b' "${BRED}Error: ${DEFAULT}${1}\n"
+    printf '%b' "${BRED}Error: ${DEFAULT}${1}\n" >&2
     exit "${2}"
 }
 
 warn() {
-    printf '%b' "${BYELLOW}Warning: ${DEFAULT}${1}\n"
+    printf '%b' "${BYELLOW}Warning: ${DEFAULT}${1}\n" >&2
 }
 
 info() {
