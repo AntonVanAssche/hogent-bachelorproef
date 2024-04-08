@@ -61,6 +61,26 @@ Door het script uit te voeren, krijgt u in enkele minuten een overzicht van de m
 Het gegeneerde rapport kan vervolgens worden gebruikt om de configuratie van de machine te vergelijken met de gewenste configuratie.
 Om later om te zetten in code, zoals Ansible of Puppet, om de configuratie van de machine te automatiseren en consistent te houden.
 
+\subsection{Nmap}
+\label{sub:nmap}
+
+Wanneer we dieper willen duiken in de netwerkconfiguratie, zijn er verschillende applicaties beschikbaar op een machine, zoals \code{ip}, \code{ifconfig} en \code{ss}.
+Deze worden standaard geleverd bij de meeste Linux-distributies en bieden uitgebreide informatie over hoe de machine is geconfigureerd binnen het netwerk, zoals het IP-adres, de netwerkinterfaces en de routes.
+
+Naast deze standaardapplicaties kunnen we ook gebruikmaken van een tool genaamd Nmap, dit staat voor "Network Mapper""~\autocite{nmap-website}.
+Dit is een open-source tool die wordt gebruikt voor netwerkontdekking en beveiligingsaudits, die ge\"implementeerd is in C en Lua.
+Alle source-code in verband met Nmap is vrij beschikbaar op GitHub~\autocite{nmap-github}.
+Deze tool kan men installeren op vrijwel elk besturingssysteem, enkele voorbeelden zijn (maar niet beperkt tot) Linux, Windows, macOS en verschillende BSD varianten.
+Nmap kan een netwerk scannen en informatie verzamelen over de machines die erop zijn aangesloten.
+Hiermee kunnen we bijvoorbeeld open poorten detecteren en de services identificeren die daarachter draaien.
+Daarnaast kan Nmap ons ook informatie geven over de firewall die op de machine actief is en de versie van het besturingssysteem.
+
+Naast de standaard functionaliteiten van Nmap, zijn er ook verschillende scripts beschikbaar die kunnen worden uitgevoerd om nog meer informatie te verzamelen.
+Deze zijn echter voornamelijk gericht op het detecteren van kwetsbaarheden en het uitvoeren van beveiligingsaudits.
+
+Tegenwoordig maken veel netwerkbeheerders al gebruik van Nmap om hun netwerken in kaart te brengen~\autocite{nmap-website}.
+Daarom kan Nmap zeker een waardevolle bijdrage leveren aan het opstellen en bijhouden van een configuratie-inventaris.
+
 \subsection{Red Hat Discovery}
 \label{sub:red-hat-discovery}
 
