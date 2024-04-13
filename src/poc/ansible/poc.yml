@@ -1,0 +1,92 @@
+---
+- name: Setup servers
+  hosts:
+    - servers
+  tasks:
+    - name: Install required packages
+      ansible.builtin.apt:
+        name:
+          - net-tools
+        state: latest
+        update_cache: yes
+
+    - name: Install ConfiScan
+      ansible.builtin.copy:
+        src: /vagrant/ansible/files/confiscan.sh
+        dest: /tmp/confiscan.sh
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: 755
+        local_follow: true
+
+- name: ConfiScan on srv1
+  hosts:
+    - srv1
+  gather_facts: no
+  tasks:
+    - name: Runs script
+      ansible.builtin.shell: /tmp/confiscan.sh -t /etc/bind/named.conf /etc/node_exporter/config.yaml
+      args:
+        chdir: /tmp/
+      become: true
+
+- name: ConfiScan on srv2
+  hosts:
+    - srv2
+  gather_facts: no
+  tasks:
+    - name: Runs script
+      ansible.builtin.shell: /tmp/confiscan.sh -t /etc/apache2/ /etc/node_exporter/config.yaml
+      args:
+        chdir: /tmp/
+      become: true
+
+- name: ConfiScan on srv3
+  hosts:
+    - srv3
+  gather_facts: no
+  tasks:
+    - name: Runs script
+      ansible.builtin.shell: /tmp/confiscan.sh -t /etc/mysql/ /etc/node_exporter/config.yaml
+      args:
+        chdir: /tmp/
+      become: true
+
+- name: ConfiScan on srv4
+  hosts:
+    - srv4
+  gather_facts: no
+  tasks:
+    - name: Runs script
+      ansible.builtin.shell: /tmp/confiscan.sh -t /etc/prometheus/prometheus.yml /etc/node_exporter/config.yaml
+      args:
+        chdir: /tmp/
+      become: true
+
+- name: ConfiScan on srv5
+  hosts:
+    - srv5
+  gather_facts: no
+  tasks:
+    - name: Runs script
+      ansible.builtin.shell: /tmp/confiscan.sh -t /etc/samba/smb.conf /etc/node_exporter/config.yaml
+      args:
+        chdir: /tmp/
+      become: true
+
+- name: Download tarballs
+  hosts:
+    - servers
+  gather_facts: no
+  tasks:
+    - name: Copy tarballs
+      ansible.builtin.fetch:
+        src: "/tmp/{{ inventory_hostname }}-configs.tar.gz"
+        dest: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+        owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+        group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    - name: Extracting tarballs
+      ansible.builtin.unarchive:
+        src: "{{ lookup('ansible.builtin.env', 'HOME') }}/{{ inventory_hostname }}/tmp/{{ inventory_hostname }}-configs.tar.gz"
+        dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/"
+      delegate_to: localhost
