@@ -29,6 +29,7 @@ VERSION="0.6-devel"
 NAME="ConfiScan"
 SCRIPT_NAME="${0##*/}"
 HOSTNAME="$(cat "/proc/sys/kernel/hostname")"
+APP_CONFIGS=()
 REPLY=""
 MAKE_TAR=0
 
@@ -46,29 +47,30 @@ info() {
 }
 
 usage() {
-    printf '%b' "${BBLUE}Usage: ${SCRIPT_NAME} [OPTION]${DEFAULT}
+    printf '%b' "${BBLUE}Usage: ${SCRIPT_NAME} [OPTION] [CONFIG_FILES]${DEFAULT}
 
 Options:
     -h   Display help
-    -c   Specify one, or more, config file(s)
     -t   Create tarball of output directory
+
+Note:
+    Shell globbing is supported for [CONFIG_FILES]. They can be files or directories.
 
 Examples:
     ${SCRIPT_NAME} -h
-    ${SCRIPT_NAME} -c /path/to/config,/path/to/config2
+    ${SCRIPT_NAME} /etc/sysctl.conf
+    ${SCRIPT_NAME} /etc/apache2/ /etc/sysctl.conf
+    ${SCRIPT_NAME} -t /etc/bash{.bashrc,_completion}
     ${SCRIPT_NAME} -t
 "
 }
 
 info "You are running: ${NAME} v${VERSION}"
-while getopts ":hc:t" opt; do
+while getopts ":ht" opt; do
     case ${opt} in
         h)
             usage
             exit 0
-            ;;
-        c)
-            config_file=${OPTARG:?}
             ;;
         t)
             MAKE_TAR=1
@@ -78,6 +80,9 @@ while getopts ":hc:t" opt; do
             ;;
     esac
 done
+shift $((OPTIND -1))
+
+APP_CONFIGS+=("${@}")
 
 if [[ -f "/etc/os-release" ]]; then
     # source=/etc/os-release doesn't work for som benign reason.
@@ -97,11 +102,11 @@ for package in "${required_packages[@]}"; do
         error "Package: '${package}' is required." 1
 done
 
-if [[ -z ${config_file:-} ]]; then
-    warn "No config file specified, using default: '/etc/."
-    config_file="/etc/"
+if [[ -z ${APP_CONFIGS:-} ]]; then
+    warn "No config(s) specified, using default: '/etc/'."
+    APP_CONFIGS+=("/etc/")
 else
-    info "Using config file(s): ${config_file}"
+    info "Using config file(s): ${APP_CONFIGS[*]}"
 fi
 
 info "Creating directories..."
@@ -349,6 +354,20 @@ while read -r line; do
 done < /proc/mounts
 
 column -t -s, "${output_dir}/mount_points.csv"
+
+##################################################
+# Appplication specific config files/directories #
+##################################################
+
+for c in "${APP_CONFIGS[@]}"; do
+    info "Getting config: ${c}"
+
+    [[ -f "${c}" ]] || [[ -d "${c}" ]] || \
+        error "${c} no such file or directory." 2
+
+    mkdir -p "${output_dir}/$(dirname "${c}")"
+    cp -r "${c}" "${output_dir}/$(dirname "${c}")"
+done
 
 [[ ${MAKE_TAR} -eq 1 ]] && {
     info "Creating tarball..."
