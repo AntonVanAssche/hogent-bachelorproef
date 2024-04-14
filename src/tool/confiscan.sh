@@ -25,7 +25,7 @@ declare -r BYELLOW='\e[1;33m'      # yellow
 declare -r BBLUE='\e[1;34m'        # blue
 
 # Variables
-VERSION="0.5-devel"
+VERSION="0.6-devel"
 NAME="ConfiScan"
 SCRIPT_NAME="${0##*/}"
 HOSTNAME="$(cat "/proc/sys/kernel/hostname")"
@@ -145,6 +145,61 @@ info "Boot parameters:"
 tr ' ' '\n' < /proc/cmdline | tee -a "${output_dir}/boot_parameters.txt"
 
 column -s, -t "${output_dir}/boot_parameters.txt"
+
+####################
+# Users and groups #
+####################
+
+passwd_file="/etc/passwd"
+[[ -f "${passwd_file}" ]] || error "passwd file not found." 1
+[[ -r "${passwd_file}" ]] || error "passwd file not readable." 1
+
+groups_file="/etc/group"
+[[ -f "${groups_file}" ]] || error "group file not found." 1
+[[ -r "${groups_file}" ]] || error "group file not readable." 1
+
+[[ -d "${output_dir}/users" ]] || mkdir -p "${output_dir}/users"
+[[ -d "${output_dir}/groups" ]] || mkdir -p "${output_dir}/groups"
+
+printf 'Username,UID,GID,Shell,Home\n' > "${output_dir}/users/users.csv"
+cut -d: -f1 ${passwd_file} | paste -d, - \
+    <(cut -d: -f3 ${passwd_file}) \
+    <(cut -d: -f4 ${passwd_file}) \
+    <(cut -d: -f7 ${passwd_file}) \
+    <(cut -d: -f6 ${passwd_file}) | \
+    sort -t, -n -k 2 >> \
+    "${output_dir}/users/users.csv"
+
+info "Users found on the system:"
+column -t -s, "${output_dir}/users/users.csv"
+
+info "Privileged users:"
+while IFS=':' read -r group _ _ user; do
+    case "${group}" in
+        wheel|sudo)
+            printf "%s\n" "${user}"
+    esac
+done < "${groups_file}"
+
+info "Custom sudo rules for each user:"
+printf 'Username,Privilege\n' > "${output_dir}/users/sudoers.csv"
+while read -r user; do
+    while read -r priv; do
+        printf "%s,%s\n" "${user}" "${priv}" >> \
+            "${output_dir}/users/sudoers.csv"
+    done < <(sudo -U "${user}" -l | sed -n '/User/,$p' | sed 's/    //g' | tail -n +2)
+done < <(cut -d: -f1 ${passwd_file})
+
+column -t -s, "${output_dir}/users/sudoers.csv"
+
+printf 'Groupname,GID,Members\n' > "${output_dir}/groups/groups.csv"
+cut -d: -f1 "${groups_file}" | paste -d, - \
+    <(cut -d: -f3 "${groups_file}") \
+    <(cut -d: -f4 "${groups_file}" | sed 's/,/ /g') >> \
+    "${output_dir}/groups/groups.csv"
+
+info "Groups found on the system:"
+column -t -s, "${output_dir}/groups/groups.csv"
 
 ############
 # Packages #
