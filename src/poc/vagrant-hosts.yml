@@ -16,6 +16,7 @@
   box: debian/bookworm64
 
 - name: srv3
+  memory: 2048
   ip: 172.16.128.3
   netmask: 255.255.0.0
   box: debian/bookworm64
