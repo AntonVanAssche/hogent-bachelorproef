@@ -78,13 +78,31 @@ Daarnaast kan Nmap ons ook informatie geven over de firewall die op de machine a
 Naast de standaard functionaliteiten van Nmap, zijn er ook verschillende scripts beschikbaar die kunnen worden uitgevoerd om nog meer informatie te verzamelen.
 Deze zijn echter voornamelijk gericht op het detecteren van kwetsbaarheden en het uitvoeren van beveiligingsaudits.
 
-Tegenwoordig maken veel netwerkbeheerders al gebruik van Nmap om hun netwerken in kaart te brengen~\autocite{nmap-website}.
+Tegenwoordig maken veel netwerkbeheerders al gebruik van Nmap om hun netwerken in kaart te brengen.
 Daarom kan Nmap zeker een waardevolle bijdrage leveren aan het opstellen en bijhouden van een configuratie-inventaris.
 
-\subsection{Red Hat Discovery}
-\label{sub:red-hat-discovery}
+\subsection{Red Hat Satellite}
+\label{sub:red-hat-satellite}
 
-\url{https://access.redhat.com/documentation/en-us/subscription_central/1-latest/html/installing_and_configuring_discovery/assembly-about-common}
+Red Hat Satellite omvat verschillende functionaliteiten die buiten de scope van deze bachelorproef vallen, zoals het provisionen van hosts.
+Niettemin kan het bijdragen aan het opstellen en bijhouden van een configuratie-inventaris.
+
+Het product biedt uitgebreide mogelijkheden voor configuration en asset management voor hosts die aan de Satellite server zijn gekoppeld~\autocite{rhel-satellite-hosts}.
+Beheerders kunnen basisinformatie raadplegen over het besturingssysteem, netwerkinterfaces, hardware en packagemanagementgerelateerde gegevens voor elke host.
+Dit omvat onder meer een overzicht van geïnstalleerde pakketten, geconfigureerde RPM-repositories en beschikbare updates.
+
+Bovendien biedt het product security compliance-functionaliteiten, waarmee gebruikers kunnen controleren of de doelhosts voldoen aan vastgestelde beveiligingsregels.
+Dit draagt bij aan een effectief beveiligingsbeheer door potentiële kwetsbaarheden te identificeren en aan te pakken.
+
+Hoewel Red Hat Satellite een krachtige oplossing is, kan het voor kleinere bedrijven te kostbaar zijn, en zijn niet alle functies altijd nodig.
+In dergelijke situaties kan Foreman een alternatief bieden~\autocite{foreman-introduction}.
+Foreman, als upstream project voor Red Hat Satellite, biedt meer flexibiliteit, met name wat betreft ondersteunde besturingssystemen.
+Aangezien Red Hat Satellite hoofdzakelijk gericht is op Red Hat Enterprise Linux, kan Foreman een geschikte keuze zijn voor organisaties die op zoek zijn naar een kosteneffectieve oplossing zonder in te boeten op functionaliteit.
+
+Omdat Red Hat Satellite een bundeling van verschillende open-source projecten is, waaronder Foreman, Katello en Candlepin~\autocite{rhel-satellite-6-introduction}, is het mogelijk om Foreman te gebruiken als alternatief voor Red Hat Satellite.
+Dit kan vooral aantrekkelijk zijn voor kleinere bedrijven die geen behoefte hebben aan de kosten van een commerciële oplossing.
+
+Andere toepassingen van Red Hat Satellite zijn onder meer het beheren van Docker-containers, het uitrollen van updates en het automatiseren van taken met behulp van Puppet en/of Ansible.
 
 \section{Huidige aanpak van asset management}%
 \label{sec:huidige-aanpak-van-asset-management}
