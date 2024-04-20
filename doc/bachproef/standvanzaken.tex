@@ -116,6 +116,31 @@ Deze tool helpt ons configuratie van de infrastructuur vast te leggen in code, d
 \subsection{IP Address Management}
 \label{sub:ipam}
 
+IP Address Management, beter bekend als IPAM, worden vandaaag de dag al veel gebruikt binnen bedrijven om hun huidige netwerkconfiguratie in kaart te brengen.
+Ze bieden een centraal aanspreekpunt voor beheerders om alle toegekende IP-adressen te beheren en te controleren van systemen binnen hun netwerk.
+Een voorbeeld van waarom dit handig kan zijn, is wanneer een beheerder een IP-adres moet toewijzen aan een nieuwe server.
+IPAM oplossingen kunnen beheerders helpen bij het vermijde van een dubbele toewijzing van een IP-adres, wat kan leiden tot netwerkproblemen.
+
+Een bekend voorbeeld van een IPAM-oplossing is NetBox, een open-source tool ontwikkeld door NetBox Labs~\autocite{netbox-ipam}, waarvan de source-code vrij beschikbaar is op GitHub~\autocite{netbox-github}.
+Het biedt een gebruiksvriendelijke webinterface, zoals te zien in figuur~\ref{fig:netbox-dashboard}, waarmee beheerders IP-adressen kunnen beheren, evenals andere netwerkgerelateerde informatie, zoals racks, apparatuur en subnetten.
+
+Wanneer we NetBox willen integreren met IaC-tools zoals Terraform of Ansible, kunnen we gebruikmaken van de REST API die NetBox biedt~\autocite{netbox-api}.
+Deze laat ons toe om vrijwel alle functionaliteiten van NetBox te benaderen en te manipuleren vanuit onze IaC-code.
+Enkele voorbeelden van wat we kunnen doen met de API zijn, maar niet beperkt tot:
+
+\begin{itemize}
+    \item IP-adressen toewijzen aan apparaten
+    \item Subnetten toevoegen en verwijderen
+    \item Apparaten toevoegen en verwijderen
+    \item Racks toevoegen en verwijderen
+\end{itemize}
+
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]
+    {./graphics/netbox-dashboard.png}
+    \caption{\label{fig:netbox-dashboard}NetBox dashboard waarin we de informatie kunnen terug vinden over de DM-Scraton site van een bepaalde organisatie~\autocite{netbox-dashboard}.}
+\end{figure}
+
 \subsection{Snipe-IT}
 \label{sub:snipe-it}
 
