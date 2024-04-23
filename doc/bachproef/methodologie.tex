@@ -26,5 +26,39 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-\lipsum[21-25]
+\section{Fase 1: Stand van zaken}
+\label{sec:fase-1-stand-van-zaken}
 
+Dit onderdeel belicht de actuele benadering van configuration management, met een specifieke focus op Infrastructure as Code (IaC).
+Naast een definitie van IaC worden de essentiële componenten ervan besproken, evenals de voordelen die het met zich meebrengt.
+Bovendien worden tools genoemd die kunnen worden ingezet om de configuratie van een systeem te identificeren en later om te zetten naar een IaC-omgeving.
+
+Daarnaast zal er ook aandacht aandacht besteed aan asset management en hoe dit kan helpen bij de overgang van een niet-IaC-omgeving naar een IaC-omgeving.
+Hoewel asset management minder gericht is op de configuratie van individuele machines, biedt het wel inzicht in de infrastructuur en de assets die beheerd moeten worden.
+Op basis van deze informatie kunnen vervolgens de initiële configuraties worden vastgelegd in code,
+
+\section{Face 2: Risico analyse}
+\label{fase-2-risico-analyse}
+
+Dit gedeelte richt zich op de risicoanalyse die nodig is om de eigenschappen van een Linux-systeem te identificeren die cruciaal zijn voor opname in een configuratie-inventaris.
+Bij de overgang naar een Infrastructure as Code (IaC)-omgeving is het essentieel om een grondige analyse uit te voeren om de belangrijkste kenmerken van een Linux-machine te bepalen die moeten worden vastgelegd in code.Met andere woorden, we gaan de identiteit van een Linux-machine blootleggen en ontdekken welke configuratie-elementen van vitaal belang zijn.
+
+De resultaten van deze fase zullen later worden gebruikt in fase 3, de Proof of Concept.
+
+\section{Face 3: Proof of concept}
+\label{face-3-proof-of-concept}
+
+In de Proof of Concept (PoC) fase zal een Bash-script worden ontwikkeld met als doel de configuratie van Debian Linux machines bloot te leggen.
+Dit script zal worden ontworpen om op vijf servers te worden uitgevoerd, waarbij elke server zijn eigen specifieke rol vervult binnen de omgeving.
+
+Het Bash-script zal zorgvuldig worden samengesteld om relevante configuratie-informatie te verzamelen van elke Debian Linux-machine.
+Hierbij wordt gedacht aan informatie zoals specieke eigenscahppen van het besturingssysteem, alsook de configuratie van ge\"installeerde software en services.
+Door deze informatie te verzamelen, kunnen we een gedetailleerd beeld krijgen van de configuratiestatus van elke server.
+
+De vijf servers zullen elk een specifieke taak binnen de omgeving vervullen, wat betekent dat het Bash-script zal worden uitgevoerd op servers met verschillende configuraties en instellingen.
+Dit stelt ons in staat om de veelzijdigheid en robuustheid van het script te testen in verschillende scenario's.
+
+Het uiteindelijke doel van deze PoC-fase is om te valideren of het ontwikkelde Bash-script effectief in staat is om de configuratie van Debian Linux-machines te identificeren en dit op een eenoudige manier te rapporteren.
+
+\section{Fase 4: Conclusie}
+\label{fas-4-conclusie}
