@@ -18,15 +18,71 @@
 
 %% For source code highlighting, requires pygments to be installed
 %% Compile with the -shell-escape flag!
-\usepackage[section]{minted}
+%% \usepackage[section]{minted}
 %% If you compile with the make_thesis.{bat,sh} script, use the following
 %% import instead:
-%% \usepackage[section,outputdir=../output]{minted}
+\usepackage[section,outputdir=../output]{minted}
 \usemintedstyle{solarized-light}
 \definecolor{bg}{RGB}{253,246,227} %% Set the background color of the codeframe
 
 %% Change this line to edit the line numbering style:
 \renewcommand{\theFancyVerbLine}{\ttfamily\scriptsize\arabic{FancyVerbLine}}
+\setminted[console]{
+    bgcolor=bg,
+    fontfamily=tt,
+    linenos=true,
+    numberblanklines=true,
+    numbersep=5pt,
+    gobble=0,
+    framesep=2mm,
+    funcnamehighlighting=true,
+    tabsize=4,
+    obeytabs=false,
+    breaklines=true,
+    mathescape=false,
+    samepage=false,
+    showspaces=false,
+    showtabs =false,
+    texcl=false,
+}
+
+\setminted[yaml]{
+    bgcolor=bg,
+    fontfamily=tt,
+    linenos=true,
+    numberblanklines=true,
+    numbersep=5pt,
+    gobble=0,
+    framesep=2mm,
+    funcnamehighlighting=true,
+    tabsize=4,
+    obeytabs=false,
+    breaklines=true,
+    mathescape=false,
+    samepage=false,
+    showspaces=false,
+    showtabs =false,
+    texcl=false,
+}
+
+\setminted[shell]{
+    bgcolor=bg,
+    fontfamily=tt,
+    linenos=true,
+    numberblanklines=true,
+    numbersep=5pt,
+    gobble=0,
+    framesep=2mm,
+    funcnamehighlighting=true,
+    tabsize=4,
+    obeytabs=false,
+    breaklines=true,
+    mathescape=false,
+    samepage=false,
+    showspaces=false,
+    showtabs =false,
+    texcl=false,
+}
 
 %% Macro definition to load external java source files with \javacode{filename}:
 \newmintedfile[javacode]{java}{
@@ -137,7 +193,8 @@
 \input{inleiding}
 \input{standvanzaken}
 \input{methodologie}
-
+\input{linux}
+\input{risico}
 % Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
 % vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
 % elke fase in je onderzoek in een apart hoofdstuk bespreken.
