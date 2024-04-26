@@ -300,6 +300,14 @@ column -t -s, "${output_dir}/network/nameservers.csv"
 info "Firewall rules:"
 iptables -L -n -v | tee "${output_dir}/network/iptables.txt"
 
+info "Listening ports (TCP):"
+ss -tlpn | sed -e 's/ \{1,\}/,/g' > "${output_dir}/network/tcp_ports.csv"
+column -t -s, "${output_dir}/network/tcp_ports.csv"
+
+info "Listening ports (UDP):"
+ss -ulpn | sed -e 's/ \{1,\}/,/g' > "${output_dir}/network/udp_ports.csv"
+column -t -s, "${output_dir}/network/udp_ports.csv"
+
 ######################################
 # Disks, partitions and mount points #
 ######################################
