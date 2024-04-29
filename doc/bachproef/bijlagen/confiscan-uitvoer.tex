@@ -1,0 +1,444 @@
+%%=============================================================================
+%% Nmap
+%%=============================================================================
+
+\chapter{\IfLanguageName{dutch}{Uitvoer: ConfiScan}{Output: ConfiScan}}%
+\label{ch:bijlage_confiscan}
+
+Deze bijlage presenteert een voorbeeld van de uitvoer van het ontwikkelde script, genaamd ConfiScan.
+Het script begint met het identificeren van hardware-informatie, inclusief fabrikant, product, versie en serienummer van de machine.
+Daarna wordt informatie over het besturingssysteem verzameld, zoals de kernelversie, kernelmodules en kernelparameters, waaruit kan worden afgeleid dat het een Debian GNU/Linux 12 (bookworm) systeem betreft met kernelversie 6.1.0-18-amd64.
+
+Na het verzamelen van informatie over het besturingssysteem toont het script alle gebruikers en groepen op het systeem, inclusief hun rechten, zoals gebruikersnaam, gebruikers-ID, groeps-ID, shell en home-directory, evenals de \texttt{sudo}-regels ingesteld voor elke gebruiker.
+
+Vervolgens wordt een lijst van alle ge\"installeerde softwarepakketten en hun bronnen (repositories) weergegeven, waarbij een deel van de uitvoer is afgekapt om de leesbaarheid te verbeteren, aangeduid met \texttt{[...]}.
+
+Netwerkgerelateerde gegevens worden ook verzameld, zoals netwerkinterfaces, routingtabel, gebruikte nameservers en firewallregels, inclusief het statische IPv4-adres van \texttt{srv1} (\texttt{172.16.128.1/24}).
+Daarnaast worden alle luisterende poorten en hun bijbehorende processen weergegeven, zowel voor TCP als UDP.
+
+Verder wordt informatie verzameld over de schijven op de server en de aanwezige partities, inclusief mountpoints, bestandssystemen en grootte van de partities.
+
+Tot slot worden een lijst van alle systemd-units die zijn ingeschakeld, evenals de opgegeven configuratiebestanden, systemd-units, cronjobs en ssh-configuratie die zijn meegegeven als argumenten voor het script, gekopieerd naar een tarball.
+
+\begin{longlisting}
+  \begin{minted}[linenos,tabsize=4,breaklines]{console}
+root@srv1:~# ./confiscan.sh -t /etc/bind/named.conf /etc/node_exporter/config.yaml
+Info: You are running: ConfiScan v0.8-devel
+Info: Using config file(s): /etc/bind/named.conf /etc/node_exporter/config.yaml /etc/ssh/ssh_config /etc/ssh/ssh_config.d/ /etc/ssh/sshd_config /etc/ssh/sshd_config.d/
+Info: Creating directories...
+Info: Hardware Information:
+Info: System Information:
+# dmidecode 3.4
+Getting SMBIOS data from sysfs.
+SMBIOS 2.5 present.
+
+Handle 0x0001, DMI type 1, 27 bytes
+System Information
+        Manufacturer: innotek GmbH
+        Product Name: VirtualBox
+        Version: 1.2
+        Serial Number: 0
+        UUID: 7624a9e2-8b8f-4cf9-8d4d-97a0b5453c05
+        Wake-up Type: Power Switch
+        SKU Number: Not Specified
+        Family: Virtual Machine
+
+Info: Processor Information:
+# dmidecode 3.4
+Getting SMBIOS data from sysfs.
+SMBIOS 2.5 present.
+
+Info: Memory Information:
+# dmidecode 3.4
+Getting SMBIOS data from sysfs.
+SMBIOS 2.5 present.
+
+Info: BIOS Information:
+# dmidecode 3.4
+Getting SMBIOS data from sysfs.
+SMBIOS 2.5 present.
+
+Handle 0x0000, DMI type 0, 20 bytes
+BIOS Information
+        Vendor: innotek GmbH
+        Version: VirtualBox
+        Release Date: 12/01/2006
+        Address: 0xE0000
+        Runtime Size: 128 kB
+        ROM Size: 128 kB
+        Characteristics:
+                ISA is supported
+                PCI is supported
+                Boot from CD is supported
+                Selectable boot is supported
+                8042 keyboard services are supported (int 9h)
+                CGA/mono video services are supported (int 10h)
+                ACPI is supported
+
+Info: OS Information:
+Hostname  OperatingSystem  Name                            Version  Version_ID     Codename  Kernel
+srv1      GNU/Linux        Debian GNU/Linux 12 (bookworm)  12       12 (bookworm)  bookworm  6.1.0-18-amd64
+Info: Boot parameters:
+BOOT_IMAGE=/boot/vmlinuz-6.1.0-18-amd64
+root=UUID=e40706ce-053f-451f-b6fe-0979430677a4
+ro
+consoleblank=0
+elevator=noop
+scsi_mod.use_blk_mq=Y
+net.ifnames=0
+biosdevname=0
+BOOT_IMAGE=/boot/vmlinuz-6.1.0-18-amd64
+root=UUID=e40706ce-053f-451f-b6fe-0979430677a4
+ro
+consoleblank=0
+elevator=noop
+scsi_mod.use_blk_mq=Y
+net.ifnames=0
+biosdevname=0
+Info: Kernel modules:
+Module               Size    UsedBy
+vboxsf               45056   1 -
+intel_rapl_msr       20480   0 -
+intel_rapl_common    32768   1 intel_rapl_msr
+intel_pmc_core       53248   0 -
+ghash_clmulni_intel  16384   0 -
+sha512_ssse3         49152   0 -
+sha512_generic       16384   1 sha512_ssse3
+sha256_ssse3         32768   0 -
+sha1_ssse3           32768   0 -
+binfmt_misc          24576   1 -
+aesni_intel          393216  0 -
+crypto_simd          16384   1 aesni_intel
+vmwgfx               376832  1 -
+cryptd               28672   2 ghash_clmulni_intel crypto_simd
+rapl                 20480   0 -
+drm_ttm_helper       16384   1 vmwgfx
+joydev               28672   0 -
+ttm                  94208   2 vmwgfx drm_ttm_helper
+drm_kms_helper       204800  1 vmwgfx
+vboxguest            49152   1 vboxsf
+ac                   20480   0 -
+button               24576   0 -
+evdev                28672   3 -
+serio_raw            20480   0 -
+sg                   40960   0 -
+drm                  614400  5 vmwgfx drm_ttm_helper ttm drm_kms_helper
+fuse                 176128  1 -
+loop                 32768   0 -
+efi_pstore           16384   0 -
+configfs             57344   1 -
+dm_mod               184320  0 -
+ip_tables            36864   0 -
+x_tables             61440   1 ip_tables
+autofs4              53248   2 -
+ext4                 983040  1 -
+crc16                16384   1 ext4
+mbcache              16384   1 ext4
+jbd2                 167936  1 ext4
+crc32c_generic       16384   0 -
+sd_mod               65536   1 -
+t10_pi               16384   1 sd_mod
+crc64_rocksoft       20480   1 t10_pi
+crc64                20480   1 crc64_rocksoft
+crc_t10dif           20480   1 t10_pi
+crct10dif_generic    16384   0 -
+ahci                 49152   1 -
+libahci              49152   1 ahci
+libata               401408  2 ahci libahci
+crct10dif_pclmul     16384   1 -
+crct10dif_common     16384   3 crc_t10dif crct10dif_generic crct10dif_pclmul
+crc32_pclmul         16384   0 -
+scsi_mod             286720  3 sg sd_mod libata
+psmouse              184320  0 -
+crc32c_intel         24576   2 -
+i2c_piix4            28672   0 -
+scsi_common          16384   3 sg libata scsi_mod
+e1000                163840  0 -
+floppy               86016   0 -
+video                65536   0 -
+battery              28672   0 -
+wmi                  36864   1 video
+Info: Users found on the system:
+Username          UID    GID    Shell              Home
+root              0      0      /bin/bash          /root
+daemon            1      1      /usr/sbin/nologin  /usr/sbin
+bin               2      2      /usr/sbin/nologin  /bin
+sys               3      3      /usr/sbin/nologin  /dev
+sync              4      65534  /bin/sync          /bin
+games             5      60     /usr/sbin/nologin  /usr/games
+man               6      12     /usr/sbin/nologin  /var/cache/man
+lp                7      7      /usr/sbin/nologin  /var/spool/lpd
+mail              8      8      /usr/sbin/nologin  /var/mail
+news              9      9      /usr/sbin/nologin  /var/spool/news
+uucp              10     10     /usr/sbin/nologin  /var/spool/uucp
+proxy             13     13     /usr/sbin/nologin  /bin
+www-data          33     33     /usr/sbin/nologin  /var/www
+backup            34     34     /usr/sbin/nologin  /var/backups
+list              38     38     /usr/sbin/nologin  /var/list
+irc               39     39     /usr/sbin/nologin  /run/ircd
+_apt              42     65534  /usr/sbin/nologin  /nonexistent
+messagebus        100    106    /usr/sbin/nologin  /nonexistent
+_chrony           101    109    /usr/sbin/nologin  /var/lib/chrony
+sshd              102    65534  /usr/sbin/nologin  /run/sshd
+bind              103    110    /usr/sbin/nologin  /var/cache/bind
+systemd-timesync  997    997    /usr/sbin/nologin  /
+systemd-network   998    998    /usr/sbin/nologin  /
+node-exp          999    100    /usr/sbin/nologin  /
+vagrant           1000   1000   /bin/bash          /home/vagrant
+nobody            65534  65534  /usr/sbin/nologin  /nonexistent
+Info: Privileged users:
+
+Info: Custom sudo rules for each user:
+Username  Privilege
+root      (ALL : ALL) ALL
+vagrant   (ALL) NOPASSWD: ALL
+Info: Groups found on the system:
+Groupname         GID    Members
+root              0
+daemon            1
+bin               2
+sys               3
+adm               4
+tty               5
+disk              6
+lp                7
+mail              8
+news              9
+uucp              10
+man               12
+proxy             13
+kmem              15
+dialout           20
+fax               21
+voice             22
+cdrom             24
+floppy            25
+tape              26
+sudo              27
+audio             29
+dip               30
+www-data          33
+backup            34
+operator          37
+list              38
+irc               39
+src               40
+shadow            42
+utmp              43
+video             44
+sasl              45
+plugdev           46
+staff             50
+games             60
+users             100
+nogroup           65534
+crontab           101
+systemd-journal   999
+systemd-network   998
+systemd-timesync  997
+input             102
+sgx               103
+kvm               104
+render            105
+messagebus        106
+_ssh              107
+netdev            108
+_chrony           109
+vagrant           1000
+bind              110
+node-exp          996    node-exp
+Info: Package info:
+Info: Packages found on the system:
+Package                     Version                         Architecture
+adduser                     3.134                           all
+apparmor                    3.0.8-3                         amd64
+apt                         2.6.1                           amd64
+apt-listchanges             3.24                            all
+apt-utils                   2.6.1                           amd64         apt
+base-files                  12.4+deb12u5                    amd64
+base-passwd                 3.6.1                           amd64
+bash                        5.2.15-2+b2                     amd64         bash (5.2.15-2)
+bash-completion             1:2.11-6                        all
+bind9                       1:9.18.24-1                     amd64
+bind9-dnsutils              1:9.18.24-1                     amd64         bind9
+bind9-host                  1:9.18.24-1                     amd64         bind9
+bind9-libs                  1:9.18.24-1                     amd64         bind9
+bind9-utils                 1:9.18.24-1                     amd64         bind9
+bind9utils                  1:9.18.24-1                     all           bind9
+[...]
+Info: Package repositories:
+deb https://deb.debian.org/debian bookworm main
+deb-src https://deb.debian.org/debian bookworm main
+deb https://security.debian.org/debian-security bookworm-security main
+deb-src https://security.debian.org/debian-security bookworm-security main
+deb https://deb.debian.org/debian bookworm-updates main
+deb-src https://deb.debian.org/debian bookworm-updates main
+deb https://deb.debian.org/debian bookworm-backports main
+deb-src https://deb.debian.org/debian bookworm-backports main
+Info: Network devices:
+Device  IPv4          Netmask        Broadcast       IPv6                      Prefix  DHCP   DHCPServer
+lo      127.0.0.1     255.0.0.0      N/A             ::1                       128     false  N/A
+eth0    10.0.2.15     255.255.255.0  10.0.2.255      fe80::a00:27ff:fe8d:c04d  64      true   10.0.2.2
+eth1    172.16.128.1  255.255.0.0    172.16.255.255  fe80::a00:27ff:feec:112e  64      false  N/A
+Info: Routing table:
+Destination  Gateway   Genmask        Flags  Metric  Ref  Use  Iface
+0.0.0.0      10.0.2.2  0.0.0.0        UG     0       0    0    eth0
+10.0.2.0     0.0.0.0   255.255.255.0  U      0       0    0    eth0
+172.16.0.0   0.0.0.0   255.255.0.0    U      0       0    0    eth1
+Info: Nameservers:
+Nameserver
+172.16.128.1
+Info: Firewall rules:
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+Info: Listening ports (TCP):
+State   Recv-Q  Send-Q  Local                               Address:Port  Peer                     Address:PortProcess
+LISTEN  0       5       127.0.0.1:953                       0.0.0.0:*     users:(("named"          pid=11774            fd=24))
+LISTEN  0       5       127.0.0.1:953                       0.0.0.0:*     users:(("named"          pid=11774            fd=51))
+LISTEN  0       128     0.0.0.0:22                          0.0.0.0:*     users:(("sshd"           pid=603              fd=3))
+LISTEN  0       10      10.0.2.15:53                        0.0.0.0:*     users:(("named"          pid=11774            fd=33))
+LISTEN  0       10      10.0.2.15:53                        0.0.0.0:*     users:(("named"          pid=11774            fd=34))
+LISTEN  0       10      127.0.0.1:53                        0.0.0.0:*     users:(("named"          pid=11774            fd=27))
+LISTEN  0       10      127.0.0.1:53                        0.0.0.0:*     users:(("named"          pid=11774            fd=28))
+LISTEN  0       5       127.0.0.1:8053                      0.0.0.0:*     users:(("named"          pid=11774            fd=55))
+LISTEN  0       5       127.0.0.1:8053                      0.0.0.0:*     users:(("named"          pid=11774            fd=56))
+LISTEN  0       10      172.16.128.1:53                     0.0.0.0:*     users:(("named"          pid=11774            fd=37))
+LISTEN  0       10      172.16.128.1:53                     0.0.0.0:*     users:(("named"          pid=11774            fd=38))
+LISTEN  0       10      [fe80::a00:27ff:feec:112e]%eth1:53  [::]:*        users:(("named"          pid=11774            fd=50))
+LISTEN  0       10      [fe80::a00:27ff:feec:112e]%eth1:53  [::]:*        users:(("named"          pid=11774            fd=49))
+LISTEN  0       128     [::]:22                             [::]:*        users:(("sshd"           pid=603              fd=4))
+LISTEN  0       10      [::1]:53                            [::]:*        users:(("named"          pid=11774            fd=41))
+LISTEN  0       10      [::1]:53                            [::]:*        users:(("named"          pid=11774            fd=42))
+LISTEN  0       4096    *:9100                              *:*           users:(("node_exporter"  pid=12680            fd=3))
+LISTEN  0       5       [::1]:953                           [::]:*        users:(("named"          pid=11774            fd=53))
+LISTEN  0       5       [::1]:953                           [::]:*        users:(("named"          pid=11774            fd=52))
+LISTEN  0       10      [fe80::a00:27ff:fe8d:c04d]%eth0:53  [::]:*        users:(("named"          pid=11774            fd=46))
+LISTEN  0       10      [fe80::a00:27ff:fe8d:c04d]%eth0:53  [::]:*        users:(("named"          pid=11774            fd=45))
+Info: Listening ports (UDP):
+State   Recv-Q  Send-Q  Local                               Address:Port  Peer                Address:PortProcess
+UNCONN  0       0       172.16.128.1:53                     0.0.0.0:*     users:(("named"     pid=11774            fd=35))
+UNCONN  0       0       172.16.128.1:53                     0.0.0.0:*     users:(("named"     pid=11774            fd=36))
+UNCONN  0       0       10.0.2.15:53                        0.0.0.0:*     users:(("named"     pid=11774            fd=31))
+UNCONN  0       0       10.0.2.15:53                        0.0.0.0:*     users:(("named"     pid=11774            fd=32))
+UNCONN  0       0       127.0.0.1:53                        0.0.0.0:*     users:(("named"     pid=11774            fd=25))
+UNCONN  0       0       127.0.0.1:53                        0.0.0.0:*     users:(("named"     pid=11774            fd=26))
+UNCONN  0       0       127.0.0.1:323                       0.0.0.0:*     users:(("chronyd"   pid=417              fd=5))
+UNCONN  0       0       0.0.0.0:68                          0.0.0.0:*     users:(("dhclient"  pid=1188             fd=7))
+UNCONN  0       0       [::1]:53                            [::]:*        users:(("named"     pid=11774            fd=40))
+UNCONN  0       0       [::1]:53                            [::]:*        users:(("named"     pid=11774            fd=39))
+UNCONN  0       0       [fe80::a00:27ff:fe8d:c04d]%eth0:53  [::]:*        users:(("named"     pid=11774            fd=44))
+UNCONN  0       0       [fe80::a00:27ff:fe8d:c04d]%eth0:53  [::]:*        users:(("named"     pid=11774            fd=43))
+UNCONN  0       0       [fe80::a00:27ff:feec:112e]%eth1:53  [::]:*        users:(("named"     pid=11774            fd=48))
+UNCONN  0       0       [fe80::a00:27ff:feec:112e]%eth1:53  [::]:*        users:(("named"     pid=11774            fd=47))
+UNCONN  0       0       [::1]:323                           [::]:*        users:(("chronyd"   pid=417              fd=6))
+Info: Disk info:
+Disk      Size  Bytes        Sectors
+/dev/sda  20    21474836480  41943040
+Info: Partitions:
+Device     Boot  Start  End       Sectors   Size  ID  Type
+/dev/sda1  *     2048   41943039  41940992  20G   83  Linux
+Info: Used filesystems:
+Filesystem   IsUsed
+sysfs        false
+tmpfs        false
+bdev         false
+proc         false
+cgroup       false
+cgroup2      false
+cpuset       false
+devtmpfs     false
+debugfs      false
+tracefs      false
+securityfs   false
+sockfs       false
+bpf          false
+pipefs       false
+ramfs        false
+hugetlbfs    false
+devpts       false
+mqueue       false
+pstore       false
+ext3         true
+ext2         true
+ext4         true
+autofs       false
+configfs     false
+fuseblk      true
+fuse         false
+fusectl      false
+binfmt_misc  false
+vboxsf       false
+Info: Mount points:
+Device       MountPoint                                           FSType       Options
+sysfs        /sys                                                 sysfs        rw nosuid nodev noexec relatime                                                          0  0
+proc         /proc                                                proc         rw nosuid nodev noexec relatime                                                          0  0
+udev         /dev                                                 devtmpfs     rw nosuid relatime size=211652k nr_inodes=52913 mode=755 inode64                         0  0
+devpts       /dev/pts                                             devpts       rw nosuid noexec relatime gid=5 mode=620 ptmxmode=000                                    0  0
+tmpfs        /run                                                 tmpfs        rw nosuid nodev noexec relatime size=46828k mode=755 inode64                             0  0
+/dev/sda1    /                                                    ext4         rw relatime discard errors=remount-ro                                                    0  0
+securityfs   /sys/kernel/security                                 securityfs   rw nosuid nodev noexec relatime                                                          0  0
+tmpfs        /dev/shm                                             tmpfs        rw nosuid nodev inode64                                                                  0  0
+tmpfs        /run/lock                                            tmpfs        rw nosuid nodev noexec relatime size=5120k inode64                                       0  0
+cgroup2      /sys/fs/cgroup                                       cgroup2      rw nosuid nodev noexec relatime nsdelegate memory_recursiveprot                          0  0
+pstore       /sys/fs/pstore                                       pstore       rw nosuid nodev noexec relatime                                                          0  0
+bpf          /sys/fs/bpf                                          bpf          rw nosuid nodev noexec relatime mode=700                                                 0  0
+systemd-1    /proc/sys/fs/binfmt_misc                             autofs       rw relatime fd=30 pgrp=1 timeout=0 minproto=5 maxproto=5 direct pipe_ino=13461           0  0
+hugetlbfs    /dev/hugepages                                       hugetlbfs    rw relatime pagesize=2M                                                                  0  0
+mqueue       /dev/mqueue                                          mqueue       rw nosuid nodev noexec relatime                                                          0  0
+debugfs      /sys/kernel/debug                                    debugfs      rw nosuid nodev noexec relatime                                                          0  0
+tracefs      /sys/kernel/tracing                                  tracefs      rw nosuid nodev noexec relatime                                                          0  0
+configfs     /sys/kernel/config                                   configfs     rw nosuid nodev noexec relatime                                                          0  0
+fusectl      /sys/fs/fuse/connections                             fusectl      rw nosuid nodev noexec relatime                                                          0  0
+ramfs        /run/credentials/systemd-sysctl.service              ramfs        ro nosuid nodev noexec relatime mode=700                                                 0  0
+ramfs        /run/credentials/systemd-sysusers.service            ramfs        ro nosuid nodev noexec relatime mode=700                                                 0  0
+ramfs        /run/credentials/systemd-tmpfiles-setup-dev.service  ramfs        ro nosuid nodev noexec relatime mode=700                                                 0  0
+ramfs        /run/credentials/systemd-tmpfiles-setup.service      ramfs        ro nosuid nodev noexec relatime mode=700                                                 0  0
+binfmt_misc  /proc/sys/fs/binfmt_misc                             binfmt_misc  rw nosuid nodev noexec relatime                                                          0  0
+tmpfs        /run/user/1000                                       tmpfs        rw nosuid nodev relatime size=46828k nr_inodes=11707 mode=700 uid=1000 gid=1000 inode64  0  0
+vagrant      /vagrant                                             vboxsf       rw relatime                                                                              0  0
+Info: Enabled systemd units:
+Unit                         State    Preset
+apparmor.service             enabled  enabled
+chrony.service               enabled  enabled
+cron.service                 enabled  enabled
+e2scrub_reap.service         enabled  enabled
+getty@.service               enabled  enabled
+named.service                enabled  enabled
+networking.service           enabled  enabled
+node_exporter.service        enabled  enabled
+rsyslog.service              enabled  enabled
+ssh.service                  enabled  enabled
+systemd-pstore.service       enabled  enabled
+unattended-upgrades.service  enabled  enabled
+remote-fs.target             enabled  enabled
+apt-daily-upgrade.timer      enabled  enabled
+apt-daily.timer              enabled  enabled
+dpkg-db-backup.timer         enabled  enabled
+e2scrub_all.timer            enabled  enabled
+fstrim.timer                 enabled  enabled
+logrotate.timer              enabled  enabled
+man-db.timer                 enabled  enabled
+Info: Getting: /etc/bind/named.conf
+Info: Getting: /etc/node_exporter/config.yaml
+Info: Getting: /etc/ssh/ssh_config
+Info: Getting: /etc/ssh/ssh_config.d/
+Info: Getting: /etc/ssh/sshd_config
+Info: Getting: /etc/ssh/sshd_config.d/
+Info: Getting: /etc/systemd/system/
+Info: Getting: /etc/systemd/user/
+Info: Getting: /usr/lib/systemd/system/
+Info: Getting: /etc/cron.d
+Info: Getting: /etc/cron.daily
+Info: Getting: /etc/cron.weekly
+Info: Getting: /etc/cron.monthly
+Info: Creating tarball...
+  \end{minted}
+  \caption{De uitvoer van het ConfiScan script op srv1.}
+  \label{lst:bijlage-confiscan}
+\end{longlisting}
