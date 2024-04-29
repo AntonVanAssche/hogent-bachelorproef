@@ -10,6 +10,39 @@
 \section{Network and Information Security 2}%
 \label{sec:nis2}
 
+Richtlijn 022/2555, ook bekend als Network and Information Security 2 (NIS2), is een nieuwe Europese richtlijn die in 2022 werd goedgekeurd door het Europees Parlement~\autocite{nis2-eu-be}.
+De goedkeuring ervan markeert een belangrijke stap in het versterken van de cybersecurity van de Europese Unie en het vergroten van de weerbaarheid tegen cyberaanvallen.
+Als opvolger van de eerste NIS-richtlijn, die in 2016 werd aangenomen en in 2018 in werking trad, richt NIS2 zich op drie hoofddoelen, zoals uiteengezet door het Centrum voor Cybersecurity Belgi\"e~\autocite{nis2-eu-be}:
+
+\begin{itemize}
+    \item Het verplichten van nationale overheden om de nodige aandacht te besteden aan cybersecurity.
+    \item Het versterken van de Europese samenwerking tussen cybersecurity autoriteiten.
+    \item Het verplichten van belangrijke operatoren in cruciale sectoren van de samenleving om veiligheidsmaatregelen te nemen en incidenten te melden.
+\end{itemize}
+
+De NIS2-richtlijn is ontwikkeld als reactie op de toenemende afhankelijkheid van digitale systemen en de groeiende dreiging van cyberaanvallen.
+Deze afhankelijkheid werd vooral duidelijk tijdens de COVID-19-pandemie, toen veel bedrijven en organisaties gedwongen werden om hun activiteiten online voort te zetten.
+
+Volgens de Nederlandse minister van Justitie en Veiligheid, Dilan Ye\c{s}ilg"oz~\autocite{yesilgoz2022nis}, heeft de pandemie geleid tot een toename van digitale dreigingen, zoals phishing en ransomware aanvallen, waardoor de noodzaak van verbeterde cybersecurity nog urgenter werd.
+
+Een belangrijke verandering die NIS2 met zich meebrengt, is de uitbreiding van de sectoren die onder de richtlijn vallen.
+Sectoren zoals het beheer van ICT-diensten, digitale infrastructuur, gezondheidszorg en vervoer vallen nu onder de richtlijn, in tegenstelling tot NIS1.
+Deze uitbreiding is bedoeld om een breder scala aan cruciale diensten en infrastructuren te beschermen tegen cyberdreigingen.
+Er is echter wel een uitzondering op deze regel.
+Zo zijn zo genaamde kleine- en micro-onderneminge, die kleiner zijn dan 50 werknemers, en een jaaromzet of jaarlijks balanstotaal van minder dan 10 miljoen euro, vrijgesteld van de verplichting om een inventory of assets bij te houden~\autocite{nis2-eu-be}.
+
+
+Een andere vereiste van de NIS2-richtlijn is dat bedrijven die onder de richtlijn vallen, een "inventory of assets" moeten bijhouden.
+Dit houdt in dat bedrijven een lijst moeten bijhouden van alle assets die ze bezitten, zoals servers, netwerkapparatuur, software, enzovoort, die verband houden met de bedrijfsprocessen.
+Dit draagt bij aan risicoanalyse en informatiebeveiligingsbeleid, waardoor bedrijven sneller kunnen reageren op incidenten en de impact ervan kunnen minimaliseren of zelfs voorkomen.
+Dit is waar deze bachelorproef een bijdrage wil leveren door het ontwikkelen van een configuratie-inventaris~\autocite{dragos-nis2}.
+Dit is dan ook waar deze bachelorproef een handje wil helpen, door het opstellen van een configuratie-inventaris.
+
+Een strategie om aan deze vereisten te voldoen, is door gebruik te maken van tools voor configuration management en asset management.
+Bijvoorbeeld, een Infrastructure as Code (IaC) tool zoals Puppet kan bijdragen aan de implementatie van een ``zero trust'' benadering.
+Hierbij wordt de configuratie van een systeem voortdurend gecontroleerd en gevalideerd, terwijl ook compliance scans worden uitgevoerd op verschillende assets. Daarnaast kunnen deze tools dienen als een bron van rapportage voor de vereiste inventory of assets~\autocite{puppet-nis2}.
+
+
 \section{Huidige aanpak van configuration management}%
 \label{sec:huidige-aanpak-van-configuration-management}
 
