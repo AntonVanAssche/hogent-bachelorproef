@@ -1,0 +1,84 @@
+%%=============================================================================
+%% PoC uitvoering
+%%=============================================================================
+
+\chapter{\IfLanguageName{dutch}{Proof of Concept Uitvoering}{Proof of Concept Execution}}
+\label{ch:bijlage_poc_uitvoering}
+
+Deze bijlage biedt een uitgebreide beschrijving van de uitvoering van de Proof of Concept op de vijf servers.
+
+Om het script op een reproduceerbare manier uit te voeren, is gebruik gemaakt van een Ansible playbook.
+Het script heeft enkele vereisten, namelijk: \texttt{net-tools} en \texttt{dmidecode}, zoals te zien in listing~\ref{lst:bijlage-requirements}.
+Het \texttt{net-tools} pakket wordt gebruikt om de configuratie van de netwerkinterfaces te verzamelen, terwijl \texttt{dmidecode} wordt gebruikt om de hardware-informatie van de servers te verzamelen.
+
+\begin{listing}
+  \begin{minted}[linenos,tabsize=4,breaklines]{yaml}
+- name: Install required packages
+  ansible.builtin.apt:
+    name:
+      - net-tools
+      - dmidecode
+    state: latest
+    update_cache: yes
+  \end{minted}
+  \caption{Code verantwoordelijk voor het installeren van de vereiste pakketten}
+  \label{lst:bijlage-requirements}
+\end{listing}
+
+\begin{listing}
+  \begin{minted}[linenos,tabsize=4,breaklines]{yaml}
+- name: Install ConfiScan
+  ansible.builtin.copy:
+    src: /vagrant/ansible/files/confiscan.sh
+    dest: /tmp/confiscan.sh
+  \end{minted}
+  \caption{Code verantwoordelijk voor het kopiëren van het script naar de servers}
+  \label{lst:bijlage-copy-script}
+\end{listing}
+
+Het Ansible playbook plaatst eerst het script, dat vooraf moet worden geplaatst in \texttt{src/poc/ansible/files/}, op de servers in de map \texttt{/tmp/}, zoals te zien in listing \ref{lst:bijlage-copy-script}.
+Daar wordt het script vervolgens uitgevoerd met de \texttt{-t} optie, gevolgd door de paden van de configuraties die we willen opnemen in onze inventaris.
+Zoals weergegeven in listing \ref{lst:bijlage-run-script}, wordt het script uitgevoerd op \texttt{srv1}.
+Nadat het script op elke server is uitgevoerd, downloadt en plaatst het playbook de tarballs van elke server in de home directory van de gebruiker die het playbook uitvoert.
+Ten slotte worden de tarballs uitgepakt aan het einde van het playbook.
+De laatste twee stappen zijn te zien in listing \ref{lst:bijlage-tarballs}.
+
+\begin{listing}
+  \begin{minted}[linenos,tabsize=4,breaklines]{yaml}
+- name: ConfiScan on srv1
+  hosts:
+    - srv1
+  gather_facts: no
+  tasks:
+    - name: Runs script
+      ansible.builtin.shell: /tmp/confiscan.sh -t /etc/bind/named.conf /etc/node_exporter/config.yaml
+      args:
+        chdir: /tmp/
+      become: true
+    \end{minted}
+    \caption{Code verantwoordelijk voor het uitvoeren van het script op srv1}
+    \label{lst:bijlage-run-script}
+\end{listing}
+
+\begin{listing}
+  \begin{minted}[linenos,tabsize=4,breaklines]{yaml}
+- name: Download tarballs
+  hosts:
+    - servers
+  gather_facts: no
+  tasks:
+    - name: Copy tarballs
+      ansible.builtin.fetch:
+        src: "/tmp/{{ inventory_hostname }}-configs.tar.gz"
+        dest: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+        owner: "{{ lookup('ansible.builtin.env', 'USER') }}"
+        group: "{{ lookup('ansible.builtin.env', 'USER') }}"
+    - name: Extracting tarballs
+      ansible.builtin.unarchive:
+        src: "{{ lookup('ansible.builtin.env', 'HOME') }}/{{ inventory_hostname }}/tmp/{{ inventory_hostname }}-configs.tar.gz"
+        dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/"
+      delegate_to: localhost
+  \end{minted}
+  \caption{Code verantwoordelijk voor het downloaden en uitpakken van de tarballs}
+  \label{lst:bijlage-tarballs}
+\end{listing}
