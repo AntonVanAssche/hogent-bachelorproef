@@ -151,6 +151,13 @@ tr ' ' '\n' < /proc/cmdline | tee -a "${output_dir}/boot_parameters.txt"
 
 column -s, -t "${output_dir}/boot_parameters.txt"
 
+info "Kernel modules:"
+printf 'Module,Size,UsedBy\n' > "${output_dir}/kernel_modules.csv"
+sed -e 's/,/:/g;s/ /,/g;s/:/ /g;s/,Live.*$//g;s/,\([^,]*\)$/ \1/' < /proc/modules >> \
+    "${output_dir}/kernel_modules.csv"
+
+column -t -s, "${output_dir}/kernel_modules.csv"
+
 ####################
 # Users and groups #
 ####################
