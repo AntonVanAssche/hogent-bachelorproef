@@ -31,16 +31,25 @@ Deze bachelorproef richt zich specifiek op het bieden van een oplossing voor KMO
 Een manier die op dit moment veel gebruikt wordt om een inventaris van systemen en de configuratie ervan is het gebruik maken van Infrastructure as Code, ook wel IaC genoemd.
 Het is een concept dat de laatste jaren steeds meer aan populariteit wint. Voornamelijk doordat het beheerders van computernetwerken in staat stelt om hun configuratie en infrastructuur vast te leggen in code, in plaats van handmatig te configureren.
 Binnen deze code kunnen veelvoorkomende, complexe taken automatisch worden uitgevoerd, en dit alles op een geteste en foutloze manier~\autocite{chef-what-is-iac}.
+Hier zullen we later verder op ingaan in hoofstuk~\ref{ch:stand-van-zaken}.
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
 
-Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
+\begin{enumerate}
+    \item Hoe kunnen bedrijven, met name KMO's, zich aanpassen aan de nieuwe vereisten van de NIS2-richtlijn, met name met betrekking tot het opstellen van een ``inventory of assets'' voor hun IT-systemen?
+    \item Op welke manieren kan Infrastructure as Code (IaC) worden ingezet om het inventariseren van systemen en configuraties te vergemakkelijken en te voldoen aan de eisen van de NIS2-richtlijn?
+    \item Welke tools en technieken kunnen worden gebruikt om de configuratie en infrastructuur van Linux-systemen vast te leggen en te beheren?
+    \item Welke configuratie-eigenschappen van Linux-systemen zijn essentieel om in kaart te brengen voor een inventaris?
+\end{enumerate}
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
 \label{sec:onderzoeksdoelstelling}
 
-Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
+Het doel van deze bachelorproef is om een Proof of Concept te ontwikkelen die KMO's helpt bij het inventariseren van hun Linux-systemen en hun configuratie, met behulp van een Bash-script.
+Het script zal rekening moeten houden met de bevindingen uit de risicoanalyse, en voorgaande hoofdstukken van deze bachelorproef.
+
+Ook zal er een kritische evaluatie worden gemaakt van de Proof of Concept, waarbij de effectiviteit en volledigheid van de inventarisatie wordt beoordeeld.
 
 \section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}%
 \label{sec:opzet-bachelorproef}
@@ -56,5 +65,13 @@ In Hoofdstuk~\ref{ch:stand-van-zaken} wordt een overzicht gegeven van de stand v
 In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
 
 % TODO: Vul hier aan voor je eigen hoofstukken, één of twee zinnen per hoofdstuk
+
+In Hoofdstuk~\ref{ch:linux-server-concepten} richten we ons op enkele fundamentele concepten van Linux-servers.
+
+In Hoofdstuk~\ref{ch:computernetwerk-concepten} behandelt de essentiële concepten van computernetwerken in relatie tot servers.
+
+In Hoofdstuk~\ref{ch:risicoanalyse} wordt een risicoanalyse uitgevoerd op de configuratie van Linux-servers, op basis van voorgaande hoofdstukken.
+
+In Hoofdstuk~\ref{ch:poc} wordt een proof-of-concept uitgewerkt, waarbij de bevindingen van de risicoanalyse worden toegepast in een Bash-script.
 
 In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.
