@@ -61,7 +61,7 @@ Dit zijn~\autocite{chef-what-is-iac}:
     \item Idempotentie: Processen worden niet alleen toegepast op nieuwe servers, maar ook op bestaande servers om een consistente configuratie te behouden.
 \end{itemize}
 
-E\'en van de grootste voordelen van Iac is de verhoging van de effici\"entie~\autocite{splunk-benefits-iac}.
+E\'en van de grootste voordelen van IaC is de verhoging van de effici\"entie~\autocite{splunk-benefits-iac}.
 Doordat veel taken geautomatiseerd worden, kunnen beheerders zich richten op andere, meer complexe taken.
 Zo heeft Red Hat in 2016 een casestudy gepubliceerd~\autocite{case-study-nasa-iac} waarin ze NASA's resultaten van hun overstap naar de IaC-tools Ansible en Ansible Tower hebben geanalyseerd.
 Hierin geven ze aan dat het updateproces van nasa.gov van meer dan 1 uur is teruggebracht tot minder dan 5 minuten.
@@ -72,9 +72,23 @@ In de studie bespreken ze kort waarom ze hebben besloten over te schakelen naar 
 Tijdens de implementatie hebben ze 1000 virtuele machines overgeschakeld van Debian en SUSE Linux naar Red Hat Enterprise Linux, ook bekend als RHEL.
 Deze machines worden beheerd met behulp van Satellite en geautomatiseerd met Ansible.
 
-Condition assessments is één van de belangrijkste componenten van IT asset management (IAM)~\autocite{ibm-what-is-iam}.
+Condition assessments is \'e\'en van de belangrijkste componenten van IT asset management (IAM)~\autocite{ibm-what-is-iam}.
 Dit proces houdt in dat men op elk moment de huidige staat kan bekijken van een asset.
 Doordat IaC de configuratie van een asset vastlegt in code en zorgt dat deze consistent is, kan IaC ondersteuning bieden bij dit proces.
+
+Een voorbeeld hiervan is Puppetboard, een open-source frontend voor PuppetDB.
+Het stelt ons in staat om alle systemen die worden beheerd met behulp van Puppet te monitoren~\autocite{puppetboard-github}.
+Met Puppetboard kunnen we in \'e\'en oogopslag zien welke systemen aanwezig zijn in de infrastructuur, welke wijzigingen Puppet heeft doorgevoerd om de gewenste staat af te dwingen, en welke ``facts'' van de machine beschikbaar zijn.
+Deze facts zijn configuratie-eigenschappen die de huidige status van een systeem defini\"eren.
+Enkele voorbeelden van facts zijn: cpu-architectuur, de Domain Controller waarop het systeem is geregistreerd, de gebruikte DHCP-servers, en nog veel meer.
+Dit biedt een diepgaand inzicht in de configuratie van de systemen, zoals te zien is in figuur~\ref{fig:puppetboard-host-details}.
+Verdere voorbeelden kan men vinden in de bijlage ``Puppetboard''~\ref{ch:bijlage_puppetboard}.
+
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]
+    {./graphics/state-of-the-art/puppetboard/puppetboard-host-details.png}
+    \caption{\label{fig:puppetboard-host-details}Voorbeeld van Puppetboard waar we enkele facts over een bepaalde machine in de infrastructuur kunnen zien, als ook de Puppet-runs die wijzigingen hebben doorgevoerd op de machine.},
+\end{figure}
 
 \subsection{PEASS-ng}
 \label{sub:peass-ng}
@@ -169,7 +183,7 @@ Enkele voorbeelden van wat we kunnen doen met de API zijn, maar niet beperkt tot
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
-    {./graphics/netbox-dashboard.png}
+    {./graphics/state-of-the-art/netbox-dashboard.png}
     \caption{\label{fig:netbox-dashboard}NetBox dashboard waarin we de informatie kunnen terug vinden over de DM-Scraton site van een bepaalde organisatie~\autocite{netbox-dashboard}.}
 \end{figure}
 
@@ -182,7 +196,7 @@ Het doel was om een applicatie te ontwikkelen die deze taak op een meer georgani
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
-    {./graphics/snipe-dashboard.png}
+    {./graphics/state-of-the-art/snipe-dashboard.png}
     \caption{\label{fig:snipe-it-dashboard}Snip-IT dashboard waarin we het totale aantal assets binnen de organisatie kunnen zien, alsook een oplijsting van verschillende toestellen recent toegekend zijn~\autocite{snipe-it-dashboard}.}
 \end{figure}
 
@@ -223,7 +237,7 @@ De gedetecteerde informatie wordt vervolgens opgeslagen in een centrale database
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
-    {./graphics/lansweeper-dashboard.png}
+    {./graphics/state-of-the-art/lansweeper-dashboard.png}
     \caption{\label{fig:lansweeper-dashboard}Lansweeper dashboard waarin we een oplijsting van verschillende toestellen binnen de organisatie met basisinformatie over dat toestel, zoals: type, IP-adres en MAC-adres~\autocite{lansweeper-dashboard}.}
 \end{figure}
 
