@@ -95,7 +95,7 @@ fi
 [[ "${ID}" != "debian" ]] && error "Only Debian is supported." 1
 [[ "${UID}" -ne 0 ]] && error "Please run as root." 1
 
-required_packages=(iproute2 net-tools)
+required_packages=(iproute2 net-tools dmidecode)
 for package in "${required_packages[@]}"; do
     apt list --installed 2> /dev/null | \
         grep -q "${package}" || \
@@ -126,6 +126,25 @@ if [[ -d "${output_dir}" ]]; then
 else
     mkdir -p "${output_dir}"
 fi
+
+#################
+# Hardware info #
+#################
+
+info "Hardware Information:"
+[[ -d "${output_dir}/hardware" ]] || mkdir -p "${output_dir}/hardware"
+
+info "System Information:"
+dmidecode -t system | tee -a "${output_dir}/hardware/system_info.txt"
+
+info "Processor Information:"
+dmidecode -t processor | tee -a "${output_dir}/hardware/cpu_info.txt"
+
+info "Memory Information:"
+dmidecode -t memory | tee -a "${output_dir}/hardware/memory_info.txt"
+
+info "BIOS Information:"
+dmidecode -t bios | tee -a "${output_dir}/hardware/bios_info.txt"
 
 ####################
 # Operating System #
