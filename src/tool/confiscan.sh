@@ -384,6 +384,10 @@ for c in "${APP_CONFIGS[@]}"; do
     cp -r "${c}" "${output_dir}/$(dirname "${c}")"
 done
 
+# File Integrity Check of original files, excluding ./original.sha256
+find "${output_dir}" -type f -not -name "original.sha256" -exec sha256sum {} + | sort > \
+    "${output_dir}/original.sha256"
+
 [[ ${MAKE_TAR} -eq 1 ]] && {
     info "Creating tarball..."
     tar -cvf "${output_dir}.tar.gz" "${output_dir}" &> /dev/null && \
