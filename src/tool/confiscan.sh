@@ -106,6 +106,12 @@ if [[ -z ${APP_CONFIGS:-} ]]; then
     warn "No config(s) specified, using default: '/etc/'."
     APP_CONFIGS+=("/etc/")
 else
+    # Include some default config files.
+    [[ -f "/etc/ssh/ssh_config" ]] && APP_CONFIGS+=("/etc/ssh/ssh_config")
+    [[ -d "/etc/ssh/ssh_config.d/" ]] && APP_CONFIGS+=("/etc/ssh/ssh_config.d/")
+    [[ -f "/etc/ssh/sshd_config" ]] && APP_CONFIGS+=("/etc/ssh/sshd_config")
+    [[ -d "/etc/ssh/sshd_config.d/" ]] && APP_CONFIGS+=("/etc/ssh/sshd_config.d/")
+
     info "Using config file(s): ${APP_CONFIGS[*]}"
 fi
 
