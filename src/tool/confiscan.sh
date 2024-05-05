@@ -25,7 +25,7 @@ declare -r BYELLOW='\e[1;33m'      # yellow
 declare -r BBLUE='\e[1;34m'        # blue
 
 # Variables
-VERSION="0.7-devel"
+VERSION="0.8-devel"
 NAME="ConfiScan"
 SCRIPT_NAME="${0##*/}"
 HOSTNAME="$(cat "/proc/sys/kernel/hostname")"
@@ -395,12 +395,31 @@ done < /proc/mounts
 
 column -t -s, "${output_dir}/mount_points.csv"
 
+###################
+# Systemd / Cron  #
+###################
+
+info "Enabled systemd units:"
+printf 'Unit,State,Preset\n' > "${output_dir}/systemd_enabled_units.csv"
+systemctl list-unit-files --state=enabled --no-legend | \
+    sed 's/ \{1,\}/,/g' >> "${output_dir}/systemd_enabled_units.csv"
+
+[[ -d "/etc/systemd/system/" ]] && APP_CONFIGS+=("/etc/systemd/system/")
+[[ -d "/etc/systemd/user/" ]] && APP_CONFIGS+=("/etc/systemd/user/")
+[[ -d "/usr/lib/systemd/system/" ]] && APP_CONFIGS+=("/usr/lib/systemd/system/")
+
+[[ -d "/etc/crontab" ]] && APP_CONFIGS+=("/etc/crontab")
+[[ -d "/etc/cron.d" ]] && APP_CONFIGS+=("/etc/cron.d")
+[[ -d "/etc/cron.daily" ]] && APP_CONFIGS+=("/etc/cron.daily")
+[[ -d "/etc/cron.weekly" ]] && APP_CONFIGS+=("/etc/cron.weekly")
+[[ -d "/etc/cron.monthly" ]] && APP_CONFIGS+=("/etc/cron.monthly")
+
 ##################################################
 # Appplication specific config files/directories #
 ##################################################
 
 for c in "${APP_CONFIGS[@]}"; do
-    info "Getting config: ${c}"
+    info "Getting: ${c}"
 
     [[ -f "${c}" ]] || [[ -d "${c}" ]] || \
         error "${c} no such file or directory." 2
