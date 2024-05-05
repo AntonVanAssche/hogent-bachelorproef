@@ -395,9 +395,9 @@ done < /proc/mounts
 
 column -t -s, "${output_dir}/mount_points.csv"
 
-###########
-# Systemd #
-###########
+###################
+# Systemd / Cron  #
+###################
 
 info "Enabled systemd units:"
 printf 'Unit,State,Preset\n' > "${output_dir}/systemd_enabled_units.csv"
@@ -407,6 +407,12 @@ systemctl list-unit-files --state=enabled --no-legend | \
 [[ -d "/etc/systemd/system/" ]] && APP_CONFIGS+=("/etc/systemd/system/")
 [[ -d "/etc/systemd/user/" ]] && APP_CONFIGS+=("/etc/systemd/user/")
 [[ -d "/usr/lib/systemd/system/" ]] && APP_CONFIGS+=("/usr/lib/systemd/system/")
+
+[[ -d "/etc/crontab" ]] && APP_CONFIGS+=("/etc/crontab")
+[[ -d "/etc/cron.d" ]] && APP_CONFIGS+=("/etc/cron.d")
+[[ -d "/etc/cron.daily" ]] && APP_CONFIGS+=("/etc/cron.daily")
+[[ -d "/etc/cron.weekly" ]] && APP_CONFIGS+=("/etc/cron.weekly")
+[[ -d "/etc/cron.monthly" ]] && APP_CONFIGS+=("/etc/cron.monthly")
 
 ##################################################
 # Appplication specific config files/directories #
