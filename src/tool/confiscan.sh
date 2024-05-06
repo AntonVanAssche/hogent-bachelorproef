@@ -404,6 +404,8 @@ printf 'Unit,State,Preset\n' > "${output_dir}/systemd_enabled_units.csv"
 systemctl list-unit-files --state=enabled --no-legend | \
     sed 's/ \{1,\}/,/g' >> "${output_dir}/systemd_enabled_units.csv"
 
+column -t -s, "${output_dir}/systemd_enabled_units.csv"
+
 [[ -d "/etc/systemd/system/" ]] && APP_CONFIGS+=("/etc/systemd/system/")
 [[ -d "/etc/systemd/user/" ]] && APP_CONFIGS+=("/etc/systemd/user/")
 [[ -d "/usr/lib/systemd/system/" ]] && APP_CONFIGS+=("/usr/lib/systemd/system/")
