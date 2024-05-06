@@ -425,7 +425,11 @@ for c in "${APP_CONFIGS[@]}"; do
         error "${c} no such file or directory." 2
 
     mkdir -p "${output_dir}/$(dirname "${c}")"
-    cp -r "${c}" "${output_dir}/$(dirname "${c}")"
+
+    # Use rsync to fix issues when copying symbolic links.
+    # `--copy-links` will copy the actual file instead of the link.
+    # `|| :` will prevent the script from exiting when broken symbolic links are found.
+    rsync --force --archive --recursive --copy-links "${c}" "${output_dir}/$(dirname "${c}")" || :
 done
 
 # File Integrity Check of original files, excluding ./original.sha256
