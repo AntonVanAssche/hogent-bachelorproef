@@ -14,5 +14,33 @@
 % Heeft het onderzoek geleid tot nieuwe vragen die uitnodigen tot verder 
 %onderzoek?
 
-\lipsum[76-80]
+Deze bachelorproef had als doel het verkennen van het gebruik van Infrastructure as Code (IaC) om te voldoen aan de NIS2-eis voor het bijhouden van een ``inventory of assets''.
+Specifiek lag de focus op het ontwikkelen van een praktische oplossing voor het opstellen van een configuratie-inventaris op Linux-systemen te automatiseren.
 
+We begonnen met een diepgaande bespreking van de fundamentele principes van Infrastructure as Code, zoals idempotentie, automatisatie en testen.
+Hierbij hebben we de voordelen van IaC onderzocht aan de hand van literatuurstudie, met speciale aandacht voor tools zoals Puppetboard die ervoor zorgen dat we direct een configuratie-inventaris hebben bij het gebruik van Puppet.
+
+Tijdens de literatuurstudie hebben we ook gekeken naar verschillende tools die kunnen helpen bij het ontdekken van configuratie-eigenschappen van Linux-syste-\ men, zoals Nmap en linPEAS-ng.
+Zo bleek dat Nmap reeds gebruikt wordt om netwerken in kaart te brengen, en dus on kan helpen bij het verzamelen van netwerkconfiguratie, zoals het detecteren van open poorten binnen het netwerk als ook hosts te ontdekken.
+LinPEAS-ng kan dan weer helpen bij het identificeren van gevoelige configuratie-eigenschappen zoals rechten van bestanden en gebruikers en is meer gericht in kwetsbaarheden te vinden in de configuratie van een systeem.
+
+Daarnaast hebben we ook een blik geworpen op de huidige aanpak van asset management in de praktijk, waarbij tools zoals Snipe-IT, Lansweeper en NetBox werden onderzocht.
+Deze tools zijn van belang voor het inventariseren van hardware, software, licenties en netwerkgerelateerde zaken.
+Waar NetBox vooral gebruikt wordt voor het inventariseren van netwerkgerelateerde zaken zoals IP-adressen en VLAN's.
+
+Vervolgens werd een risicoanalyse uitgevoerd om essenti\"ele configuratie-eigen-\ schappen van Linux-systemen te identificeren die moeten worden opgenomen in de configuratie-inventaris.
+Hierbij hebben we gekeken naar factoren die de identiteit van een Linux-systeem bepalen, zoals het besturingssysteem, netwerkinterfaces, ge\"installeerde software en beveiligingsaspecten.
+
+De resultaten van de risicoanalyse werden ge\"implementeerd in een Proof of Concept (PoC), waarbij het Bash-script genaamd ConfiScan werd ontwikkeld.
+Dit script is specifiek ontworpen voor Debian-gebaseerde systemen en maakt gebruik van verschillende commando's en bestanden in \texttt{/proc/} om configuratie-eigenschap-\ pen te verzamelen en op te slaan in CSV- en tekstbestanden.
+
+Het script werd uitvoerig getest op vijf virtuele machines met behulp van Vagrant en Ansible voor de configuratie.
+Tijdens deze fase werden enkele beperkingen van het script ge\"identificeerd, zoals problemen met het correct verwerken van soft- en hardlinks die naar andere locaties verwijzen buiten het opgegeven pad.
+Mogelijke oplossingen werden besproken, zoals het gebruik van rsync.
+
+Ondanks deze beperkingen biedt het ontwikkelde script een solide basis voor verdere ontwikkeling en uitbreiding.
+Toekomstige verbeteringen kunnen onder meer het volgen van soft- en hardlinks omvatten, evenals het toevoegen van specifieke functionaliteit voor het vastleggen van SELinux- of AppArmor-configuraties.
+
+In de toekomst kan het script verder worden uitgebreid en ge\"integreerd in bestaande systeembeheerprocessen.
+Ook kan het worden aangepast voor ondersteuning van andere besturingssystemen en cloudomgevingen, waardoor de bruikbaarheid ervan wordt vergroot.
+Dit onderzoek draagt bij aan het vakgebied van systeembeheer en biedt een praktische oplossing voor het automatiseren van configu-\ ratie-inventarisatie op Linux-servers.
