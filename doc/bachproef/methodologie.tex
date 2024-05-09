@@ -5,26 +5,38 @@
 \chapter{\IfLanguageName{dutch}{Methodologie}{Methodology}}%
 \label{ch:methodologie}
 
-%% TODO: In dit hoofstuk geef je een korte toelichting over hoe je te werk bent
-%% gegaan. Verdeel je onderzoek in grote fasen, en licht in elke fase toe wat
-%% de doelstelling was, welke deliverables daar uit gekomen zijn, en welke
-%% onderzoeksmethoden je daarbij toegepast hebt. Verantwoord waarom je
-%% op deze manier te werk gegaan bent.
-%% 
-%% Voorbeelden van zulke fasen zijn: literatuurstudie, opstellen van een
-%% requirements-analyse, opstellen long-list (bij vergelijkende studie),
-%% selectie van geschikte tools (bij vergelijkende studie, "short-list"),
-%% opzetten testopstelling/PoC, uitvoeren testen en verzamelen
-%% van resultaten, analyse van resultaten, ...
-%%
-%% !!!!! LET OP !!!!!
-%%
-%% Het is uitdrukkelijk NIET de bedoeling dat je het grootste deel van de corpus
-%% van je bachelorproef in dit hoofstuk verwerkt! Dit hoofdstuk is eerder een
-%% kort overzicht van je plan van aanpak.
-%%
-%% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
-%% en geef het een gepaste titel.
+\section{Stand van zaken}
+\label{sec:stand-van-zaken}
+Dit onderdeel belicht de actuele benadering van configuration management, met een specifieke focus op Infrastructure as Code (IaC).
+Naast een definitie van IaC worden de essenti\"ele componenten ervan besproken, evenals de voordelen die het met zich meebrengt.
+Bovendien worden tools genoemd die kunnen worden ingezet om de configuratie van een systeem te identificeren en later om te zetten naar een IaC-omgeving.
 
-\lipsum[21-25]
+Daarnaast zal er ook aandacht worden besteed aan asset management en hoe dit kan helpen bij de overgang van een niet-IaC-omgeving naar een IaC-omgeving.
+Hoewel asset management minder gericht is op de configuratie van individuele machines, biedt het wel inzicht in de infrastructuur en de assets die beheerd moeten worden.
+Op basis van deze informatie kunnen vervolgens de initi\"ele configuraties worden vastgelegd in code,
 
+\section{Linux Server Concepten}
+\label{sec:linux-server-concepten}
+Dit hoofdstuk richt zich op de fundamentele concepten van Linux-servers.
+Het doel is om een dieper begrip te bieden van de verschillende componenten en functies van een Linux-systeem, evenals de relevante ondersteunende tools.
+Door deze basisbegrippen te verkennen, kunnen we effectiever bepalen welke informatie moet worden opgenomen in onze configuratie-inventaris.
+
+\section{Computernetwerk Concepten}
+\label{sec:computernetwerk-concepten}
+Dit hoofdstuk behandelt de essenti\"ele concepten van computernetwerken in relatie tot servers.
+We zullen verkennen hoe netwerkconnectiviteit een integraal onderdeel is van de functionaliteit van servers en hoe verschillende concepten en technologie\"en worden toegepast om deze connectiviteit te realiseren.
+
+\section{Het opstellen van een configuratie-inventaris}
+\label{sec:risicoanalyse}
+In dit hoofdstuk zullen we een risicoanalyse uitvoeren voor Linux-systemen.
+We zullen de bevindingen uit de eerdere hoofdstukken combineren om een lijst van cruciale configuratie-eigenschappen te presenteren voor het beheer en de beveiliging van Linux-systemen.
+Door gebruik te maken van literatuuronderzoek en de besproken concepten, zullen we de risico's identificeren waaraan Linux-systemen blootstaan en welke specifieke eigenschappen moeten worden opgenomen in onze configuratie-inventaris.
+
+\section{Proof of Concept}
+\label{sec:proof-of-concept}
+Dit hoofdstuk omvat de praktische toepassing van onze bevindingen.
+We zullen een Bash-script ontwikkelen en uitvoeren op 5 virtuele Debian-servers, elk met hun eigen unieke taken en eigenschappen.
+Dit stelt ons in staat om de bruikbaarheid en effectiviteit van onze aanpak te testen in een real-world scenario.
+
+We zullen ook de gevonden resultaten analyseren en beoordelen of de configuratie-inventaris voldoet aan de verwachtingen en of deze als basis kan dienen voor een Infrastructure as Code (IaC)-omgeving.
+Dit wordt gedaan door de resultaten te vergelijken met de bevindingen uit de risicoanalyse en de configuratie-inventaris.

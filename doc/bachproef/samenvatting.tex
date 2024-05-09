@@ -2,9 +2,6 @@
 %% Samenvatting
 %%=============================================================================
 
-% TODO: De "abstract" of samenvatting is een kernachtige (~ 1 blz. voor een
-% thesis) synthese van het document.
-%
 % Een goede abstract biedt een kernachtig antwoord op volgende vragen:
 %
 % 1. Waarover gaat de bachelorproef?
@@ -27,12 +24,6 @@
 
 %%---------- Nederlandse samenvatting -----------------------------------------
 %
-% TODO: Als je je bachelorproef in het Engels schrijft, moet je eerst een
-% Nederlandse samenvatting invoegen. Haal daarvoor onderstaande code uit
-% commentaar.
-% Wie zijn bachelorproef in het Nederlands schrijft, kan dit negeren, de inhoud
-% wordt niet in het document ingevoegd.
-
 \IfLanguageName{english}{%
 \selectlanguage{dutch}
 \chapter*{Samenvatting}
@@ -45,4 +36,24 @@
 
 \chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
 
-\lipsum[1-4]
+Het onderwerp van cyberbeveiliging en de automatisering van systemen zijn beide van groot belang in de IT-wereld.
+Toch is het samenvoegen van deze twee onderwerpen niet altijd vanzelfsprekend voor elk bedrijf.
+Met de nieuwe NIS2-richtlijn, oftewel "Network and Information Security", worden bedrijven verplicht om hun systemen te beschermen tegen cyberaanvallen.
+De reikwijdte van sectoren die onder deze richtlijn vallen, is aanzienlijk uitgebreid ten opzichte van zijn voorganger.
+Een van de verplichtingen die bedrijven moeten nakomen, is het in kaart brengen van alle kritieke systemen die van invloed zijn op hun bedrijfsvoering.
+
+Infrastructure as Code kan een oplossing bieden voor dit vraagstuk.
+Door de huidige infrastructuur van een bedrijf te beschrijven in code, biedt het een overzicht van alle gebruikte systemen.
+Toch vinden veel bedrijven, met name KMO's, het moeilijk om over te stappen naar een Infrastructure as Code omgeving.
+Dit kan verschillende redenen hebben, zoals een gebrek aan kennis, tijd en budget.
+
+Deze bachelorproef richt zich op het onderzoeken van mogelijke tools die kunnen helpen bij de overstap naar een Infrastructure as Code omgeving door het opstellen van een configuratie-inventaris.
+Er zal worden gekeken naar bestaande tools die hieraan kunnen bijdragen.
+Daarnaast zal er een analyse worden gemaakt van de verschillende eigenschappen van Linux-systemen die het beste kunnen worden opgenomen in een configuratie-inventaris.
+
+Vervolgens zal er een Proof of Concept worden ontwikkeld, waarin een Bash-script zal worden geschreven dat basisinformatie van een Linux-systeem verzamelt en omzet in een verzameling van overzichtelijke bestanden.
+Dit script zal worden uitgevoerd op vijf verschillende Debian servers, elk met hun eigen rol binnen de omgeving.
+
+Deze bachelorproef verkent het gebruik van tools zoals Nmap en LinPEAS-ng voor het ontdekken van de configuratie van een Linux-systeem.
+Nmap wordt voornamelijk ingezet voor het verkennen van netwerkconfiguraties, terwijl LinPEAS-ng dieper inzicht biedt in de configuratie van het Linux-systeem zelf en potentiële beveiligingsrisico's identificeert.
+Het ontwikkelde script vormt een solide basis waarop beheerders kunnen voortbouwen door extra functionaliteiten toe te voegen en oplossingen te vinden voor eventuele beperkingen die tijdens de ontwikkeling van het script zijn geïdentificeerd.

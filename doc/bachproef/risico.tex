@@ -1,0 +1,246 @@
+%%=============================================================================
+%% Methodologie
+%%=============================================================================
+
+\chapter{\IfLanguageName{dutch}{Het opstellen van een configuratie-inventaris}{The creation of a configuration inventory}}
+\label{ch:risicoanalyse}
+
+\section{Inleiding}
+\label{risico_inleiding}
+
+De overgang van een traditionele omgeving naar een Infrastructure as Code (IaC) omgeving vereist een grondige kennis van de configuratie van Linux-systemen.
+Een cruciale stap in dit proces is het opstellen van een gedetailleerde configuratie-inventaris die alle essenti\"ele eigenschappen van het systeem omvat.
+Deze inventaris vormt de basis voor het automatiseren van de infrastructuur met behulp van IaC-tools zoals Ansible, Terraform of Puppet.
+In dit hoofdstuk zullen we de belangrijkste elementen bespreken die moeten worden opgenomen in een configuratie-inventaris van Linux-systemen voor een succesvolle overgang naar een IaC-omge-\ ving, waarbij we ook de relevante beveiligingsaspecten benadrukken.
+
+\section{Het besturingssysteem}
+\label{risico_besturingssysteem}
+
+Een eerste stap bij het opstellen van een configuratie-inventaris is het verzamelen van basisinformatie over het Linux-systeem.
+Dit omvat details zoals het besturingssysteem (bijvoorbeeld Debian, Ubuntu, CentOS), de versie van de kernel, en de hardware-specificaties zoals CPU-model, geheugen en opslagcapaciteit.
+Het is essentieel om deze informatie vast te leggen om een goed beeld te krijgen van de huidige configuratie van het systeem.
+
+Uit~\ref{linux_linux_besturingssysteem}, bleek dat de kernel een cruciaal onderdeel is van het besturingssysteem en een directe impact heeft op de beveiliging en prestaties van het systeem.
+Hierdoor is het belangrijk om kernel die op dit moment gebruikt wordt, te documenteren in de configuratie-inventaris, alsook alle kernel-modules die momenteel geladen zijn.
+Ook de versie van het besturingssysteen is van belang, omdat verschillende versies van Linux-distributies verschillende pakketten en configuraties kunnen bevatten.
+
+\subsection{Gebruikers- en groepsbeheer}
+\label{risico_gebruikers_groepen}
+
+Het beheren van gebruikers en groepen vormt een essentieel aspect van systeemconfiguratie.
+Dit is van cruciaal belang omdat gebruikers vaak worden aangemaakt om specifieke taken uit te voeren, zoals bijvoorbeeld de \texttt{www-data} gebruiker die doorgaans wordt gebruikt voor het beheer van de Apache webserver, zoals besproken in~\ref{linux_gebruikers_groepen}.
+In de configuratie-inventaris moeten alle gebruikersaccounts en groepen op het systeem worden opgenomen, inclusief hun respectievelijke rechten en permissies.
+Dit omvat ook informatie over speciale gebruikersaccounts zoals de rootgebruiker, systeemgebruikers en de geconfigureerde \texttt{sudo}-rechten van elke gebruiker.
+
+Door deze gegevens op te nemen in de configuratie-inventaris, kan men later controleren welke gebruikers en groepen daadwerkelijk op het systeem aanwezig moeten zijn om de vereiste taken uit te voeren, en welke niet.
+Door de geregistreerde \texttt{sudo}-regels te analyseren, kan men bepalen of een bepaalde gebruiker over de juiste machtigingen beschikt, of dat het beter is om het aantal permissies te beperken.
+
+\subsection{Bestandssysteem en partities}
+\label{risico_bestandsysteem_partities}
+
+Bij het installeren of updaten van een systeem is het essentieel om aandacht te besteden aan de opslagmedia, en hun configuratie.
+Dit omvat onder andere het kiezen van het juiste bestandssysteem, het configureren van partities en het bepalen van de mountpoints~\autocite{wirzenius1993linux}.
+Een grondig begrip van de bestaande bestandssystemen, partities en hun mountpoints is daarom van groot belang.
+
+Dit belang wordt ook benadrukt in het boek "IT Inventory and Resource Management with OCS Inventory" van Barzan ``Tony'' Antal~\autocite{Antal2010}.
+De auteur benadrukt welke systeemeigenschappen cruciaal zijn om op te nemen in een configura-\ tie-inventaris.
+Hoewel het boek niet specifiek gericht is op Linux-systemen, zijn de principes die worden besproken van toepassing op Linux-omgevingen.
+
+Het is eveneens een optie om back-ups te maken van essenti\"ele bestanden en directories, zoals de \texttt{/etc/} directory waar belangrijke configuratiebestanden worden bewaard.
+Andere directories die het waard zijn om te monitoren, zijn onder meer \texttt{/bin/}, \texttt{/sbin/}, \texttt{/usr/bin/} en \texttt{/usr/sbin/}, aangezien deze cruciale systeemprogramma's bevatten~\autocite{linuxfoundation-filesystem}.
+Een volgende stap zou zijn om een hash te berekenen van deze bestanden en deze hash vervolgens op te nemen in de configuratie-inventaris.
+Dit kan worden gedaan met behulp van een tool zoals \texttt{sha256sum} om de hash van een bestand te genereren.
+
+Het toepassen van hashberekeningen draagt bij aan een verhoogde integriteit van de data, aangezien het ons de mogelijkheid biedt om te controleren of de bestanden zijn gewijzigd.
+Immers, de hash van een bestand verandert wanneer de inhoud van het bestand wijzigt.
+Bovendien is het belangrijk om te vermelden dat hashfuncties one-way zijn, wat betekent dat het niet mogelijk is om de originele inhoud van het bestand te herstellen aan de hand van de hash~\autocite{herrero2021file}.
+
+Een praktisch voorbeeld van het gebruik van \texttt{sha256sum} om de hash van bestanden te berekenen, wordt gedemonstreerd in listing~\ref{lst:sha256sum}.
+Hier kan men zien dat er drie directories zijn: \texttt{a}, \texttt{b} en \texttt{c}, met in \texttt{a} en \texttt{c} een bestand genaamd \texttt{a.txt}, en in \texttt{b} een bestand genaamd \texttt{b.txt}.
+Het resultaat van \texttt{sha256sum} op de bestanden toont dat \texttt{a.txt} in \texttt{a} en \texttt{c} dezelfde hashwaarde heeft, wat aangeeft dat de bestanden identiek zijn, \texttt{b.txt} in \texttt{b} heeft een andere hashwaarde, wat aangeeft dat het bestand verschilt van de andere twee.
+Dit geeft aan dat de hashwaarden onafhankelijk zijn van de bestandslocatie, en dat ze een unieke identificatie vormen voor de inhoud van het bestand.
+
+\begin{listing}
+  \begin{minted}[linenos,tabsize=4,breaklines]{console}
+[anton@fedorable ~]$ find {a,b,c}/ -type f -exec sha256sum {} \;
+87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7  a/a.txt
+0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f  b/b.txt
+87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7  c/a.txt
+  \end{minted}
+  \caption{Uitvoer van het \texttt{find}-commando om bestanden te vinden en de hash ervan te berekenen met \texttt{sha256sum}.}
+  \label{lst:sha256sum}
+\end{listing}
+
+\section{Software-installaties en -configuraties}
+\label{risico_software}
+
+De nodige software-installaties op een systeem kunnen vari\"eren afhankelijk van de specifieke vereisten van de toepassingen die op het systeem worden uitgevoerd.
+Dit kan verschillende cruciale aspecten omvatten, zoals de ge\"installeerde software en de bijbehorende pakketten, evenals de configuratie van deze software.
+Een grondige evaluatie en documentatie van de ge\"installeerde software en de bijbehorende pakketten, alsook hun configuratie, is essentieel voor een succesvolle overgang naar een IaC-omgeving.
+
+\subsection{Ge{\"i}nstalleerde applicaties en bronnen}
+\label{risico_software_installaties_bronnen}
+
+Een grondig begrip van de ge\"installeerde software en de bijbehorende pakketten is essentieel voor een succesvolle overgang naar een IaC-omgeving en is ook van cruciaal belang op het gebied van beveiliging.
+Het vastleggen van deze informatie in de configuratie-inventaris is noodzakelijk voor een effectieve beveiligingsstrategie.
+
+De configuratie-inventaris moet een gedetailleerde lijst bevatten van alle ge\"installeerde softwarepakketten, inclusief hun versies en afhankelijkheden, evenals informatie over de bronnen waaruit de software is ge\"installeerd.
+Dit omvat zowel systeemniveau-software als gebruikersniveau-toepassingen.
+Het verzamelen van deze informatie kan worden uitgevoerd met behulp van package managers zoals \texttt{dpkg} of \texttt{rpm} om een lijst van ge\"installeerde pakketten te genereren.
+Ook moeten de geconfigureerde repositories worden opgenomen in de configuratie-inventaris, aangezien deze de bron zijn voor vele software-installaties.
+
+Een treffend voorbeeld dat illustreert waarom dit zo belangrijk is, betreft CVE-2024-3094~\autocite{nist-CVE-2024-3094}.
+Deze backdoor werd ontdekt in maart 2024, in de veelgebruikte software genaamd \texttt{xz-utils}, een standaard compressie- en decompressietool, dat deel uitmaakt van de \texttt{liblzma}-biblio-\ theek.
+Deze bibliotheek wordt vaak gebruikt op Linux-systemen door andere programma's.
+Het werd opgemerkt nadat Andres Freund, een softwareontwikkelaar, verdachte code had gevonden in de broncode van het pakket.
+Echter bleek de backdoor alleen aanwezig te zijn in versies 5.6.0 en 5.6.1 van de software, die werden uitgebracht in februari 2024~\autocite{lins2024critical}.
+Op dat moment waren de ge\"infecteerde versies beschikbaar in de repositories van verschillende Linux-distributies, waaronder Debian (testing en unstable), Alpine Linux (Edge) en Fedora (40, 41 en Rawhide).
+
+\subsection{Configuratie van ge{\"i}nstalleerde software}
+\label{risico_software_configuratie}
+
+Met enkel en alleen de ge\"installeerde software te documenteren, is het echter niet voldoende, aangezien het later de bedoeling is om aan de hand van dit inventaris een IaC-omgeving op te zetten.
+Voor een volledige overgang naar een IaC-omgeving is het ook noodzakelijk om de huidige configuratie van de software vast te leggen, zodat men deze later kan omvormen naar code voor de gekozen IaC-tool.
+
+Op Linux-systemen worden configuratiebestanden vaak bewaard in de \texttt{/etc/} directory, afgeleid van ``et cetera''~\autocite{linuxfoundation-filesystem}.
+De bestanden in deze directory bevatten vaak de configuratie-opties voor verschillende softwarepakketten, en het is mogelijk om deze bestanden op te nemen in een configuratie-inventaris.
+
+\subsection{Taakbeheer}
+\label{risico_taakbeheer}
+
+Systemd werd reeds besproken in~\ref{linux_systemd} als de standaard init-systeem op de meeste Linux-distributies.
+Het is een manier om services, en processen, te starten en stoppen op een bepaald tijdstip, of bij een bepaalde gebeurtenis.
+Zo kunnen we bijvoorbeeld een zoals een webserver automatisch laten starten bij het opstarten van het systeem.
+Dit doen we met het \texttt{systemctl} commando gevolgd door de \texttt{enable} optie, zoals te zien in listing~\ref{lst:systemd_enable}.
+
+\begin{listing}
+  \begin{minted}[linenos,tabsize=4,breaklines]{console}
+[root@fedorable ~]$ systemctl enable sshd
+Created symlink /etc/systemd/system/multi-user.target.wants/sshd.service → /usr/lib/systemd/system/sshd.service.
+  \end{minted}
+  \caption{Uitvoer van het \texttt{systemctl}-commando om een service automatisch te laten starten bij het opstarten van het systeem.}
+  \label{lst:systemd_enable}
+\end{listing}
+
+Doordat systemd units vaak worden gebruikt om services te beheren, is het van belang om deze units op te nemen in de configuratie-inventaris.
+Netzoals een lijst bij te houden van de services die automatisch worden gestart bij het opstarten van het systeem, dit kan worden bereikt door \texttt{systemctl} te gebruiken met de \texttt{list-unit-files} optie, zoals te zien in listing~\ref{lst:systemd_list_unit_files}.
+
+\begin{listing}
+  \begin{minted}[linenos,tabsize=4,breaklines]{console}
+[root@fedorable ~]$ systemctl list-unit-files --state=enabled
+UNIT FILE                          STATE   PRESET
+cups.path                          enabled enabled
+abrt-journal-core.service          enabled enabled
+abrt-oops.service                  enabled enabled
+abrt-vmcore.service                enabled enabled
+abrt-xorg.service                  enabled enabled
+[...]
+  \end{minted}
+  \caption{Uitvoer van het \texttt{systemctl}-commando om een lijst van services te tonen die automatisch worden gestart bij het opstarten van het systeem.}
+  \label{lst:systemd_list_unit_files}
+\end{listing}
+
+Verder werd in~\ref{linux_cronjobs} besproken dat cronjobs worden gebruikt om taken op een geplande tijdstip uit te voeren.
+Dit zou kunnen gebruikt worden als alternatief voor systemd timers, daarom is het ook hier belangrijk om deze cronjobs op te nemen in de configuratie-inventaris.
+Dit zou men kunnen bereiken door een kopie te maken van de directories \texttt{/etc/cron.d/}, \texttt{/etc/cron.daily/}, \texttt{/etc/cron.hourly/}, \texttt{/etc/cron.monthly/} en \texttt{/etc/cron.weekly/}, alsook \texttt{/etc/crontab} die alle cronjobs bevat.
+
+\section{Netwerkconfiguratie}
+\label{risico_netwerkconfiguratie}
+
+Vele Linux-systemen maken gebruik van netwerkverbindingen om te communiceren met andere systemen en diensten.
+Dit werd reedst besproken in~\ref{ch:computernetwerk-concepten}, waarbij de basisprincipes van computernetwerken werden toegelicht, alsook enkele protocollen die worden gebruikt voor netwerkcommunicatie.
+Een basis oplijsting van de netwerkconfiguratie is essentieel voor een succesvolle overgang naar een IaC-omgeving, omdat het de basis vormt voor de netwerkautomatisering.
+Ook zorgt het opnemen van de netwerkconfiguratie in de configuratie-inventaris ervoor dat men een begrip heeft over welke systemen met elkaar kunnen communiceren en welke niet.
+
+\subsection{Netwerkinterfaces}
+\label{risico_netwerkinterfaces}
+
+In~\ref{netwerk_netwerkinterface} hebben we al besproken dat netwerkinterfaces de fysieke of virtuele verbindingen zijn waardoor een Linux-systeem communiceert met andere systemen.
+Elke interface heeft een IP-adres, of het nu IPv4 of IPv6 is, samen met een subnetmask en een gateway.
+Deze kenmerken stellen het systeem in staat om uniek ge\"identificeerd te worden binnen het netwerk.
+
+Het is daarom van groot belang om de netwerkinterfaces op te nemen in de confi-\ guratie-inventaris, inclusief hun configuratiegegevens zoals het IP-adres, subnetmask en gateway.
+Of het nu gaat om een interface die zijn instellingen verkrijgt via DHCP of handmatig is geconfigureerd, het vastleggen van deze informatie is van cruciaal belang.
+
+Wanneer een IP-adres wordt verkregen via een DHCP-lease, is ook informatie over de DHCP-server relevant.
+Dit omvat niet alleen het IP-adres van de server, maar ook de lease-tijd en eventuele configuratieopties die door de server aan het systeem zijn verstrekt.
+Zoals aangegeven door Antal in het boek ``It Inventory and Resource Management with OCS Inventory''~\autocite{Antal2010}, is het vastleggen van deze informatie essentieel voor het beheer van de netwerkconfiguratie.
+
+\subsection{Routing en poortbeheer}
+\label{risico_routing_poorten}
+
+In hoofdstuk~\ref{ch:computernetwerk-concepten} hebben we al besproken hoe routing en poortbeheer cruciale elementen zijn binnen netwerkconfiguratie.
+Poorten worden gebruikt om applicaties met andere systemen te laten communiceren, terwijl routing ervoor zorgt dat het verzonden verkeer zijn bestemming bereikt.
+
+Het documenteren van de momenteel gebruikte poorten in de configuratie-inven-\ taris biedt inzicht in de communicatiekanalen die actief zijn.
+Dit stelt beheerders in staat om een volledig overzicht te hebben van welke applicaties welke poorten gebruiken, wat van onschatbare waarde is bij het beheren en beveiligen van het netwerk.
+
+Bij het bekijken van de routingtabel is het van essentieel belang om de huidige routingconfiguratie vast te leggen.
+Dit omvat niet alleen de standaardgateway, maar ook eventuele statische routes die zijn geconfigureerd op het systeem.
+Het vastleggen van deze informatie zorgt ervoor dat het verkeer effici\"ent wordt geleid naar de juiste bestemmingen, wat de algehele netwerkprestaties en betrouwbaarheid ten goede komt.
+
+\subsection{DNS-configuratie}
+\label{risico_dns}
+
+DNS speelt een cruciale rol in het vertalen van domeinnamen naar IP-adressen, zoals besproken in~\ref{netwerk_dns}.
+Een goed functionerend netwerk vereist dan ook een nauwkeurige DNS-configuratie, omdat deze ervoor zorgt dat systemen correct kunnen communiceren met andere systemen en diensten.
+Daarom is het van groot belang om de DNS-configuratie vast te leggen in de configuratie-inventaris.
+
+Naast het operationele belang is het documenteren van de DNS-configuratie ook vanuit een beveiligingsperspectief essentieel.
+Door deze informatie te registreren, kunnen beheerders controleren welke DNS-servers momenteel worden gebruikt en kunnen ze beoordelen of deze veilig zijn.
+Dit is van cruciaal belang om aanvallen zoals DNS-hijacking te voorkomen, waarbij een aanvaller de controle over een DNS-server overneemt om verkeer om te leiden naar kwaadaardige websites door de DNS-records op de server te wijzigen~\autocite{shaikh2020overcoming}.
+Het proactief documenteren van de DNS-configuratie stelt beheerders in staat om potenti\"ele beveiligingsrisico's te identificeren en te vermijden, waardoor de algehele veiligheid van het netwerk wordt versterkt.
+
+\section{Beveiligingsconfiguratie}
+\label{risico_beveiligingsconfiguratie}
+
+De overgang van een traditionele omgeving naar een Infrastructure as Code (IaC) omgeving brengt verschillende belangrijke aspecten met zich mee, met name op het gebied van beveiliging.
+Deze overgang vereist een zorgvuldige herziening en documentatie van de beveiligingsmaatregelen om ervoor te zorgen dat de IaC-omgeving dezelfde, zo niet betere, beveiligingsniveaus biedt dan de voorafgaande traditionele omgeving.
+
+\subsection{Firewall}
+\label{risico_firewall}
+
+Een van de pijlers van Linux-serverbeveiliging is de firewall, die inkomend en uitgaand verkeer reguleert om ongewenste toegang tot het systeem te voorkomen.
+Bij de overgang naar IaC is het noodzakelijk om de configuratie van de firewall, zoals beheerd door \texttt{firewalld} of \texttt{nftables}, gedetailleerd te documenteren.
+Dit omvat het defini\"eren van toegestane en geblokkeerde poorten, services en zones, evenals eventuele aangepaste regels die zijn geconfigureerd om specifieke beveiligingsvereisten te vervullen.
+
+\subsection{SELinux}
+\label{risico_selinux}
+
+Naast de firewall is SELinux een cruciaal onderdeel van Linux-serverbeveiliging, met zijn Mandatory Access Control (MAC) model dat extra bescherming biedt bovenop de standaard Discretionary Access Control (DAC) implementatie.
+Bij de overgang naar een IaC-omgeving is het van vitaal belang om de SELinux-configuratie op te nemen in de inventaris.
+Dit omvat het documenteren van de SELinux-policy's, contexten en beleidsregels die van toepassing zijn op verschillende systeembronnen en processen.
+Door de SELinux-configuratie te documenteren, kan het IaC-proces deze beveiligingsmaatregelen automatiseren en consistent toepassen op alle servers in de omgeving.
+
+\subsection{AppArmor}
+\label{risico_apparmor}
+
+Hoewel SELinux de standaard is voor beveiligingsbeleid op RHEL-gebaseerde systemen, gebruiken sommige Debian-gebaseerde systemen zoals Ubuntu AppArmor als alternatief beveiligingsframework.
+Bij het overgaan naar een IaC-omgeving is het belangrijk om de configuratie van AppArmor, indien van toepassing, te documenteren.
+Dit omvat het vastleggen van de AppArmor-profielen en de beperkingen die ze opleggen aan de toegang van applicaties tot systeembronnen.
+Hoewel AppArmor enigszins verschillend is van SELinux in zijn aanpak, is het nog steeds essentieel om de beveiligingsinstellingen ervan te begrijpen en te integreren in de IaC-workflows om een consistente beveiliging te waarborgen.
+
+\section{Conclusie}
+\label{risico_conclusie}
+
+In dit hoofdstuk hebben we de belangrijkste elementen besproken die moeten worden opgenomen in een configuratie-inventaris van Linux-systemen voor een succesvolle overgang naar een IaC-omgeving, maar ook vanuit een beveiligingsperspectief.
+Tabel~\ref{table:risico_conclusie} vat de belangrijkste elementen samen die moeten worden opgenomen in de configuratie-inventaris.
+
+\begin{table}[!h]
+    \begin{center}
+        \begin{tabular}{ c c }
+            \hline
+                Categorie & Beschrijving \\ [0.5ex] 
+            \hline
+                Applicaties              & Ge\"installeerde software, bronnen, configuratie \\
+                Bestandssysteem          & Bestandssystemen, partities, mountpoints \\
+                Besturingssysteem        & Kernelversie, distributie, hardware-specificaties \\
+                Beveiligingsconfiguratie & Firewall, SELinux, AppArmor \\
+                Gebruikers en groepen    & Gebruikersaccounts, groepen, \texttt{sudo}-rechten \\
+                Netwerkconfiguratie      & Netwerkinterfaces, routing, poorten, DNS \\
+                Taakbeheer               & Systemd units, cronjobs \\
+        \end{tabular}
+    \end{center}
+    \caption{Overzicht van de belangrijkste elementen voor een configuratie-inventaris van Linux-systemen.}
+    \label{table:risico_conclusie}
+\end{table}

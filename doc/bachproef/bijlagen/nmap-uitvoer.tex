@@ -1,0 +1,83 @@
+%%=============================================================================
+%% Nmap
+%%=============================================================================
+
+\chapter{\IfLanguageName{dutch}{Uitvoer: Nmap-scan}{Output: Nmap-scan}}%
+\label{ch:bijlage_nmap}
+
+Deze bijlage bevat een voorbeeld van een Nmap-scan.
+In deze demonstratie zal Nmap alle beschikbare poorten scannen, trachten het besturingssysteem en de actieve services te identificeren, en de versies van deze services te achterhalen.
+De scan zal worden uitgevoerd op de \texttt{srv1} van de Proof of Concept, besproken in~\ref{ch:poc}.
+
+Uit de uitvoer in~\ref{lst:bijlage-nmap-scan} kunnen we afleiden dat \texttt{srv1} een SSH-service draait op poort 22, een DNS-service op poort 53, en additionele services op poort 8053 en 9100.
+Echter, bij de service op poort 9100 merken we op dat Nmap er niet in slaagt deze correct te identificeren, en slechts een veronderstelling maakt omtrent de servicenaam.
+Nmap heeft wel het besturingssysteem met succes gedetecteerd als Debian met Linux kernel versie 2.6.32, en heeft het correcte versies van andere ge\"identificeerde services gerapporteerd.
+
+Merk wel op dat de fingerprint van de onbekende service werd weggelaten in de uitvoer van de scan, aangeduid met \texttt{[...]}.
+Dit om de leesbaarheid van de uitvoer te verbeteren, aangezien de fingerprint van de onbekende service lang is.
+
+\begin{longlisting}
+  \begin{minted}[linenos,tabsize=4,breaklines]{console}
+root@srv1:~# nmap -sS -sU -sV -A -p- localhost
+Starting Nmap 7.93 ( https://nmap.org ) at 2024-05-09 10:51 UTC
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000065s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 65532 closed udp ports (port-unreach), 65530 closed tcp ports (reset)
+PORT     STATE         SERVICE    VERSION
+22/tcp   open          ssh        OpenSSH 9.2p1 Debian 2+deb12u2 (protocol 2.0)
+| ssh-hostkey:
+|   256 7823c0a999ef904f9f282137ef6f8c96 (ECDSA)
+|_  256 3ad09088aa548a7bbaa6eb4fe41d88df (ED25519)
+53/tcp   open          domain     ISC BIND 9.18.24-1 (Debian Linux)
+953/tcp  open          rndc?
+8053/tcp open          senomix02?
+| fingerprint-strings:
+|   FourOhFourRequest:
+|     HTTP/1.0 404 No such URL
+|     Connection: close
+|     Content-Type: text/plain
+|     Date: Thu, 09 May 2024 10:51:17 GMT
+|     Expires: Thu, 09 May 2024 10:51:17 GMT
+|     Last-Modified: Thu, 09 May 2024 10:51:17 GMT
+|     Pragma: no-cache
+|     Cache-Control: no-cache
+|     Server: libisc
+|     Content-Length: 14
+|     such URL.
+|   GetRequest:
+|     HTTP/1.0 200 OK
+|     Connection: close
+|     Content-Type: text/xml
+|     Date: Thu, 09 May 2024 10:51:17 GMT
+|     Expires: Thu, 09 May 2024 10:51:17 GMT
+|     Last-Modified: Thu, 09 May 2024 10:51:17 GMT
+|     Pragma: no-cache
+|     Cache-Control: no-cache
+|     Server: libisc
+|     Content-Length: 55113
+|     <?xml version="1.0" encoding="UTF-8"?>
+|     <?xml-stylesheet type="text/xsl" href="/bind9.xsl"?>
+|_    <statistics version="3.13"><server><boot-time>2024-05-09T10:45:33.614Z</boot-time><config-time>2024-05-09T10:45:41.610Z</config-time><current-time>2024-05-09T10:51:17.111Z</current-time><version>9.18.24-1-Debian</version><counters type="opcode"><counter name="QUERY">25</counter><counter name="IQUERY">0</counter><counter name="STATUS">1</counter><counter name="RESERVED3">0</counter><counter name="NOTIFY">0</counter><counter name="UPDATE">0</counter><counter name="RESERVED6">0</counter><counter name="RESERVED7">0</counter><counter name="
+9100/tcp open          jetdirect?
+53/udp   open          domain     ISC BIND 9.18.24-1 (Debian Linux)
+|_dns-recursion: Recursion appears to be enabled
+| dns-nsid:
+|_  bind.version: 9.18.24-1-Debian
+68/udp   open|filtered dhcpc
+323/udp  open|filtered unknown
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+[...]
+Device type: general purpose
+Running: Linux 2.6.X
+OS CPE: cpe:/o:linux:linux_kernel:2.6.32
+OS details: Linux 2.6.32
+Network Distance: 0 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 131.26 seconds
+  \end{minted}
+  \caption{Een grondige scan van \texttt{srv1}, waar Nmap alle poorten zal scannen, het besturingssysteem en de services zal proberen te detecteren en de versies van de services zal proberen te achterhalen.}
+  \label{lst:bijlage-nmap-scan}
+\end{longlisting}

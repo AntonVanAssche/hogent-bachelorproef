@@ -10,24 +10,58 @@
 \section{Network and Information Security 2}%
 \label{sec:nis2}
 
-\section{Huidige aanpak van asset management}%
-\label{sec:huidige_aanpak_van_asset_management}
+Richtlijn 022/2555, ook bekend als Network and Information Security 2 (NIS2), is een nieuwe Europese richtlijn die in 2022 werd goedgekeurd door het Europees Parlement~\autocite{nis2-eu-be}.
+De goedkeuring ervan markeert een belangrijke stap in het versterken van de cybersecurity van de Europese Unie en het vergroten van de weerbaarheid tegen cyberaanvallen.
+Als opvolger van de eerste NIS-richtlijn, die in 2016 werd aangenomen en in 2018 in werking trad, richt NIS2 zich op drie hoofddoelen, zoals uiteengezet door het Centrum voor Cybersecurity Belgi\"e~\autocite{nis2-eu-be}:
+
+\begin{itemize}
+    \item Het verplichten van nationale overheden om de nodige aandacht te besteden aan cybersecurity.
+    \item Het versterken van de Europese samenwerking tussen cybersecurity autoriteiten.
+    \item Het verplichten van belangrijke operatoren in cruciale sectoren van de samenleving om veiligheidsmaatregelen te nemen en incidenten te melden.
+\end{itemize}
+
+De NIS2-richtlijn is ontwikkeld als reactie op de toenemende afhankelijkheid van digitale systemen en de groeiende dreiging van cyberaanvallen.
+Deze afhankelijkheid werd vooral duidelijk tijdens de COVID-19-pandemie, toen veel bedrijven en organisaties gedwongen werden om hun activiteiten online voort te zetten.
+
+Volgens de Nederlandse minister van Justitie en Veiligheid, Dilan Ye\c{s}ilg"oz~\autocite{yesilgoz2022nis}, heeft de pandemie geleid tot een toename van digitale dreigingen, zoals phishing en ransomware aanvallen, waardoor de noodzaak van verbeterde cybersecurity nog urgenter werd.
+
+Een belangrijke verandering die NIS2 met zich meebrengt, is de uitbreiding van de sectoren die onder de richtlijn vallen.
+Sectoren zoals het beheer van ICT-diensten, digitale infrastructuur, gezondheidszorg en vervoer vallen nu onder de richtlijn, in tegenstelling tot NIS1.
+Deze uitbreiding is bedoeld om een breder scala aan cruciale diensten en infrastructuren te beschermen tegen cyberdreigingen.
+Er is echter wel een uitzondering op deze regel.
+Zo zijn zo genaamde kleine- en micro-onderneminge, die kleiner zijn dan 50 werknemers, en een jaaromzet of jaarlijks balanstotaal van minder dan 10 miljoen euro, vrijgesteld van deze richtlijnen~\autocite{nis2-eu-be}.
+
+
+Een andere vereiste van de NIS2-richtlijn is dat bedrijven die onder de richtlijn vallen, een ``inventory of assets'' moeten bijhouden.
+Dit houdt in dat bedrijven een lijst moeten bijhouden van alle assets die ze bezitten, zoals servers, netwerkapparatuur, software, enzovoort, die verband houden met de bedrijfsprocessen.
+Dit draagt bij aan risicoanalyse en informatiebeveiligingsbeleid, waardoor bedrijven sneller kunnen reageren op incidenten en de impact ervan kunnen minimaliseren of zelfs voorkomen~\autocite{dragos-nis2}.
+Dit is dan ook waar deze bachelorproef een handje wil helpen, door het opstellen van een configuratie-inventaris.
+
+Een strategie om aan deze vereisten te voldoen, is door gebruik te maken van tools voor configuration management en asset management.
+Bijvoorbeeld, een Infrastructure as Code (IaC) tool zoals Puppet kan bijdragen aan de implementatie van een ``zero trust'' benadering.
+Hierbij wordt de configuratie van een systeem voortdurend gecontroleerd en gevalideerd, terwijl ook compliance scans worden uitgevoerd op verschillende assets. Daarnaast kunnen deze tools dienen als een bron van rapportage voor de vereiste inventory of assets~\autocite{puppet-nis2}.
+
+
+\section{Huidige aanpak van configuration management}%
+\label{sec:huidige-aanpak-van-configuration-management}
+
+In dit gedeelte wordt de huidige aanpak van configuration management besproken, met een focus op Infrastructure as Code (IaC).
+Naast wat het is, wordt er ook gekeken naar de fundamentele componenten van IaC, alsook de voordelen ervan.
+Ook zullen er tools vernoemd worden die we kunnen gebruiken om de configuratie van een systeem te ontdekken, om later om te zetten naar een IaC omgeving.
 
 \subsection{Infrastructure as Code}%
 \label{sub:iac}
 
 Sinds de opkomst van computernetwerken is het uitrollen en beheren van servers en netwerken altijd een uitdagende taak geweest.
-Infrastructure as Code (IaC) is een concept dat de laatste jaren steeds meer aan populariteit wint. Dit komt vooral doordat het beheerders van zulke netwerken in staat stelt om hun configuratie en infrastructuur vast te leggen in code, in plaats van handmatig te configureren.
-Binnen deze code kunnen veelvoorkomende, complexe taken automatisch worden uitgevoerd, en dit alles op een geteste en foutloze manier~\autocite{chef-what-is-iac}.
-
-IaC is gebaseerd op drie fundamentele concepten~\autocite{chef-what-is-iac}:
+Om deze uitdagingen aan te gaan, zijn er verschillende IaC-tools ontwikkeld die telkens de drie fundamentele concepten van IaC in gedachten houden.
+Dit zijn~\autocite{chef-what-is-iac}:
 \begin{itemize}
     \item Automatisering: Het aanpassen van handmatige configuratie en het uitrollen van nieuwe servers worden allemaal geautomatiseerd met behulp van code.
-    \item Testen: IT, DevOps en SecOps processen kunnen met vertrouwen worden uitgevoerd omdat de code getest is.
+    \item Testen: IT en DevSecOps processen kunnen met vertrouwen worden uitgevoerd omdat de code getest is.
     \item Idempotentie: Processen worden niet alleen toegepast op nieuwe servers, maar ook op bestaande servers om een consistente configuratie te behouden.
 \end{itemize}
 
-E\'en van de grootste voordelen van Iac is de verhoging van de effici\"entie~\autocite{splunk-benefits-iac}.
+E\'en van de grootste voordelen van IaC is de verhoging van de effici\"entie~\autocite{splunk-benefits-iac}.
 Doordat veel taken geautomatiseerd worden, kunnen beheerders zich richten op andere, meer complexe taken.
 Zo heeft Red Hat in 2016 een casestudy gepubliceerd~\autocite{case-study-nasa-iac} waarin ze NASA's resultaten van hun overstap naar de IaC-tools Ansible en Ansible Tower hebben geanalyseerd.
 Hierin geven ze aan dat het updateproces van nasa.gov van meer dan 1 uur is teruggebracht tot minder dan 5 minuten.
@@ -35,18 +69,145 @@ Het langdurige proces van het patchen van updates werd teruggebracht van een pro
 
 Het Duitse Federaal Ministerie van Voedsel en Landbouw (Bundesanstalt f\"ur Landwirtschaft und Ern\"ahrung, of BLE), heeft ook bepaalde IT-toepassingen met 50\% kunnen versnellen dankzij een overstap naar een IaC-aanpak~\autocite{case-study-ble-iac}.
 In de studie bespreken ze kort waarom ze hebben besloten over te schakelen naar een IaC-aanpak en geven ze een paar voorbeelden van hoe ze voorheen te werk gingen en hoe ze dit met IaC hebben aangepakt.
-Tijdens de implementatie hebben ze 1.000 virtuele machines overgeschakeld van Debian en SUSE Linux naar Red Hat Enterprise Linux, ook bekend als RHEL.
+Tijdens de implementatie hebben ze 1000 virtuele machines overgeschakeld van Debian en SUSE Linux naar Red Hat Enterprise Linux, ook bekend als RHEL.
 Deze machines worden beheerd met behulp van Satellite en geautomatiseerd met Ansible.
 
-Condition assessments is één van de belangrijkste componenten van IT asset management (IAM)~\autocite{ibm-what-is-iam}.
+Condition assessments is \'e\'en van de belangrijkste componenten van IT asset management (IAM)~\autocite{ibm-what-is-iam}.
 Dit proces houdt in dat men op elk moment de huidige staat kan bekijken van een asset.
 Doordat IaC de configuratie van een asset vastlegt in code en zorgt dat deze consistent is, kan IaC ondersteuning bieden bij dit proces.
 
-\subsection{Data Center Infrastructure Management}
-\label{sub:dcim}
+Een voorbeeld hiervan is Puppetboard, een open-source frontend voor PuppetDB.
+Het stelt ons in staat om alle systemen die worden beheerd met behulp van Puppet te monitoren~\autocite{puppetboard-github}.
+Met Puppetboard kunnen we in \'e\'en oogopslag zien welke systemen aanwezig zijn in de infrastructuur, welke wijzigingen Puppet heeft doorgevoerd om de gewenste staat af te dwingen, en welke ``facts'' van de machine beschikbaar zijn.
+Deze facts zijn configuratie-eigenschappen die de huidige status van een systeem defini\"eren.
+Enkele voorbeelden van facts zijn: cpu-architectuur, de Domain Controller waarop het systeem is geregistreerd, de gebruikte DHCP-servers, en nog veel meer.
+Dit biedt een diepgaand inzicht in de configuratie van de systemen, zoals te zien is in figuur~\ref{fig:puppetboard-host-details}.
+Verdere voorbeelden kan men vinden in de bijlage ``Puppetboard''~\ref{ch:bijlage_puppetboard}.
+
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]
+    {./graphics/state-of-the-art/puppetboard/puppetboard-host-details.png}
+    \caption{\label{fig:puppetboard-host-details}Voorbeeld van Puppetboard waar we enkele facts over een bepaalde machine in de infrastructuur kunnen zien, als ook de Puppet-runs die wijzigingen hebben doorgevoerd op de machine.},
+\end{figure}
+
+\subsection{PEASS-ng}
+\label{sub:peass-ng}
+
+Hoewel PEASS-ng niet direct een rol speelt binnen configuration management, is het zeker geen onbekende binnen de wereld van cybersecurity.
+Het is een open-source project, waarvan alle code vrij beschikbaar is via GitHub, gestart door Carlos Polop in 2019~\autocite{peass-ng-github}.
+Origineel was het project \'e\'en enkel shell script gekend onder de naam: FELS, wat stond voor First Enum Linux Script - Fast Enum Linux Script.
+Het is pas enkele maanden later dat de auteur het project hernoemde naar PEASS-ng, wat staat voor Privilege Escalation Awesome Scripts Suite - Next Generation.
+Deze tool stelt cybersecurity specialisten in staat om de beveiliging van een systeem, zijnde Linux, Windows of macOS, te testen op kwetsbaarheden en mogelijke aanvallen die mogelijks kunnen leiden tot privilege escalation.
+
+Om binnen de scope van deze bachelorproef te blijven, zal er echter enkel gekeken worden naar linPEAS, dat zich richt op Linux-, en BSD-systemen.
+linPEAS zelf heeft weinig betrekking tot asset management, maar kan wel gebruikt om inzicht te krijgen in hoe een machine geconfigureerd is, en welke privileges een gebruiker heeft.
+Door het script uit te voeren, krijgt u in enkele minuten een overzicht van de machine, inclusief gebruikers, groepen, services, bestanden en meer.
+Het gegeneerde rapport kan vervolgens worden gebruikt om de configuratie van de machine te vergelijken met de gewenste configuratie.
+Om later om te zetten in code, zoals Ansible of Puppet, om de configuratie van de machine te automatiseren en consistent te houden.
+
+\subsection{Nmap}
+\label{sub:nmap}
+
+Wanneer we dieper willen duiken in de netwerkconfiguratie, zijn er verschillende applicaties beschikbaar op een machine, zoals \code{ip}, \code{ifconfig} en \code{ss}.
+Deze worden standaard geleverd bij de meeste Linux-distributies en bieden uitgebreide informatie over hoe de machine is geconfigureerd binnen het netwerk, zoals het IP-adres, de netwerkinterfaces en de routes.
+
+Naast deze standaardapplicaties kunnen we ook gebruikmaken van een tool genaamd Nmap, dit staat voor "Network Mapper""~\autocite{nmap-website}.
+Dit is een open-source tool die wordt gebruikt voor netwerkontdekking en beveiligingsaudits, die ge\"implementeerd is in C en Lua.
+Alle source-code in verband met Nmap is vrij beschikbaar op GitHub~\autocite{nmap-github}.
+Deze tool kan men installeren op vrijwel elk besturingssysteem, enkele voorbeelden zijn (maar niet beperkt tot) Linux, Windows, macOS en verschillende BSD varianten.
+Nmap kan een netwerk scannen en informatie verzamelen over de machines die erop zijn aangesloten.
+Hiermee kunnen we bijvoorbeeld open poorten detecteren en de services identificeren die daarachter draaien.
+Daarnaast kan Nmap ons ook informatie geven over de firewall die op de machine actief is en de versie van het besturingssysteem.
+
+Naast de standaard functionaliteiten van Nmap, zijn er ook verschillende scripts beschikbaar die kunnen worden uitgevoerd om nog meer informatie te verzamelen.
+Deze zijn echter voornamelijk gericht op het detecteren van kwetsbaarheden en het uitvoeren van beveiligingsaudits.
+
+Tegenwoordig maken veel netwerkbeheerders al gebruik van Nmap om hun netwerken in kaart te brengen.
+Daarom kan Nmap zeker een waardevolle bijdrage leveren aan het opstellen en bijhouden van een configuratie-inventaris.
+
+Een voorbeeld van een Nmap-scan is te vinden in bijlage~\ref{ch:bijlage_nmap}.
+
+\subsection{Red Hat Satellite}
+\label{sub:red-hat-satellite}
+
+Red Hat Satellite omvat verschillende functionaliteiten die buiten de scope van deze bachelorproef vallen, zoals het provisionen van hosts.
+Niettemin kan het bijdragen aan het opstellen en bijhouden van een configuratie-inventaris.
+
+Het product biedt uitgebreide mogelijkheden voor configuration en asset management voor hosts die aan de Satellite server zijn gekoppeld~\autocite{rhel-satellite-hosts}.
+Beheerders kunnen basisinformatie raadplegen over het besturingssysteem, netwerkinterfaces, hardware en packagemanagementgerelateerde gegevens voor elke host.
+Dit omvat onder meer een overzicht van geïnstalleerde pakketten, geconfigureerde RPM-repositories en beschikbare updates.
+
+Bovendien biedt het product security compliance-functionaliteiten, waarmee gebruikers kunnen controleren of de doelhosts voldoen aan vastgestelde beveiligingsregels.
+Dit draagt bij aan een effectief beveiligingsbeheer door potentiële kwetsbaarheden te identificeren en aan te pakken.
+
+Hoewel Red Hat Satellite een krachtige oplossing is, kan het voor kleinere bedrijven te kostbaar zijn, en zijn niet alle functies altijd nodig.
+In dergelijke situaties kan Foreman een alternatief bieden~\autocite{foreman-introduction}.
+Foreman, als upstream project voor Red Hat Satellite, biedt meer flexibiliteit, met name wat betreft ondersteunde besturingssystemen.
+Aangezien Red Hat Satellite hoofdzakelijk gericht is op Red Hat Enterprise Linux, kan Foreman een geschikte keuze zijn voor organisaties die op zoek zijn naar een kosteneffectieve oplossing zonder in te boeten op functionaliteit.
+
+Omdat Red Hat Satellite een bundeling van verschillende open-source projecten is, waaronder Foreman, Katello en Candlepin~\autocite{rhel-satellite-6-introduction}, is het mogelijk om Foreman te gebruiken als alternatief voor Red Hat Satellite.
+Dit kan vooral aantrekkelijk zijn voor kleinere bedrijven die geen behoefte hebben aan de kosten van een commerciële oplossing.
+
+Andere toepassingen van Red Hat Satellite zijn onder meer het beheren van Docker-containers, het uitrollen van updates en het automatiseren van taken met behulp van Puppet en/of Ansible.
+
+In bijlage~\ref{ch:bijlage_red_hat_satellite} zijn enkele schermafbeeldingen opgenomen die een paar besproken functies van Red Hat Satellite visualiseren.
+
+\section{Huidige aanpak van asset management}%
+\label{sec:huidige-aanpak-van-asset-management}
+
+In dit gedeelte wordt er gekeken naar asset management, en hoe het ons kan helpen om van een niet IaC omgeving naar een IaC omgeving te gaan.
+Hoewel asset management minder gericht is op de configuratie van een machine, kan het ons wel inzicht geven in de infrastructuur en de assets die we moeten beheren.
+Met deze informatie kunnen we dan de initi\"ele configuratie vastleggen in code, zoals de HashiCortp Configuration language, ook gekend als HCL, voor Terraform.
+
+Deze tool helpt ons configuratie van de infrastructuur vast te leggen in code, dit kan gaan van virtuele machines tot volledige newerken, in de cloud of on-prem.
+
+\subsection{Asset management technieken}%
+\label{sub:asset-management-technieken}
+
+Een studie uitgevoerd door Kotenko~\autocite{Kotenko2022}, bespreekt men een nieuw voorstel voor het beheren van IT-assets in een organisatie.
+De voorgestelde techniek zou draaien rond het begrijpen van de objecteigenschappen van de asset, en de gebeurtenissen die erop plaatsvinden.
+Dit doordat elk asset, of het nu fysiek of virtueel is, een reeks eigenschappen heeft die kunnen worden gebruikt om het te identificeren, of ze nu statisch of dynamisch zijn.
+Gebeurtenissen, aan de andere kant, kunnen ons meer informatie verschaffen over die objecten, gedurende de levenscyclus van het asset.
+Door gebeurtenissen te analyseren kan men de specificaties van objecten en hun verbindingen binnen het systeem bepalen.
+
+Gegevensverzameling en voorbewerking spelen een cruciale rol in deze methode.
+Het verzamelen van gebeurtenissen gebonden aan een asset, gebeurt door middel van logboeken, monitoring en andere technieken.
+Vervolgens identificeert de techniek objecttypes en individuele objecten op basis van hun kenmerkende categorie\"en.
+Statische karakteristieken helpen bij het lokaliseren van objecten in de ruimte, terwijl dynamische karakteristieken hun levenscyclus volgen, wat een uitgebreid begrip van de dynamiek van activa mogelijk maakt.
+
+Verbindingen tussen objecten worden bepaald op basis van gebeurtenistypes en interacties, waardoor objecthi\"erarchie\"en binnen het systeem in kaart kunnen worden gebracht.
+Objecten worden hi\"erarchisch georganiseerd op basis van de totale gebruiksgraad van hun eigenschappen.
+Deze hi\"erarchie geeft inzicht in het relatieve belang van objecten binnen de infrastructuur.
+Bovendien is de beoordeling van de kriticiteit van objecten essentieel voor het begrijpen van beveiligingsrisico's.
+Kritieke objecten, bepaald door hun gebruik binnen de infrastructuur, krijgen prioriteit voor beveiligingsmaatregelen.
 
 \subsection{IP Address Management}
 \label{sub:ipam}
+
+IP Address Management, beter bekend als IPAM, worden vandaag de dag al veel gebruikt binnen bedrijven om hun huidige netwerkconfiguratie in kaart te brengen.
+Ze bieden een centraal aanspreekpunt voor beheerders om alle toegekende IP-adressen te beheren en te controleren van systemen binnen hun netwerk.
+Een voorbeeld van waarom dit handig kan zijn, is wanneer een beheerder een IP-adres moet toewijzen aan een nieuwe server.
+IPAM oplossingen kunnen beheerders helpen bij het vermijde van een dubbele toewijzing van een IP-adres, wat kan leiden tot netwerkproblemen.
+
+Een bekend voorbeeld van een IPAM-oplossing is NetBox, een open-source tool ontwikkeld door NetBox Labs~\autocite{netbox-ipam}, waarvan de source-code vrij beschikbaar is op GitHub~\autocite{netbox-github}.
+Het biedt een gebruiksvriendelijke webinterface, zoals te zien in figuur~\ref{fig:netbox-dashboard}, waarmee beheerders IP-adressen kunnen beheren, evenals andere netwerkgerelateerde informatie, zoals racks, apparatuur en subnetten.
+
+Wanneer we NetBox willen integreren met IaC-tools zoals Terraform of Ansible, kunnen we gebruikmaken van de REST API die NetBox biedt~\autocite{netbox-api}.
+Deze laat ons toe om vrijwel alle functionaliteiten van NetBox te benaderen en te manipuleren vanuit onze IaC-code.
+Enkele voorbeelden van wat we kunnen doen met de API zijn, maar niet beperkt tot:
+
+\begin{itemize}
+    \item IP-adressen toewijzen aan apparaten
+    \item Subnetten toevoegen en verwijderen
+    \item Apparaten toevoegen en verwijderen
+    \item Racks toevoegen en verwijderen
+\end{itemize}
+
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]
+    {./graphics/state-of-the-art/netbox-dashboard.png}
+    \caption{\label{fig:netbox-dashboard}NetBox dashboard waarin we de informatie kunnen terug vinden over de DM-Scraton site van een bepaalde organisatie~\autocite{netbox-dashboard}.}
+\end{figure}
 
 \subsection{Snipe-IT}
 \label{sub:snipe-it}
@@ -57,8 +218,8 @@ Het doel was om een applicatie te ontwikkelen die deze taak op een meer georgani
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
-    {./graphics/snipe-dashboard.png}
-    \caption{\label{fig:snipe-it-dashboard}Snip-IT dashboard.}
+    {./graphics/state-of-the-art/snipe-dashboard.png}
+    \caption{\label{fig:snipe-it-dashboard}Snip-IT dashboard waarin we het totale aantal assets binnen de organisatie kunnen zien, alsook een oplijsting van verschillende toestellen recent toegekend zijn~\autocite{snipe-it-dashboard}.}
 \end{figure}
 
 De software biedt een gebruiksvriendelijke webinterface (\ref{fig:snipe-it-dashboard}) waarmee bedrijfsmiddelen, licenties, garanties en meer gemakkelijk kunnen worden beheerd.
@@ -71,7 +232,7 @@ Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-featur
     \item Gemakkelijk zien welke assets zijn toegewezen, aan wie, en hun fysieke locatie
     \item In één klik inchecken
     \item Assetmodellen waarmee je gemeenschappelijke functies kunt groeperen
-    \item Vereisen van Gebruikersacceptatie (Eindgebruikers EULA's/Gebruiksvoorwaarden) bij Uitchecken
+    \item Vereisen van Gebruikersacceptatie (Eindgebruikers EULA's/Gebruiksvoorwaar-\ den) bij Uitchecken
     \item E-mailmeldingen voor het verlopen van garanties en licenties
     \item Integratie met de meeste handheld barcode scanners en QR-codelezer apps
     \item Snelle en eenvoudige asset-audit
@@ -82,9 +243,6 @@ Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-featur
     \item Assets behouden een volledige geschiedenis inclusief uitchecken, inchecken en onderhoud
     \item Optionele digitale handtekeningen bij assetacceptatie
 \end{itemize}
-
-\subsection{Nagios}
-\label{sub:nagios}
 
 \subsection{Lansweeper}
 \label{sub:lansweeper}
@@ -101,8 +259,8 @@ De gedetecteerde informatie wordt vervolgens opgeslagen in een centrale database
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
-    {./graphics/lansweeper-dashboard.png}
-    \caption{\label{fig:lansweeper-dashboard}Lansweeper dashboard.}
+    {./graphics/state-of-the-art/lansweeper-dashboard.png}
+    \caption{\label{fig:lansweeper-dashboard}Lansweeper dashboard waarin we een oplijsting van verschillende toestellen binnen de organisatie met basisinformatie over dat toestel, zoals: type, IP-adres en MAC-adres~\autocite{lansweeper-dashboard}.}
 \end{figure}
 
 Gebruikers kunnen aangepaste rapporten genereren over verschillende aspecten van hun IT-infrastructuur, zoals hardwareconfiguraties, softwarelicenties, patchniveaus en meer~\autocite{lansweeper-features}.
