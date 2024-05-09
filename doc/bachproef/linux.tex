@@ -85,7 +85,7 @@ Bovendien is versiebeheer een belangrijk aspect van package managers, waarbij de
 
 We kunnen de package manager ook inzetten om een lijst van ge\"installeerde softwarepakketten te bekijken, iets wat we later in dit werk zullen gebruiken om een configuratie-inventaris te maken.
 Op Debian-gebaseerde systemen kunnen we dit bijvoorbeeld doen door het commando \texttt{apt list --installed} als de root-gebruiker uit te voeren.
-Als alternatief kan men ook \texttt{dpkg-query -l} gebruiken, wat ons toelaaat om query's uit te voeren op de DPKG-database, zoals te zien in listing~\ref{lst:dpkg-query}.
+Als alternatief kan men ook \texttt{dpkg-query -l} gebruiken, wat ons toelaat om query's uit te voeren op de DPKG-database, zoals te zien in listing~\ref{lst:dpkg-query}.
 
 \begin{listing}
   \begin{minted}[linenos,tabsize=4,breaklines]{console}
@@ -122,7 +122,7 @@ Een vergelijkbare functionaliteit wordt aangeboden door Fedora met COPR, wat sta
 \subsection{Bestandssystemen}
 \label{linux_bestandssystemen}
 
-Het bestandssysteem is een belangrijk onderdeel van een Linux-systeem, en is verantwoordelijk voor het makklijk toegang verlenen tot opslagmedia, zoals Hard Drive Disks (HDD's), Solid State Drive (SSD's) en USB-sticks.
+Het bestandssysteem is een belangrijk onderdeel van een Linux-systeem, en is verantwoordelijk voor het makkelijk toegang verlenen tot opslagmedia, zoals Hard Drive Disks (HDD's), Solid State Drive (SSD's) en USB-sticks.
 Naast het toegang verlenen tot opslagmedia, is het bestandssysteem ook verantwoordelijk voor het beheren van bestanden en directories, en het toekennen van permissies aan deze bestanden en directories.
 Dit gebeurt door middel van twee verschillende delen, de collectie van bestanden en directories, en de metadata die hieraan is gekoppeld.
 Deze metadata bevat informatie zoals de eigenaar van het bestand, de groep waartoe het bestand behoort, de permissies die zijn toegekend aan het bestand en de timestamps van de creatie, wijziging en toegang van het bestand.
@@ -218,8 +218,8 @@ Zo hebben gebruikers die tot de wheel groep behoren op RHEL-gebaseerde systemen,
 
 Het \texttt{sudo} commando zal natuurlijk enkel werken als de gebruiker die het commando uitvoert, is toegevoegd aan de correcte groep in de \texttt{/etc/sudoers} file.
 Als alternatief kan men ook een bestand dat bepaalde regels bevat aanmaken in de \texttt{/etc/sudoers.d/} directory, zoals te zien in listing~\ref{lst:linux-sudoers}.
-Dit bestand bevat de verschillende regels die bepalen welke gebruikers en groepen root-privileges kunnen verkrijgen door het uitvoeren van het \texttt{sudo} commando.
-Alsook wat ze kunnen uitvoeren, zo kan men bijvoorbeeld specifi\"eren dat een bepaalde gebruiker geen wachtwoord moet ingeven bij het uitvoeren van het \texttt{sudo} commando in combinatie met een bepaald commando.
+Dit bestand bevat de verschillende regels die bepalen welke gebruikers en groepen root-privileges kunnen verkrijgen door het uitvoeren van het \texttt{sudo} commando, alsook wat ze kunnen uitvoeren.
+Zo kan men bijvoorbeeld specifi\"eren dat een bepaalde gebruiker geen wachtwoord moet ingeven bij het uitvoeren van het \texttt{sudo} commando in combinatie met een bepaald commando.
 Een voorbeeld van een \texttt{sudo}-regel is te zien in listing~\ref{lst:linux-sudoers}.
 
 \begin{listing}

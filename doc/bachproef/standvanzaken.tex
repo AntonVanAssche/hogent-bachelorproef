@@ -11,30 +11,29 @@
 \label{sec:nis2}
 
 Richtlijn 022/2555, ook bekend als Network and Information Security 2 (NIS2), is een nieuwe Europese richtlijn die in 2022 werd goedgekeurd door het Europees Parlement~\autocite{nis2-eu-be}.
-De goedkeuring ervan markeert een belangrijke stap in het versterken van de cybersecurity van de Europese Unie en het vergroten van de weerbaarheid tegen cyberaanvallen.
+De goedkeuring ervan markeert een belangrijke stap in het versterken van de cyberbeveiliging van de Europese Unie en het vergroten van de weerbaarheid tegen cyberaanvallen.
 Als opvolger van de eerste NIS-richtlijn, die in 2016 werd aangenomen en in 2018 in werking trad, richt NIS2 zich op drie hoofddoelen, zoals uiteengezet door het Centrum voor Cybersecurity Belgi\"e~\autocite{nis2-eu-be}:
 
 \begin{itemize}
-    \item Het verplichten van nationale overheden om de nodige aandacht te besteden aan cybersecurity.
-    \item Het versterken van de Europese samenwerking tussen cybersecurity autoriteiten.
+    \item Het verplichten van nationale overheden om de nodige aandacht te besteden aan cyberbeveiliging.
+    \item Het versterken van de Europese samenwerking tussen cyberbeveiliging autoriteiten.
     \item Het verplichten van belangrijke operatoren in cruciale sectoren van de samenleving om veiligheidsmaatregelen te nemen en incidenten te melden.
 \end{itemize}
 
 De NIS2-richtlijn is ontwikkeld als reactie op de toenemende afhankelijkheid van digitale systemen en de groeiende dreiging van cyberaanvallen.
 Deze afhankelijkheid werd vooral duidelijk tijdens de COVID-19-pandemie, toen veel bedrijven en organisaties gedwongen werden om hun activiteiten online voort te zetten.
 
-Volgens de Nederlandse minister van Justitie en Veiligheid, Dilan Ye\c{s}ilg"oz~\autocite{yesilgoz2022nis}, heeft de pandemie geleid tot een toename van digitale dreigingen, zoals phishing en ransomware aanvallen, waardoor de noodzaak van verbeterde cybersecurity nog urgenter werd.
+Volgens de Nederlandse minister van Justitie en Veiligheid, Dilan Ye\c{s}ilg"oz~\autocite{yesilgoz2022nis}, heeft de pandemie geleid tot een toename van digitale dreigingen, zoals phishing en ransomware aanvallen, waardoor de noodzaak van verbeterde cyberbeveiliging nog urgenter werd.
 
 Een belangrijke verandering die NIS2 met zich meebrengt, is de uitbreiding van de sectoren die onder de richtlijn vallen.
 Sectoren zoals het beheer van ICT-diensten, digitale infrastructuur, gezondheidszorg en vervoer vallen nu onder de richtlijn, in tegenstelling tot NIS1.
 Deze uitbreiding is bedoeld om een breder scala aan cruciale diensten en infrastructuren te beschermen tegen cyberdreigingen.
 Er is echter wel een uitzondering op deze regel.
-Zo zijn zo genaamde kleine- en micro-onderneminge, die kleiner zijn dan 50 werknemers, en een jaaromzet of jaarlijks balanstotaal van minder dan 10 miljoen euro, vrijgesteld van deze richtlijnen~\autocite{nis2-eu-be}.
-
+Zo zijn zo genaamde kleine- en micro-ondernemingen, die kleiner zijn dan 50 werknemers, en een jaaromzet of jaarlijks balanstotaal van minder dan 10 miljoen euro hebben, vrijgesteld van deze richtlijnen~\autocite{nis2-eu-be}.
 
 Een andere vereiste van de NIS2-richtlijn is dat bedrijven die onder de richtlijn vallen, een ``inventory of assets'' moeten bijhouden.
 Dit houdt in dat bedrijven een lijst moeten bijhouden van alle assets die ze bezitten, zoals servers, netwerkapparatuur, software, enzovoort, die verband houden met de bedrijfsprocessen.
-Dit draagt bij aan risicoanalyse en informatiebeveiligingsbeleid, waardoor bedrijven sneller kunnen reageren op incidenten en de impact ervan kunnen minimaliseren of zelfs voorkomen~\autocite{dragos-nis2}.
+Dit draagt bij aan de risicoanalyse en het informatiebeveiligingsbeleid, waardoor bedrijven sneller kunnen reageren op incidenten en de impact ervan kunnen minimaliseren of zelfs voorkomen~\autocite{dragos-nis2}.
 Dit is dan ook waar deze bachelorproef een handje wil helpen, door het opstellen van een configuratie-inventaris.
 
 Een strategie om aan deze vereisten te voldoen, is door gebruik te maken van tools voor configuration management en asset management.
@@ -93,14 +92,14 @@ Verdere voorbeelden kan men vinden in de bijlage ``Puppetboard''~\ref{ch:bijlage
 \subsection{PEASS-ng}
 \label{sub:peass-ng}
 
-Hoewel PEASS-ng niet direct een rol speelt binnen configuration management, is het zeker geen onbekende binnen de wereld van cybersecurity.
+Hoewel PEASS-ng niet direct een rol speelt binnen configuration management, is het zeker geen onbekende binnen de wereld van cyberbeveiliging.
 Het is een open-source project, waarvan alle code vrij beschikbaar is via GitHub, gestart door Carlos Polop in 2019~\autocite{peass-ng-github}.
 Origineel was het project \'e\'en enkel shell script gekend onder de naam: FELS, wat stond voor First Enum Linux Script - Fast Enum Linux Script.
 Het is pas enkele maanden later dat de auteur het project hernoemde naar PEASS-ng, wat staat voor Privilege Escalation Awesome Scripts Suite - Next Generation.
-Deze tool stelt cybersecurity specialisten in staat om de beveiliging van een systeem, zijnde Linux, Windows of macOS, te testen op kwetsbaarheden en mogelijke aanvallen die mogelijks kunnen leiden tot privilege escalation.
+Deze tool stelt cyberbeveiliging specialisten in staat om de beveiliging van een systeem, zijnde Linux, Windows of macOS, te testen op kwetsbaarheden en mogelijke aanvallen die mogelijks kunnen leiden tot privilege escalation.
 
 Om binnen de scope van deze bachelorproef te blijven, zal er echter enkel gekeken worden naar linPEAS, dat zich richt op Linux-, en BSD-systemen.
-linPEAS zelf heeft weinig betrekking tot asset management, maar kan wel gebruikt om inzicht te krijgen in hoe een machine geconfigureerd is, en welke privileges een gebruiker heeft.
+linPEAS zelf heeft weinig betrekking tot asset management, maar gebruikt om inzicht te krijgen in hoe een machine geconfigureerd is, en welke privileges een gebruiker heeft.
 Door het script uit te voeren, krijgt u in enkele minuten een overzicht van de machine, inclusief gebruikers, groepen, services, bestanden en meer.
 Het gegeneerde rapport kan vervolgens worden gebruikt om de configuratie van de machine te vergelijken met de gewenste configuratie.
 Om later om te zetten in code, zoals Ansible of Puppet, om de configuratie van de machine te automatiseren en consistent te houden.
@@ -135,18 +134,18 @@ Niettemin kan het bijdragen aan het opstellen en bijhouden van een configuratie-
 
 Het product biedt uitgebreide mogelijkheden voor configuration en asset management voor hosts die aan de Satellite server zijn gekoppeld~\autocite{rhel-satellite-hosts}.
 Beheerders kunnen basisinformatie raadplegen over het besturingssysteem, netwerkinterfaces, hardware en packagemanagementgerelateerde gegevens voor elke host.
-Dit omvat onder meer een overzicht van geïnstalleerde pakketten, geconfigureerde RPM-repositories en beschikbare updates.
+Dit omvat onder meer een overzicht van ge\"installeerde pakketten, geconfigureerde RPM-repositories en beschikbare updates.
 
 Bovendien biedt het product security compliance-functionaliteiten, waarmee gebruikers kunnen controleren of de doelhosts voldoen aan vastgestelde beveiligingsregels.
-Dit draagt bij aan een effectief beveiligingsbeheer door potentiële kwetsbaarheden te identificeren en aan te pakken.
+Dit draagt bij aan een effectief beveiligingsbeheer door potenti\"ele kwetsbaarheden te identificeren en aan te pakken.
 
-Hoewel Red Hat Satellite een krachtige oplossing is, kan het voor kleinere bedrijven te kostbaar zijn, en zijn niet alle functies altijd nodig.
+Hoewel Red Hat Satellite een krachtige oplossing is, kan het voor kleinere bedrijven te duur zijn, en zijn niet alle functies altijd nodig.
 In dergelijke situaties kan Foreman een alternatief bieden~\autocite{foreman-introduction}.
 Foreman, als upstream project voor Red Hat Satellite, biedt meer flexibiliteit, met name wat betreft ondersteunde besturingssystemen.
 Aangezien Red Hat Satellite hoofdzakelijk gericht is op Red Hat Enterprise Linux, kan Foreman een geschikte keuze zijn voor organisaties die op zoek zijn naar een kosteneffectieve oplossing zonder in te boeten op functionaliteit.
 
 Omdat Red Hat Satellite een bundeling van verschillende open-source projecten is, waaronder Foreman, Katello en Candlepin~\autocite{rhel-satellite-6-introduction}, is het mogelijk om Foreman te gebruiken als alternatief voor Red Hat Satellite.
-Dit kan vooral aantrekkelijk zijn voor kleinere bedrijven die geen behoefte hebben aan de kosten van een commerciële oplossing.
+Dit kan vooral aantrekkelijk zijn voor kleinere bedrijven die geen behoefte hebben aan een commerci\"ele oplossing.
 
 Andere toepassingen van Red Hat Satellite zijn onder meer het beheren van Docker-containers, het uitrollen van updates en het automatiseren van taken met behulp van Puppet en/of Ansible.
 
@@ -164,8 +163,8 @@ Deze tool helpt ons configuratie van de infrastructuur vast te leggen in code, d
 \subsection{Asset management technieken}%
 \label{sub:asset-management-technieken}
 
-Een studie uitgevoerd door Kotenko~\autocite{Kotenko2022}, bespreekt men een nieuw voorstel voor het beheren van IT-assets in een organisatie.
-De voorgestelde techniek zou draaien rond het begrijpen van de objecteigenschappen van de asset, en de gebeurtenissen die erop plaatsvinden.
+In een studie uitgevoerd door Kotenko~\autocite{Kotenko2022}, bespreekt men een nieuw voorstel voor het beheren van IT-assets in een organisatie.
+De voorgestelde techniek zou draaien rond het begrijpen van de objecteigenschappen van de asset en de gebeurtenissen die erop plaatsvinden.
 Dit doordat elk asset, of het nu fysiek of virtueel is, een reeks eigenschappen heeft die kunnen worden gebruikt om het te identificeren, of ze nu statisch of dynamisch zijn.
 Gebeurtenissen, aan de andere kant, kunnen ons meer informatie verschaffen over die objecten, gedurende de levenscyclus van het asset.
 Door gebeurtenissen te analyseren kan men de specificaties van objecten en hun verbindingen binnen het systeem bepalen.
@@ -187,7 +186,7 @@ Kritieke objecten, bepaald door hun gebruik binnen de infrastructuur, krijgen pr
 IP Address Management, beter bekend als IPAM, worden vandaag de dag al veel gebruikt binnen bedrijven om hun huidige netwerkconfiguratie in kaart te brengen.
 Ze bieden een centraal aanspreekpunt voor beheerders om alle toegekende IP-adressen te beheren en te controleren van systemen binnen hun netwerk.
 Een voorbeeld van waarom dit handig kan zijn, is wanneer een beheerder een IP-adres moet toewijzen aan een nieuwe server.
-IPAM oplossingen kunnen beheerders helpen bij het vermijde van een dubbele toewijzing van een IP-adres, wat kan leiden tot netwerkproblemen.
+IPAM oplossingen kunnen beheerders helpen bij het vermijden van een dubbele toewijzing van een IP-adres, wat kan leiden tot netwerkproblemen.
 
 Een bekend voorbeeld van een IPAM-oplossing is NetBox, een open-source tool ontwikkeld door NetBox Labs~\autocite{netbox-ipam}, waarvan de source-code vrij beschikbaar is op GitHub~\autocite{netbox-github}.
 Het biedt een gebruiksvriendelijke webinterface, zoals te zien in figuur~\ref{fig:netbox-dashboard}, waarmee beheerders IP-adressen kunnen beheren, evenals andere netwerkgerelateerde informatie, zoals racks, apparatuur en subnetten.
@@ -223,7 +222,7 @@ Het doel was om een applicatie te ontwikkelen die deze taak op een meer georgani
 \end{figure}
 
 De software biedt een gebruiksvriendelijke webinterface (\ref{fig:snipe-it-dashboard}) waarmee bedrijfsmiddelen, licenties, garanties en meer gemakkelijk kunnen worden beheerd.
-Wanneer men kiest voor de self-hosted optie is de software gratis beschikbaar, terwijl ook verschillende cloud-gebaseerde optie beschikbaar zijn tegen een jaarlijkse bijdrage.
+Wanneer men kiest voor de self-hosted optie is de software gratis beschikbaar, terwijl ook verschillende cloud-gebaseerde opties beschikbaar zijn tegen een jaarlijkse bijdrage.
 Deze prijs varieert afhankelijk van de nodige features en support.
 Alle code en services gerelateerd aan Snipe-IT zijn vrij beschikbaar op GitHub~\autocite{snipe-it-github}.
 
@@ -232,7 +231,7 @@ Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-featur
     \item Gemakkelijk zien welke assets zijn toegewezen, aan wie, en hun fysieke locatie
     \item In één klik inchecken
     \item Assetmodellen waarmee je gemeenschappelijke functies kunt groeperen
-    \item Vereisen van Gebruikersacceptatie (Eindgebruikers EULA's/Gebruiksvoorwaar-\ den) bij Uitchecken
+    \item Vereisten van Gebruikersacceptatie (Eindgebruikers EULA's/Gebruiksvoorwaar-\ den) bij Uitchecken
     \item E-mailmeldingen voor het verlopen van garanties en licenties
     \item Integratie met de meeste handheld barcode scanners en QR-codelezer apps
     \item Snelle en eenvoudige asset-audit
