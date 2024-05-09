@@ -22,8 +22,8 @@ Op basis hiervan zal worden geconcludeerd of het implementeren van deze tool nut
 \section{Literatuurstudie}%
 \label{sec:litaratuurstudie}
 
-Volgens een studie uit 2022~\autocite{Kotenko2022} is het opstellen van een configuratie inventaris essentieel voor het beoordelen van cybersecurityrisico's.
-Aan de hand van een inventaris kan men potenti\"ele kwetsbaarheden gaan identificeren en de passende maatregelen gaan treffen.
+Volgens een studie uit 2022~\autocite{Kotenko2022} is het opstellen van een configuratie inventaris essentieel voor het beoordelen van cyberbeveiligingrisico's.
+Aan de hand van een inventaris kan men potenti\"ele kwetsbaarheden identificeren en de passende maatregelen treffen.
 Ook wordt er benadrukt dat het inventaris kan gebruikt worden om mogelijke cyberaanvalspaden te identificeren en het voorkomen van verliezen door cyberaanvallen.
 Het regelmatig herevalu\"eren van het inventaris wordt benadrukt als een proactieve benadering om potenti\"ele incidenten te voorkomen.
 Dit benadrukt het belang van een nauwkeurige inventarisatie voor het implementeren van geautomatiseerde detectie- en bewakingsmaatregelen.
@@ -52,14 +52,14 @@ Het onderzoek zal bestaan uit zes fasen, zoals weergegeven in figuur~\ref{fig:fl
 \label{sub:literatuurstudie}
 
 De eerste fase omvat een grondige literatuurstudie die zich richt op het verzamelen van essenti\"ele configuratie en eigenschappen voor een grondig inventaris.
-Daarnaast zullen ook bestaan\\de tools worden onderzocht die kunnen gebruikt worden bij het inventariseren van Linux-systemen.
+Daarnaast zullen ook bestaande tools worden onderzocht die kunnen gebruikt worden bij het inventariseren van Linux-systemen.
 Deze fase zal 2 weken in beslag nemen, en resulteert in een literatuurstudie die niet alleen de  eigenschappen van Linux-systemen identificeert die relevant zijn voor het inventaris, maar ook reeds bestaande tools die hiervoor gebruikt kunnen worden.
 
-\subsection{Fase 2: Risico-analyse}%
+\subsection{Fase 2: risicoanalyse}%
 \label{sub:risico_analyse}
 
-De tweede fase richt zich op een risico-analyse, waarbij de ge\"identificeerde Linux-systeem\\eigenschappen binnen het inventaris kritisch worden ge\"evalueerd.
-Via een diepgaande risico-\\analyse worden de impact van deze eigenschappen op het incidentresponseproces en hun bruikbaarheid beoordeeld.
+De tweede fase richt zich op een risicoanalyse, waarbij de ge\"identificeerde Linux-systeemeigenschappen binnen het inventaris kritisch worden ge\"evalueerd.
+Via een diepgaande risicoanalyse worden de impact van deze eigenschappen op het incidentresponseproces en hun bruikbaarheid beoordeeld.
 Ook deze fase zal 2 weken in beslag nemen, en resulteert in een lijst van eigenschappen die een positieve bijdrage leveren aan het incidentresponseproces en een lijst van eigenschappen die een negatieve impact hebben.
 
 \subsection{Fase 3: Ontwikkeling van de tool}%
@@ -68,16 +68,16 @@ Ook deze fase zal 2 weken in beslag nemen, en resulteert in een lijst van eigens
 De derde fase omvat de ontwikkeling van de tool, een Bash-script dat de eigenschappen van fase 2 gebruikt om een inventaris van het Linux-systeem op te stellen.
 Het resultaat is een werkend Bash-script en zal ongeveer 3 weken in beslag nemen.
 
-\subsection{Fase 4: Proof-of-Concept}%
+\subsection{Fase 4: Proof of Concept}%
 \label{sub:proof_of_concept}
 
-Na de ontwikkelingsfase volgt de Proof-of-\\Concept, waarbij een omgeving wordt opgezet met 5 Linux-servers met elk hun specifieke taak.
+Na de ontwikkelingsfase volgt de Proof of Concept, waarbij een omgeving wordt opgezet met 5 Linux-servers met elk hun specifieke taak.
 Deze fase zal ongeveer 1 week duren en omvat het testen van het script op de opgezette omgeving, resulterend in een inventaris van de omgeving.
 
 \subsection{Fase 5: Analyse van de resultaten}%
 \label{sub:analyse_van_de_resultaten}
 
-Na het uitvoeren van het Proof-of-\\Concept worden de resultaten geanalyseerd.
+Na het uitvoeren van het Proof of Concept worden de resultaten geanalyseerd.
 Deze analyse vormt de basis voor de conclusie, waarbij de focus ligt op de kwaliteit en bruikbaarheid van het inventaris.
 Beoordelingscriteria omvatten de volledigheid van het inventaris, de aanwezigheid van fouten en de impact op het incidentresponseproces.
 Deze fase duurt 1 week.
@@ -95,9 +95,9 @@ Deze fase duurt 2 weken, maar er zal ook al aandacht aan worden besteed tijdens 
 \label{sec:verwachte_resultaten}
 
 De literatuurstudie heeft aangetoond welke systeemeigenschappen en configuratie we zouden kunnen gebruiken voor het opstellen van een inventaris.
-De risico-analyse heeft kritieke eigenschappen van Linux-systemen ge\"identificeerd voor inventarisatie, waarbij een evenwicht is gezocht tussen positieve bijdragen aan het incident response proces en mogelijke negatieve effecten.
+De risicoanalyse heeft kritieke eigenschappen van Linux-systemen ge\"identificeerd voor inventarisatie, waarbij een evenwicht is gezocht tussen positieve bijdragen aan het incident response proces en mogelijke negatieve effecten.
 
 De ontwikkelde tool biedt een praktische oplossing voor het inventariseren van Linux-systemen te automatiseren.
-Tijdens de Proof-of-Concept fase is aangetoond dat het script effectief is.
+Tijdens de Proof of Concept fase is aangetoond dat het script effectief is.
 De inventarisatie was volledig en nauwkeurig, wat de potentie benadrukt om het incident response proces te versterken.
 

@@ -110,7 +110,7 @@ De bestanden in deze directory bevatten vaak de configuratie-opties voor verschi
 
 Systemd werd reeds besproken in~\ref{linux_systemd} als de standaard init-systeem op de meeste Linux-distributies.
 Het is een manier om services, en processen, te starten en stoppen op een bepaald tijdstip, of bij een bepaalde gebeurtenis.
-Zo kunnen we bijvoorbeeld een zoals een webserver automatisch laten starten bij het opstarten van het systeem.
+Zo kunnen we bijvoorbeeld een webserver automatisch laten starten bij het opstarten van het systeem.
 Dit doen we met het \texttt{systemctl} commando gevolgd door de \texttt{enable} optie, zoals te zien in listing~\ref{lst:systemd_enable}.
 
 \begin{listing}
@@ -123,7 +123,7 @@ Created symlink /etc/systemd/system/multi-user.target.wants/sshd.service → /us
 \end{listing}
 
 Doordat systemd units vaak worden gebruikt om services te beheren, is het van belang om deze units op te nemen in de configuratie-inventaris.
-Netzoals een lijst bij te houden van de services die automatisch worden gestart bij het opstarten van het systeem, dit kan worden bereikt door \texttt{systemctl} te gebruiken met de \texttt{list-unit-files} optie, zoals te zien in listing~\ref{lst:systemd_list_unit_files}.
+Netzoals het bijhouden van een lijst van services die automatisch worden gestart bij het opstarten van het systeem, dit kan worden bereikt door \texttt{systemctl} te gebruiken met de \texttt{list-unit-files} optie, zoals te zien in listing~\ref{lst:systemd_list_unit_files}.
 
 \begin{listing}
   \begin{minted}[linenos,tabsize=4,breaklines]{console}
@@ -140,7 +140,7 @@ abrt-xorg.service                  enabled enabled
   \label{lst:systemd_list_unit_files}
 \end{listing}
 
-Verder werd in~\ref{linux_cronjobs} besproken dat cronjobs worden gebruikt om taken op een geplande tijdstip uit te voeren.
+Verder werd in~\ref{linux_cronjobs} besproken dat cronjobs worden gebruikt om taken op een gepland tijdstip uit te voeren.
 Dit zou kunnen gebruikt worden als alternatief voor systemd timers, daarom is het ook hier belangrijk om deze cronjobs op te nemen in de configuratie-inventaris.
 Dit zou men kunnen bereiken door een kopie te maken van de directories \texttt{/etc/cron.d/}, \texttt{/etc/cron.daily/}, \texttt{/etc/cron.hourly/}, \texttt{/etc/cron.monthly/} en \texttt{/etc/cron.weekly/}, alsook \texttt{/etc/crontab} die alle cronjobs bevat.
 
@@ -148,7 +148,7 @@ Dit zou men kunnen bereiken door een kopie te maken van de directories \texttt{/
 \label{risico_netwerkconfiguratie}
 
 Vele Linux-systemen maken gebruik van netwerkverbindingen om te communiceren met andere systemen en diensten.
-Dit werd reedst besproken in~\ref{ch:computernetwerk-concepten}, waarbij de basisprincipes van computernetwerken werden toegelicht, alsook enkele protocollen die worden gebruikt voor netwerkcommunicatie.
+Dit werd reeds besproken in~\ref{ch:computernetwerk-concepten}, waarbij de basisprincipes van computernetwerken werden toegelicht, alsook enkele protocollen die worden gebruikt voor netwerkcommunicatie.
 Een basis oplijsting van de netwerkconfiguratie is essentieel voor een succesvolle overgang naar een IaC-omgeving, omdat het de basis vormt voor de netwerkautomatisering.
 Ook zorgt het opnemen van de netwerkconfiguratie in de configuratie-inventaris ervoor dat men een begrip heeft over welke systemen met elkaar kunnen communiceren en welke niet.
 
