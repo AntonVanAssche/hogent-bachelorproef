@@ -61,7 +61,7 @@ Wanneer de TTL is verstreken, wordt het pakket verwijderd en wordt er een ICMP-p
     \begin{center}
         \includegraphics[width=300pt]
         {./graphics/network/ipv4-header.png}
-        \caption{\label{fig:network-ipv4-header}Diagram van een IPv4 header~\autocite{dordal2020}.}
+        \caption[IPv4 header diagram.]{\label{fig:network-ipv4-header}Diagram van een IPv4 header~\autocite{dordal2020}.}
     \end{center}
 \end{figure}
 
@@ -106,7 +106,7 @@ Bovendien bestaat de header van een IPv6-pakket uit 40 bytes, wat tweemaal zo gr
     \begin{center}
         \includegraphics[width=300pt]
         {./graphics/network/ipv6-header.png}
-        \caption{\label{fig:network-ipv6-header}Diagram van een IPv6 header~\autocite{dordal2020}.}
+        \caption[IPv6 header diagram.]{\label{fig:network-ipv6-header}Diagram van een IPv6 header~\autocite{dordal2020}.}
     \end{center}
 \end{figure}
 
@@ -132,7 +132,7 @@ Computers houden zelf ook een routingtabel bij om te bepalen naar welke router z
 default via 192.168.0.1 dev wlo1 proto dhcp src 192.168.0.82 metric 600
 192.168.0.0/24 dev wlo1 proto kernel scope link src 192.168.0.82 metric 600
   \end{minted}
-  \caption{Uitvoer van het commando \texttt{ip route} op een Linux-systeem, dat de routeringstabel toont.}
+  \caption[Routeringstabel met \texttt{ip route}.]{Uitvoer van het commando \texttt{ip route} op een Linux-systeem, dat de routeringstabel toont.}
   \label{lst:linux-routering}
 \end{listing}
 
@@ -162,7 +162,7 @@ Een voorbeeld van een UDP-header is te zien in figuur~\ref{fig:netwerk-udp-heade
     \begin{center}
         \includegraphics[width=200pt]
         {./graphics/network/udp-header.png}
-        \caption{\label{fig:netwerk-udp-header}Diagram van een UDP header~\autocite{dordal2020}.}
+        \caption[UDP header diagram.]{\label{fig:netwerk-udp-header}Diagram van een UDP header~\autocite{dordal2020}.}
     \end{center}
 \end{figure}
 
@@ -183,7 +183,7 @@ Dit proces wordt geïllustreerd in figuur~\ref{fig:netwerk-tcp-handshake}.
     \begin{center}
         \includegraphics[width=100pt]
         {./graphics/network/tcp-handshake.png}
-        \caption{\label{fig:netwerk-tcp-handshake}TCP three-way handshake~\autocite{dordal2020}.}
+        \caption[TCP three-way handshake diagram.]{\label{fig:netwerk-tcp-handshake}TCP three-way handshake~\autocite{dordal2020}.}
     \end{center}
 \end{figure}
 
@@ -197,7 +197,7 @@ Ook bevat de header weer een checksum om de integriteit van het pakket te waarbo
     \begin{center}
         \includegraphics[width=300pt]
         {./graphics/network/tcp-header.png}
-        \caption{\label{fig:netwerk-tcp-header}Diagram van een TCP header~\autocite{dordal2020}.}
+        \caption[TCP header diagram.]{\label{fig:netwerk-tcp-header}Diagram van een TCP header~\autocite{dordal2020}.}
     \end{center}
 \end{figure}
 
@@ -234,6 +234,6 @@ Address: 142.251.39.110
 Name:   google.com
 Address: 2a00:1450:400e:811::200e
   \end{minted}
-  \caption{Voorbeeld van een DNS-query met behulp van het \texttt{nslookup} commando.}
+  \caption[DNS-query met \texttt{nslookup}]{Voorbeeld van een DNS-query met behulp van het \texttt{nslookup} commando.}
   \label{lst:dns-query}
 \end{listing}

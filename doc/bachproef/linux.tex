@@ -34,7 +34,7 @@ Dit moet gebeuren door de Application Programming Interface (API) die de kernel 
     \begin{center}
         \includegraphics[width=\textwidth]
         {./graphics/linux/kernel-structure.png}
-        \caption{\label{fig:linux-system-structure}Structuur van een typisch Linux-systeem~\autocite{mauerer2008linux}}
+        \caption[Structuur van Linux-systeem.]{\label{fig:linux-system-structure}Structuur van een typisch Linux-systeem~\autocite{mauerer2008linux}}
     \end{center}
 \end{figure}
 
@@ -68,7 +68,7 @@ Een beknopt overzicht van de distributies die deze packaging-systemen gebruiken,
             Red Hat Package Manager (RPM)     & RHEL, Fedora, openSUSE \\
         \end{tabular}
     \end{center}
-    \caption{Overzicht van de verschillende packaging systemen en de distributies die ze gebruiken~\autocite{shotts2019linux}.}
+    \caption[Overzicht van packaging systemen.]{Overzicht van de verschillende packaging systemen en de distributies die ze gebruiken~\autocite{shotts2019linux}.}
     \label{table:packaging-systems}
 \end{table}
 
@@ -102,7 +102,7 @@ vagrant@srv1:~$ sudo dpkg-query -Wf '"${Package}" "${Version}" "${Source}"\n'
 "bind9-dnsutils" "1:9.18.24-1" "bind9"
 [...]
   \end{minted}
-  \caption{Uitvoer van het \texttt{dpkg-query} commando om een lijst van ge\"installeerde softwarepakketten te tonen.}
+    \caption[Lijst van ge\"{i}nstalleerde softwarepakketten.]{Uitvoer van het \texttt{dpkg-query} commando om een lijst van ge\"installeerde softwarepakketten te tonen.}
   \label{lst:dpkg-query}
 \end{listing}
 
@@ -155,7 +155,7 @@ Verschillende bestandssystemen kunnen worden gebruikt op een Linux-systeem, zoal
 ├── usr
 └── var
   \end{minted}
-  \caption{Uitvoer van het \texttt{tree}-commando op een Fedora Linux-systeem om de hi\"erarchische structuur van het Linux-bestandssysteem te tonen.}
+    \caption[Hi\"{e}rarchische structuur van Linux-bestandssysteem.]{Uitvoer van het \texttt{tree}-commando op een Fedora Linux-systeem om de hi\"erarchische structuur van het Linux-bestandssysteem te tonen.}
   \label{lst:linux-root-dir-structure}
 \end{listing}
 
@@ -182,7 +182,7 @@ Aan de andere kant worden normale gebruikers ge\"identificeerd door een UID hoge
 [root@fedorable ~]# id
 uid=0(root) gid=0(root) groups=0(root)
   \end{minted}
-  \caption{Uitvoer van het \texttt{id}-commando voor de superuser, waarop we kunnen zien dat de gebruiker een UID van 0 heeft, een GID van 0 heeft en lid is van de groep \texttt{root}.}
+    \caption[UID, GID en groepslidmaatschap voor superuser.]{Uitvoer van het \texttt{id}-commando voor de superuser, waarop we kunnen zien dat de gebruiker een UID van 0 heeft, een GID van 0 heeft en lid is van de groep \texttt{root}.}
   \label{lst:linux-root-id}
 \end{listing}
 
@@ -191,7 +191,7 @@ uid=0(root) gid=0(root) groups=0(root)
 [anton@fedorable ~]$ id
 uid=1000(anton) gid=1000(anton) groups=1000(anton),10(wheel)
   \end{minted}
-  \caption{Uitvoer van het \texttt{id}-commando voor een normale gebruiker, waarop we kunnen zien dat de gebruiker een UID van 1000 heeft, een GID van 1000 heeft en lid is van de groepen \texttt{anton} en \texttt{wheel}.}
+    \caption[UID, GID en groepslidmaatschap voor normale gebruiker.]{Uitvoer van het \texttt{id}-commando voor een normale gebruiker, waarop we kunnen zien dat de gebruiker een UID van 1000 heeft, een GID van 1000 heeft en lid is van de groepen \texttt{anton} en \texttt{wheel}.}
   \label{lst:linux-anton-id}
 \end{listing}
 
@@ -212,7 +212,7 @@ Zo hebben gebruikers die tot de wheel groep behoren op RHEL-gebaseerde systemen,
                 GID        & Staande voor Group ID, is een uniek nummer dat aan een groep wordt toegekend. \\
         \end{tabular}
     \end{adjustbox}
-    \caption{Overzicht van terminologie voor gebruikers en groepen.}
+    \caption[Terminologie voor gebruikers en groepen.]{Overzicht van terminologie voor gebruikers en groepen.}
     \label{table:user-group-terminology}
 \end{table}
 
@@ -227,7 +227,7 @@ Een voorbeeld van een \texttt{sudo}-regel is te zien in listing~\ref{lst:linux-s
 [root@fedorable ~]# cat /etc/sudoers.d/anton
 anton    ALL=(ALL)    NOPASSWD: /usr/bin/dnf
   \end{minted}
-  \caption{Uitvoer van het \texttt{cat}-commando dat de inhoud van het bestand \texttt{/etc/sudoers.d/anton} laat zien. Hieruit blijkt dat de gebruiker \texttt{anton} root-privileges heeft voor het uitvoeren van het \texttt{dnf}-commando en geen wachtwoord hoeft in te voeren bij dit commando.}
+    \caption[Inhoud van \texttt{/etc/sudoers.d/anton}.]{Uitvoer van het \texttt{cat}-commando dat de inhoud van het bestand \texttt{/etc/sudoers.d/anton} laat zien. Hieruit blijkt dat de gebruiker \texttt{anton} root-privileges heeft voor het uitvoeren van het \texttt{dnf}-commando en geen wachtwoord hoeft in te voeren bij dit commando.}
   \label{lst:linux-sudoers}
 \end{listing}
 
@@ -261,7 +261,7 @@ Een overzicht van enkele veelgebruikte unit types wordt weergegeven in tabel~\re
                 Mount   & Een mount point voor een bestandssysteem. \\
         \end{tabular}
     \end{center}
-    \caption{Overzicht van veelvoorkomende unit types in systemd.}
+    \caption[Veelvoorkomende unit types in systemd.]{Overzicht van veelvoorkomende unit types in systemd.}
     \label{table:sytemd_unit_types}
 \end{table}
 
@@ -288,7 +288,7 @@ Na de tijdvelden volgt het commando dat moet worden uitgevoerd, zoals te zien is
     \begin{center}
         \includegraphics[width=200pt]
         {./graphics/linux/cronjob-structure.png}
-        \caption{\label{fig:cronjob-structure}Structuur van een cron-tabel~\autocite{ward2021linux}.}
+        \caption[Structuur van een cron-tabel.]{\label{fig:cronjob-structure}Structuur van een cron-tabel~\autocite{ward2021linux}.}
     \end{center}
 \end{figure}
 
@@ -321,7 +321,7 @@ De volledige architectuur van \texttt{firewalld} is te zien in figuur~\ref{fig:f
     \begin{center}
         \includegraphics[width=200pt]
         {./graphics/linux/firewalld-architecture.png}
-        \caption{\label{fig:firewalld-architecture}Architectuur van \texttt{firewalld}~\autocite{dakic2022linux}.}
+        \caption[Architectuur van firewalld.]{\label{fig:firewalld-architecture}Architectuur van \texttt{firewalld}~\autocite{dakic2022linux}.}
     \end{center}
 \end{figure}
 
@@ -352,7 +352,7 @@ Deze strikte controle, zelfs in het geval van een gecompromitteerd proces zoals 
     \begin{center}
         \includegraphics[width=300pt]
         {./graphics/linux/selinux-example.png}
-        \caption{\label{fig:sleinux-example}Voorbeeld dat de werking van SELinux illustreert. De Apache-webserver kan enkel bestanden aanspreken die zijn gelabeld met het \texttt{httpd\_sys\_content\_t} label, terwijl de MariaDB-database enkel bestanden kan aanspreken die zijn gelabeld met het \texttt{mysqld\_db\_t} label~\autocite{selinux-rhel8}.}
+        \caption[Voorbeeld van SELinux werking.]{\label{fig:sleinux-example}Voorbeeld dat de werking van SELinux illustreert. De Apache-webserver kan enkel bestanden aanspreken die zijn gelabeld met het \texttt{httpd\_sys\_content\_t} label, terwijl de MariaDB-database enkel bestanden kan aanspreken die zijn gelabeld met het \texttt{mysqld\_db\_t} label~\autocite{selinux-rhel8}.}
     \end{center}
 \end{figure}
 

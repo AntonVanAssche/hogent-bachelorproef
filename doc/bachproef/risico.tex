@@ -67,7 +67,7 @@ Dit geeft aan dat de hashwaarden onafhankelijk zijn van de bestandslocatie, en d
 0263829989b6fd954f72baaf2fc64bc2e2f01d692d4de72986ea808f6e99813f  b/b.txt
 87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7  c/a.txt
   \end{minted}
-  \caption{Uitvoer van het \texttt{find}-commando om bestanden te vinden en de hash ervan te berekenen met \texttt{sha256sum}.}
+  \caption[Find-commando voor bestandshashes.]{Uitvoer van het \texttt{find}-commando om bestanden te vinden en de hash ervan te berekenen met \texttt{sha256sum}.}
   \label{lst:sha256sum}
 \end{listing}
 
@@ -118,7 +118,7 @@ Dit doen we met het \texttt{systemctl} commando gevolgd door de \texttt{enable} 
 [root@fedorable ~]$ systemctl enable sshd
 Created symlink /etc/systemd/system/multi-user.target.wants/sshd.service → /usr/lib/systemd/system/sshd.service.
   \end{minted}
-  \caption{Uitvoer van het \texttt{systemctl}-commando om een service automatisch te laten starten bij het opstarten van het systeem.}
+  \caption[Automatische service start met systemctl.]{Uitvoer van het \texttt{systemctl}-commando om een service automatisch te laten starten bij het opstarten van het systeem.}
   \label{lst:systemd_enable}
 \end{listing}
 
@@ -136,7 +136,7 @@ abrt-vmcore.service                enabled enabled
 abrt-xorg.service                  enabled enabled
 [...]
   \end{minted}
-  \caption{Uitvoer van het \texttt{systemctl}-commando om een lijst van services te tonen die automatisch worden gestart bij het opstarten van het systeem.}
+  \caption[Lijst van automatisch gestarte services.]{Uitvoer van het \texttt{systemctl}-commando om een lijst van services te tonen die automatisch worden gestart bij het opstarten van het systeem.}
   \label{lst:systemd_list_unit_files}
 \end{listing}
 
@@ -241,6 +241,6 @@ Tabel~\ref{table:risico_conclusie} vat de belangrijkste elementen samen die moet
                 Taakbeheer               & Systemd units, cronjobs \\
         \end{tabular}
     \end{center}
-    \caption{Overzicht van de belangrijkste elementen voor een configuratie-inventaris van Linux-systemen.}
+    \caption[Belangrijke elementen configuratie-inventaris.]{Overzicht van de belangrijkste elementen voor een configuratie-inventaris van Linux-systemen.}
     \label{table:risico_conclusie}
 \end{table}
