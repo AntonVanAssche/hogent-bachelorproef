@@ -21,7 +21,7 @@ Het \texttt{net-tools} pakket wordt gebruikt om de configuratie van de netwerkin
     state: latest
     update_cache: yes
   \end{minted}
-  \caption{Code verantwoordelijk voor het installeren van de vereiste pakketten}
+  \caption[Installatie van vereiste pakketten.]{Code verantwoordelijk voor het installeren van de vereiste pakketten}
   \label{lst:bijlage-requirements}
 \end{listing}
 
@@ -32,7 +32,7 @@ Het \texttt{net-tools} pakket wordt gebruikt om de configuratie van de netwerkin
     src: /vagrant/ansible/files/confiscan.sh
     dest: /tmp/confiscan.sh
   \end{minted}
-  \caption{Code verantwoordelijk voor het kopiëren van het script naar de servers}
+  \caption[Kopi\"{e}ren van script naar servers.]{Code verantwoordelijk voor het kopiëren van het script naar de servers}
   \label{lst:bijlage-copy-script}
 \end{listing}
 
@@ -57,7 +57,7 @@ Listing~\ref{lst:bijlage-run-playbook} illustreert hoe men aan de hand van het p
         chdir: /tmp/
       become: true
     \end{minted}
-    \caption{Code verantwoordelijk voor het uitvoeren van het script op srv1}
+    \caption[Uitvoeren van script op \texttt{srv1}.]{Code verantwoordelijk voor het uitvoeren van het script op srv1}
     \label{lst:bijlage-run-script}
 \end{listing}
 
@@ -80,7 +80,7 @@ Listing~\ref{lst:bijlage-run-playbook} illustreert hoe men aan de hand van het p
         dest: "{{ lookup('ansible.builtin.env', 'HOME') }}/"
       delegate_to: localhost
   \end{minted}
-  \caption{Code verantwoordelijk voor het downloaden en uitpakken van de tarballs}
+  \caption[Downloaden en uitpakken van tarballs.]{Code verantwoordelijk voor het downloaden en uitpakken van de tarballs}
   \label{lst:bijlage-tarballs}
 \end{listing}
 
@@ -89,7 +89,7 @@ Listing~\ref{lst:bijlage-run-playbook} illustreert hoe men aan de hand van het p
 [vagrant@control ~]$ cd /vagrant/ansible/
 [vagrant@control ~]$ ansible-playbook -i inventory.yml poc.yml
   \end{minted}
-  \caption{Instructies voor het uitvoeren van de Ansible playbook die het script uitvoert op elke server.}
+  \caption[Uitvoeren van Ansible playbook.]{Instructies voor het uitvoeren van de Ansible playbook die het script uitvoert op elke server.}
   \label{lst:bijlage-run-playbook}
 \end{listing}
 
@@ -110,6 +110,6 @@ root@srv1:~# ./confiscan.sh -t \
     /etc/bind/named.conf \
     /etc/node_exporter/config.yaml
   \end{minted}
-  \caption{Instructies om het script manueel uit te voeren op \texttt{srv1}.}
+  \caption[Manueel uitvoeren van script op \texttt{srv1}.]{Instructies om het script manueel uit te voeren op \texttt{srv1}.}
   \label{lst:bijlage-run-script-manual}
 \end{listing}

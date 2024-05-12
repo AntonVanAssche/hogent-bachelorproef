@@ -94,7 +94,7 @@ Alvast een overzicht van de verschillende servers die deel zullen uitmaken van d
             srv5    & 172.16.128.5   & Fileserver \\
         \end{tabular}
     \end{center}
-    \caption{Overzicht van de verschillende rollen die worden toegewezen aan elke server binnen de omgeving.}
+    \caption[Rollen toegewezen aan servers.]{Overzicht van de verschillende rollen die worden toegewezen aan elke server binnen de omgeving.}
     \label{table:poc-server-roles}
 \end{table}
 
@@ -209,7 +209,7 @@ auditd.service,enabled,enabled
 avahi-daemon.service,enabled,enabled
 [...]
   \end{minted}
-  \caption{Voorbeeld van alle enabled systemd units op een server in CSV-formaat.}
+  \caption[Enabled systemd units in CSV-formaat.]{Voorbeeld van alle enabled systemd units op een server in CSV-formaat.}
   \label{lst:poc-network-csv}
 \end{listing}
 
@@ -228,7 +228,7 @@ Zoals te zien is in listing~\ref{lst:poc-config-args}, wordt het script uitgevoe
   \begin{minted}[linenos,tabsize=4,breaklines]{console}
 vagrant@srv1:~$ ./confiscan.sh /etc/apache2/apache2.conf /etc/ssh/sshd_config
   \end{minted}
-  \caption{Voorbeeld van het uitvoeren van het script met specifieke configuratiebestanden als argumenten.}
+  \caption[Uitvoeren van script met configuratiebestanden.]{Voorbeeld van het uitvoeren van het script met specifieke configuratiebestanden als argumenten.}
   \label{lst:poc-config-args}
 \end{listing}
 
@@ -244,7 +244,7 @@ Beheerd door de Linux-kernel zelf en vaak read-only voor reguliere gebruikers, k
 [anton@fedorable ~]$ cat /proc/sys/kernel/hostname
 fedorable
   \end{minted}
-  \caption{Voorbeeld van het weergeven van de hostname van de server.}
+  \caption[Weergave van server hostname.]{Voorbeeld van het weergeven van de hostname van de server.}
   \label{lst:poc-proc-hostname}
 \end{listing}
 
@@ -326,7 +326,7 @@ Dit werd bevestigd na het uitvoeren van het script op \texttt{srv3}, waarbij we 
                 \text{sudo}-regels              & \checkmark &            \\
         \end{tabular}
     \end{center}
-    \caption{Overzicht van de eigenschappen die al dan niet zijn opgenomen in de configuratie-inventaris.}
+    \caption[Eigenschappen in configuratie-inventaris.]{Overzicht van de eigenschappen die al dan niet zijn opgenomen in de configuratie-inventaris.}
     \label{table:poc-inventory-properties}
 \end{table}
 
