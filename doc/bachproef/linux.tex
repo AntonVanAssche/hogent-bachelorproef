@@ -84,7 +84,7 @@ Het stelt gebruikers in staat om software te installeren, te verwijderen en bij 
 Bovendien is versiebeheer een belangrijk aspect van package managers, waarbij de juiste versie van de software wordt ge\"installeerd en up-to-date wordt gehouden door de package manager.
 
 We kunnen de package manager ook inzetten om een lijst van ge\"installeerde softwarepakketten te bekijken, iets wat we later in dit werk zullen gebruiken om een configuratie-inventaris te maken.
-Op Debian-gebaseerde systemen kunnen we dit bijvoorbeeld doen door het commando \texttt{apt list --installed} als de root-gebruiker uit te voeren.
+Op Debian-gebaseerde systemen kunnen we dit bijvoorbeeld doen door het commando \texttt{apt list -{}-installed} als de root-gebruiker uit te voeren.
 Als alternatief kan men ook \texttt{dpkg-query -l} gebruiken, wat ons toelaat om query's uit te voeren op de DPKG-database, zoals te zien in listing~\ref{lst:dpkg-query}.
 
 \begin{listing}
@@ -297,12 +297,12 @@ Na de tijdvelden volgt het commando dat moet worden uitgevoerd, zoals te zien is
 
 Met de continue groei van het internet en de toenemende afhankelijkheid van digitale technologie, is het van cruciaal belang om de beveiliging van systemen te waarborgen.
 Linux-servers zijn geen uitzondering en moeten worden beschermd tegen een breed scala aan bedreigingen, zoals denail-of-service (DoS), datalekken, enz.
-In dit gedeeelte zullen we twee fundamentele concepten van Linux-serverbeveiliging bespreken: de firewall en SELinux.
+In dit gedeelte zullen we twee fundamentele concepten van Linux-serverbeveiliging bespreken: de firewall en SELinux.
 
 \subsection{Firewall}
 \label{linux_firewall}
 
-Een veelgebruikte manier om een computernetwerk te beschermen van ongewenst verkeer is het gebruik van een firewall.
+Een veelgebruikte manier om een computernetwerk te beschermen tegen ongewenst verkeer is het gebruik van een firewall.
 Dit is een fundamenteel onderdeel van cyberbeveiliging voor elke systeem, waaronder ook Linux-servers.
 Zo kunnen firewalls voor verschillende doeleinden worden ingezet, zoals beschreven door van den Berg~\autocite{vandenberg}:
 

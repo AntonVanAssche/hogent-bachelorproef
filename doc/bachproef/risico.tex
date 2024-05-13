@@ -51,6 +51,10 @@ Andere directories die het waard zijn om te monitoren, zijn onder meer \texttt{/
 Een volgende stap zou zijn om een hash te berekenen van deze bestanden en deze hash vervolgens op te nemen in de configuratie-inventaris.
 Dit kan worden gedaan met behulp van een tool zoals \texttt{sha256sum} om de hash van een bestand te genereren.
 
+Een andere handige tool die ons kan ondersteunen in dit, is Wazuh, een krachtige Security Information and Event Management (SIEM) die ons in staat stelt om onze infrastructuur te monitoren, variërend van servers tot gewone werkstations.
+Naast File Integrity Monitoring (FIM) biedt Wazuh ook mogelijkheden voor Security Configuration Assessment (SCA), waardoor systeemconfiguraties worden versterkt tegen potentiële bedreigingen.
+Bovendien omvat het kwetsbaarheidsdetectie, waarmee potentiële zwakke punten kunnen worden geïdentificeerd voordat ze worden misbruikt~\autocite{wazuh-overview}.
+
 Het toepassen van hashberekeningen draagt bij aan een verhoogde integriteit van de data, aangezien het ons de mogelijkheid biedt om te controleren of de bestanden zijn gewijzigd.
 Immers, de hash van een bestand verandert wanneer de inhoud van het bestand wijzigt.
 Bovendien is het belangrijk om te vermelden dat hashfuncties one-way zijn, wat betekent dat het niet mogelijk is om de originele inhoud van het bestand te herstellen aan de hand van de hash~\autocite{herrero2021file}.
@@ -123,7 +127,7 @@ Created symlink /etc/systemd/system/multi-user.target.wants/sshd.service → /us
 \end{listing}
 
 Doordat systemd units vaak worden gebruikt om services te beheren, is het van belang om deze units op te nemen in de configuratie-inventaris.
-Netzoals het bijhouden van een lijst van services die automatisch worden gestart bij het opstarten van het systeem, dit kan worden bereikt door \texttt{systemctl} te gebruiken met de \texttt{list-unit-files} optie, zoals te zien in listing~\ref{lst:systemd_list_unit_files}.
+Net zoals het bijhouden van een lijst van services die automatisch worden gestart bij het opstarten van het systeem, dit kan worden bereikt door \texttt{systemctl} te gebruiken met de \texttt{list-unit-files} optie, zoals te zien in listing~\ref{lst:systemd_list_unit_files}.
 
 \begin{listing}
   \begin{minted}[linenos,tabsize=4,breaklines]{console}

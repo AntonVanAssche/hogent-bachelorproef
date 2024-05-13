@@ -56,7 +56,7 @@ Om deze uitdagingen aan te gaan, zijn er verschillende IaC-tools ontwikkeld die 
 Dit zijn~\autocite{chef-what-is-iac}:
 \begin{itemize}
     \item Automatisering: Het aanpassen van handmatige configuratie en het uitrollen van nieuwe servers worden allemaal geautomatiseerd met behulp van code.
-    \item Testen: IT en DevSecOps processen kunnen met vertrouwen worden uitgevoerd omdat de code getest is.
+    \item Testen: IT en DevSecOps\footnote{Een framework dat staat voor Development, Security en Operations (DevSecOps), waarbij beveiliging in elke fase van softwareontwikkeling wordt ge\"integreerd.} processen kunnen met vertrouwen worden uitgevoerd omdat de code getest is.
     \item Idempotentie: Processen worden niet alleen toegepast op nieuwe servers, maar ook op bestaande servers om een consistente configuratie te behouden.
 \end{itemize}
 
@@ -86,7 +86,7 @@ Verdere voorbeelden kan men vinden in de bijlage ``Puppetboard''~\ref{ch:bijlage
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
     {./graphics/state-of-the-art/puppetboard/puppetboard-host-details.png}
-    \caption[Puppetboard host details.]{\label{fig:puppetboard-host-details}Voorbeeld van Puppetboard waar we enkele facts over een bepaalde machine in de infrastructuur kunnen zien, als ook de Puppet-runs die wijzigingen hebben doorgevoerd op de machine.}
+    \caption[Puppetboard host details.]{\label{fig:puppetboard-host-details}Voorbeeld van Puppetboard waar we enkele facts over een bepaalde machine in de infrastructuur kunnen zien, als ook de Puppet-runs die wijzigingen hebben doorgevoerd op de machine. (Deze schermafbeelding werd genomen bij Federale Pensioendienst (FPD) met toestemming, gedurende persoonlijke stage.)}
 \end{figure}
 
 \subsection{PEASS-ng}
@@ -99,7 +99,7 @@ Het is pas enkele maanden later dat de auteur het project hernoemde naar PEASS-n
 Deze tool stelt cyberbeveiliging specialisten in staat om de beveiliging van een systeem, zijnde Linux, Windows of macOS, te testen op kwetsbaarheden en mogelijke aanvallen die mogelijks kunnen leiden tot privilege escalation.
 
 Om binnen de scope van deze bachelorproef te blijven, zal er echter enkel gekeken worden naar linPEAS, dat zich richt op Linux-, en BSD-systemen.
-linPEAS zelf heeft weinig betrekking tot asset management, maar gebruikt om inzicht te krijgen in hoe een machine geconfigureerd is, en welke privileges een gebruiker heeft.
+linPEAS zelf heeft weinig betrekking tot asset management, maar wordt gebruikt om inzicht te krijgen in hoe een machine geconfigureerd is, en welke privileges een gebruiker heeft.
 Door het script uit te voeren, krijgt u in enkele minuten een overzicht van de machine, inclusief gebruikers, groepen, services, bestanden en meer.
 Het gegeneerde rapport kan vervolgens worden gebruikt om de configuratie van de machine te vergelijken met de gewenste configuratie.
 Om later om te zetten in code, zoals Ansible of Puppet, om de configuratie van de machine te automatiseren en consistent te houden.
@@ -117,6 +117,7 @@ Deze tool kan men installeren op vrijwel elk besturingssysteem, enkele voorbeeld
 Nmap kan een netwerk scannen en informatie verzamelen over de machines die erop zijn aangesloten.
 Hiermee kunnen we bijvoorbeeld open poorten detecteren en de services identificeren die daarachter draaien.
 Daarnaast kan Nmap ons ook informatie geven over de firewall die op de machine actief is en de versie van het besturingssysteem.
+Maar deze informatie is niet altijd betrouwbaar, omdat het mogelijk is om deze te vervalsen, iets wat ook door sommige firewalls en besturingssystemen wordt gedaan.
 
 Naast de standaard functionaliteiten van Nmap, zijn er ook verschillende scripts beschikbaar die kunnen worden uitgevoerd om nog meer informatie te verzamelen.
 Deze zijn echter voornamelijk gericht op het detecteren van kwetsbaarheden en het uitvoeren van beveiligingsaudits.
@@ -125,6 +126,9 @@ Tegenwoordig maken veel netwerkbeheerders al gebruik van Nmap om hun netwerken i
 Daarom kan Nmap zeker een waardevolle bijdrage leveren aan het opstellen en bijhouden van een configuratie-inventaris.
 
 Een voorbeeld van een Nmap-scan is te vinden in bijlage~\ref{ch:bijlage_nmap}.
+Het voorbeeld omvat een scan van een server, dat op de server zelf is uitgevoerd.
+Bij het uitvoeren van een scan heeft de plaats waar de scan wordt uitgevoerd invloed op de resultaten.
+Dit doordat Nmap vooral gebruikt wordt om een netwerk, of machine, van buitenaf te analyseren op open poorten en configuratie.
 
 \subsection{Red Hat Satellite}
 \label{sub:red-hat-satellite}
@@ -211,14 +215,14 @@ Enkele voorbeelden van wat we kunnen doen met de API zijn, maar niet beperkt tot
 \subsection{Snipe-IT}
 \label{sub:snipe-it}
 
-Snip-IT is een open-source webapplicatie ontwikkeld door Grokability sinds 2013~\autocite{snipe-it-introduction}, die gericht is op IT-assetmanagement.
+Snipe-IT is een open-source webapplicatie ontwikkeld door Grokability sinds 2013~\autocite{snipe-it-introduction}, die gericht is op IT-assetmanagement.
 Het idee achter Snipe-IT komt voort uit de vroegere aanpak van het bedrijf, toen het voornamelijk nog gebruik maakte van spreadsheets om hun bedrijfsmiddelen te inventariseren.
 Het doel was om een applicatie te ontwikkelen die deze taak op een meer georganiseerde en effici\"ente manier kon uitvoeren.
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
     {./graphics/state-of-the-art/snipe-dashboard.png}
-    \caption[Snipe-IT dashboard voor assets.]{\label{fig:snipe-it-dashboard}Snip-IT dashboard waarin we het totale aantal assets binnen de organisatie kunnen zien, alsook een oplijsting van verschillende toestellen recent toegekend zijn~\autocite{snipe-it-dashboard}.}
+    \caption[Snipe-IT dashboard voor assets.]{\label{fig:snipe-it-dashboard}Snipe-IT dashboard waarin we het totale aantal assets binnen de organisatie kunnen zien, alsook een oplijsting van verschillende toestellen recent toegekend zijn~\autocite{snipe-it-dashboard}.}
 \end{figure}
 
 De software biedt een gebruiksvriendelijke webinterface (\ref{fig:snipe-it-dashboard}) waarmee bedrijfsmiddelen, licenties, garanties en meer gemakkelijk kunnen worden beheerd.
@@ -231,7 +235,7 @@ Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-featur
     \item Gemakkelijk zien welke assets zijn toegewezen, aan wie, en hun fysieke locatie
     \item In één klik inchecken
     \item Assetmodellen waarmee je gemeenschappelijke functies kunt groeperen
-    \item Vereisten van Gebruikersacceptatie (Eindgebruikers EULA's/Gebruiksvoorwaar-\ den) bij Uitchecken
+    \item Vereisten van Gebruikersacceptatie (Eindgebruikers EULA's/Gebruiksvoorwaar-\ den) bij uitchecken
     \item E-mailmeldingen voor het verlopen van garanties en licenties
     \item Integratie met de meeste handheld barcode scanners en QR-codelezer apps
     \item Snelle en eenvoudige asset-audit
@@ -246,8 +250,8 @@ Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-featur
 \subsection{Lansweeper}
 \label{sub:lansweeper}
 
-Lansweeper, opgericht in 2004, is een Belgisch commercieel IT discovery \& inventory platform~\autocite{lansweeper-history}.
-Het is een veelgebruikte tool voor het scannen, bijhouden en beheren van IT-assets binnen een organisatie.
+Lansweeper, opgericht in 2004, is een Belgisch commercieel IT discovery \& inventory platform.
+Het is een veelgebruikte tool voor het scannen, bijhouden en beheren van IT-assets binnen een organisatie~\autocite{lansweeper-about}.
 Met functionaliteiten voor zowel hardware- als software-inventarisatie, biedt Lansweeper gebruikers een uitgebreid overzicht van alle IT-assets in hun netwerk.
 
 Het grote voordeel van Lansweeper ten opzichte van andere tools, zoals Snipe-IT, is dat het een volledig geautomatiseerde oplossing biedt~\autocite{lansweeper-features}.
@@ -265,7 +269,7 @@ De gedetecteerde informatie wordt vervolgens opgeslagen in een centrale database
 Gebruikers kunnen aangepaste rapporten genereren over verschillende aspecten van hun IT-infrastructuur, zoals hardwareconfiguraties, softwarelicenties, patchniveaus en meer~\autocite{lansweeper-features}.
 Deze rapporten zijn bruikbaar voor audits, nalevingscontroles en capaciteitsplanning.
 
-Naast het genereren van rapporten en het identificeren van nieuwe IT-assets, biedt Lansweeper ook de mogelijkheid om rogue devices op het netwerk te detecteren.
+Naast het genereren van rapporten en het identificeren van nieuwe IT-assets, biedt Lansweeper ook de mogelijkheid om onbevoegde apparaten op het netwerk te detecteren.
 Deze detectie gebeurt door continu het netwerk te scannen en alle gevonden assets te vergelijken met de resultaten in de database van bekende assets.
 Wanneer een apparaat wordt gedetecteerd dat niet voorkomt in de database, genereert Lansweeper een waarschuwing, waardoor beheerders en administrators actie kunnen ondernemen.
 Bovendien heeft Lansweeper de capaciteit om mogelijke beveiligingsrisico's te identificeren binnen uw inventaris door gebruik te maken van de NIST National Vulnerability Database~\autocite{lansweeper-cam}.

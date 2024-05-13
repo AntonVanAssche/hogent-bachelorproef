@@ -8,14 +8,14 @@
 \section{Inleiding}
 \label{poc_inleiding}
 
-In de vorige hoofdstukken hebben we uitgebreid de vereisten besproken die nodig zijn voor een doeltreffende configuratie-inventaris.
+In vorige hoofdstukken werd uitgebreid besproken welke vereisten nodig zijn voor een doeltreffende configuratie-inventaris.
 Nu is het tijd om deze vereisten in de praktijk te brengen door middel van een Proof of Concept (PoC).
 In dit hoofdstuk zullen we ons richten op de praktische implementatie van deze vereisten.
 
-We beginnen met het opzetten van de omgeving, waarbij we de technologie\"en toelichten die we zullen gebruiken om onze omgeving te automatiseren.
+Men zal een virtuele-omgeving opzetten, waarbij verschillende gebruikte technologie\"en worden toegelicht die gebruikt zullen worden om de omgeving te automatiseren.
 Vervolgens ontwikkelen we een Bash-script genaamd ConfiScan, dat dient om de configuratie-inventaris te genereren voor elke server binnen de omgeving.
 
-Aan het einde van het hoofdstuk zullen we de resultaten van onze PoC presenteren.
+Tot slot zal men de resultaten van de PoC presenteren.
 Hierbij zullen we dieper ingaan op de functionaliteit en effectiviteit ervan.
 Bovendien is alle bijbehorende code van deze Proof of Concept beschikbaar als open-source, te vinden op GitHub~\autocite{github-poc}.
 Dit om de lezer de mogelijkheid te geven om de PoC zelf te testen en te gebruiken, en verder onderzoek mogelijk te maken.
@@ -183,10 +183,10 @@ Een van de doelstellingen is om de configuratie-informatie op een zo toegankelij
 Daarom is ervoor gekozen om veel van deze configuratie-eigenschappen te presenteren in CSV-formaat, ook wel bekend als Comma-Separated Values.
 Dit tekstformaat maakt het mogelijk om gegevens in tabelvorm weer te geven, waarbij elke rij een record vertegenwoordigt en de kolommen de eigenschappen van dat record bevatten.
 De gegevens worden gescheiden door komma's en elke nieuwe regel markeert een nieuwe rij.
-CSV is een veelgebruikt formaat dat is ontworpen voor het importeren en exporteren van gegevens tussen verschillende programma's~\autocite{wikipedia2024csv}.
+CSV is een veelgebruikt formaat dat is ontworpen voor het importeren en exporteren van gegevens tussen verschillende programma's~\autocite{shafranovich2005common}.
 
-Een voorbeeld van het gebruik van dit formaat is bij het overbrengen van gegevens van een database naar een spreadsheetprogramma zoals Microsoft Excel.
-De meeste spreadsheetprogramma's kunnen CSV-bestanden importeren en exporteren~\autocite{wikipedia2024csv}.
+Een voorbeeld van het gebruik van dit formaat is bij het overbrengen van gegevens van een databank naar een spreadsheetprogramma zoals Microsoft Excel.
+De meeste spreadsheetprogramma's kunnen CSV-bestanden importeren en exporteren~\autocite{shafranovich2005common}.
 Dit maakt het eenvoudig om basisconfiguratie, zoals netwerkinterfaces van een server, over te zetten naar een spreadsheetprogramma.
 
 Daarnaast zullen ook gewone tekstbestanden worden gebruikt om gegevens op te slaan.
@@ -265,14 +265,14 @@ Vervolgens zullen we deze informatie verwerken en opslaan in de configuratie-inv
 \section{De resultaten}
 \label{poc_resultaten}
 
-Tijdens de ontwikkelingsfase van het script hebben we rekening gehouden met de besproken onderwerpen uit hoofdstuk~\ref{ch:risicoanalyse}.
-Hierdoor zijn we erin geslaagd om een script te ontwikkelen dat de configuratie-inventaris van een server kan genereren.
-Na het uitvoeren van het script op elke server binnen de omgeving, hebben we voor elke server een directory met bestanden ontvangen die verschillende eigenschappen van de server bevatten.
+Tijdens de ontwikkelingsfase van het script werd er rekening gehouden met de besproken onderwerpen uit hoofdstuk~\ref{ch:risicoanalyse}.
+Hierdoor is men erin geslaagd om een script te ontwikkelen dat de configuratie-inventaris van een server kan genereren.
+Na het uitvoeren van het script op elke server binnen de omgeving, heeft men voor elke server een directory met bestanden ontvangen die verschillende eigenschappen van de server bevatten.
 Als de \texttt{-t} optie wordt gebruikt, wordt er een tarball gegenereerd van deze directory.
-Dit maakte het eenvoudig om de configuratie-inventaris te verzamelen en te centraliseren op de controller-server, waar we de gegevens kunnen analyseren en verwerken.
+Dit maakte het eenvoudig om de configuratie-inventaris te verzamelen en te centraliseren op de controller-server, waar men de gegevens kunnen analyseren en verwerken.
 Tabel~\ref{table:poc-inventory-properties} toont een algemeen overzicht van de eigenschappen die al dan niet zijn opgenomen in de configuratie-inventaris.
 
-Uit de resultaten vermeld in tabel~\ref{table:poc-inventory-properties} kunnen we concluderen dat de meeste eigenschappen van de serverconfiguratie met succes zijn opgenomen in de configuratie-inventaris.
+Uit de resultaten vermeld in tabel~\ref{table:poc-inventory-properties} kan men concluderen dat de meeste eigenschappen van de serverconfiguratie met succes zijn opgenomen in de configuratie-inventaris.
 Echter zijn er enkele beperkingen, waaronder het ontbreken van de AppArmor- en SELinux-configuraties, die niet zijn opgenomen in de configuratie-inventaris.
 Dit kan worden opgelost door de directory of configuratiebestanden van deze beveiligingsmaatregelen mee te geven als commandline-argumenten.
 Dit zorgt ervoor dat de configuratiebestanden toch worden opgenomen in de confi-\ guratie-inventaris.
@@ -345,5 +345,77 @@ Een alternatieve oplossing, waarbij gebruik wordt gemaakt van \texttt{rsync}, wo
 
 Bovendien kunnen we door het gebruik van bestandsformaten zoals CSV en tekstbestanden de verkregen resultaten eenvoudig visualiseren.
 Dit kan worden gedaan met behulp van spreadsheetprogramma's of door het ontwikkelen van aangepaste applicaties voor verder onderzoek en analyse.
+Een voorbeeld hiervan is te zien in figuur~\ref{fig:mountpoints-csv-import-spreadsheet}, waar de mount points van \texttt{srv1} zijn ge\"importeerd in OnlyOffice, een documentverwerker die spreadsheetfunctionaliteit biedt.
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[width=\textwidth]
+        {./graphics/mountpoints-csv-import-spreadsheet.png}
+        \caption[Voorbeeld van mount points in spreadsheet.]{\label{fig:mountpoints-csv-import-spreadsheet}Voorbeeld van de mount points van \texttt{srv1} ge\"importeerd in een spreadsheetprogramma.}
+    \end{center}
+\end{figure}
 
 Een voorbeeld van de uitvoer van het script is te vinden in bijlage~\ref{ch:bijlage_confiscan}.
+
+\section{Verder onderzoek}
+\label{poc_verder_onderzoek}
+
+Tijdens de PoC lag de nadruk vooral op het verzamelen van configuratie-informatie van Debian-servers.
+Een mogelijke uitbreiding van dit onderzoek zou het toevoegen van compatibiliteit met andere distributies omvatten, zoals Red Hat Enterprise Linux (RHEL), Oracle Linux of AlmaLinux.
+Deze distributies worden vaak gebruikt in productieomgevingen en hebben andere configuraties dan een standaard Debian installatie.
+
+Naast het toevoegen van compatibiliteit met andere distributies, kan het ook interessant zijn om de functionaliteit uit te breiden naar cloudomgevingen.
+Hiervoor zou men API-calls kunnen gebruiken om de configuratie te verzamelen.
+Dit zou niet alleen inzicht geven in de serverconfiguraties, maar ook in de infrastructuur waarin ze zich bevinden.
+
+Een andere waardevolle toevoeging aan het script zou zijn om specifieke code toe te voegen voor het verzamelen van AppArmor- en SELinux-configuraties.
+Hierdoor wordt het script completer en kan een breder scala aan configuratie-instellingen worden ge\"inventariseerd, zonder dat de eindgebruiker deze configuratiebestanden als argumenten moet opgeven tijdens de uitvoering.
+
+In de PoC werd gebruik gemaakt van Ansible om het script op elke server uit te voeren.
+Aangezien het doel is om aan de hand van de verzamelde configuratie-inventaris een beeld te krijgen van de configuratie en over te schakelen naar een IaC-omgeving, zou het waardevol zijn om het script te voorzien van een mechanisme om zelf verbinding te maken met de servers en het vervolgens uit te voeren.
+Dit zou kunnen worden bereikt door een wrapper script te schrijven dat het script uploadt naar elke server via \texttt{scp} en het vervolgens uitvoert via \texttt{ssh}.
+Dit wrapper script zou de lijst van hosts kunnen ophalen uit een configuratiebestand, zoals \texttt{hosts.txt}.
+Een mogelijke implementatie van dit concept wordt getoond in~\ref{lst:poc-hosts-txt}, waarbij het script wordt uitgevoerd op elke server met behulp van een \texttt{while-read} lus, zoals te zien in~\ref{lst:poc-wrapper-script}.
+
+\begin{listing}
+  \begin{minted}[linenos,tabsize=4,breaklines]{console}
+root@srv1.poc.lan
+root@srv2.poc.lan
+root@srv3.poc.lan
+root@srv4.poc.lan
+root@srv5.poc.lan
+  \end{minted}
+  \caption[Mogelijk configuratiebestand voor wrapper script.]{Voorbeeld van een configuratiebestand voor een wrapper script, waarin de hostnamen van de servers staan.}
+  \label{lst:poc-hosts-txt}
+\end{listing}
+
+\begin{listing}
+  \begin{minted}[linenos,tabsize=4,breaklines]{shell}
+#!/usr/bin/env bash
+
+while read -r host_entry; do
+    hostname=${host_entry##*@}
+    hostname=${hostname%%.*}
+
+    scp -q -o StrictHostKeyChecking=no \
+        -o UserKnownHostsFile=/dev/null \
+        -i ~/.ssh/id_rsa.pub \
+        confiscan.sh \
+        "${host_entry}":/tmp/confiscan.sh
+
+    ssh -q -o StrictHostKeyChecking=no -o \
+        UserKnownHostsFile=/dev/null \
+        -i ~/.ssh/id_rsa.pub \
+        "${host_entry}" \
+        "bash /tmp/confiscan.sh -t [CONFG_FILES]"
+
+    scp -q -o StrictHostKeyChecking=no \
+        -o UserKnownHostsFile=/dev/null \
+        -i ~/.ssh/id_rsa.pub \
+        "${host_entry}":"/root/${hostname}-configs.tar.gz" \
+        "${hostname}-configs.tar.gz"
+done < hosts.txt
+  \end{minted}
+  \caption[Wrapper script voor uitvoeren van script op servers.]{Voorbeeld van een wrapper script dat het script uitvoert op elke server in de hosts.txt file.}
+  \label{lst:poc-wrapper-script}
+\end{listing}
