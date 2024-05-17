@@ -48,6 +48,36 @@ In dit gedeelte wordt de huidige aanpak van configuration management besproken, 
 Naast wat het is, wordt er ook gekeken naar de fundamentele componenten van IaC, alsook de voordelen ervan.
 Ook zullen er tools vernoemd worden die we kunnen gebruiken om de configuratie van een systeem te ontdekken, om later om te zetten naar een IaC omgeving.
 
+\subsection{Center for Internet Security Benchmarks}%
+\label{sub:cis-benchmarks}
+
+De Center for Internet Security (CIS) Benchmarks zijn een reeks best practices voor het configureren van systemen en netwerken om de beveiliging te verbeteren.
+Dit project wordt door de gemeenschap onderhouden en regelmatig bijgewerkt om de nieuwste beveiligingsrisico's aan te pakken, voor zowel cloudproviders, databanken, als besturingssystemen~\autocite{cis-benchmarks}.
+Naast de best practices helpen de aanbevelingen van de CIS Benchmarks ook bij het voldoen aan verschillende compliance-vereisten, zoals die van het National Institute of Standards and Technology (NIST), de General Data Protection Regulation (GDPR), de Health Insurance Portability and Accountability Act (HIPAA) en nog vele andere~\autocite{cis-benchmarks-compliancy}.
+
+Een voorbeeld van een best practice die is gedefinieerd in de CIS Benchmarks voor RHEL9 is het gebruik van een aparte partitie voor \code{/home}.
+Dit is bedoeld om de impact van wijzigingen in de partitie-indeling te minimaliseren, aangezien de \code{/home} partitie vaak wordt gebruikt voor gebruikersdata~\autocite{cis-benchmarks-rhel9}.
+
+Red Hat Enterprise Linux (RHEL) is een van de besturingssystemen die ondersteuning biedt voor de CIS Benchmarks.
+Tijdens de installatie kan men ervoor kiezen om de configuratie van het systeem te laten voldoen aan de CIS Benchmarks~\autocite{rhel-cis-benchmarks}.
+Hiervoor maakt het gebruik van een open-source tool genaamd OpenSCAP~\autocite{open-scap}, die de configuratie van het systeem controleert en rapporteert of deze voldoet aan de CIS Benchmarks.
+Dit gebeurt aan de hand van verschillende scripts en Anaconda-addons die de configuratie van het systeem aanpassen om te voldoen aan de best practices van de CIS Benchmarks~\autocite{open-scap-anaconda}.
+Voor RHEL8 kan men kiezen uit twee verschillende profielen: Level 1 en Level 2, zoals te zien is in tabel~\ref{tab:rhel-cis-benchmarks}.
+
+\begin{table}[!h]
+    \begin{center}
+        \begin{tabular}{ c c  }
+            \hline
+                Level & Profiel ID \\ [0.5ex]
+            \hline
+              Level 1 & xccdf\_org.ssgproject.content\_profile\_cis\_server\_l1 \\
+              Level 2 & xccdf\_org.ssgproject.content\_profile\_cis \\
+        \end{tabular}
+    \end{center}
+    \caption[Overzicht van RHEL8 CIS profielen]{Overzicht van de CIS profielen die beschikbaar zijn voor RHEL8~\autocite{rhel-cis-benchmarks}.}
+    \label{tab:rhel-cis-benchmarks}
+\end{table}
+
 \subsection{Infrastructure as Code}%
 \label{sub:iac}
 
