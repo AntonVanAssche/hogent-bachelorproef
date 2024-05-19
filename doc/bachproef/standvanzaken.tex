@@ -48,6 +48,36 @@ In dit gedeelte wordt de huidige aanpak van configuration management besproken, 
 Naast wat het is, wordt er ook gekeken naar de fundamentele componenten van IaC, alsook de voordelen ervan.
 Ook zullen er tools vernoemd worden die we kunnen gebruiken om de configuratie van een systeem te ontdekken, om later om te zetten naar een IaC omgeving.
 
+\subsection{Center for Internet Security Benchmarks}%
+\label{sub:cis-benchmarks}
+
+De Center for Internet Security (CIS) Benchmarks zijn een reeks best practices voor het configureren van systemen en netwerken om de beveiliging te verbeteren.
+Dit project wordt door de gemeenschap onderhouden en regelmatig bijgewerkt om de nieuwste beveiligingsrisico's aan te pakken, voor zowel cloudproviders, databanken, als besturingssystemen~\autocite{cis-benchmarks}.
+Naast de best practices helpen de aanbevelingen van de CIS Benchmarks ook bij het voldoen aan verschillende compliance-vereisten, zoals die van het National Institute of Standards and Technology (NIST), de General Data Protection Regulation (GDPR), de Health Insurance Portability and Accountability Act (HIPAA) en nog vele andere~\autocite{cis-benchmarks-compliancy}.
+
+Een voorbeeld van een best practice die is gedefinieerd in de CIS Benchmarks voor RHEL9 is het gebruik van een aparte partitie voor \code{/home}.
+Dit is bedoeld om de impact van wijzigingen in de partitie-indeling te minimaliseren, aangezien de \code{/home} partitie vaak wordt gebruikt voor gebruikersdata~\autocite{cis-benchmarks-rhel9}.
+
+Red Hat Enterprise Linux (RHEL) is een van de besturingssystemen die ondersteuning biedt voor de CIS Benchmarks.
+Tijdens de installatie kan men ervoor kiezen om de configuratie van het systeem te laten voldoen aan de CIS Benchmarks~\autocite{rhel-cis-benchmarks}.
+Hiervoor maakt het gebruik van een open-source tool genaamd OpenSCAP~\autocite{open-scap}, die de configuratie van het systeem controleert en rapporteert of deze voldoet aan de CIS Benchmarks.
+Dit gebeurt aan de hand van verschillende scripts en Anaconda-addons die de configuratie van het systeem aanpassen om te voldoen aan de best practices van de CIS Benchmarks~\autocite{open-scap-anaconda}.
+Voor RHEL8 kan men kiezen uit twee verschillende profielen: Level 1 en Level 2, zoals te zien is in tabel~\ref{tab:rhel-cis-benchmarks}.
+
+\begin{table}[!h]
+    \begin{center}
+        \begin{tabular}{ c c  }
+            \hline
+                Level & Profiel ID \\ [0.5ex]
+            \hline
+              Level 1 & xccdf\_org.ssgproject.content\_profile\_cis\_server\_l1 \\
+              Level 2 & xccdf\_org.ssgproject.content\_profile\_cis \\
+        \end{tabular}
+    \end{center}
+    \caption[Overzicht van RHEL8 CIS profielen]{Overzicht van de CIS profielen die beschikbaar zijn voor RHEL8~\autocite{rhel-cis-benchmarks}.}
+    \label{tab:rhel-cis-benchmarks}
+\end{table}
+
 \subsection{Infrastructure as Code}%
 \label{sub:iac}
 
@@ -56,17 +86,17 @@ Om deze uitdagingen aan te gaan, zijn er verschillende IaC-tools ontwikkeld die 
 Dit zijn~\autocite{chef-what-is-iac}:
 \begin{itemize}
     \item Automatisering: Het aanpassen van handmatige configuratie en het uitrollen van nieuwe servers worden allemaal geautomatiseerd met behulp van code.
-    \item Testen: IT en DevSecOps processen kunnen met vertrouwen worden uitgevoerd omdat de code getest is.
+    \item Testen: IT en DevSecOps\footnote{Een framework dat staat voor Development, Security en Operations (DevSecOps), waarbij beveiliging in elke fase van softwareontwikkeling wordt ge\"integreerd.} processen kunnen met vertrouwen worden uitgevoerd omdat de code getest is.
     \item Idempotentie: Processen worden niet alleen toegepast op nieuwe servers, maar ook op bestaande servers om een consistente configuratie te behouden.
 \end{itemize}
 
 E\'en van de grootste voordelen van IaC is de verhoging van de effici\"entie~\autocite{splunk-benefits-iac}.
 Doordat veel taken geautomatiseerd worden, kunnen beheerders zich richten op andere, meer complexe taken.
-Zo heeft Red Hat in 2016 een casestudy gepubliceerd~\autocite{case-study-nasa-iac} waarin ze NASA's resultaten van hun overstap naar de IaC-tools Ansible en Ansible Tower hebben geanalyseerd.
+Zo heeft Red Hat in 2016 een casestudy gepubliceerd~\autocite{redhat2016nasa} waarin ze NASA's resultaten van hun overstap naar de IaC-tools Ansible en Ansible Tower hebben geanalyseerd.
 Hierin geven ze aan dat het updateproces van nasa.gov van meer dan 1 uur is teruggebracht tot minder dan 5 minuten.
 Het langdurige proces van het patchen van updates werd teruggebracht van een proces dat meerdere dagen in beslag nam naar een proces van ongeveer 45 minuten.
 
-Het Duitse Federaal Ministerie van Voedsel en Landbouw (Bundesanstalt f\"ur Landwirtschaft und Ern\"ahrung, of BLE), heeft ook bepaalde IT-toepassingen met 50\% kunnen versnellen dankzij een overstap naar een IaC-aanpak~\autocite{case-study-ble-iac}.
+Het Duitse Federaal Ministerie van Voedsel en Landbouw (Bundesanstalt f\"ur Landwirtschaft und Ern\"ahrung, of BLE), heeft ook bepaalde IT-toepassingen met 50\% kunnen versnellen dankzij een overstap naar een IaC-aanpak~\autocite{redhat2018ansible}.
 In de studie bespreken ze kort waarom ze hebben besloten over te schakelen naar een IaC-aanpak en geven ze een paar voorbeelden van hoe ze voorheen te werk gingen en hoe ze dit met IaC hebben aangepakt.
 Tijdens de implementatie hebben ze 1000 virtuele machines overgeschakeld van Debian en SUSE Linux naar Red Hat Enterprise Linux, ook bekend als RHEL.
 Deze machines worden beheerd met behulp van Satellite en geautomatiseerd met Ansible.
@@ -86,7 +116,7 @@ Verdere voorbeelden kan men vinden in de bijlage ``Puppetboard''~\ref{ch:bijlage
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
     {./graphics/state-of-the-art/puppetboard/puppetboard-host-details.png}
-    \caption[Puppetboard host details.]{\label{fig:puppetboard-host-details}Voorbeeld van Puppetboard waar we enkele facts over een bepaalde machine in de infrastructuur kunnen zien, als ook de Puppet-runs die wijzigingen hebben doorgevoerd op de machine.}
+    \caption[Puppetboard host details.]{\label{fig:puppetboard-host-details}Voorbeeld van Puppetboard waar we enkele facts over een bepaalde machine in de infrastructuur kunnen zien, als ook de Puppet-runs die wijzigingen hebben doorgevoerd op de machine. (Deze schermafbeelding werd genomen bij Federale Pensioendienst (FPD) met toestemming, gedurende persoonlijke stage.)}
 \end{figure}
 
 \subsection{PEASS-ng}
@@ -99,7 +129,7 @@ Het is pas enkele maanden later dat de auteur het project hernoemde naar PEASS-n
 Deze tool stelt cyberbeveiliging specialisten in staat om de beveiliging van een systeem, zijnde Linux, Windows of macOS, te testen op kwetsbaarheden en mogelijke aanvallen die mogelijks kunnen leiden tot privilege escalation.
 
 Om binnen de scope van deze bachelorproef te blijven, zal er echter enkel gekeken worden naar linPEAS, dat zich richt op Linux-, en BSD-systemen.
-linPEAS zelf heeft weinig betrekking tot asset management, maar gebruikt om inzicht te krijgen in hoe een machine geconfigureerd is, en welke privileges een gebruiker heeft.
+linPEAS zelf heeft weinig betrekking tot asset management, maar wordt gebruikt om inzicht te krijgen in hoe een machine geconfigureerd is, en welke privileges een gebruiker heeft.
 Door het script uit te voeren, krijgt u in enkele minuten een overzicht van de machine, inclusief gebruikers, groepen, services, bestanden en meer.
 Het gegeneerde rapport kan vervolgens worden gebruikt om de configuratie van de machine te vergelijken met de gewenste configuratie.
 Om later om te zetten in code, zoals Ansible of Puppet, om de configuratie van de machine te automatiseren en consistent te houden.
@@ -117,6 +147,7 @@ Deze tool kan men installeren op vrijwel elk besturingssysteem, enkele voorbeeld
 Nmap kan een netwerk scannen en informatie verzamelen over de machines die erop zijn aangesloten.
 Hiermee kunnen we bijvoorbeeld open poorten detecteren en de services identificeren die daarachter draaien.
 Daarnaast kan Nmap ons ook informatie geven over de firewall die op de machine actief is en de versie van het besturingssysteem.
+Maar deze informatie is niet altijd betrouwbaar, omdat het mogelijk is om deze te vervalsen, iets wat ook door sommige firewalls en besturingssystemen wordt gedaan.
 
 Naast de standaard functionaliteiten van Nmap, zijn er ook verschillende scripts beschikbaar die kunnen worden uitgevoerd om nog meer informatie te verzamelen.
 Deze zijn echter voornamelijk gericht op het detecteren van kwetsbaarheden en het uitvoeren van beveiligingsaudits.
@@ -125,6 +156,9 @@ Tegenwoordig maken veel netwerkbeheerders al gebruik van Nmap om hun netwerken i
 Daarom kan Nmap zeker een waardevolle bijdrage leveren aan het opstellen en bijhouden van een configuratie-inventaris.
 
 Een voorbeeld van een Nmap-scan is te vinden in bijlage~\ref{ch:bijlage_nmap}.
+Het voorbeeld omvat een scan van een server, dat op de server zelf is uitgevoerd.
+Bij het uitvoeren van een scan heeft de plaats waar de scan wordt uitgevoerd invloed op de resultaten.
+Dit doordat Nmap vooral gebruikt wordt om een netwerk, of machine, van buitenaf te analyseren op open poorten en configuratie.
 
 \subsection{Red Hat Satellite}
 \label{sub:red-hat-satellite}
@@ -211,14 +245,14 @@ Enkele voorbeelden van wat we kunnen doen met de API zijn, maar niet beperkt tot
 \subsection{Snipe-IT}
 \label{sub:snipe-it}
 
-Snip-IT is een open-source webapplicatie ontwikkeld door Grokability sinds 2013~\autocite{snipe-it-introduction}, die gericht is op IT-assetmanagement.
+Snipe-IT is een open-source webapplicatie ontwikkeld door Grokability sinds 2013~\autocite{snipe-it-introduction}, die gericht is op IT-assetmanagement.
 Het idee achter Snipe-IT komt voort uit de vroegere aanpak van het bedrijf, toen het voornamelijk nog gebruik maakte van spreadsheets om hun bedrijfsmiddelen te inventariseren.
 Het doel was om een applicatie te ontwikkelen die deze taak op een meer georganiseerde en effici\"ente manier kon uitvoeren.
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
     {./graphics/state-of-the-art/snipe-dashboard.png}
-    \caption[Snipe-IT dashboard voor assets.]{\label{fig:snipe-it-dashboard}Snip-IT dashboard waarin we het totale aantal assets binnen de organisatie kunnen zien, alsook een oplijsting van verschillende toestellen recent toegekend zijn~\autocite{snipe-it-dashboard}.}
+    \caption[Snipe-IT dashboard voor assets.]{\label{fig:snipe-it-dashboard}Snipe-IT dashboard waarin we het totale aantal assets binnen de organisatie kunnen zien, alsook een oplijsting van verschillende toestellen recent toegekend zijn~\autocite{snipe-it-dashboard}.}
 \end{figure}
 
 De software biedt een gebruiksvriendelijke webinterface (\ref{fig:snipe-it-dashboard}) waarmee bedrijfsmiddelen, licenties, garanties en meer gemakkelijk kunnen worden beheerd.
@@ -231,7 +265,7 @@ Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-featur
     \item Gemakkelijk zien welke assets zijn toegewezen, aan wie, en hun fysieke locatie
     \item In één klik inchecken
     \item Assetmodellen waarmee je gemeenschappelijke functies kunt groeperen
-    \item Vereisten van Gebruikersacceptatie (Eindgebruikers EULA's/Gebruiksvoorwaar-\ den) bij Uitchecken
+    \item Vereisten van Gebruikersacceptatie (Eindgebruikers EULA's/Gebruiksvoorwaar-\ den) bij uitchecken
     \item E-mailmeldingen voor het verlopen van garanties en licenties
     \item Integratie met de meeste handheld barcode scanners en QR-codelezer apps
     \item Snelle en eenvoudige asset-audit
@@ -246,8 +280,8 @@ Enkele van de belangrijkste functies van Snipe-IT zijn~\autocite{snipe-it-featur
 \subsection{Lansweeper}
 \label{sub:lansweeper}
 
-Lansweeper, opgericht in 2004, is een Belgisch commercieel IT discovery \& inventory platform~\autocite{lansweeper-history}.
-Het is een veelgebruikte tool voor het scannen, bijhouden en beheren van IT-assets binnen een organisatie.
+Lansweeper, opgericht in 2004, is een Belgisch commercieel IT discovery \& inventory platform.
+Het is een veelgebruikte tool voor het scannen, bijhouden en beheren van IT-assets binnen een organisatie~\autocite{lansweeper-about}.
 Met functionaliteiten voor zowel hardware- als software-inventarisatie, biedt Lansweeper gebruikers een uitgebreid overzicht van alle IT-assets in hun netwerk.
 
 Het grote voordeel van Lansweeper ten opzichte van andere tools, zoals Snipe-IT, is dat het een volledig geautomatiseerde oplossing biedt~\autocite{lansweeper-features}.
@@ -265,7 +299,7 @@ De gedetecteerde informatie wordt vervolgens opgeslagen in een centrale database
 Gebruikers kunnen aangepaste rapporten genereren over verschillende aspecten van hun IT-infrastructuur, zoals hardwareconfiguraties, softwarelicenties, patchniveaus en meer~\autocite{lansweeper-features}.
 Deze rapporten zijn bruikbaar voor audits, nalevingscontroles en capaciteitsplanning.
 
-Naast het genereren van rapporten en het identificeren van nieuwe IT-assets, biedt Lansweeper ook de mogelijkheid om rogue devices op het netwerk te detecteren.
+Naast het genereren van rapporten en het identificeren van nieuwe IT-assets, biedt Lansweeper ook de mogelijkheid om onbevoegde apparaten op het netwerk te detecteren.
 Deze detectie gebeurt door continu het netwerk te scannen en alle gevonden assets te vergelijken met de resultaten in de database van bekende assets.
 Wanneer een apparaat wordt gedetecteerd dat niet voorkomt in de database, genereert Lansweeper een waarschuwing, waardoor beheerders en administrators actie kunnen ondernemen.
 Bovendien heeft Lansweeper de capaciteit om mogelijke beveiligingsrisico's te identificeren binnen uw inventaris door gebruik te maken van de NIST National Vulnerability Database~\autocite{lansweeper-cam}.

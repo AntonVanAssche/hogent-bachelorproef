@@ -10,10 +10,10 @@ In de diff van~\ref{lst:bijlage-rsync-copy-alternative-diff} is te zien dat we \
 Een korte uitleg van de gebruikte opties:
 
 \begin{itemize}
-  \item \texttt{--force}: Overschrijf bestaande bestanden.
-  \item \texttt{--archive}: Archiveer bestanden en directories recursief.
-  \item \texttt{--recursive}: Kopieer directories recursief.
-  \item \texttt{--copy-links}: Kopieer symlinks als een bestand en volg de link naar het effectieve bestand.
+  \item \texttt{-{}-force}: Overschrijf bestaande bestanden.
+  \item \texttt{-{}-archive}: Archiveer bestanden en directories recursief.
+  \item \texttt{-{}-recursive}: Kopieer directories recursief.
+  \item \texttt{-{}-copy-links}: Kopieer symlinks als een bestand en volg de link naar het effectieve bestand.
 \end{itemize}
 
 Echter, deze operatie zal falen op Debian-systemen, omdat enkele symlinks in\\ \texttt{/etc/systemd/system/} verwijzen naar bestanden die niet bestaan.
