@@ -1,0 +1,84 @@
+%%=============================================================================
+%% LinPEAS-ng
+%%=============================================================================
+
+\chapter{\IfLanguageName{dutch}{Uitvoer: linPEAS}{Output: linPEAS}}%
+\label{ch:bijlage_linpeas}
+
+Deze bijlage toont een voorbeeld van de uitvoer van linPEAS over een systeem.
+Om de leesbaarheid te verbeteren, is de uitvoer ingekort, aangegeven door de \textit{[...]}. 
+
+Uit de ingekorte uitvoer van listing \ref{lst:bijlage-linpeas} blijkt dat het systeem draait op Linux versie 6.1.0-18-amd64, met Debian GNU/Linux 12 (bookworm) als besturingssysteem.
+Verder wordt informatie verstrekt over de gebruiker \texttt{vagrant} en de groep \texttt{vagrant}, evenals de hostname \texttt{srv1}.
+
+Daarnaast wordt de versie van het \texttt{sudo}-commando weergegeven, namelijk versie 1.9.13p3.
+Het \texttt{PATH}-environment variabele, evenals de datum en uptime van het systeem, worden ook getoond.
+
+Informatie over de aanwezige schijven en partities, omgevingsvariabelen en de shell van de huidige gebruiker is eveneens opgenomen.
+
+\begin{longlisting}
+  \begin{minted}[linenos,tabsize=4,breaklines]{console}
+vagrant@srv1:~$ curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  5  840k    5 44055    0     0  34582      0  0:00:24  0:00:01  0:00:23 34582
+
+[...]
+
+                              ╔════════════════════╗
+══════════════════════════════╣ System Information ╠══════════════════════════════
+                              ╚════════════════════╝
+╔══════════╣ Operative system
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#kernel-exploits
+Linux version 6.1.0-18-amd64 (debian-kernel@lists.debian.org) (gcc-12 (Debian 12.2.0-14) 12.2.0, GNU ld (GNU Binutils for Debian) 2.40) #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01)
+Distributor ID: Debian
+Description:    Debian GNU/Linux 12 (bookworm)
+Release:        12
+Codename:       bookworm
+
+╔══════════╣ Sudo version
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#sudo-version
+Sudo version 1.9.13p3
+
+
+╔══════════╣ PATH
+╚ https://book.hacktricks.xyz/linux-hardening/privilege-escalation#writable-path-abuses
+/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+╔══════════╣ Date & uptime
+Thu May  9 10:53:16 UTC 2024
+ 10:53:16 up 15 min,  3 users,  load average: 0.10, 0.11, 0.08
+
+╔══════════╣ Any sd*/disk* disk in /dev? (limit 20)
+disk
+sda
+sda1
+
+╔══════════╣ Unmounted file-system?
+╚ Check if you can mount umounted devices
+
+UUID=e40706ce-053f-451f-b6fe-0979430677a4       /       ext4    rw,discard,errors=remount-ro    0       1
+vagrant /vagrant vboxsf uid=1000,gid=1000,_netdev 0 0
+
+╔══════════╣ Environment
+╚ Any private information inside environment variables?
+HISTFILESIZE=0
+USER=vagrant
+SSH_CLIENT=10.0.2.2 57676 22
+XDG_SESSION_TYPE=tty
+SHLVL=1
+MOTD_SHOWN=pam
+HOME=/home/vagrant
+SSH_TTY=/dev/pts/2
+LOGNAME=vagrant
+_=/usr/bin/sh
+XDG_SESSION_CLASS=user
+TERM=tmux-256color
+XDG_SESSION_ID=8
+[...]
+  \end{minted}
+  \caption[Uitvoer van linPEAS op \texttt{srv1}.]{De uitvoer van het linPEAS script op \texttt{srv1}.}
+  \label{lst:bijlage-linpeas}
+\end{longlisting}
