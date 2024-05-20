@@ -37,7 +37,7 @@ Het \texttt{net-tools} pakket wordt gebruikt om de configuratie van de netwerkin
 \end{listing}
 
 Het Ansible playbook plaatst eerst het script, dat vooraf moet worden geplaatst in \texttt{src/poc/ansible/files/}, op de servers in de map \texttt{/tmp/}, zoals te zien in listing \ref{lst:bijlage-copy-script}.
-Daar wordt het script vervolgens uitgevoerd met de \texttt{-t} optie, gevolgd door de paden van de configuraties die we willen opnemen in onze inventaris.
+Daar wordt het script vervolgens uitgevoerd met de \texttt{-t} optie, gevolgd door de paden van de configuraties die men wil opnemen in ons inventaris.
 Zoals weergegeven in listing \ref{lst:bijlage-run-script}, wordt het script uitgevoerd op \texttt{srv1}.
 Nadat het script op elke server is uitgevoerd, downloadt en plaatst het playbook de tarballs van elke server in de home directory van de gebruiker die het playbook uitvoert.
 Ten slotte worden de tarballs uitgepakt aan het einde van het playbook.
@@ -93,12 +93,12 @@ Listing~\ref{lst:bijlage-run-playbook} illustreert hoe men aan de hand van het p
   \label{lst:bijlage-run-playbook}
 \end{listing}
 
-Echter kunnen we ook het script handmatig uitvoeren op elke server.
+Echter kan men ook het script handmatig uitvoeren op elke server.
 Hiervoor moet men eerst inloggen op de server en het script vanuit \texttt{/vagrant/ansible/files/} kopi\"eren naar een gewenste locatie.
 In \ref{lst:bijlage-run-script-manual} wordt gedemonstreerd hoe dit handmatig kan worden gedaan op \texttt{srv1}.
 
-We gebruiken de \texttt{-t} optie om aan te geven dat we aan het einde een tarball willen verkrijgen in plaats van een directory genaamd \texttt{srv1-configs}.
-Daarna specificeren we de gewenste configuratiebestanden die we willen opnemen in de inventaris.
+Men gebruikt de \texttt{-t} optie om aan te geven dat men aan het einde een tarball wil verkrijgen in plaats van een directory genaamd \texttt{srv1-configs}.
+Daarna specificeert men de gewenste configuratiebestanden die men wil opnemen in de inventaris.
 
 Merk op dat het script moet worden uitgevoerd met root-privileges.
 Dit kan worden bereikt door in te loggen als de root-gebruiker of door het gebruik van het \texttt{sudo}-commando.

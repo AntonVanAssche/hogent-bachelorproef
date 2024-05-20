@@ -9,8 +9,8 @@ Deze bijlage bevat een voorbeeld van een Nmap-scan.
 In deze demonstratie zal Nmap alle beschikbare poorten scannen, trachten het besturingssysteem en de actieve services te identificeren, en de versies van deze services te achterhalen.
 De scan zal worden uitgevoerd op de \texttt{srv1} van de Proof of Concept, besproken in~\ref{ch:poc}.
 
-Uit de uitvoer in~\ref{lst:bijlage-nmap-scan} kunnen we afleiden dat \texttt{srv1} een SSH-service draait op poort 22, een DNS-service op poort 53, en additionele services op poort 8053 en 9100.
-Echter, bij de service op poort 9100 merken we op dat Nmap er niet in slaagt deze correct te identificeren en slechts een veronderstelling maakt omtrent de servicenaam.
+Uit de uitvoer in~\ref{lst:bijlage-nmap-scan} kan men afleiden dat \texttt{srv1} een SSH-service draait op poort 22, een DNS-service op poort 53, en additionele services op poort 8053 en 9100.
+Echter, bij de service op poort 9100 merkt men op dat Nmap er niet in slaagt deze correct te identificeren en slechts een veronderstelling maakt omtrent de servicenaam.
 Nmap heeft wel het besturingssysteem met succes gedetecteerd als Debian met Linux kernel versie 2.6.32, en heeft het correcte versies van andere ge\"identificeerde services gerapporteerd.
 
 Merk wel op dat de fingerprint van de onbekende service werd weggelaten in de uitvoer van de scan, aangeduid met \texttt{[...]}.

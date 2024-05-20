@@ -10,13 +10,13 @@
 
 In vorige hoofdstukken werd uitgebreid besproken welke vereisten nodig zijn voor een doeltreffende configuratie-inventaris.
 Nu is het tijd om deze vereisten in de praktijk te brengen door middel van een Proof of Concept (PoC).
-In dit hoofdstuk zullen we ons richten op de praktische implementatie van deze vereisten.
+In dit hoofdstuk zal men ons richten op de praktische implementatie van deze vereisten.
 
 Men zal een virtuele-omgeving opzetten, waarbij verschillende gebruikte technologie\"en worden toegelicht die gebruikt zullen worden om de omgeving te automatiseren.
-Vervolgens ontwikkelen we een Bash-script genaamd ConfiScan, dat dient om de configuratie-inventaris te genereren voor elke server binnen de omgeving.
+Vervolgens zal men een Bash-script genaamd ConfiScan ontwikkelen, dat dient om de configuratie-inventaris te genereren voor elke server binnen de omgeving.
 
 Tot slot zal men de resultaten van de PoC presenteren.
-Hierbij zullen we dieper ingaan op de functionaliteit en effectiviteit ervan.
+Hierbij zal men dieper ingaan op de functionaliteit en effectiviteit ervan.
 Bovendien is alle bijbehorende code van deze Proof of Concept beschikbaar als open-source, te vinden op GitHub~\autocite{github-poc}.
 Dit om de lezer de mogelijkheid te geven om de PoC zelf te testen en te gebruiken, en verder onderzoek mogelijk te maken.
 
@@ -44,10 +44,10 @@ Dit zal het analyseren en verwerken van de verzamelde gegevens vergemakkelijken,
 Dit vergemakkelijkt mogelijks verder onderzoek dat kan volgen op deze bachelorproef.
 
 Daarnaast zal het script ook de mogelijkheid moeten bieden om de configuratie van de ge\"installeerde software te kopi\"eren die relevant is voor de rol van de server en deze mee op te slaan in de centrale locatie.
-Op deze manier kunnen we niet alleen de basisconfiguratie van de servers verzamelen, maar ook de specifieke configuratie-instellingen van de software die op elke server is ge\"installeerd.
+Op deze manier kan men niet alleen de basisconfiguratie van de servers verzamelen, maar ook de specifieke configuratie-instellingen van de software die op elke server is ge\"installeerd.
 
 Het uiteindelijke doel van deze PoC is om een voorbeeld te bieden om op een geautomatiseerde en gestructureerde manier de configuratie van meerdere servers te verzamelen en te beheren.
-Door gebruik te maken van een script dat de configuratiegegevens centraliseert en eenvoudig toegankelijk maakt, kunnen we het beheer en de monitoring van onze serveromgeving verbeteren en effici\"enter maken.
+Door gebruik te maken van een script dat de configuratiegegevens centraliseert en eenvoudig toegankelijk maakt, kan men het beheer en de monitoring van onze serveromgeving verbeteren en effici\"enter maken.
 
 \section{De omgeving}
 \label{poc_omgeving}
@@ -58,22 +58,22 @@ Dit proces omvat verschillende stappen, waaronder het opzetten van virtuele mach
 \subsection{Gekozen technologie{\"e}n}
 \label{poc_gekozen_technologieen}
 
-Om de omgeving zo reproduceerbaar mogelijk te maken, zullen we gebruik maken van verschillende technologie\"en die het opzetten van de omgeving automatiseren.
+Om de omgeving zo reproduceerbaar mogelijk te maken, zal men gebruik maken van verschillende technologie\"en die het opzetten van de omgeving automatiseren.
 Dit stelt ons in staat om snel en consistent virtuele machines te cre\"eren en te configureren, wat essentieel is voor een succesvolle uitvoering van de Proof of Concept.
 
-Allereerst zullen we gebruik maken van Vagrant~\autocite{vagrant-home}, in combinatie met VirtualBox~\autocite{virtualbox-home}, om de virtuele machines te beheren die de servers zullen vertegenwoordigen binnen deze PoC.
-Vagrant biedt een eenvoudige en krachtige manier om virtuele machines te cre\"eren, te provisioneren en te beheren, waardoor we snel en effici\"ent onze testomgeving kunnen opzetten en terug afbreken tijdens het testen van de code.
+Allereerst zal men gebruik maken van Vagrant~\autocite{vagrant-home}, in combinatie met VirtualBox~\autocite{virtualbox-home}, om de virtuele machines te beheren die de servers zullen vertegenwoordigen binnen deze PoC.
+Vagrant biedt een eenvoudige en krachtige manier om virtuele machines te cre\"eren, te provisioneren en te beheren, waardoor men snel en effici\"ent onze testomgeving kunnen opzetten en terug afbreken tijdens het testen van de code.
 
-Daarnaast zullen we Ansible~\autocite{ansible-home} gebruiken om elke server individueel te configureren en zijn specifieke rol binnen de omgeving te vervullen.
+Daarnaast zal men Ansible~\autocite{ansible-home} gebruiken om elke server individueel te configureren en zijn specifieke rol binnen de omgeving te vervullen.
 Ansible is een krachtige IaC-tool die ons in staat stelt om complexe configuratietaken uit te voeren met behulp van eenvoudig te begrijpen YAML-bestanden~\autocite{ansible-docs-yaml}.
-Met Ansible kunnen we de configuratie van elke server nauwkeurig defini\"eren en consistent toepassen, wat bijdraagt aan de betrouwbaarheid en reproduceerbaarheid van onze omgeving.
+Met Ansible kan men de configuratie van elke server nauwkeurig defini\"eren en consistent toepassen, wat bijdraagt aan de betrouwbaarheid en reproduceerbaarheid van onze omgeving.
 Dit doordat dit een van de fundamenten is van IaC, zoals besproken in~\ref{sub:iac}.
 
 \subsection{Serverrollen}
 \label{poc_serverrollen}
 
-De opgezette omgeving zal bestaan uit zes servers, waarvan vijf servers worden toegewezen aan verschillende serverrollen die we willen inventariseren, en één server zal fungeren als de centrale locatie voor de configuratie-inventaris en als de controller voor de servers.
-In dit gedeelte zullen we de diverse rollen van de servers bespreken, evenals de gebruikte software om deze rollen te vervullen.
+De opgezette omgeving zal bestaan uit zes servers, waarvan vijf servers worden toegewezen aan verschillende serverrollen die men wil inventariseren, en één server zal fungeren als de centrale locatie voor de configuratie-inventaris en als de controller voor de servers.
+In dit gedeelte zal men de diverse rollen van de servers bespreken, evenals de gebruikte software om deze rollen te vervullen.
 
 De keuze voor de serverrollen is tot stand gekomen in samenwerking met de co-promotor van deze bachelorproef, en deze rollen vertegenwoordigen een representatieve set van servers die vaak in de praktijk worden ingezet.
 Dit zorgt ervoor dat onze PoC een breed scala aan serverconfiguraties kan omvatten en ons in staat stelt om een grondige inventarisatie uit te voeren van de configuratie-instellingen die relevant zijn voor elk type server.
@@ -103,19 +103,19 @@ Alvast een overzicht van de verschillende servers die deel zullen uitmaken van d
 \label{poc_ansible_controller}
 
 De server met de naam \texttt{control} heeft de rol om de configuratie van de andere servers binnen de omgeving te beheren met behulp van Ansible.
-We zullen deze server gebruiken om via Ansible het Bash-script uit te voeren op elke server.
+Men zal deze server gebruiken om via Ansible het Bash-script uit te voeren op elke server.
 Dit stelt ons in staat om de nodige bestanden met betrekking tot de configuratie-inventaris te verzamelen en te centraliseren op \'e\'en locatie.
 
 \subsubsection{DNS-server}
 \label{poc_dns_server}
 
 De eerste server zal de rol van DNS-server binnen de omgeving vervullen.
-Hiervoor zullen we gebruikmaken van de BIND DNS-server~\autocite{bind-home}, een van de meest gebruikte DNS-servers in de serverwereld.
+Hiervoor zal men gebruikmaken van de BIND DNS-server~\autocite{bind-home}, een van de meest gebruikte DNS-servers in de serverwereld.
 
 Deze server zal een DNS-zone bevatten voor het domein \texttt{poc.lan}, waarbij de server zelf fungeert als de primaire nameserver voor deze zone.\
 Hierdoor zal het gecentraliseerde DNS-informatie bevatten voor de andere servers binnen de omgeving, zoals IP-adressen en hostnamen.
 Dit stelt ons in staat om de servers te bereiken via hun fully-qualified domain name (FQDN), in plaats van alleen hun IP-adres.
-Bijvoorbeeld, we kunnen \texttt{srv1.poc.lan} gebruiken om de eerste server te bereiken, in plaats van \texttt{172.16.128.1}, dat het IP-adres van de DNS-server zelf zou zijn.
+Bijvoorbeeld, kan men \texttt{srv1.poc.lan} gebruiken om de eerste server te bereiken, in plaats van \texttt{172.16.128.1}, dat het IP-adres van de DNS-server zelf zou zijn.
 
 Wanneer een DNS-query niet kan worden beantwoord door de DNS-server zelf, zal deze worden doorgestuurd naar de DNS-server van de ISP.
 Dit wordt mogelijk gemaakt door gebruik te maken van de NAT-interface van VirtualBox, waarbij Google (\texttt{8.8.8.8}) of Cloudflare (\texttt{1.1.1.1}) als backup DNS-servers zullen fungeren.
@@ -124,7 +124,7 @@ Dit wordt mogelijk gemaakt door gebruik te maken van de NAT-interface van Virtua
 \label{poc_webserver}
 
 De tweede server, met hostname \texttt{srv2}, zal de rol van webserver vervullen binnen de omgeving.
-We hebben ervoor gekozen om een basis Apache-webserver~\autocite{apache-home} te installeren, die een geconfigureerde website zal tonen wanneer deze wordt bezocht via een webbrowser.
+Men heeft ervoor gekozen om een basis Apache-webserver~\autocite{apache-home} te installeren, die een geconfigureerde website zal tonen wanneer deze wordt bezocht via een webbrowser.
 De website zal bestaan uit een eenvoudige PHP-pagina die de inhoud van de database, geconfigureerd op \texttt{srv3}, zal weergeven.
 
 \subsubsection{Database-server}
@@ -162,7 +162,7 @@ Daarnaast wordt voor de gebruiker een specifieke \texttt{sudo}-regel ingesteld, 
 \label{poc_ontwerp_implementatie}
 
 In dit gedeelte zullen enkele ontwerp keuzes worden besproken die zijn gemaakt tijdens de ontwikkeling van het script, en hoe deze keuzes hebben bijgedragen aan de functionaliteit en effectiviteit van de Proof of Concept.
-Voor een gedetailleerd overzicht van hoe de Proof of Concept werd uitgevoerd op elke server, verwijzen we naar bijlage~\ref{ch:bijlage_poc_uitvoering}.
+Voor een gedetailleerd overzicht van hoe de Proof of Concept werd uitgevoerd op elke server, verwijst men naar bijlage~\ref{ch:bijlage_poc_uitvoering}.
 
 \subsection{Bourne Again Shell (Bash)}
 \label{poc_bash}
@@ -192,7 +192,7 @@ Dit maakt het eenvoudig om basisconfiguratie, zoals netwerkinterfaces van een se
 Daarnaast zullen ook gewone tekstbestanden worden gebruikt om gegevens op te slaan.
 Dit is vooral het geval voor complexe informatie waarvoor CSV niet geschikt is en het gebruik van CSV de leesbaarheid zou verminderen.
 Een voorbeeld hiervan zijn de firewallregels, die vaak complexe configuraties bevatten en beter kunnen worden weergegeven in een tekstbestand.
-Het weergeven van deze informatie in CSV-formaat zou de leesbaarheid van de gegevens verminderen, wat we zoveel mogelijk willen vermijden.
+Het weergeven van deze informatie in CSV-formaat zou de leesbaarheid van de gegevens verminderen, wat men zoveel mogelijk willen vermijden.
 
 \begin{listing}
   \begin{minted}[linenos,tabsize=4,breaklines]{console}
@@ -258,9 +258,9 @@ Enkele handige bestanden binnen het \texttt{/proc}-bestandssysteem zijn, die ook
     \item \texttt{/proc/mounts}: Lijst van alle actieve mount points op het systeem.
 \end{itemize}
 
-Tijdens deze Proof of Concept zullen we naast het verwerken van commando's ook informatie verzamelen uit dit virtuele bestandssysteem.
-We zullen gegevens verzamelen over kernelmodules, actieve mount points en andere systeemgerelateerde informatie.
-Vervolgens zullen we deze informatie verwerken en opslaan in de configuratie-inventaris in een leesbare vorm, zoals CSV- of tekstbestanden.
+Tijdens deze Proof of Concept zal men naast het verwerken van commando's ook informatie verzamelen uit dit virtuele bestandssysteem.
+Men zal gegevens verzamelen over kernelmodules, actieve mount points en andere systeemgerelateerde informatie.
+Vervolgens zal men deze informatie verwerken en opslaan in de configu-\ ratie-inventaris in een leesbare vorm, zoals CSV- of tekstbestanden.
 
 \section{De resultaten}
 \label{poc_resultaten}
@@ -277,7 +277,7 @@ Echter zijn er enkele beperkingen, waaronder het ontbreken van de AppArmor- en S
 Dit kan worden opgelost door de directory of configuratiebestanden van deze beveiligingsmaatregelen mee te geven als commandline-argumenten.
 Dit zorgt ervoor dat de configuratiebestanden toch worden opgenomen in de confi-\ guratie-inventaris.
 
-Een alternatieve aanpak is het toevoegen van een aparte sectie waarin we de configuratie van AppArmor en SELinux kunnen opnemen.
+Een alternatieve aanpak is het toevoegen van een aparte sectie waarin men de configuratie van AppArmor en SELinux kunnen opnemen.
 Indien gewenst kunnen deze gegevens dan worden omgezet naar een leesbaar formaat, zoals CSV of tekstbestanden.
 Echter is ervoor gekozen om dit specifieke aspect niet in deze bachelorproef op te nemen, zowel om de scope te beperken als omdat Debian standaard geen AppArmor of SELinux ge\"installeerd heeft.
 
@@ -285,11 +285,11 @@ Een andere beperking heeft betrekking op het opnemen van specifieke softwareconf
 Wanneer een directory of bestand wordt meegegeven als argument, wordt dit letterlijk gekopieerd naar de configuratie-inventaris.
 Dit houdt geen rekening met het soort bestand.
 Als het bijvoorbeeld een softlink is, bestaat de kans dat deze niet zal werken na het inventariseren van de configuratie.
-Dit werd vastgesteld tijdens het testen van het script op \texttt{srv2}, waar we de \texttt{my.cnf} van MariaDB wilden opnemen in de configuratie-inventaris.
+Dit werd vastgesteld tijdens het testen van het script op \texttt{srv2}, waar men de \texttt{my.cnf} van MariaDB wilden opnemen in de configuratie-inventaris.
 Maar dit een softlink was naar \texttt{/etc/alternatives/my.cnf}, wat niet werd meegegeven als argument.
 
 Wanneer het echter een softlink betreft naar een bestand binnen de gespecificeerde directory, zal deze wel blijven werken.
-Dit werd bevestigd na het uitvoeren van het script op \texttt{srv3}, waarbij we succesvol de configuratie van Apache, inclusief de softlinks van de modules in \texttt{/etc/apache2/mods-enabled}, hebben opgenomen in de configuratie-inventaris.
+Dit werd bevestigd na het uitvoeren van het script op \texttt{srv3}, waarbij men succesvol de configuratie van Apache, inclusief de softlinks van de modules in \texttt{/etc/apache2/mods-enabled}, hebben opgenomen in de configuratie-inventaris.
 
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 \begin{table}[!h]
@@ -334,7 +334,7 @@ De resultaten van het script zijn systematisch vergeleken met zowel de configura
 Aangezien het script de configuratie van de applicaties reproduceert, komen deze gegevens in de configuratie-inventaris overeen met de configuratie die door Ansible is toegepast.
 Het implementeren van een file-integriteitscon-\ trole, zoals gedaan door het script met behulp van \texttt{sha256sum}, kan een extra laag van controle bieden om de integriteit van de configuratiebestanden te waarborgen.
 Bovendien stelt het ons in staat om later eventuele wijzigingen in de configuratiebestanden te identificeren.
-Wanneer we de resultaten van de configuratie die door Vagrant doorgevoerd werd bekijken, merken we op dat deze ook overeenkomen met de specificaties in het \texttt{vagrant-hosts.yml} bestand.
+Wanneer men de resultaten van de configuratie die door Vagrant doorgevoerd werd bekijken, merkt men op dat deze ook overeenkomen met de specificaties in het \texttt{vagrant-hosts.yml} bestand.
 Deze resultaten betreffen voornamelijk de netwerkconfiguratie, zoals IP-adressen en hostnamen.
 
 Over het algemeen biedt het script een solide basis voor verdere ontwikkeling en uitbreiding van de configuratie-inventaris met meer eigenschappen en functionaliteiten op Debian-servers.
@@ -343,7 +343,7 @@ Een mogelijke oplossing voor het probleem met softlinks is bijvoorbeeld het impl
 Als het een link is, kan het script de link volgen en het gekoppelde bestand ook toevoegen aan de configuratie-inventaris.
 Een alternatieve oplossing, waarbij gebruik wordt gemaakt van \texttt{rsync}, wordt behandeld in bijlage~\ref{ch:bijlage_symlink_kopieren_met_rsync}.
 
-Bovendien kunnen we door het gebruik van bestandsformaten zoals CSV en tekstbestanden de verkregen resultaten eenvoudig visualiseren.
+Bovendien kan men door het gebruik van bestandsformaten zoals CSV en tekstbestanden de verkregen resultaten eenvoudig visualiseren.
 Dit kan worden gedaan met behulp van spreadsheetprogramma's of door het ontwikkelen van aangepaste applicaties voor verder onderzoek en analyse.
 Een voorbeeld hiervan is te zien in figuur~\ref{fig:mountpoints-csv-import-spreadsheet}, waar de mount points van \texttt{srv1} zijn ge\"importeerd in OnlyOffice, een documentverwerker die spreadsheetfunctionaliteit biedt.
 

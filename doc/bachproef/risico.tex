@@ -11,7 +11,7 @@
 De overgang van een traditionele omgeving naar een Infrastructure as Code (IaC) omgeving vereist een grondige kennis van de configuratie van Linux-systemen.
 Een cruciale stap in dit proces is het opstellen van een gedetailleerde configuratie-inventaris die alle essenti\"ele eigenschappen van het systeem omvat.
 Deze inventaris vormt de basis voor het automatiseren van de infrastructuur met behulp van IaC-tools zoals Ansible, Terraform of Puppet.
-In dit hoofdstuk zullen we de belangrijkste elementen bespreken die moeten worden opgenomen in een configuratie-inventaris van Linux-systemen voor een succesvolle overgang naar een IaC-omge-\ ving, waarbij we ook de relevante beveiligingsaspecten benadrukken.
+In dit hoofdstuk zal men de belangrijkste elementen bespreken die moeten worden opgenomen in een configuratie-inventaris van Linux-systemen voor een succesvolle overgang naar een IaC-omge-\ ving, waarbij men ook de relevante beveiligingsaspecten benadrukken.
 
 \section{Het besturingssysteem}
 \label{risico_besturingssysteem}
@@ -114,8 +114,8 @@ De bestanden in deze directory bevatten vaak de configuratie-opties voor verschi
 
 Systemd werd reeds besproken in~\ref{linux_systemd} als de standaard init-systeem op de meeste Linux-distributies.
 Het is een manier om services, en processen, te starten en stoppen op een bepaald tijdstip, of bij een bepaalde gebeurtenis.
-Zo kunnen we bijvoorbeeld een webserver automatisch laten starten bij het opstarten van het systeem.
-Dit doen we met het \texttt{systemctl} commando gevolgd door de \texttt{enable} optie, zoals te zien in listing~\ref{lst:systemd_enable}.
+Zo kan men bijvoorbeeld een webserver automatisch laten starten bij het opstarten van het systeem.
+Dit doet men met het \texttt{systemctl} commando gevolgd door de \texttt{enable} optie, zoals te zien in listing~\ref{lst:systemd_enable}.
 
 \begin{listing}
   \begin{minted}[linenos,tabsize=4,breaklines]{console}
@@ -159,7 +159,7 @@ Ook zorgt het opnemen van de netwerkconfiguratie in de configuratie-inventaris e
 \subsection{Netwerkinterfaces}
 \label{risico_netwerkinterfaces}
 
-In~\ref{netwerk_netwerkinterface} hebben we al besproken dat netwerkinterfaces de fysieke of virtuele verbindingen zijn waardoor een Linux-systeem communiceert met andere systemen.
+In~\ref{netwerk_netwerkinterface} heeft men al besproken dat netwerkinterfaces de fysieke of virtuele verbindingen zijn waardoor een Linux-systeem communiceert met andere systemen.
 Elke interface heeft een IP-adres, of het nu IPv4 of IPv6 is, samen met een subnetmask en een gateway.
 Deze kenmerken stellen het systeem in staat om uniek ge\"identificeerd te worden binnen het netwerk.
 
@@ -173,7 +173,7 @@ Zoals aangegeven door Antal in het boek ``It Inventory and Resource Management w
 \subsection{Routing en poortbeheer}
 \label{risico_routing_poorten}
 
-In hoofdstuk~\ref{ch:computernetwerk-concepten} hebben we al besproken hoe routing en poortbeheer cruciale elementen zijn binnen netwerkconfiguratie.
+In hoofdstuk~\ref{ch:computernetwerk-concepten} heeft men al besproken hoe routing en poortbeheer cruciale elementen zijn binnen netwerkconfiguratie.
 Poorten worden gebruikt om applicaties met andere systemen te laten communiceren, terwijl routing ervoor zorgt dat het verzonden verkeer zijn bestemming bereikt.
 
 Het documenteren van de momenteel gebruikte poorten in de configuratie-inven-\ taris biedt inzicht in de communicatiekanalen die actief zijn.
@@ -227,7 +227,7 @@ Hoewel AppArmor enigszins verschillend is van SELinux in zijn aanpak, is het nog
 \section{Conclusie}
 \label{risico_conclusie}
 
-In dit hoofdstuk hebben we de belangrijkste elementen besproken die moeten worden opgenomen in een configuratie-inventaris van Linux-systemen voor een succesvolle overgang naar een IaC-omgeving, maar ook vanuit een beveiligingsperspectief.
+In dit hoofdstuk heeft men de belangrijkste elementen besproken die moeten worden opgenomen in een configuratie-inventaris van Linux-systemen voor een succesvolle overgang naar een IaC-omgeving, maar ook vanuit een beveiligingsperspectief.
 Tabel~\ref{table:risico_conclusie} vat de belangrijkste elementen samen die moeten worden opgenomen in de configuratie-inventaris.
 
 \begin{table}[!h]

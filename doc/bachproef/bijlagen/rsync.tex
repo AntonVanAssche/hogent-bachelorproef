@@ -6,7 +6,7 @@
 \label{ch:bijlage_symlink_kopieren_met_rsync}
 
 Deze bijlage presenteert een alternatieve oplossing voor het kopi\"eren van symlinks, een beperking van de huidige implementatie van het script.
-In de diff van~\ref{lst:bijlage-rsync-copy-alternative-diff} is te zien dat we \texttt{cp} vervangen door \texttt{rsync}, gevolgd door enkele opties die ervoor zorgen dat de symlink wordt gevolgd en het effectieve bestand wordt gekopieerd.
+In de diff van~\ref{lst:bijlage-rsync-copy-alternative-diff} is te zien dat men \texttt{cp} vervangt door \texttt{rsync}, gevolgd door enkele opties die ervoor zorgen dat de symlink wordt gevolgd en het effectieve bestand wordt gekopieerd.
 Een korte uitleg van de gebruikte opties:
 
 \begin{itemize}
@@ -23,7 +23,7 @@ Dit zorgt ervoor dat de operatie nooit faalt, zelfs als er een fout optreedt.
 Echter betekent dit ook dat andere fouten niet correct zullen worden afgehandeld, wat de robuustheid van het script kan verminderen.
 Dit is dan ook de redenen waarom deze oplossing niet werd ge\"implementeerd in de uiteindelijke versie van het script.
 
-Uiteindelijk moeten we ook de playbook aanpassen zodat het script op elk systeem wordt uitgevoerd.
+Uiteindelijk moet men ook de playbook aanpassen zodat het script op elk systeem wordt uitgevoerd.
 De benodigde aanpassing omvat het toevoegen van \texttt{rsync} aan de lijst van vereiste pakketten, zoals weergegeven in~\ref{lst:bijlage-rsync-playbook-diff}.
 
 \begin{listing}
