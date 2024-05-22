@@ -1,0 +1,1408 @@
+[anton@fedorable hogent-bachelorproef]$ cd src/poc/
+[anton@fedorable poc]$ cp -r ../tool/confiscan.sh ansible/files/
+[anton@fedorable poc]$ vagrant
+Bringing machine 'srv1' up with 'virtualbox' provider...
+Bringing machine 'srv2' up with 'virtualbox' provider...
+Bringing machine 'srv3' up with 'virtualbox' provider...
+Bringing machine 'srv4' up with 'virtualbox' provider...
+Bringing machine 'srv5' up with 'virtualbox' provider...
+Bringing machine 'control' up with 'virtualbox' provider...
+==> srv1: You assigned a static IP ending in ".1" to this machine.
+==> srv1: This is very often used by the router and can cause the
+==> srv1: network to not work properly. If the network doesn't work
+==> srv1: properly, try changing this IP.
+==> srv1: Importing base box 'debian/bookworm64'...
+==> srv1: Matching MAC address for NAT networking...
+==> srv1: You assigned a static IP ending in ".1" to this machine.
+==> srv1: This is very often used by the router and can cause the
+==> srv1: network to not work properly. If the network doesn't work
+==> srv1: properly, try changing this IP.
+==> srv1: Checking if box 'debian/bookworm64' version '12.20240212.1' is up to date...
+==> srv1: Setting the name of the VM: poc_srv1_1716410721316_41150
+==> srv1: Clearing any previously set network interfaces...
+==> srv1: Preparing network interfaces based on configuration...
+    srv1: Adapter 1: nat
+    srv1: Adapter 2: hostonly
+==> srv1: Forwarding ports...
+    srv1: 22 (guest) => 2222 (host) (adapter 1)
+==> srv1: Running 'pre-boot' VM customizations...
+==> srv1: Booting VM...
+==> srv1: Waiting for machine to boot. This may take a few minutes...
+    srv1: SSH address: 127.0.0.1:2222
+    srv1: SSH username: vagrant
+    srv1: SSH auth method: private key
+    srv1:
+    srv1: Vagrant insecure key detected. Vagrant will automatically replace
+    srv1: this with a newly generated keypair for better security.
+    srv1:
+    srv1: Inserting generated public key within guest...
+    srv1: Removing insecure key from the guest if it's present...
+    srv1: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> srv1: Machine booted and ready!
+==> srv1: Checking for guest additions in VM...
+    srv1: The guest additions on this VM do not match the installed version of
+    srv1: VirtualBox! In most cases this is fine, but in rare cases it can
+    srv1: prevent things such as shared folders from working properly. If you see
+    srv1: shared folder errors, please make sure the guest additions within the
+    srv1: virtual machine match the version of VirtualBox you have installed on
+    srv1: your host and reload your VM.
+    srv1:
+    srv1: Guest Additions Version: 6.0.0 r127566
+    srv1: VirtualBox Version: 7.0
+==> srv1: Setting hostname...
+==> srv1: Configuring and enabling network interfaces...
+==> srv1: Mounting shared folders...
+    srv1: /vagrant => /home/anton/Projects/hogent-bachelorproef/src/poc
+==> srv2: Importing base box 'debian/bookworm64'...
+==> srv2: Matching MAC address for NAT networking...
+==> srv2: Checking if box 'debian/bookworm64' version '12.20240212.1' is up to date...
+==> srv2: Setting the name of the VM: poc_srv2_1716410768904_61241
+==> srv2: Fixed port collision for 22 => 2222. Now on port 2200.
+==> srv2: Clearing any previously set network interfaces...
+==> srv2: Preparing network interfaces based on configuration...
+    srv2: Adapter 1: nat
+    srv2: Adapter 2: hostonly
+==> srv2: Forwarding ports...
+    srv2: 22 (guest) => 2200 (host) (adapter 1)
+==> srv2: Running 'pre-boot' VM customizations...
+==> srv2: Booting VM...
+==> srv2: Waiting for machine to boot. This may take a few minutes...
+    srv2: SSH address: 127.0.0.1:2200
+    srv2: SSH username: vagrant
+    srv2: SSH auth method: private key
+    srv2:
+    srv2: Vagrant insecure key detected. Vagrant will automatically replace
+    srv2: this with a newly generated keypair for better security.
+    srv2:
+    srv2: Inserting generated public key within guest...
+    srv2: Removing insecure key from the guest if it's present...
+    srv2: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> srv2: Machine booted and ready!
+==> srv2: Checking for guest additions in VM...
+    srv2: The guest additions on this VM do not match the installed version of
+    srv2: VirtualBox! In most cases this is fine, but in rare cases it can
+    srv2: prevent things such as shared folders from working properly. If you see
+    srv2: shared folder errors, please make sure the guest additions within the
+    srv2: virtual machine match the version of VirtualBox you have installed on
+    srv2: your host and reload your VM.
+    srv2:
+    srv2: Guest Additions Version: 6.0.0 r127566
+    srv2: VirtualBox Version: 7.0
+==> srv2: Setting hostname...
+==> srv2: Configuring and enabling network interfaces...
+==> srv2: Mounting shared folders...
+    srv2: /vagrant => /home/anton/Projects/hogent-bachelorproef/src/poc
+==> srv3: Importing base box 'debian/bookworm64'...
+==> srv3: Matching MAC address for NAT networking...
+==> srv3: Checking if box 'debian/bookworm64' version '12.20240212.1' is up to date...
+==> srv3: Setting the name of the VM: poc_srv3_1716410811988_66364
+==> srv3: Fixed port collision for 22 => 2222. Now on port 2201.
+==> srv3: Clearing any previously set network interfaces...
+==> srv3: Preparing network interfaces based on configuration...
+    srv3: Adapter 1: nat
+    srv3: Adapter 2: hostonly
+==> srv3: Forwarding ports...
+    srv3: 22 (guest) => 2201 (host) (adapter 1)
+==> srv3: Running 'pre-boot' VM customizations...
+==> srv3: Booting VM...
+==> srv3: Waiting for machine to boot. This may take a few minutes...
+    srv3: SSH address: 127.0.0.1:2201
+    srv3: SSH username: vagrant
+    srv3: SSH auth method: private key
+    srv3:
+    srv3: Vagrant insecure key detected. Vagrant will automatically replace
+    srv3: this with a newly generated keypair for better security.
+    srv3:
+    srv3: Inserting generated public key within guest...
+    srv3: Removing insecure key from the guest if it's present...
+    srv3: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> srv3: Machine booted and ready!
+==> srv3: Checking for guest additions in VM...
+    srv3: The guest additions on this VM do not match the installed version of
+    srv3: VirtualBox! In most cases this is fine, but in rare cases it can
+    srv3: prevent things such as shared folders from working properly. If you see
+    srv3: shared folder errors, please make sure the guest additions within the
+    srv3: virtual machine match the version of VirtualBox you have installed on
+    srv3: your host and reload your VM.
+    srv3:
+    srv3: Guest Additions Version: 6.0.0 r127566
+    srv3: VirtualBox Version: 7.0
+==> srv3: Setting hostname...
+==> srv3: Configuring and enabling network interfaces...
+==> srv3: Mounting shared folders...
+    srv3: /vagrant => /home/anton/Projects/hogent-bachelorproef/src/poc
+==> srv4: Importing base box 'debian/bookworm64'...
+==> srv4: Matching MAC address for NAT networking...
+==> srv4: Checking if box 'debian/bookworm64' version '12.20240212.1' is up to date...
+==> srv4: Setting the name of the VM: poc_srv4_1716410860993_88889
+==> srv4: Fixed port collision for 22 => 2222. Now on port 2202.
+==> srv4: Clearing any previously set network interfaces...
+==> srv4: Preparing network interfaces based on configuration...
+    srv4: Adapter 1: nat
+    srv4: Adapter 2: hostonly
+==> srv4: Forwarding ports...
+    srv4: 22 (guest) => 2202 (host) (adapter 1)
+==> srv4: Running 'pre-boot' VM customizations...
+==> srv4: Booting VM...
+==> srv4: Waiting for machine to boot. This may take a few minutes...
+    srv4: SSH address: 127.0.0.1:2202
+    srv4: SSH username: vagrant
+    srv4: SSH auth method: private key
+    srv4:
+    srv4: Vagrant insecure key detected. Vagrant will automatically replace
+    srv4: this with a newly generated keypair for better security.
+    srv4:
+    srv4: Inserting generated public key within guest...
+    srv4: Removing insecure key from the guest if it's present...
+    srv4: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> srv4: Machine booted and ready!
+==> srv4: Checking for guest additions in VM...
+    srv4: The guest additions on this VM do not match the installed version of
+    srv4: VirtualBox! In most cases this is fine, but in rare cases it can
+    srv4: prevent things such as shared folders from working properly. If you see
+    srv4: shared folder errors, please make sure the guest additions within the
+    srv4: virtual machine match the version of VirtualBox you have installed on
+    srv4: your host and reload your VM.
+    srv4:
+    srv4: Guest Additions Version: 6.0.0 r127566
+    srv4: VirtualBox Version: 7.0
+==> srv4: Setting hostname...
+==> srv4: Configuring and enabling network interfaces...
+==> srv4: Mounting shared folders...
+    srv4: /vagrant => /home/anton/Projects/hogent-bachelorproef/src/poc
+==> srv5: Importing base box 'debian/bookworm64'...
+==> srv5: Matching MAC address for NAT networking...
+==> srv5: Checking if box 'debian/bookworm64' version '12.20240212.1' is up to date...
+==> srv5: Setting the name of the VM: poc_srv5_1716410904944_17521
+==> srv5: Fixed port collision for 22 => 2222. Now on port 2203.
+==> srv5: Clearing any previously set network interfaces...
+==> srv5: Preparing network interfaces based on configuration...
+    srv5: Adapter 1: nat
+    srv5: Adapter 2: hostonly
+==> srv5: Forwarding ports...
+    srv5: 22 (guest) => 2203 (host) (adapter 1)
+==> srv5: Running 'pre-boot' VM customizations...
+==> srv5: Booting VM...
+==> srv5: Waiting for machine to boot. This may take a few minutes...
+    srv5: SSH address: 127.0.0.1:2203
+    srv5: SSH username: vagrant
+    srv5: SSH auth method: private key
+    srv5:
+    srv5: Vagrant insecure key detected. Vagrant will automatically replace
+    srv5: this with a newly generated keypair for better security.
+    srv5:
+    srv5: Inserting generated public key within guest...
+    srv5: Removing insecure key from the guest if it's present...
+    srv5: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> srv5: Machine booted and ready!
+==> srv5: Checking for guest additions in VM...
+    srv5: The guest additions on this VM do not match the installed version of
+    srv5: VirtualBox! In most cases this is fine, but in rare cases it can
+    srv5: prevent things such as shared folders from working properly. If you see
+    srv5: shared folder errors, please make sure the guest additions within the
+    srv5: virtual machine match the version of VirtualBox you have installed on
+    srv5: your host and reload your VM.
+    srv5:
+    srv5: Guest Additions Version: 6.0.0 r127566
+    srv5: VirtualBox Version: 7.0
+==> srv5: Setting hostname...
+==> srv5: Configuring and enabling network interfaces...
+==> srv5: Mounting shared folders...
+    srv5: /vagrant => /home/anton/Projects/hogent-bachelorproef/src/poc
+==> control: Importing base box 'debian/bookworm64'...
+==> control: Matching MAC address for NAT networking...
+==> control: Checking if box 'debian/bookworm64' version '12.20240212.1' is up to date...
+==> control: Setting the name of the VM: poc_control_1716410948434_26023
+==> control: Fixed port collision for 22 => 2222. Now on port 2204.
+==> control: Clearing any previously set network interfaces...
+==> control: Preparing network interfaces based on configuration...
+    control: Adapter 1: nat
+    control: Adapter 2: hostonly
+==> control: Forwarding ports...
+    control: 22 (guest) => 2204 (host) (adapter 1)
+==> control: Running 'pre-boot' VM customizations...
+==> control: Booting VM...
+==> control: Waiting for machine to boot. This may take a few minutes...
+    control: SSH address: 127.0.0.1:2204
+    control: SSH username: vagrant
+    control: SSH auth method: private key
+    control:
+    control: Vagrant insecure key detected. Vagrant will automatically replace
+    control: this with a newly generated keypair for better security.
+    control:
+    control: Inserting generated public key within guest...
+    control: Removing insecure key from the guest if it's present...
+    control: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> control: Machine booted and ready!
+==> control: Checking for guest additions in VM...
+    control: The guest additions on this VM do not match the installed version of
+    control: VirtualBox! In most cases this is fine, but in rare cases it can
+    control: prevent things such as shared folders from working properly. If you see
+    control: shared folder errors, please make sure the guest additions within the
+    control: virtual machine match the version of VirtualBox you have installed on
+    control: your host and reload your VM.
+    control:
+    control: Guest Additions Version: 6.0.0 r127566
+    control: VirtualBox Version: 7.0
+==> control: Setting hostname...
+==> control: Configuring and enabling network interfaces...
+==> control: Mounting shared folders...
+    control: /vagrant => /home/anton/Projects/hogent-bachelorproef/src/poc
+==> control: Running provisioner: shell...
+    control: Running: /tmp/vagrant-shell20240522-121827-x4xaa7.sh
+    control:
+    control: WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+    control:
+    control: Get:1 https://security.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+    control: Get:2 https://deb.debian.org/debian bookworm InRelease [151 kB]
+    control: Get:3 https://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+    control: Get:4 https://deb.debian.org/debian bookworm-backports InRelease [56.5 kB]
+    control: Get:5 https://security.debian.org/debian-security bookworm-security/main Sources [96.4 kB]
+    control: Get:6 https://security.debian.org/debian-security bookworm-security/main amd64 Packages [156 kB]
+    control: Get:7 https://security.debian.org/debian-security bookworm-security/main Translation-en [92.9 kB]
+    control: Get:8 https://deb.debian.org/debian bookworm/main Sources [9489 kB]
+    control: Get:9 https://deb.debian.org/debian bookworm/main amd64 Packages [8786 kB]
+    control: Get:10 https://deb.debian.org/debian bookworm/main Translation-en [6109 kB]
+    control: Get:11 https://deb.debian.org/debian bookworm-updates/main Sources [17.9 kB]
+    control: Get:12 https://deb.debian.org/debian bookworm-updates/main amd64 Packages [13.8 kB]
+    control: Get:13 https://deb.debian.org/debian bookworm-updates/main Translation-en [16.0 kB]
+    control: Get:14 https://deb.debian.org/debian bookworm-backports/main Sources [216 kB]
+    control: Get:15 https://deb.debian.org/debian bookworm-backports/main amd64 Packages [209 kB]
+    control: Get:16 https://deb.debian.org/debian bookworm-backports/main Translation-en [172 kB]
+    control: Fetched 25.7 MB in 5s (4772 kB/s)
+    control: Reading package lists...
+    control: Building dependency tree...
+    control: Reading state information...
+    control: 22 packages can be upgraded. Run 'apt list --upgradable' to see them.
+    control:
+    control: WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+    control:
+    control: Reading package lists...
+    control: Building dependency tree...
+    control: Reading state information...
+    control: The following additional packages will be installed:
+    control:   dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client
+    control:   gpg-wks-server gpgconf gpgsm libassuan0 libksba8 libnpth0 pinentry-curses
+    control: Suggested packages:
+    control:   dbus-user-session pinentry-gnome3 tor parcimonie xloadimage scdaemon
+    control:   pinentry-doc
+    control: The following NEW packages will be installed:
+    control:   dirmngr gnupg gnupg-l10n gnupg-utils gnupg2 gpg gpg-agent gpg-wks-client
+    control:   gpg-wks-server gpgconf gpgsm libassuan0 libksba8 libnpth0 pinentry-curses
+    control: 0 upgraded, 15 newly installed, 0 to remove and 22 not upgraded.
+    control: Need to get 8327 kB of archives.
+    control: After this operation, 16.4 MB of additional disk space will be used.
+    control: Get:1 https://deb.debian.org/debian bookworm/main amd64 libassuan0 amd64 2.5.5-5 [48.5 kB]
+    control: Get:2 https://deb.debian.org/debian bookworm/main amd64 gpgconf amd64 2.2.40-1.1 [564 kB]
+    control: Get:3 https://deb.debian.org/debian bookworm/main amd64 libksba8 amd64 1.6.3-2 [128 kB]
+    control: Get:4 https://deb.debian.org/debian bookworm/main amd64 libnpth0 amd64 1.6-3 [19.0 kB]
+    control: Get:5 https://deb.debian.org/debian bookworm/main amd64 dirmngr amd64 2.2.40-1.1 [792 kB]
+    control: Get:6 https://deb.debian.org/debian bookworm/main amd64 gnupg-l10n all 2.2.40-1.1 [1093 kB]
+    control: Get:7 https://deb.debian.org/debian bookworm/main amd64 gnupg-utils amd64 2.2.40-1.1 [927 kB]
+    control: Get:8 https://deb.debian.org/debian bookworm/main amd64 gpg amd64 2.2.40-1.1 [949 kB]
+    control: Get:9 https://deb.debian.org/debian bookworm/main amd64 pinentry-curses amd64 1.2.1-1 [77.4 kB]
+    control: Get:10 https://deb.debian.org/debian bookworm/main amd64 gpg-agent amd64 2.2.40-1.1 [695 kB]
+    control: Get:11 https://deb.debian.org/debian bookworm/main amd64 gpg-wks-client amd64 2.2.40-1.1 [541 kB]
+    control: Get:12 https://deb.debian.org/debian bookworm/main amd64 gpg-wks-server amd64 2.2.40-1.1 [531 kB]
+    control: Get:13 https://deb.debian.org/debian bookworm/main amd64 gpgsm amd64 2.2.40-1.1 [671 kB]
+    control: Get:14 https://deb.debian.org/debian bookworm/main amd64 gnupg all 2.2.40-1.1 [846 kB]
+    control: Get:15 https://deb.debian.org/debian bookworm/main amd64 gnupg2 all 2.2.40-1.1 [445 kB]
+    control: dpkg-preconfigure: unable to re-open stdin: No such file or directory
+    control: Fetched 8327 kB in 1s (5778 kB/s)
+    control: Selecting previously unselected package libassuan0:amd64.
+(Reading database ... 25531 files and directories currently installed.)
+    control: Preparing to unpack .../00-libassuan0_2.5.5-5_amd64.deb ...
+    control: Unpacking libassuan0:amd64 (2.5.5-5) ...
+    control: Selecting previously unselected package gpgconf.
+    control: Preparing to unpack .../01-gpgconf_2.2.40-1.1_amd64.deb ...
+    control: Unpacking gpgconf (2.2.40-1.1) ...
+    control: Selecting previously unselected package libksba8:amd64.
+    control: Preparing to unpack .../02-libksba8_1.6.3-2_amd64.deb ...
+    control: Unpacking libksba8:amd64 (1.6.3-2) ...
+    control: Selecting previously unselected package libnpth0:amd64.
+    control: Preparing to unpack .../03-libnpth0_1.6-3_amd64.deb ...
+    control: Unpacking libnpth0:amd64 (1.6-3) ...
+    control: Selecting previously unselected package dirmngr.
+    control: Preparing to unpack .../04-dirmngr_2.2.40-1.1_amd64.deb ...
+    control: Unpacking dirmngr (2.2.40-1.1) ...
+    control: Selecting previously unselected package gnupg-l10n.
+    control: Preparing to unpack .../05-gnupg-l10n_2.2.40-1.1_all.deb ...
+    control: Unpacking gnupg-l10n (2.2.40-1.1) ...
+    control: Selecting previously unselected package gnupg-utils.
+    control: Preparing to unpack .../06-gnupg-utils_2.2.40-1.1_amd64.deb ...
+    control: Unpacking gnupg-utils (2.2.40-1.1) ...
+    control: Selecting previously unselected package gpg.
+    control: Preparing to unpack .../07-gpg_2.2.40-1.1_amd64.deb ...
+    control: Unpacking gpg (2.2.40-1.1) ...
+    control: Selecting previously unselected package pinentry-curses.
+    control: Preparing to unpack .../08-pinentry-curses_1.2.1-1_amd64.deb ...
+    control: Unpacking pinentry-curses (1.2.1-1) ...
+    control: Selecting previously unselected package gpg-agent.
+    control: Preparing to unpack .../09-gpg-agent_2.2.40-1.1_amd64.deb ...
+    control: Unpacking gpg-agent (2.2.40-1.1) ...
+    control: Selecting previously unselected package gpg-wks-client.
+    control: Preparing to unpack .../10-gpg-wks-client_2.2.40-1.1_amd64.deb ...
+    control: Unpacking gpg-wks-client (2.2.40-1.1) ...
+    control: Selecting previously unselected package gpg-wks-server.
+    control: Preparing to unpack .../11-gpg-wks-server_2.2.40-1.1_amd64.deb ...
+    control: Unpacking gpg-wks-server (2.2.40-1.1) ...
+    control: Selecting previously unselected package gpgsm.
+    control: Preparing to unpack .../12-gpgsm_2.2.40-1.1_amd64.deb ...
+    control: Unpacking gpgsm (2.2.40-1.1) ...
+    control: Selecting previously unselected package gnupg.
+    control: Preparing to unpack .../13-gnupg_2.2.40-1.1_all.deb ...
+    control: Unpacking gnupg (2.2.40-1.1) ...
+    control: Selecting previously unselected package gnupg2.
+    control: Preparing to unpack .../14-gnupg2_2.2.40-1.1_all.deb ...
+    control: Unpacking gnupg2 (2.2.40-1.1) ...
+    control: Setting up libksba8:amd64 (1.6.3-2) ...
+    control: Setting up libnpth0:amd64 (1.6-3) ...
+    control: Setting up libassuan0:amd64 (2.5.5-5) ...
+    control: Setting up gnupg-l10n (2.2.40-1.1) ...
+    control: Setting up gpgconf (2.2.40-1.1) ...
+    control: Setting up gpg (2.2.40-1.1) ...
+    control: Setting up gnupg-utils (2.2.40-1.1) ...
+    control: Setting up pinentry-curses (1.2.1-1) ...
+    control: Setting up gpg-agent (2.2.40-1.1) ...
+    control: Created symlink /etc/systemd/user/sockets.target.wants/gpg-agent-browser.socket → /usr/lib/systemd/user/gpg-agent-browser.socket.
+    control: Created symlink /etc/systemd/user/sockets.target.wants/gpg-agent-extra.socket → /usr/lib/systemd/user/gpg-agent-extra.socket.
+    control: Created symlink /etc/systemd/user/sockets.target.wants/gpg-agent-ssh.socket → /usr/lib/systemd/user/gpg-agent-ssh.socket.
+    control: Created symlink /etc/systemd/user/sockets.target.wants/gpg-agent.socket → /usr/lib/systemd/user/gpg-agent.socket.
+    control: Setting up gpgsm (2.2.40-1.1) ...
+    control: Setting up dirmngr (2.2.40-1.1) ...
+    control: Created symlink /etc/systemd/user/sockets.target.wants/dirmngr.socket → /usr/lib/systemd/user/dirmngr.socket.
+    control: Setting up gpg-wks-server (2.2.40-1.1) ...
+    control: Setting up gpg-wks-client (2.2.40-1.1) ...
+    control: Setting up gnupg (2.2.40-1.1) ...
+    control: Setting up gnupg2 (2.2.40-1.1) ...
+    control: Processing triggers for man-db (2.11.2-2) ...
+    control: Processing triggers for libc-bin (2.36-9+deb12u4) ...
+    control: --2024-05-22 20:50:06--  https://keyserver.ubuntu.com/pks/lookup?fingerprint=on&op=get&search=0x6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367
+    control: Resolving keyserver.ubuntu.com (keyserver.ubuntu.com)... 185.125.188.27, 185.125.188.26, 2620:2d:4000:1007::70c, ...
+    control: Connecting to keyserver.ubuntu.com (keyserver.ubuntu.com)|185.125.188.27|:443... connected.
+    control: HTTP request sent, awaiting response... 200 OK
+    control: Length: 1659 (1.6K) [application/pgp-keys]
+    control: Saving to: ‘STDOUT’
+    control:
+    control:      0K .                                                     100% 58.0M=0s
+    control:
+    control: 2024-05-22 20:50:06 (58.0 MB/s) - written to stdout [1659/1659]
+    control:
+    control: deb [signed-by=/usr/share/keyrings/ansible-archive-keyring.gpg] http://ppa.launchpad.net/ansible/ansible/ubuntu jammy main
+    control:
+    control: WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+    control:
+    control: Get:1 http://ppa.launchpad.net/ansible/ansible/ubuntu jammy InRelease [18.0 kB]
+    control: Hit:2 https://deb.debian.org/debian bookworm InRelease
+    control: Hit:3 https://security.debian.org/debian-security bookworm-security InRelease
+    control: Hit:4 https://deb.debian.org/debian bookworm-updates InRelease
+    control: Hit:5 https://deb.debian.org/debian bookworm-backports InRelease
+    control: Get:6 http://ppa.launchpad.net/ansible/ansible/ubuntu jammy/main amd64 Packages [1112 B]
+    control: Get:7 http://ppa.launchpad.net/ansible/ansible/ubuntu jammy/main Translation-en [752 B]
+    control: Fetched 19.9 kB in 1s (23.1 kB/s)
+    control: Reading package lists...
+    control: Building dependency tree...
+    control: Reading state information...
+    control: 22 packages can be upgraded. Run 'apt list --upgradable' to see them.
+    control:
+    control: WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+    control:
+    control: Reading package lists...
+    control: Building dependency tree...
+    control: Reading state information...
+    control: The following additional packages will be installed:
+    control:   ansible-core libsodium23 libyaml-0-2 python-babel-localedata python3-babel
+    control:   python3-bcrypt python3-cffi-backend python3-cryptography python3-invoke
+    control:   python3-jinja2 python3-jmespath python3-kerberos python3-markupsafe
+    control:   python3-nacl python3-ntlm-auth python3-packaging python3-paramiko
+    control:   python3-requests-kerberos python3-requests-ntlm python3-resolvelib
+    control:   python3-tz python3-winrm python3-xmltodict python3-yaml sshpass
+    control: Suggested packages:
+    control:   python-cryptography-doc python3-cryptography-vectors python-invoke-doc
+    control:   python-jinja2-doc python-nacl-doc python3-gssapi
+    control: The following NEW packages will be installed:
+    control:   ansible ansible-core libsodium23 libyaml-0-2 python-babel-localedata
+    control:   python3-babel python3-bcrypt python3-cffi-backend python3-cryptography
+    control:   python3-invoke python3-jinja2 python3-jmespath python3-kerberos
+    control:   python3-markupsafe python3-nacl python3-ntlm-auth python3-packaging
+    control:   python3-paramiko python3-requests-kerberos python3-requests-ntlm
+    control:   python3-resolvelib python3-tz python3-winrm python3-xmltodict python3-yaml
+    control:   sshpass
+    control: 0 upgraded, 26 newly installed, 0 to remove and 22 not upgraded.
+    control: Need to get 28.6 MB of archives.
+    control: After this operation, 256 MB of additional disk space will be used.
+    control: Get:1 http://ppa.launchpad.net/ansible/ansible/ubuntu jammy/main amd64 ansible-core all 2.16.7-1ppa~jammy [1031 kB]
+    control: Get:2 https://deb.debian.org/debian bookworm/main amd64 python3-cffi-backend amd64 1.15.1-5+b1 [84.6 kB]
+    control: Get:3 https://deb.debian.org/debian bookworm/main amd64 python3-cryptography amd64 38.0.4-3 [666 kB]
+    control: Get:4 https://deb.debian.org/debian bookworm/main amd64 python3-markupsafe amd64 2.1.2-1+b1 [13.2 kB]
+    control: Get:5 https://deb.debian.org/debian bookworm/main amd64 python3-jinja2 all 3.1.2-1 [119 kB]
+    control: Get:6 https://deb.debian.org/debian bookworm/main amd64 python3-packaging all 23.0-1 [32.5 kB]
+    control: Get:7 https://deb.debian.org/debian bookworm/main amd64 python3-resolvelib all 0.9.0-2 [27.3 kB]
+    control: Get:8 https://deb.debian.org/debian bookworm/main amd64 libyaml-0-2 amd64 0.2.5-1 [53.6 kB]
+    control: Get:9 https://deb.debian.org/debian bookworm/main amd64 python3-yaml amd64 6.0-3+b2 [119 kB]
+    control: Get:10 https://deb.debian.org/debian bookworm/main amd64 libsodium23 amd64 1.0.18-1 [161 kB]
+    control: Get:11 https://deb.debian.org/debian bookworm/main amd64 python-babel-localedata all 2.10.3-1 [5615 kB]
+    control: Get:12 http://ppa.launchpad.net/ansible/ansible/ubuntu jammy/main amd64 ansible all 9.6.0-1ppa~jammy [20.1 MB]
+    control: Get:13 https://deb.debian.org/debian bookworm/main amd64 python3-tz all 2022.7.1-4 [30.1 kB]
+    control: Get:14 https://deb.debian.org/debian bookworm/main amd64 python3-babel all 2.10.3-1 [103 kB]
+    control: Get:15 https://deb.debian.org/debian bookworm/main amd64 python3-bcrypt amd64 3.2.2-1 [32.2 kB]
+    control: Get:16 https://deb.debian.org/debian bookworm/main amd64 python3-invoke all 2.0.0-1 [122 kB]
+    control: Get:17 https://deb.debian.org/debian bookworm/main amd64 python3-jmespath all 1.0.1-1 [21.1 kB]
+    control: Get:18 https://deb.debian.org/debian bookworm/main amd64 python3-kerberos amd64 1.1.14-3.1+b7 [21.5 kB]
+    control: Get:19 https://deb.debian.org/debian bookworm/main amd64 python3-nacl amd64 1.5.0-2 [59.3 kB]
+    control: Get:20 https://deb.debian.org/debian bookworm/main amd64 python3-ntlm-auth all 1.4.0-2 [21.9 kB]
+    control: Get:21 https://deb.debian.org/debian bookworm/main amd64 python3-paramiko all 2.12.0-2 [133 kB]
+    control: Get:22 https://deb.debian.org/debian bookworm/main amd64 python3-requests-kerberos all 0.12.0-2 [13.0 kB]
+    control: Get:23 https://deb.debian.org/debian bookworm/main amd64 python3-requests-ntlm all 1.1.0-3 [6268 B]
+    control: Get:24 https://deb.debian.org/debian bookworm/main amd64 python3-xmltodict all 0.13.0-1 [16.7 kB]
+    control: Get:25 https://deb.debian.org/debian bookworm/main amd64 python3-winrm all 0.3.0-4+deb12u1 [22.1 kB]
+    control: Get:26 https://deb.debian.org/debian bookworm/main amd64 sshpass amd64 1.09-1+b1 [13.0 kB]
+    control: dpkg-preconfigure: unable to re-open stdin: No such file or directory
+    control: Fetched 28.6 MB in 6s (4983 kB/s)
+    control: Selecting previously unselected package python3-cffi-backend:amd64.
+(Reading database ... 25791 files and directories currently installed.)
+    control: Preparing to unpack .../00-python3-cffi-backend_1.15.1-5+b1_amd64.deb ...
+    control: Unpacking python3-cffi-backend:amd64 (1.15.1-5+b1) ...
+    control: Selecting previously unselected package python3-cryptography.
+    control: Preparing to unpack .../01-python3-cryptography_38.0.4-3_amd64.deb ...
+    control: Unpacking python3-cryptography (38.0.4-3) ...
+    control: Selecting previously unselected package python3-markupsafe.
+    control: Preparing to unpack .../02-python3-markupsafe_2.1.2-1+b1_amd64.deb ...
+    control: Unpacking python3-markupsafe (2.1.2-1+b1) ...
+    control: Selecting previously unselected package python3-jinja2.
+    control: Preparing to unpack .../03-python3-jinja2_3.1.2-1_all.deb ...
+    control: Unpacking python3-jinja2 (3.1.2-1) ...
+    control: Selecting previously unselected package python3-packaging.
+    control: Preparing to unpack .../04-python3-packaging_23.0-1_all.deb ...
+    control: Unpacking python3-packaging (23.0-1) ...
+    control: Selecting previously unselected package python3-resolvelib.
+    control: Preparing to unpack .../05-python3-resolvelib_0.9.0-2_all.deb ...
+    control: Unpacking python3-resolvelib (0.9.0-2) ...
+    control: Selecting previously unselected package libyaml-0-2:amd64.
+    control: Preparing to unpack .../06-libyaml-0-2_0.2.5-1_amd64.deb ...
+    control: Unpacking libyaml-0-2:amd64 (0.2.5-1) ...
+    control: Selecting previously unselected package python3-yaml.
+    control: Preparing to unpack .../07-python3-yaml_6.0-3+b2_amd64.deb ...
+    control: Unpacking python3-yaml (6.0-3+b2) ...
+    control: Selecting previously unselected package ansible-core.
+    control: Preparing to unpack .../08-ansible-core_2.16.7-1ppa~jammy_all.deb ...
+    control: Unpacking ansible-core (2.16.7-1ppa~jammy) ...
+    control: Selecting previously unselected package ansible.
+    control: Preparing to unpack .../09-ansible_9.6.0-1ppa~jammy_all.deb ...
+    control: Unpacking ansible (9.6.0-1ppa~jammy) ...
+    control: Selecting previously unselected package libsodium23:amd64.
+    control: Preparing to unpack .../10-libsodium23_1.0.18-1_amd64.deb ...
+    control: Unpacking libsodium23:amd64 (1.0.18-1) ...
+    control: Selecting previously unselected package python-babel-localedata.
+    control: Preparing to unpack .../11-python-babel-localedata_2.10.3-1_all.deb ...
+    control: Unpacking python-babel-localedata (2.10.3-1) ...
+    control: Selecting previously unselected package python3-tz.
+    control: Preparing to unpack .../12-python3-tz_2022.7.1-4_all.deb ...
+    control: Unpacking python3-tz (2022.7.1-4) ...
+    control: Selecting previously unselected package python3-babel.
+    control: Preparing to unpack .../13-python3-babel_2.10.3-1_all.deb ...
+    control: Unpacking python3-babel (2.10.3-1) ...
+    control: Selecting previously unselected package python3-bcrypt.
+    control: Preparing to unpack .../14-python3-bcrypt_3.2.2-1_amd64.deb ...
+    control: Unpacking python3-bcrypt (3.2.2-1) ...
+    control: Selecting previously unselected package python3-invoke.
+    control: Preparing to unpack .../15-python3-invoke_2.0.0-1_all.deb ...
+    control: Unpacking python3-invoke (2.0.0-1) ...
+    control: Selecting previously unselected package python3-jmespath.
+    control: Preparing to unpack .../16-python3-jmespath_1.0.1-1_all.deb ...
+    control: Unpacking python3-jmespath (1.0.1-1) ...
+    control: Selecting previously unselected package python3-kerberos.
+    control: Preparing to unpack .../17-python3-kerberos_1.1.14-3.1+b7_amd64.deb ...
+    control: Unpacking python3-kerberos (1.1.14-3.1+b7) ...
+    control: Selecting previously unselected package python3-nacl.
+    control: Preparing to unpack .../18-python3-nacl_1.5.0-2_amd64.deb ...
+    control: Unpacking python3-nacl (1.5.0-2) ...
+    control: Selecting previously unselected package python3-ntlm-auth.
+    control: Preparing to unpack .../19-python3-ntlm-auth_1.4.0-2_all.deb ...
+    control: Unpacking python3-ntlm-auth (1.4.0-2) ...
+    control: Selecting previously unselected package python3-paramiko.
+    control: Preparing to unpack .../20-python3-paramiko_2.12.0-2_all.deb ...
+    control: Unpacking python3-paramiko (2.12.0-2) ...
+    control: Selecting previously unselected package python3-requests-kerberos.
+    control: Preparing to unpack .../21-python3-requests-kerberos_0.12.0-2_all.deb ...
+    control: Unpacking python3-requests-kerberos (0.12.0-2) ...
+    control: Selecting previously unselected package python3-requests-ntlm.
+    control: Preparing to unpack .../22-python3-requests-ntlm_1.1.0-3_all.deb ...
+    control: Unpacking python3-requests-ntlm (1.1.0-3) ...
+    control: Selecting previously unselected package python3-xmltodict.
+    control: Preparing to unpack .../23-python3-xmltodict_0.13.0-1_all.deb ...
+    control: Unpacking python3-xmltodict (0.13.0-1) ...
+    control: Selecting previously unselected package python3-winrm.
+    control: Preparing to unpack .../24-python3-winrm_0.3.0-4+deb12u1_all.deb ...
+    control: Unpacking python3-winrm (0.3.0-4+deb12u1) ...
+    control: Selecting previously unselected package sshpass.
+    control: Preparing to unpack .../25-sshpass_1.09-1+b1_amd64.deb ...
+    control: Unpacking sshpass (1.09-1+b1) ...
+    control: Setting up libsodium23:amd64 (1.0.18-1) ...
+    control: Setting up libyaml-0-2:amd64 (0.2.5-1) ...
+    control: Setting up python3-ntlm-auth (1.4.0-2) ...
+    control: Setting up python3-resolvelib (0.9.0-2) ...
+    control: Setting up python3-kerberos (1.1.14-3.1+b7) ...
+    control: Setting up python3-yaml (6.0-3+b2) ...
+    control: Setting up python3-markupsafe (2.1.2-1+b1) ...
+    control: Setting up sshpass (1.09-1+b1) ...
+    control: Setting up python3-tz (2022.7.1-4) ...
+    control: Setting up python-babel-localedata (2.10.3-1) ...
+    control: Setting up python3-xmltodict (0.13.0-1) ...
+    control: Setting up python3-jinja2 (3.1.2-1) ...
+    control: Setting up python3-packaging (23.0-1) ...
+    control: Setting up python3-jmespath (1.0.1-1) ...
+    control: Setting up python3-invoke (2.0.0-1) ...
+    control: Setting up python3-cffi-backend:amd64 (1.15.1-5+b1) ...
+    control: Setting up python3-babel (2.10.3-1) ...
+    control: update-alternatives: using /usr/bin/pybabel-python3 to provide /usr/bin/pybabel (pybabel) in auto mode
+    control: Setting up python3-bcrypt (3.2.2-1) ...
+    control: Setting up python3-cryptography (38.0.4-3) ...
+    control: Setting up python3-requests-kerberos (0.12.0-2) ...
+    control: Setting up python3-nacl (1.5.0-2) ...
+    control: Setting up python3-requests-ntlm (1.1.0-3) ...
+    control: Setting up ansible-core (2.16.7-1ppa~jammy) ...
+    control: Setting up python3-winrm (0.3.0-4+deb12u1) ...
+    control: Setting up ansible (9.6.0-1ppa~jammy) ...
+    control: Setting up python3-paramiko (2.12.0-2) ...
+    control: Processing triggers for man-db (2.11.2-2) ...
+    control: Processing triggers for libc-bin (2.36-9+deb12u4) ...
+    control: Starting galaxy role install process
+    control: - downloading role 'grafana', owned by cloudalchemy
+    control: - downloading role from https://github.com/cloudalchemy/ansible-grafana/archive/0.18.0.tar.gz
+    control: - extracting cloudalchemy.grafana to /home/vagrant/.ansible/roles/cloudalchemy.grafana
+    control: - cloudalchemy.grafana (0.18.0) was installed successfully
+    control: - downloading role 'bind', owned by bertvv
+    control: - downloading role from https://github.com/bertvv/ansible-role-bind/archive/v5.1.0.tar.gz
+    control: - extracting bertvv.bind to /home/vagrant/.ansible/roles/bertvv.bind
+    control: - bertvv.bind (v5.1.0) was installed successfully
+    control: Starting galaxy collection install process
+    control: Process install dependency map
+    control: Starting collection install process
+    control: Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/vladgh-samba-3.4.0.tar.gz to /home/vagrant/.ansible/tmp/ansible-local-2801_3f3xlfm/tmpedqtq571/vladgh-samba-3.4.0-lbxx4o4i
+    control: Installing 'vladgh.samba:3.4.0' to '/home/vagrant/.ansible/collections/ansible_collections/vladgh/samba'
+    control: vladgh.samba:3.4.0 was installed successfully
+    control: Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/prometheus-prometheus-0.16.3.tar.gz to /home/vagrant/.ansible/tmp/ansible-local-2801_3f3xlfm/tmpedqtq571/prometheus-prometheus-0.16.3-dsp7w_19
+    control: Installing 'prometheus.prometheus:0.16.3' to '/home/vagrant/.ansible/collections/ansible_collections/prometheus/prometheus'
+    control: prometheus.prometheus:0.16.3 was installed successfully
+    control: 'community.general:8.6.1' is already installed, skipping.
+    control:
+    control: PLAY [Update all APT packages on each server] **********************************
+    control:
+    control: TASK [Gathering Facts] *********************************************************
+    control: ok: [srv5]
+    control: ok: [srv2]
+    control: ok: [srv1]
+    control: ok: [srv4]
+    control: ok: [srv3]
+    control:
+    control: TASK [Install updates] *********************************************************
+    control: changed: [srv3]
+    control: changed: [srv5]
+    control: changed: [srv1]
+    control: changed: [srv4]
+    control: changed: [srv2]
+    control:
+    control: PLAY [Configure srv1] **********************************************************
+    control:
+    control: TASK [Gathering Facts] *********************************************************
+    control: ok: [srv1]
+    control:
+    control: TASK [bertvv.bind : Source specific variables] *********************************
+    control: ok: [srv1] => (item=/home/vagrant/.ansible/roles/bertvv.bind/vars/Debian.yml)
+    control:
+    control: TASK [bertvv.bind : Check `primaries` or `forwarders` was set for each zone] ***
+    control: ok: [srv1] => (item=poc.lan)
+    control:
+    control: TASK [bertvv.bind : Update package cache for Debian based distros] *************
+    control: ok: [srv1]
+    control:
+    control: TASK [bertvv.bind : Assert that all XFR keys exist in the key list] ************
+    control: skipping: [srv1]
+    control:
+    control: TASK [bertvv.bind : Install BIND] **********************************************
+    control: changed: [srv1] => (item=python3-netaddr)
+    control: changed: [srv1] => (item=python3-dnspython)
+    control: changed: [srv1] => (item=bind9)
+    control: changed: [srv1] => (item=bind9utils)
+    control:
+    control: TASK [bertvv.bind : Ensure runtime directories referenced in config exist] *****
+    control: changed: [srv1] => (item=/var/cache/bind/dynamic)
+    control: changed: [srv1] => (item=/var/cache/bind/data)
+    control: changed: [srv1] => (item=/var/cache/bind)
+    control:
+    control: TASK [bertvv.bind : Ensure Directory for Cached Secondary Zones exists] ********
+    control: changed: [srv1]
+    control:
+    control: TASK [bertvv.bind : Create serial, based on UTC UNIX time] *********************
+    control: ok: [srv1]
+    control:
+    control: TASK [bertvv.bind : Create extra config for authenticated XFR request] *********
+    control: skipping: [srv1]
+    control:
+    control: TASK [bertvv.bind : Configure zones] *******************************************
+    control: included: /home/vagrant/.ansible/roles/bertvv.bind/tasks/zones.yml for srv1
+    control:
+    control: TASK [bertvv.bind : Set list of all host IP addresses] *************************
+    control: ok: [srv1]
+    control:
+    control: TASK [bertvv.bind : Read forward zone hashes] **********************************
+    control: ok: [srv1] => (item=poc.lan)
+    control:
+    control: TASK [bertvv.bind : Create dict of forward hashes] *****************************
+    control: ok: [srv1] => (item=poc.lan)
+    control:
+    control: TASK [bertvv.bind : Read reverse ipv4 zone hashes] *****************************
+    control: ok: [srv1] => (item=172.16)
+    control:
+    control: TASK [bertvv.bind : Create dict of reverse hashes] *****************************
+    control: ok: [srv1] => (item=poc.lan)
+    control: ok: [srv1] => (item=/var/cache/bind/16.172.in-addr.arpa)
+    control:
+    control: TASK [bertvv.bind : Read reverse ipv6 zone hashes] *****************************
+    control: skipping: [srv1]
+    control:
+    control: TASK [bertvv.bind : Create dict of reverse ipv6 hashes] ************************
+    control: skipping: [srv1]
+    control:
+    control: TASK [bertvv.bind : Create forward lookup zone file] ***************************
+    control: changed: [srv1] => (item=poc.lan)
+    control:
+    control: TASK [bertvv.bind : Create reverse lookup zone file] ***************************
+    control: changed: [srv1] => (item=172.16)
+    control:
+    control: TASK [bertvv.bind : Create reverse IPv6 lookup zone file] **********************
+    control: skipping: [srv1]
+    control:
+    control: TASK [bertvv.bind : Main BIND config file] *************************************
+    control: [DEPRECATION WARNING]: Use 'ansible.utils.ipaddr' module instead. This feature
+    control: will be removed from ansible.netcommon in a release after 2024-01-01.
+    control: Deprecation warnings can be disabled by setting deprecation_warnings=False in
+    control: ansible.cfg.
+    control: changed: [srv1]
+    control:
+    control: TASK [bertvv.bind : Start BIND service] ****************************************
+    control: ok: [srv1]
+    control:
+    control: RUNNING HANDLER [bertvv.bind : reload bind] ************************************
+    control: changed: [srv1]
+    control:
+    control: PLAY [Configure srv2] **********************************************************
+    control:
+    control: TASK [Gathering Facts] *********************************************************
+    control: ok: [srv2]
+    control:
+    control: TASK [Install packages] ********************************************************
+    control: changed: [srv2]
+    control:
+    control: TASK [Install the PHP script test.php] *****************************************
+    control: changed: [srv2]
+    control:
+    control: TASK [Remove default apache page] **********************************************
+    control: changed: [srv2]
+    control:
+    control: TASK [Restart service apache, in all cases] ************************************
+    control: changed: [srv2]
+    control:
+    control: PLAY [Configure srv3] **********************************************************
+    control:
+    control: TASK [Gathering Facts] *********************************************************
+    control: ok: [srv3]
+    control:
+    control: TASK [Install mariadb-server] **************************************************
+    control: changed: [srv3]
+    control:
+    control: TASK [Allow remote connections] ************************************************
+    control: changed: [srv3]
+    control:
+    control: TASK [Copy the database creation script (db.sql) to the server] ****************
+    control: changed: [srv3]
+    control:
+    control: TASK [Create a database user] **************************************************
+    control: [WARNING]: Option column_case_sensitive is not provided. The default is now
+    control: false, so the column's name will be uppercased. The default will be changed to
+    control: true in community.mysql 4.0.0.
+    control: changed: [srv3]
+    control:
+    control: TASK [Create the database] *****************************************************
+    control: changed: [srv3]
+    control:
+    control: TASK [Restart service mariadb, in all cases] ***********************************
+    control: changed: [srv3]
+    control:
+    control: PLAY [Configure srv4] **********************************************************
+    control:
+    control: TASK [Gathering Facts] *********************************************************
+    control: ok: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Validating arguments against arg spec 'main' - Installs and configures prometheus] ***
+    control: ok: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Preflight] ****************************
+    control: included: /home/vagrant/.ansible/collections/ansible_collections/prometheus/prometheus/roles/prometheus/tasks/preflight.yml for srv4
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Assert usage of systemd as an init system] ***
+    control: ok: [srv4] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Install package fact dependencies] ****
+    control: ok: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Gather package facts] *****************
+    control: ok: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Assert that used version supports listen address type] ***
+    control: ok: [srv4] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Naive assertion of proper listen address] ***
+    control: ok: [srv4] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Assert no duplicate config flags] *****
+    control: ok: [srv4] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Assert external_labels aren't configured twice] ***
+    control: ok: [srv4] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Fail when prometheus_config_flags_extra duplicates parameters set by other variables] ***
+    control: skipping: [srv4] => (item=storage.tsdb.retention)
+    control: skipping: [srv4] => (item=storage.tsdb.path)
+    control: skipping: [srv4] => (item=storage.local.retention)
+    control: skipping: [srv4] => (item=storage.local.path)
+    control: skipping: [srv4] => (item=config.file)
+    control: skipping: [srv4] => (item=web.listen-address)
+    control: skipping: [srv4] => (item=web.external-url)
+    control: skipping: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Get all file_sd files from scrape_configs] ***
+    control: ok: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Fail when file_sd targets are not defined in scrape_configs] ***
+    control: skipping: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Alert when prometheus_alertmanager_config is empty, but prometheus_alert_rules is specified] ***
+    control: ok: [srv4] => {
+    control:     "msg": "No alertmanager configuration was specified. If you want your alerts to be sent make sure to specify a prometheus_alertmanager_config in defaults/main.yml.\n"
+    control: }
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Discover latest version] **************
+    control: skipping: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Get checksum list] ********************
+    control: ok: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Get checksum for amd64] ***************
+    control: skipping: [srv4] => (item=cdfced359c41718c0656b35038e03ebf416ea76c80325976bb3948ae5a0aaf45  prometheus-2.51.2.darwin-amd64.tar.gz)
+    control: skipping: [srv4] => (item=7bdf4d09562ad21e54b1beab43f3df309ca2b3bf82476ef377830ae81e1f966e  prometheus-2.51.2.darwin-arm64.tar.gz)
+    control: skipping: [srv4] => (item=d88f2db4a38e96acf070ddfb297c1bd671dd647975e981399d5eebb0c313fe34  prometheus-2.51.2.dragonfly-amd64.tar.gz)
+    control: skipping: [srv4] => (item=5500ab98b388d1ddbfc35118f33830dc5eda3601693a97ef43f5029e7a510420  prometheus-2.51.2.freebsd-386.tar.gz)
+    control: skipping: [srv4] => (item=ab569c5b42172cb43221854ed802a71c754cb1517f8fcc6bf5fa9f5285f435b9  prometheus-2.51.2.freebsd-amd64.tar.gz)
+    control: skipping: [srv4] => (item=fb3175ffdb5b4fc18d2ad85fcb1991ad40773b1947e1650aa191a1e661a38ea3  prometheus-2.51.2.freebsd-arm64.tar.gz)
+    control: skipping: [srv4] => (item=72428995022fea5e6ab8b061485aa1cf0d163ba14f4945c66fd8d4e1c3cf3f5f  prometheus-2.51.2.freebsd-armv6.tar.gz)
+    control: skipping: [srv4] => (item=e34fc192f7703757ac3a43f4cfa0fbba4264123be7086b0c5c773b52354347ee  prometheus-2.51.2.freebsd-armv7.tar.gz)
+    control: skipping: [srv4] => (item=e8bb858d81103a6c6f8ee6d3d3910704e323e111a4127b5dd6bba887c5f928ec  prometheus-2.51.2.illumos-amd64.tar.gz)
+    control: skipping: [srv4] => (item=9fa353c7e849b2f7148a1c8b8e77d60a6efb136d8019158e04105631a21fffaf  prometheus-2.51.2.linux-386.tar.gz)
+    control: ok: [srv4] => (item=9bec7432fb92d80fdc193a0154f6c53653c37f8302528b06d63cf4a10a8b897f  prometheus-2.51.2.linux-amd64.tar.gz)
+    control: skipping: [srv4] => (item=f246bd6502c95de2cd483e22806bffcd7f2f273b722c9c2a7642f86fa4c8064b  prometheus-2.51.2.linux-arm64.tar.gz)
+    control: skipping: [srv4] => (item=502a757021728610086bcad555b3af0bb5f53d17e48a23ed72bed9a545bf1588  prometheus-2.51.2.linux-armv5.tar.gz)
+    control: skipping: [srv4] => (item=1134d7aa505bd9f935e161815dc466bc20984465a591bf9ce20a67af8551e1ea  prometheus-2.51.2.linux-armv6.tar.gz)
+    control: skipping: [srv4] => (item=bf27ba6cb0b7967b2fd044c9fbdda6db8d9e15cf5350715270c1c9b26bebecde  prometheus-2.51.2.linux-armv7.tar.gz)
+    control: skipping: [srv4] => (item=e6af98f598a2f15f0037599c24dcfd53c2e6ff796bb81e0a96ca3cb4aafcf6b6  prometheus-2.51.2.linux-mips.tar.gz)
+    control: skipping: [srv4] => (item=41b9c3f958e67325a65db8770a89c60c22cb32fc22e65707b8f1dbea1369403d  prometheus-2.51.2.linux-mips64.tar.gz)
+    control: skipping: [srv4] => (item=062fc9b16c62e4a80ec4a1206d006e307cbf3329eaa008abcc98b34324d3b890  prometheus-2.51.2.linux-mips64le.tar.gz)
+    control: skipping: [srv4] => (item=20f1576dae2c23ed18906c4bde36b3ec25daed9a16002fc386049ee443ce146c  prometheus-2.51.2.linux-mipsle.tar.gz)
+    control: skipping: [srv4] => (item=41b5c4173fd40fa1fa8304987e23cf8e09bc345b39aa2f185c7b0592ffa81181  prometheus-2.51.2.linux-ppc64.tar.gz)
+    control: skipping: [srv4] => (item=344d478dfe44da8c0bb61b9b3e25c71ed7e2b995a0aeb505b867f462602b0bd6  prometheus-2.51.2.linux-ppc64le.tar.gz)
+    control: skipping: [srv4] => (item=6d9c6799706dc44cfe4e08a7c463b01607a556ee0981c1430b75e7f2f6884f63  prometheus-2.51.2.linux-riscv64.tar.gz)
+    control: skipping: [srv4] => (item=4586d0290bd77783f506190845ac7a95951fa9fca9f4da06bb5a8cfa7fad3acf  prometheus-2.51.2.linux-s390x.tar.gz)
+    control: skipping: [srv4] => (item=127e625dc39e15cba507009a1d9762842bd52d91a09d05a7c28fc561a39094e3  prometheus-2.51.2.netbsd-386.tar.gz)
+    control: skipping: [srv4] => (item=35bd278e8d06924dd2afd24d43efc64b54382f3074072dc8d023effd00466d41  prometheus-2.51.2.netbsd-amd64.tar.gz)
+    control: skipping: [srv4] => (item=68f04864074582ff0296177298bd0a305d9195da083467eeaab4246c95afa786  prometheus-2.51.2.netbsd-arm64.tar.gz)
+    control: skipping: [srv4] => (item=d9e76a6646cd142160c1869db21bdc7185480273551853dbc0ce4019d598251d  prometheus-2.51.2.netbsd-armv6.tar.gz)
+    control: skipping: [srv4] => (item=357a50eddb1f292e46cff8f071ba7f837005a7f576ba3114574ce00e4adf3d75  prometheus-2.51.2.netbsd-armv7.tar.gz)
+    control: skipping: [srv4] => (item=0288468c09efc9e7f61595ca08770c74b7c71f35f6fd02289c453e57fff221d1  prometheus-2.51.2.windows-386.tar.gz)
+    control: skipping: [srv4] => (item=89306c0dc3721e8131ecbc594b9699e3836d638c97564f117cbd5f5f9ca0ebc5  prometheus-2.51.2.windows-386.zip)
+    control: skipping: [srv4] => (item=6702cffc0f8ebbca606e02a9b91ee7840bb7c3ab3eb9034b8bcc8b8fb4f69846  prometheus-2.51.2.windows-amd64.tar.gz)
+    control: skipping: [srv4] => (item=017713e04eba692429de7d09c739e6b37951403fd0a6f98353680f2b02b54edf  prometheus-2.51.2.windows-amd64.zip)
+    control: skipping: [srv4] => (item=824ebf74bcff21cc6a94b6a1dbe26da196c183d6c9525487771684c14f2a9bad  prometheus-2.51.2.windows-arm64.tar.gz)
+    control: skipping: [srv4] => (item=0aaa1f703dfea3eb0de3d85faafc1157a58a3f87199d59b302f291c7937603b7  prometheus-2.51.2.windows-arm64.zip)
+    control: skipping: [srv4] => (item=14592f9e2e9d09f9159050e64389c2d83bbf5cad7d90fb71586215f6e8709c57  prometheus-web-ui-2.51.2.tar.gz)
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Install] ******************************
+    control: included: /home/vagrant/.ansible/collections/ansible_collections/prometheus/prometheus/roles/prometheus/tasks/install.yml for srv4
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Create prometheus system group] *******
+    control: changed: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Create prometheus system user] ********
+    control: changed: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Create prometheus data directory] *****
+    control: changed: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Create prometheus configuration directories] ***
+    control: changed: [srv4] => (item=/etc/prometheus)
+    control: changed: [srv4] => (item=/etc/prometheus/rules)
+    control: changed: [srv4] => (item=/etc/prometheus/file_sd)
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Download prometheus binary to local folder] ***
+    control: changed: [srv4 -> localhost]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Unpack prometheus binaries] ***********
+    control: changed: [srv4 -> localhost]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Propagate official prometheus and promtool binaries] ***
+    control: changed: [srv4] => (item=prometheus)
+    control: changed: [srv4] => (item=promtool)
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Propagate official console templates] ***
+    control: changed: [srv4] => (item=console_libraries)
+    control: changed: [srv4] => (item=consoles)
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Propagate locally distributed prometheus and promtool binaries] ***
+    control: skipping: [srv4] => (item=prometheus)
+    control: skipping: [srv4] => (item=promtool)
+    control: skipping: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Create systemd service unit] **********
+    control: changed: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Install SELinux dependencies] *********
+    control: skipping: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Allow prometheus to bind to port in SELinux] ***
+    control: skipping: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Configure] ****************************
+    control: included: /home/vagrant/.ansible/collections/ansible_collections/prometheus/prometheus/roles/prometheus/tasks/configure.yml for srv4
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Alerting rules file] ******************
+    control: changed: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Copy custom alerting rule files] ******
+    control: [WARNING]: Unable to find 'prometheus/rules' in expected paths (use -vvvvv to
+    control: see paths)
+    control: skipping: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Configure prometheus] *****************
+    control: changed: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Configure Prometheus web] *************
+    control: changed: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Configure prometheus static targets] ***
+    control: skipping: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Copy prometheus custom static targets] ***
+    control: [WARNING]: Unable to find 'prometheus/targets' in expected paths (use -vvvvv to
+    control: see paths)
+    control: skipping: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.prometheus : Ensure prometheus service is started and enabled] ***
+    control: changed: [srv4]
+    control:
+    control: RUNNING HANDLER [prometheus.prometheus.prometheus : Restart prometheus] ********
+    control: changed: [srv4]
+    control:
+    control: RUNNING HANDLER [prometheus.prometheus.prometheus : Reload prometheus] *********
+    control: skipping: [srv4]
+    control:
+    control: PLAY [Configure srv5] **********************************************************
+    control:
+    control: TASK [Gathering Facts] *********************************************************
+    control: ok: [srv5]
+    control:
+    control: TASK [Ensure group "storage_group_01" exists] **********************************
+    control: changed: [srv5]
+    control:
+    control: TASK [Add the user 'james' with a sh shell, appending the group 'sudo'] ********
+    control: [DEPRECATION WARNING]: Encryption using the Python crypt module is deprecated.
+    control: The Python crypt module is deprecated and will be removed from Python 3.13.
+    control: Install the passlib library for continued encryption functionality. This
+    control: feature will be removed in version 2.17. Deprecation warnings can be disabled
+    control: by setting deprecation_warnings=False in ansible.cfg.
+    control: changed: [srv5]
+    control:
+    control: TASK [Allow james to run apt passwordless] *************************************
+    control: changed: [srv5]
+    control:
+    control: TASK [Include Samba Server role] ***********************************************
+    control:
+    control: TASK [vladgh.samba.server : Include OS specific variables] *********************
+    control: ok: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Install Samba packages] ****************************
+    control: changed: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Install Samba VFS extensions packages] *************
+    control: ok: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Register Samba version] ****************************
+    control: ok: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Create Samba shares root directory] ****************
+    control: changed: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Create share directories] **************************
+    control: changed: [srv5] => (item={'name': 'storage_01', 'comment': 'Storage server 01', 'path': '/mnt/storage_01/', 'read_only': 'no', 'guest_ok': 'yes', 'write_list': "+'storage_group_01'", 'group': 'storage_group_01'})
+    control:
+    control: TASK [vladgh.samba.server : Ensure webserver document root exists] *************
+    control: skipping: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Create link to shares in webserver document root] ***
+    control: skipping: [srv5] => (item={'name': 'storage_01', 'comment': 'Storage server 01', 'path': '/mnt/storage_01/', 'read_only': 'no', 'guest_ok': 'yes', 'write_list': "+'storage_group_01'", 'group': 'storage_group_01'})
+    control: skipping: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Samba configuration] *******************************
+    control: changed: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Install global include file] ***********************
+    control: skipping: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Install home include file] *************************
+    control: skipping: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Install share specific include files] **************
+    control: skipping: [srv5] => (item={'name': 'storage_01', 'comment': 'Storage server 01', 'path': '/mnt/storage_01/', 'read_only': 'no', 'guest_ok': 'yes', 'write_list': "+'storage_group_01'", 'group': 'storage_group_01'})
+    control: skipping: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Create username map file if needed] ****************
+    control: skipping: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Start SMB service] *********************************
+    control: ok: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Start NMB service] *********************************
+    control: ok: [srv5]
+    control:
+    control: TASK [vladgh.samba.server : Create Samba users if they don't exist yet] ********
+    control: changed: [srv5] => (item=None)
+    control: changed: [srv5]
+    control:
+    control: RUNNING HANDLER [vladgh.samba.server : Restart SMB service] ********************
+    control: changed: [srv5]
+    control:
+    control: RUNNING HANDLER [vladgh.samba.server : Restart NMB service] ********************
+    control: changed: [srv5]
+    control:
+    control: PLAY [Install Node Exporter on all servers] ************************************
+    control:
+    control: TASK [Gathering Facts] *********************************************************
+    control: ok: [srv5]
+    control: ok: [srv4]
+    control: ok: [srv1]
+    control: ok: [srv3]
+    control: ok: [srv2]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Validating arguments against arg spec 'main' - Prometheus Node Exporter] ***
+    control: ok: [srv1]
+    control: ok: [srv2]
+    control: ok: [srv3]
+    control: ok: [srv4]
+    control: ok: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Preflight] *************************
+    control: included: /home/vagrant/.ansible/collections/ansible_collections/prometheus/prometheus/roles/node_exporter/tasks/preflight.yml for srv1, srv2, srv3, srv4, srv5
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Assert usage of systemd as an init system] ***
+    control: ok: [srv1] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv2] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv3] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv4] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv5] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Install package fact dependencies] ***
+    control: ok: [srv3]
+    control: ok: [srv1]
+    control: ok: [srv2]
+    control: ok: [srv5]
+    control: ok: [srv4]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Gather package facts] **************
+    control: skipping: [srv4]
+    control: ok: [srv2]
+    control: ok: [srv1]
+    control: ok: [srv3]
+    control: ok: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Assert that used version supports listen address type] ***
+    control: ok: [srv1] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv2] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv3] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv4] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv5] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Naive assertion of proper listen address] ***
+    control: ok: [srv1] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv2] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv3] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv4] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control: ok: [srv5] => {
+    control:     "changed": false,
+    control:     "msg": "All assertions passed"
+    control: }
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Assert collectors are not both disabled and enabled at the same time] ***
+    control: skipping: [srv1]
+    control: skipping: [srv2]
+    control: skipping: [srv3]
+    control: skipping: [srv4]
+    control: skipping: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Assert that TLS key and cert path are set] ***
+    control: skipping: [srv1]
+    control: skipping: [srv2]
+    control: skipping: [srv3]
+    control: skipping: [srv4]
+    control: skipping: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Check existence of TLS cert file] ***
+    control: skipping: [srv1]
+    control: skipping: [srv2]
+    control: skipping: [srv3]
+    control: skipping: [srv4]
+    control: skipping: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Check existence of TLS key file] ***
+    control: skipping: [srv1]
+    control: skipping: [srv2]
+    control: skipping: [srv3]
+    control: skipping: [srv4]
+    control: skipping: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Assert that TLS key and cert are present] ***
+    control: skipping: [srv1]
+    control: skipping: [srv2]
+    control: skipping: [srv3]
+    control: skipping: [srv4]
+    control: skipping: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Check if node_exporter is installed] ***
+    control: ok: [srv1]
+    control: ok: [srv2]
+    control: ok: [srv3]
+    control: ok: [srv4]
+    control: ok: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Gather currently installed node_exporter version (if any)] ***
+    control: skipping: [srv1]
+    control: skipping: [srv2]
+    control: skipping: [srv3]
+    control: skipping: [srv4]
+    control: skipping: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Discover latest version] ***********
+    control: skipping: [srv1]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Get checksum list from github] *****
+    control: ok: [srv1]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Get checksum for amd64] ************
+    control: skipping: [srv1] => (item=28ba8d59aaca84455a6caa03e009adf4067fb0b9bbda6003aa17def38ea02370  node_exporter-1.7.0.darwin-amd64.tar.gz)
+    control: skipping: [srv1] => (item=f21c69eead923b9762b281788936d11c3276f9505ba20b083f6929487ae8b6bc  node_exporter-1.7.0.darwin-arm64.tar.gz)
+    control: skipping: [srv1] => (item=fa662462d5bf69895b64a1efaabfab2ce0b6fa8962e960cb6a5277fa394d5c2d  node_exporter-1.7.0.linux-386.tar.gz)
+    control: ok: [srv1] => (item=a550cd5c05f760b7934a2d0afad66d2e92e681482f5f57a917465b1fba3b02a6  node_exporter-1.7.0.linux-amd64.tar.gz)
+    control: skipping: [srv2] => (item=28ba8d59aaca84455a6caa03e009adf4067fb0b9bbda6003aa17def38ea02370  node_exporter-1.7.0.darwin-amd64.tar.gz)
+    control: skipping: [srv1] => (item=e386c7b53bc130eaf5e74da28efc6b444857b77df8070537be52678aefd34d96  node_exporter-1.7.0.linux-arm64.tar.gz)
+    control: skipping: [srv2] => (item=f21c69eead923b9762b281788936d11c3276f9505ba20b083f6929487ae8b6bc  node_exporter-1.7.0.darwin-arm64.tar.gz)
+    control: skipping: [srv1] => (item=5745e8f5c24efbefbe8a26a9407e3dbc52558f56f1150d7ea2aa06fc166a08c4  node_exporter-1.7.0.linux-armv5.tar.gz)
+    control: skipping: [srv3] => (item=28ba8d59aaca84455a6caa03e009adf4067fb0b9bbda6003aa17def38ea02370  node_exporter-1.7.0.darwin-amd64.tar.gz)
+    control: skipping: [srv2] => (item=fa662462d5bf69895b64a1efaabfab2ce0b6fa8962e960cb6a5277fa394d5c2d  node_exporter-1.7.0.linux-386.tar.gz)
+    control: skipping: [srv1] => (item=0a3c5578be8dfca56dc5cce7bc788fb4625c64a8e0209ac779660fae9a6331db  node_exporter-1.7.0.linux-armv6.tar.gz)
+    control: skipping: [srv1] => (item=2f8df32a8926c6368b3e0815fe900eb5cde1096bf0750e3d1e79f2f35b0e274d  node_exporter-1.7.0.linux-armv7.tar.gz)
+    control: skipping: [srv3] => (item=f21c69eead923b9762b281788936d11c3276f9505ba20b083f6929487ae8b6bc  node_exporter-1.7.0.darwin-arm64.tar.gz)
+    control: skipping: [srv1] => (item=73df12e39a4ac1fe52b4967b6895d43d9dd826cf7c8d33857b33d56ae1c5a612  node_exporter-1.7.0.linux-mips.tar.gz)
+    control: skipping: [srv3] => (item=fa662462d5bf69895b64a1efaabfab2ce0b6fa8962e960cb6a5277fa394d5c2d  node_exporter-1.7.0.linux-386.tar.gz)
+    control: ok: [srv2] => (item=a550cd5c05f760b7934a2d0afad66d2e92e681482f5f57a917465b1fba3b02a6  node_exporter-1.7.0.linux-amd64.tar.gz)
+    control: skipping: [srv4] => (item=28ba8d59aaca84455a6caa03e009adf4067fb0b9bbda6003aa17def38ea02370  node_exporter-1.7.0.darwin-amd64.tar.gz)
+    control: skipping: [srv1] => (item=8908900967a9a3b8380573dadf994ca02abf823b866ed2ae9dbfa030d7b48510  node_exporter-1.7.0.linux-mips64.tar.gz)
+    control: skipping: [srv2] => (item=e386c7b53bc130eaf5e74da28efc6b444857b77df8070537be52678aefd34d96  node_exporter-1.7.0.linux-arm64.tar.gz)
+    control: skipping: [srv1] => (item=4192468c3337f363b928d24ab3505c7ff513eae390c91ad49e1503ba8cd9f948  node_exporter-1.7.0.linux-mips64le.tar.gz)
+    control: skipping: [srv4] => (item=f21c69eead923b9762b281788936d11c3276f9505ba20b083f6929487ae8b6bc  node_exporter-1.7.0.darwin-arm64.tar.gz)
+    control: skipping: [srv2] => (item=5745e8f5c24efbefbe8a26a9407e3dbc52558f56f1150d7ea2aa06fc166a08c4  node_exporter-1.7.0.linux-armv5.tar.gz)
+    control: ok: [srv3] => (item=a550cd5c05f760b7934a2d0afad66d2e92e681482f5f57a917465b1fba3b02a6  node_exporter-1.7.0.linux-amd64.tar.gz)
+    control: skipping: [srv2] => (item=0a3c5578be8dfca56dc5cce7bc788fb4625c64a8e0209ac779660fae9a6331db  node_exporter-1.7.0.linux-armv6.tar.gz)
+    control: skipping: [srv4] => (item=fa662462d5bf69895b64a1efaabfab2ce0b6fa8962e960cb6a5277fa394d5c2d  node_exporter-1.7.0.linux-386.tar.gz)
+    control: skipping: [srv1] => (item=be29eccd784cc489916295f3bbe2c9029c918090c43ee6f0220c401102ac6a4f  node_exporter-1.7.0.linux-mipsle.tar.gz)
+    control: skipping: [srv3] => (item=e386c7b53bc130eaf5e74da28efc6b444857b77df8070537be52678aefd34d96  node_exporter-1.7.0.linux-arm64.tar.gz)
+    control: skipping: [srv2] => (item=2f8df32a8926c6368b3e0815fe900eb5cde1096bf0750e3d1e79f2f35b0e274d  node_exporter-1.7.0.linux-armv7.tar.gz)
+    control: skipping: [srv5] => (item=28ba8d59aaca84455a6caa03e009adf4067fb0b9bbda6003aa17def38ea02370  node_exporter-1.7.0.darwin-amd64.tar.gz)
+    control: skipping: [srv1] => (item=473ebeb73d73c8982005a3252fd36889230d4ca9b878bd0cd336d5e585e54d1a  node_exporter-1.7.0.linux-ppc64.tar.gz)
+    control: ok: [srv4] => (item=a550cd5c05f760b7934a2d0afad66d2e92e681482f5f57a917465b1fba3b02a6  node_exporter-1.7.0.linux-amd64.tar.gz)
+    control: skipping: [srv2] => (item=73df12e39a4ac1fe52b4967b6895d43d9dd826cf7c8d33857b33d56ae1c5a612  node_exporter-1.7.0.linux-mips.tar.gz)
+    control: skipping: [srv3] => (item=5745e8f5c24efbefbe8a26a9407e3dbc52558f56f1150d7ea2aa06fc166a08c4  node_exporter-1.7.0.linux-armv5.tar.gz)
+    control: skipping: [srv5] => (item=f21c69eead923b9762b281788936d11c3276f9505ba20b083f6929487ae8b6bc  node_exporter-1.7.0.darwin-arm64.tar.gz)
+    control: skipping: [srv4] => (item=e386c7b53bc130eaf5e74da28efc6b444857b77df8070537be52678aefd34d96  node_exporter-1.7.0.linux-arm64.tar.gz)
+    control: skipping: [srv1] => (item=c4f8151f7f6c530587c6e5b9879c5765daa195432d822a3531bd2bcadd3393a2  node_exporter-1.7.0.linux-ppc64le.tar.gz)
+    control: skipping: [srv2] => (item=8908900967a9a3b8380573dadf994ca02abf823b866ed2ae9dbfa030d7b48510  node_exporter-1.7.0.linux-mips64.tar.gz)
+    control: skipping: [srv3] => (item=0a3c5578be8dfca56dc5cce7bc788fb4625c64a8e0209ac779660fae9a6331db  node_exporter-1.7.0.linux-armv6.tar.gz)
+    control: skipping: [srv5] => (item=fa662462d5bf69895b64a1efaabfab2ce0b6fa8962e960cb6a5277fa394d5c2d  node_exporter-1.7.0.linux-386.tar.gz)
+    control: skipping: [srv2] => (item=4192468c3337f363b928d24ab3505c7ff513eae390c91ad49e1503ba8cd9f948  node_exporter-1.7.0.linux-mips64le.tar.gz)
+    control: skipping: [srv1] => (item=ba2d97e9b07d4ba0e5a264b436a2fafcf8aaa9d2fc44e47eb57faf58c2142302  node_exporter-1.7.0.linux-riscv64.tar.gz)
+    control: skipping: [srv3] => (item=2f8df32a8926c6368b3e0815fe900eb5cde1096bf0750e3d1e79f2f35b0e274d  node_exporter-1.7.0.linux-armv7.tar.gz)
+    control: skipping: [srv4] => (item=5745e8f5c24efbefbe8a26a9407e3dbc52558f56f1150d7ea2aa06fc166a08c4  node_exporter-1.7.0.linux-armv5.tar.gz)
+    control: skipping: [srv2] => (item=be29eccd784cc489916295f3bbe2c9029c918090c43ee6f0220c401102ac6a4f  node_exporter-1.7.0.linux-mipsle.tar.gz)
+    control: skipping: [srv3] => (item=73df12e39a4ac1fe52b4967b6895d43d9dd826cf7c8d33857b33d56ae1c5a612  node_exporter-1.7.0.linux-mips.tar.gz)
+    control: skipping: [srv1] => (item=aeda68884918f10b135b76bbcd4977cb7a1bb3c4c98a8551f8d2183bafdd9264  node_exporter-1.7.0.linux-s390x.tar.gz)
+    control: skipping: [srv4] => (item=0a3c5578be8dfca56dc5cce7bc788fb4625c64a8e0209ac779660fae9a6331db  node_exporter-1.7.0.linux-armv6.tar.gz)
+    control: ok: [srv5] => (item=a550cd5c05f760b7934a2d0afad66d2e92e681482f5f57a917465b1fba3b02a6  node_exporter-1.7.0.linux-amd64.tar.gz)
+    control: skipping: [srv2] => (item=473ebeb73d73c8982005a3252fd36889230d4ca9b878bd0cd336d5e585e54d1a  node_exporter-1.7.0.linux-ppc64.tar.gz)
+    control: skipping: [srv1] => (item=c84b6e4478ab8348ad7a2dac069508c7975075c94cf93ca1a99dabaf4f240819  node_exporter-1.7.0.netbsd-386.tar.gz)
+    control: skipping: [srv3] => (item=8908900967a9a3b8380573dadf994ca02abf823b866ed2ae9dbfa030d7b48510  node_exporter-1.7.0.linux-mips64.tar.gz)
+    control: skipping: [srv4] => (item=2f8df32a8926c6368b3e0815fe900eb5cde1096bf0750e3d1e79f2f35b0e274d  node_exporter-1.7.0.linux-armv7.tar.gz)
+    control: skipping: [srv3] => (item=4192468c3337f363b928d24ab3505c7ff513eae390c91ad49e1503ba8cd9f948  node_exporter-1.7.0.linux-mips64le.tar.gz)
+    control: skipping: [srv5] => (item=e386c7b53bc130eaf5e74da28efc6b444857b77df8070537be52678aefd34d96  node_exporter-1.7.0.linux-arm64.tar.gz)
+    control: skipping: [srv2] => (item=c4f8151f7f6c530587c6e5b9879c5765daa195432d822a3531bd2bcadd3393a2  node_exporter-1.7.0.linux-ppc64le.tar.gz)
+    control: skipping: [srv4] => (item=73df12e39a4ac1fe52b4967b6895d43d9dd826cf7c8d33857b33d56ae1c5a612  node_exporter-1.7.0.linux-mips.tar.gz)
+    control: skipping: [srv1] => (item=419f3ce342caa0c6a0da51b9dd81945669fb21bd4e298bf0b358cbf3f691532f  node_exporter-1.7.0.netbsd-amd64.tar.gz)
+    control: skipping: [srv3] => (item=be29eccd784cc489916295f3bbe2c9029c918090c43ee6f0220c401102ac6a4f  node_exporter-1.7.0.linux-mipsle.tar.gz)
+    control: skipping: [srv2] => (item=ba2d97e9b07d4ba0e5a264b436a2fafcf8aaa9d2fc44e47eb57faf58c2142302  node_exporter-1.7.0.linux-riscv64.tar.gz)
+    control: skipping: [srv5] => (item=5745e8f5c24efbefbe8a26a9407e3dbc52558f56f1150d7ea2aa06fc166a08c4  node_exporter-1.7.0.linux-armv5.tar.gz)
+    control: skipping: [srv3] => (item=473ebeb73d73c8982005a3252fd36889230d4ca9b878bd0cd336d5e585e54d1a  node_exporter-1.7.0.linux-ppc64.tar.gz)
+    control: skipping: [srv2] => (item=aeda68884918f10b135b76bbcd4977cb7a1bb3c4c98a8551f8d2183bafdd9264  node_exporter-1.7.0.linux-s390x.tar.gz)
+    control: skipping: [srv4] => (item=8908900967a9a3b8380573dadf994ca02abf823b866ed2ae9dbfa030d7b48510  node_exporter-1.7.0.linux-mips64.tar.gz)
+    control: skipping: [srv1] => (item=e1fcb304c8de3aca5d39f7ed4715c4787bf9e459936b32f7cbecfbd01b07a553  node_exporter-1.7.0.openbsd-amd64.tar.gz)
+    control: skipping: [srv3] => (item=c4f8151f7f6c530587c6e5b9879c5765daa195432d822a3531bd2bcadd3393a2  node_exporter-1.7.0.linux-ppc64le.tar.gz)
+    control: skipping: [srv4] => (item=4192468c3337f363b928d24ab3505c7ff513eae390c91ad49e1503ba8cd9f948  node_exporter-1.7.0.linux-mips64le.tar.gz)
+    control: skipping: [srv2] => (item=c84b6e4478ab8348ad7a2dac069508c7975075c94cf93ca1a99dabaf4f240819  node_exporter-1.7.0.netbsd-386.tar.gz)
+    control: skipping: [srv5] => (item=0a3c5578be8dfca56dc5cce7bc788fb4625c64a8e0209ac779660fae9a6331db  node_exporter-1.7.0.linux-armv6.tar.gz)
+    control: skipping: [srv2] => (item=419f3ce342caa0c6a0da51b9dd81945669fb21bd4e298bf0b358cbf3f691532f  node_exporter-1.7.0.netbsd-amd64.tar.gz)
+    control: skipping: [srv5] => (item=2f8df32a8926c6368b3e0815fe900eb5cde1096bf0750e3d1e79f2f35b0e274d  node_exporter-1.7.0.linux-armv7.tar.gz)
+    control: skipping: [srv3] => (item=ba2d97e9b07d4ba0e5a264b436a2fafcf8aaa9d2fc44e47eb57faf58c2142302  node_exporter-1.7.0.linux-riscv64.tar.gz)
+    control: skipping: [srv4] => (item=be29eccd784cc489916295f3bbe2c9029c918090c43ee6f0220c401102ac6a4f  node_exporter-1.7.0.linux-mipsle.tar.gz)
+    control: skipping: [srv3] => (item=aeda68884918f10b135b76bbcd4977cb7a1bb3c4c98a8551f8d2183bafdd9264  node_exporter-1.7.0.linux-s390x.tar.gz)
+    control: skipping: [srv5] => (item=73df12e39a4ac1fe52b4967b6895d43d9dd826cf7c8d33857b33d56ae1c5a612  node_exporter-1.7.0.linux-mips.tar.gz)
+    control: skipping: [srv2] => (item=e1fcb304c8de3aca5d39f7ed4715c4787bf9e459936b32f7cbecfbd01b07a553  node_exporter-1.7.0.openbsd-amd64.tar.gz)
+    control: skipping: [srv4] => (item=473ebeb73d73c8982005a3252fd36889230d4ca9b878bd0cd336d5e585e54d1a  node_exporter-1.7.0.linux-ppc64.tar.gz)
+    control: skipping: [srv3] => (item=c84b6e4478ab8348ad7a2dac069508c7975075c94cf93ca1a99dabaf4f240819  node_exporter-1.7.0.netbsd-386.tar.gz)
+    control: skipping: [srv5] => (item=8908900967a9a3b8380573dadf994ca02abf823b866ed2ae9dbfa030d7b48510  node_exporter-1.7.0.linux-mips64.tar.gz)
+    control: skipping: [srv3] => (item=419f3ce342caa0c6a0da51b9dd81945669fb21bd4e298bf0b358cbf3f691532f  node_exporter-1.7.0.netbsd-amd64.tar.gz)
+    control: skipping: [srv4] => (item=c4f8151f7f6c530587c6e5b9879c5765daa195432d822a3531bd2bcadd3393a2  node_exporter-1.7.0.linux-ppc64le.tar.gz)
+    control: skipping: [srv3] => (item=e1fcb304c8de3aca5d39f7ed4715c4787bf9e459936b32f7cbecfbd01b07a553  node_exporter-1.7.0.openbsd-amd64.tar.gz)
+    control: skipping: [srv5] => (item=4192468c3337f363b928d24ab3505c7ff513eae390c91ad49e1503ba8cd9f948  node_exporter-1.7.0.linux-mips64le.tar.gz)
+    control: skipping: [srv4] => (item=ba2d97e9b07d4ba0e5a264b436a2fafcf8aaa9d2fc44e47eb57faf58c2142302  node_exporter-1.7.0.linux-riscv64.tar.gz)
+    control: skipping: [srv5] => (item=be29eccd784cc489916295f3bbe2c9029c918090c43ee6f0220c401102ac6a4f  node_exporter-1.7.0.linux-mipsle.tar.gz)
+    control: skipping: [srv4] => (item=aeda68884918f10b135b76bbcd4977cb7a1bb3c4c98a8551f8d2183bafdd9264  node_exporter-1.7.0.linux-s390x.tar.gz)
+    control: skipping: [srv5] => (item=473ebeb73d73c8982005a3252fd36889230d4ca9b878bd0cd336d5e585e54d1a  node_exporter-1.7.0.linux-ppc64.tar.gz)
+    control: skipping: [srv4] => (item=c84b6e4478ab8348ad7a2dac069508c7975075c94cf93ca1a99dabaf4f240819  node_exporter-1.7.0.netbsd-386.tar.gz)
+    control: skipping: [srv5] => (item=c4f8151f7f6c530587c6e5b9879c5765daa195432d822a3531bd2bcadd3393a2  node_exporter-1.7.0.linux-ppc64le.tar.gz)
+    control: skipping: [srv4] => (item=419f3ce342caa0c6a0da51b9dd81945669fb21bd4e298bf0b358cbf3f691532f  node_exporter-1.7.0.netbsd-amd64.tar.gz)
+    control: skipping: [srv5] => (item=ba2d97e9b07d4ba0e5a264b436a2fafcf8aaa9d2fc44e47eb57faf58c2142302  node_exporter-1.7.0.linux-riscv64.tar.gz)
+    control: skipping: [srv4] => (item=e1fcb304c8de3aca5d39f7ed4715c4787bf9e459936b32f7cbecfbd01b07a553  node_exporter-1.7.0.openbsd-amd64.tar.gz)
+    control: skipping: [srv5] => (item=aeda68884918f10b135b76bbcd4977cb7a1bb3c4c98a8551f8d2183bafdd9264  node_exporter-1.7.0.linux-s390x.tar.gz)
+    control: skipping: [srv5] => (item=c84b6e4478ab8348ad7a2dac069508c7975075c94cf93ca1a99dabaf4f240819  node_exporter-1.7.0.netbsd-386.tar.gz)
+    control: skipping: [srv5] => (item=419f3ce342caa0c6a0da51b9dd81945669fb21bd4e298bf0b358cbf3f691532f  node_exporter-1.7.0.netbsd-amd64.tar.gz)
+    control: skipping: [srv5] => (item=e1fcb304c8de3aca5d39f7ed4715c4787bf9e459936b32f7cbecfbd01b07a553  node_exporter-1.7.0.openbsd-amd64.tar.gz)
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Install] ***************************
+    control: included: /home/vagrant/.ansible/collections/ansible_collections/prometheus/prometheus/roles/node_exporter/tasks/install.yml for srv1, srv2, srv3, srv4, srv5
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Create the node_exporter group] ****
+    control: changed: [srv1]
+    control: changed: [srv2]
+    control: changed: [srv3]
+    control: changed: [srv4]
+    control: changed: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Create the node_exporter user] *****
+    control: changed: [srv1]
+    control: changed: [srv2]
+    control: changed: [srv4]
+    control: changed: [srv3]
+    control: changed: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Download node_exporter binary to local folder] ***
+    control: changed: [srv5 -> localhost]
+    control: ok: [srv3 -> localhost]
+    control: ok: [srv4 -> localhost]
+    control: ok: [srv1 -> localhost]
+    control: ok: [srv2 -> localhost]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Unpack node_exporter binary] *******
+    control: changed: [srv1 -> localhost]
+    control: changed: [srv2 -> localhost]
+    control: changed: [srv3 -> localhost]
+    control: changed: [srv4 -> localhost]
+    control: changed: [srv5 -> localhost]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Propagate node_exporter binaries] ***
+    control: changed: [srv3]
+    control: changed: [srv1]
+    control: changed: [srv4]
+    control: changed: [srv2]
+    control: changed: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Propagate locally distributed node_exporter binary] ***
+    control: skipping: [srv1]
+    control: skipping: [srv2]
+    control: skipping: [srv3]
+    control: skipping: [srv4]
+    control: skipping: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : SELinux] ***************************
+    control: skipping: [srv1]
+    control: skipping: [srv2]
+    control: skipping: [srv3]
+    control: skipping: [srv4]
+    control: skipping: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Configure] *************************
+    control: included: /home/vagrant/.ansible/collections/ansible_collections/prometheus/prometheus/roles/node_exporter/tasks/configure.yml for srv1, srv2, srv3, srv4, srv5
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Copy the node_exporter systemd service file] ***
+    control: changed: [srv1]
+    control: changed: [srv3]
+    control: changed: [srv4]
+    control: changed: [srv2]
+    control: changed: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Create node_exporter config directory] ***
+    control: changed: [srv1]
+    control: changed: [srv2]
+    control: changed: [srv4]
+    control: changed: [srv3]
+    control: changed: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Copy the node_exporter config file] ***
+    control: changed: [srv1]
+    control: changed: [srv3]
+    control: changed: [srv4]
+    control: changed: [srv2]
+    control: changed: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Create textfile collector dir] *****
+    control: changed: [srv1]
+    control: changed: [srv2]
+    control: changed: [srv3]
+    control: changed: [srv4]
+    control: changed: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Allow node_exporter port in SELinux on RedHat OS family] ***
+    control: skipping: [srv1]
+    control: skipping: [srv2]
+    control: skipping: [srv3]
+    control: skipping: [srv4]
+    control: skipping: [srv5]
+    control:
+    control: TASK [prometheus.prometheus.node_exporter : Ensure Node Exporter is enabled on boot] ***
+    control: changed: [srv1]
+    control: changed: [srv2]
+    control: changed: [srv5]
+    control: changed: [srv3]
+    control: changed: [srv4]
+    control:
+    control: RUNNING HANDLER [prometheus.prometheus.node_exporter : Restart node_exporter] ***
+    control: changed: [srv1]
+    control: changed: [srv2]
+    control: changed: [srv3]
+    control: changed: [srv4]
+    control: changed: [srv5]
+    control:
+    control: PLAY [Configure DNS on each server] ********************************************
+    control:
+    control: TASK [Gathering Facts] *********************************************************
+    control: ok: [srv2]
+    control: ok: [srv4]
+    control: ok: [srv3]
+    control: ok: [srv1]
+    control: ok: [srv5]
+    control:
+    control: TASK [Configure DNS server] ****************************************************
+    control: changed: [srv1]
+    control: changed: [srv2]
+    control: changed: [srv3]
+    control: changed: [srv4]
+    control: changed: [srv5]
+    control:
+    control: PLAY RECAP *********************************************************************
+    control: srv1                       : ok=47   changed=19   unreachable=0    failed=0    skipped=15   rescued=0    ignored=0
+    control: srv2                       : ok=32   changed=16   unreachable=0    failed=0    skipped=9    rescued=0    ignored=0
+    control: srv3                       : ok=34   changed=18   unreachable=0    failed=0    skipped=9    rescued=0    ignored=0
+    control: srv4                       : ok=56   changed=26   unreachable=0    failed=0    skipped=20   rescued=0    ignored=0
+    control: srv5                       : ok=43   changed=23   unreachable=0    failed=0    skipped=15   rescued=0    ignored=0
+    control:
+
+==> srv1: Machine 'srv1' has a post `vagrant up` message. This is a message
+==> srv1: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> srv1:
+==> srv1: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports
+
+==> srv2: Machine 'srv2' has a post `vagrant up` message. This is a message
+==> srv2: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> srv2:
+==> srv2: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports
+
+==> srv3: Machine 'srv3' has a post `vagrant up` message. This is a message
+==> srv3: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> srv3:
+==> srv3: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports
+
+==> srv4: Machine 'srv4' has a post `vagrant up` message. This is a message
+==> srv4: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> srv4:
+==> srv4: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports
+
+==> srv5: Machine 'srv5' has a post `vagrant up` message. This is a message
+==> srv5: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> srv5:
+==> srv5: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports
+
+==> control: Machine 'control' has a post `vagrant up` message. This is a message
+==> control: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> control:
+==> control: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports
