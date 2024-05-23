@@ -377,6 +377,10 @@ Dit zou kunnen worden bereikt door een wrapper script te schrijven dat het scrip
 Dit wrapper script zou de lijst van hosts kunnen ophalen uit een configuratiebestand, zoals \texttt{hosts.txt}.
 Een mogelijke implementatie van dit concept wordt getoond in~\ref{lst:poc-hosts-txt}, waarbij het script wordt uitgevoerd op elke server met behulp van een \texttt{while-read} lus, zoals te zien in~\ref{lst:poc-wrapper-script}.
 
+Tot slot zou het integreren van een grondigere analyse van de CIS Benchmarks, reeds besproken in~\ref{sub:cis-benchmarks}, een waardevolle toevoeging zijn.
+Door het script uit te breiden met functies die controleren of de servers voldoen aan de standaarden van de CIS Benchmarks, kan men niet alleen de conformiteit van de servers beoordelen, maar ook nagaan of ze voldoen aan verschillende regelgevingen zoals GDPR of HIPAA.
+Dit zou de inzet van de inventaris bij cybersecurity-incidenten verder versterken en het script omvormen tot een krachtige tool voor het beheer en de monitoring van serverconfiguraties.
+
 \begin{listing}
   \begin{minted}[linenos,tabsize=4,breaklines]{console}
 root@srv1.poc.lan
