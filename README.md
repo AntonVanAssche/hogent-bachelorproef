@@ -27,9 +27,10 @@ The developed script forms a solid foundation upon which administrators can buil
 # Contents
 
 - `/doc/bachproef` contains the LaTeX source code of the Bachelor Thesis.
-- `/doc/proposal` contains the LaTeX source code of the Proposal.
+- `/doc/voorstel` contains the LaTeX source code of the Proposal.
 - `/src/poc` contains the code related to the configuration of the virtual environment and the deployment of the Proof of Concept.
 - `/src/tools` contains the script developed for the Proof of Concept.
+- `/demos/` contains the demo files for the Proof of Concept and other discussed tools.
 
 # Latest Build
 
