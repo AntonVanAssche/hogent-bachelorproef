@@ -8,21 +8,21 @@
 \section{Inleiding}
 \label{linux_inleiding}
 
-Om ons te helpen bij het maken van een configuratie-inventaris van een Linux systeem, moeten we verschillende aspecten van Linux in acht nemen.
-Door enkele basisconcepten te kennen over de verschillende componenten en functies van een Linux systeem en de beschikbare ondersteunende tools, is het veel eenvoudiger om te bepalen wat we in onze inventaris moeten opnemen en wat niet.
+Om ons te helpen bij het maken van een configuratie-inventaris van een Linux systeem, moet men verschillende aspecten van Linux in acht nemen.
+Door enkele basisconcepten te kennen over de verschillende componenten en functies van een Linux systeem en de beschikbare ondersteunende tools, is het veel eenvoudiger om te bepalen wat men in ons inventaris moeten opnemen en wat niet.
 In dit hoofdstuk worden enkele basisbegrippen van Linux uitgelegd, zoals wat het is en wat er deel van uitmaakt, enz.
 
 \section{Het Linux besturingssysteem}
 \label{linux_linux_besturingssysteem}
 
 Een besturingsysteem is de software die applicaties toe laat om te communiceren met de hardware van een computer.
-Vaak als we spreken over besturingssystemen, denken we aan Windows, macOS of Linux.
+Vaak als men spreekt over besturingssystemen, denkt men aan Windows, macOS of Linux.
 Echter is Linux hier een buitenbeentje, aangezien het niet een besturingssysteem is, maar een kernel.
 De taak van de kernel is om de hardware van een computer te beheren en de software die op de computer draait te ondersteunen.
 
 De kernel is het hart van een Linux-systeem, en is verantwoordelijk voor het beheer van de hardware van de computer, zoals de CPU, het geheugen, de opslag en de netwerkinterfaces.
-Echter wanneer we spreken over een Linux-systeem, bedoelen we vaak de bundel van software die samen met de kernel wordt geleverd, zoals de GNU core-utils, de shell en de grafische interface.
-Deze bundeling van software gaan we vaak een Linux-distributie noemen, of ook wel een distro genoemd.
+Echter wanneer men spreekt over een Linux-systeem, bedoelt men vaak de bundel van software die samen met de kernel wordt geleverd, zoals de GNU core-utils, de shell en de grafische interface.
+Deze bundeling van software gaat men vaak een Linux-distributie noemen, of ook wel een distro genoemd.
 Enkele bekende Linux-distributies zijn Debian, Ubuntu, Fedora en RHEL.
 
 Een typisch Linux-systeem bestaat uit verschillende lagen, zoals te zien is in figuur~\ref{fig:linux-system-structure}.
@@ -38,9 +38,9 @@ Dit moet gebeuren door de Application Programming Interface (API) die de kernel 
     \end{center}
 \end{figure}
 
-De Linux-kernel is wat we noemen een monolithische kernel, wat wil zeggen dat het een enkele grote binary is die alle functionaliteit bevat.
+De Linux-kernel is wat men noemt een monolithische kernel, wat wil zeggen dat het een enkele grote binary is die alle functionaliteit bevat.
 Dit houdt in dat alle subsystemen van de kernel, zoals het bestandssysteem, het geheugenbeheer en de netwerkstack, in dezelfde binary zitten.
-Echter is de kernel wel modulair, wat wil zeggen dat we modules kunnen laden en lossen in de kernel, zonder dat we de kernel zelf moeten hercompileren.
+Echter is de kernel wel modulair, wat wil zeggen dat men modules kan laden en lossen in de kernel, zonder dat men de kernel zelf moeten hercompileren.
 Deze modules kunnen voor verschillende doeleinden worden gebruikt, zoals het toevoegen van ondersteuning voor nieuwe hardware, het beveiligen van het systeem met SELinux of AppArmor, of het toevoegen van nieuwe functionaliteit aan de kernel~\autocite{hypponen2021securing}.
 Een voorbeeld van een module is \texttt{vboxdrv}, die nodig is om VirtualBox te kunnen gebruiken op een Linux-systeem.
 
@@ -83,8 +83,8 @@ De package manager speelt een essenti\"ele rol bij het beheer van software op ee
 Het stelt gebruikers in staat om software te installeren, te verwijderen en bij te werken, en zorgt ervoor dat eventuele afhankelijkheden van software adequaat worden beheerd.
 Bovendien is versiebeheer een belangrijk aspect van package managers, waarbij de juiste versie van de software wordt ge\"installeerd en up-to-date wordt gehouden door de package manager.
 
-We kunnen de package manager ook inzetten om een lijst van ge\"installeerde softwarepakketten te bekijken, iets wat we later in dit werk zullen gebruiken om een configuratie-inventaris te maken.
-Op Debian-gebaseerde systemen kunnen we dit bijvoorbeeld doen door het commando \texttt{apt list -{}-installed} als de root-gebruiker uit te voeren.
+Men kan de package manager ook inzetten om een lijst van ge\"installeerde softwarepakketten te bekijken, iets wat men later in dit werk zal gebruiken om een configuratie-inventaris te maken.
+Op Debian-gebaseerde systemen kan men dit bijvoorbeeld doen door het commando \texttt{apt list -{}-installed} als de root-gebruik-\ er uit te voeren.
 Als alternatief kan men ook \texttt{dpkg-query -l} gebruiken, wat ons toelaat om query's uit te voeren op de DPKG-database, zoals te zien in listing~\ref{lst:dpkg-query}.
 
 \begin{listing}
@@ -182,7 +182,7 @@ Aan de andere kant worden normale gebruikers ge\"identificeerd door een UID hoge
 [root@fedorable ~]# id
 uid=0(root) gid=0(root) groups=0(root)
   \end{minted}
-    \caption[UID, GID en groepslidmaatschap voor superuser.]{Uitvoer van het \texttt{id}-commando voor de superuser, waarop we kunnen zien dat de gebruiker een UID van 0 heeft, een GID van 0 heeft en lid is van de groep \texttt{root}.}
+    \caption[UID, GID en groepslidmaatschap voor superuser.]{Uitvoer van het \texttt{id}-commando voor de superuser, waarop men kan zien dat de gebruiker een UID van 0 heeft, een GID van 0 heeft en lid is van de groep \texttt{root}.}
   \label{lst:linux-root-id}
 \end{listing}
 
@@ -191,7 +191,7 @@ uid=0(root) gid=0(root) groups=0(root)
 [anton@fedorable ~]$ id
 uid=1000(anton) gid=1000(anton) groups=1000(anton),10(wheel)
   \end{minted}
-    \caption[UID, GID en groepslidmaatschap voor normale gebruiker.]{Uitvoer van het \texttt{id}-commando voor een normale gebruiker, waarop we kunnen zien dat de gebruiker een UID van 1000 heeft, een GID van 1000 heeft en lid is van de groepen \texttt{anton} en \texttt{wheel}.}
+    \caption[UID, GID en groepslidmaatschap voor normale gebruiker.]{Uitvoer van het \texttt{id}-commando voor een normale gebruiker, waarop men kan zien dat de gebruiker een UID van 1000 heeft, een GID van 1000 heeft en lid is van de groepen \texttt{anton} en \texttt{wheel}.}
   \label{lst:linux-anton-id}
 \end{listing}
 
@@ -237,7 +237,7 @@ anton    ALL=(ALL)    NOPASSWD: /usr/bin/dnf
 Services en processen vormen de ruggengraat van een Linux-systeem, waarbij ze cruciale taken uitvoeren en resources beheren om de algehele functionaliteit te ondersteunen.
 Het correct beheren van deze services en processen is van vitaal belang voor de stabiliteit, prestaties en beveiliging van het systeem.
 
-In dit gedeelte zullen we dieper ingaan op twee belangrijke aspecten van het beheer van services en processen op een Linux-systeem: systemd en cronjobs.
+In dit gedeelte zal men dieper ingaan op twee belangrijke aspecten van het beheer van services en processen op een Linux-systeem: systemd en cronjobs.
 
 \subsubsection{Systemd}
 \label{linux_systemd}
@@ -275,7 +275,7 @@ Beheerders hebben de mogelijkheid om aangepaste unit files te maken en te bewerk
 \label{linux_cronjobs}
 
 Cronjobs zijn geautomatiseerde taken die periodiek worden uitgevoerd op een Linux-systeem, zoals het maken van back-ups, het uitvoeren van systeemupdates of het genereren van rapporten.
-Het zorgt ervoor dat we onafhankelijk van het progamma, op een bepaald tijdstip of interval, een bepaalde taak kunnen uitvoeren.
+Het zorgt ervoor dat men onafhankelijk van het progamma, op een bepaald tijdstip of interval, een bepaalde taak kan uitvoeren.
 Dit gebruikmakende van de \texttt{cron} daemon, die de cronjobs beheert en uitvoert op de achtergrond.
 
 Men kan cronjobs defini\"eren door middel van cron-tabellen, die de configuratie van de cronjobs bevatten.
@@ -297,7 +297,7 @@ Na de tijdvelden volgt het commando dat moet worden uitgevoerd, zoals te zien is
 
 Met de continue groei van het internet en de toenemende afhankelijkheid van digitale technologie, is het van cruciaal belang om de beveiliging van systemen te waarborgen.
 Linux-servers zijn geen uitzondering en moeten worden beschermd tegen een breed scala aan bedreigingen, zoals denail-of-service (DoS), datalekken, enz.
-In dit gedeelte zullen we twee fundamentele concepten van Linux-serverbeveiliging bespreken: de firewall en SELinux.
+In dit gedeelte zal men twee fundamentele concepten van Linux-serverbeveiliging bespreken: de firewall en SELinux.
 
 \subsection{Firewall}
 \label{linux_firewall}
@@ -371,5 +371,5 @@ Het is echter belangrijk op te merken dat AppArmor zich beperkt tot deze profiel
 
 In tegenstelling tot SELinux maakt AppArmor geen gebruik van labels om toegang te beperken, maar gebruikt het paden.
 Dit betekent dat als een applicatie toegang heeft tot \texttt{/var/www/html/}, het alleen toegang heeft tot die map en niet tot \texttt{/var/www/} of \texttt{/var/}.
-Als we bijvoorbeeld \texttt{/var/www/html/} hernoemen naar \texttt{/var/www/html.backup/}, zal de applicatie geen toegang meer hebben tot die map omdat het pad niet meer overeenkomt met het profiel van de applicatie.
+Als men bijvoorbeeld \texttt{/var/www/html/} hernoemt naar \texttt{/var/www/html.backup/}, zal de applicatie geen toegang meer hebben tot die map omdat het pad niet meer overeenkomt met het profiel van de applicatie.
 In dat geval moet de beheerder het profiel van de applicatie aanpassen om de nieuwe locatie toe te staan~\autocite{gruenbacher2007apparmor}.

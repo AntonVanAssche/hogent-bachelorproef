@@ -46,7 +46,7 @@ Hierbij wordt de configuratie van een systeem voortdurend gecontroleerd en geval
 
 In dit gedeelte wordt de huidige aanpak van configuration management besproken, met een focus op Infrastructure as Code (IaC).
 Naast wat het is, wordt er ook gekeken naar de fundamentele componenten van IaC, alsook de voordelen ervan.
-Ook zullen er tools vernoemd worden die we kunnen gebruiken om de configuratie van een systeem te ontdekken, om later om te zetten naar een IaC omgeving.
+Ook zullen er tools vernoemd worden die men kan gebruiken om de configuratie van een systeem te ontdekken, om later om te zetten naar een IaC omgeving.
 
 \subsection{Center for Internet Security Benchmarks}%
 \label{sub:cis-benchmarks}
@@ -120,7 +120,7 @@ Verdere voorbeelden kan men vinden in de bijlage ``Puppetboard''~\ref{ch:bijlage
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
     {./graphics/state-of-the-art/puppetboard/puppetboard-host-details.png}
-    \caption[Puppetboard host details.]{\label{fig:puppetboard-host-details}Voorbeeld van Puppetboard waar we enkele facts over een bepaalde machine in de infrastructuur kunnen zien, als ook de Puppet-runs die wijzigingen hebben doorgevoerd op de machine. (Deze schermafbeelding werd genomen bij Federale Pensioendienst (FPD) met toestemming, gedurende persoonlijke stage.)}
+    \caption[Puppetboard host details.]{\label{fig:puppetboard-host-details}Voorbeeld van Puppetboard waar men enkele facts over een bepaalde machine in de infrastructuur kunnen zien, als ook de Puppet-runs die wijzigingen hebben doorgevoerd op de machine. (Deze schermafbeelding werd genomen bij Federale Pensioendienst (FPD) met toestemming, gedurende persoonlijke stage.)}
 \end{figure}
 
 \subsection{PEASS-ng}
@@ -143,15 +143,15 @@ Een verkort voorbeeld van de uitvoer van linPEAS is te vinden in bijlage~\ref{ch
 \subsection{Nmap}
 \label{sub:nmap}
 
-Wanneer we dieper willen duiken in de netwerkconfiguratie, zijn er verschillende applicaties beschikbaar op een machine, zoals \code{ip}, \code{ifconfig} en \code{ss}.
+Wanneer men dieper wil duiken in de netwerkconfiguratie, zijn er verschillende applicaties beschikbaar op een machine, zoals \code{ip}, \code{ifconfig} en \code{ss}.
 Deze worden standaard geleverd bij de meeste Linux-distributies en bieden uitgebreide informatie over hoe de machine is geconfigureerd binnen het netwerk, zoals het IP-adres, de netwerkinterfaces en de routes.
 
-Naast deze standaardapplicaties kunnen we ook gebruikmaken van een tool genaamd Nmap, dit staat voor ``Network Mapper''~\autocite{nmap-website}.
+Naast deze standaardapplicaties kan men ook gebruikmaken van een tool genaamd Nmap, dit staat voor ``Network Mapper''~\autocite{nmap-website}.
 Dit is een open-source tool die wordt gebruikt voor netwerkontdekking en beveiligingsaudits, die ge\"implementeerd is in C en Lua.
 Alle source-code in verband met Nmap is vrij beschikbaar op GitHub~\autocite{nmap-github}.
 Deze tool kan men installeren op vrijwel elk besturingssysteem, enkele voorbeelden zijn (maar niet beperkt tot) Linux, Windows, macOS en verschillende BSD varianten.
 Nmap kan een netwerk scannen en informatie verzamelen over de machines die erop zijn aangesloten.
-Hiermee kunnen we bijvoorbeeld open poorten detecteren en de services identificeren die daarachter draaien.
+Hiermee kan men bijvoorbeeld open poorten detecteren en de services identificeren die daarachter draaien.
 Daarnaast kan Nmap ons ook informatie geven over de firewall die op de machine actief is en de versie van het besturingssysteem.
 Maar deze informatie is niet altijd betrouwbaar, omdat het mogelijk is om deze te vervalsen, iets wat ook door sommige firewalls en besturingssystemen wordt gedaan.
 
@@ -195,8 +195,8 @@ In bijlage~\ref{ch:bijlage_red_hat_satellite} zijn enkele schermafbeeldingen opg
 \label{sec:huidige-aanpak-van-asset-management}
 
 In dit gedeelte wordt er gekeken naar asset management, en hoe het ons kan helpen om van een niet IaC omgeving naar een IaC omgeving te gaan.
-Hoewel asset management minder gericht is op de configuratie van een machine, kan het ons wel inzicht geven in de infrastructuur en de assets die we moeten beheren.
-Met deze informatie kunnen we dan de initi\"ele configuratie vastleggen in code, zoals de HashiCortp Configuration language, ook gekend als HCL, voor Terraform.
+Hoewel asset management minder gericht is op de configuratie van een machine, kan het ons wel inzicht geven in de infrastructuur en de assets die men moet beheren.
+Met deze informatie kan men dan de initi\"ele configuratie vastleggen in code, zoals de HashiCortp Configuration language, ook gekend als HCL, voor Terraform.
 
 Deze tool helpt ons configuratie van de infrastructuur vast te leggen in code, dit kan gaan van virtuele machines tot volledige newerken, in de cloud of on-prem.
 
@@ -231,9 +231,9 @@ IPAM oplossingen kunnen beheerders helpen bij het vermijden van een dubbele toew
 Een bekend voorbeeld van een IPAM-oplossing is NetBox, een open-source tool ontwikkeld door NetBox Labs~\autocite{netbox-ipam}, waarvan de source-code vrij beschikbaar is op GitHub~\autocite{netbox-github}.
 Het biedt een gebruiksvriendelijke webinterface, zoals te zien in figuur~\ref{fig:netbox-dashboard}, waarmee beheerders IP-adressen kunnen beheren, evenals andere netwerkgerelateerde informatie, zoals racks, apparatuur en subnetten.
 
-Wanneer we NetBox willen integreren met IaC-tools zoals Terraform of Ansible, kunnen we gebruikmaken van de REST API die NetBox biedt~\autocite{netbox-api}.
+Wanneer men NetBox wil integreren met IaC-tools zoals Terraform of Ansible, kan men gebruikmaken van de REST API die NetBox biedt~\autocite{netbox-api}.
 Deze laat ons toe om vrijwel alle functionaliteiten van NetBox te benaderen en te manipuleren vanuit onze IaC-code.
-Enkele voorbeelden van wat we kunnen doen met de API zijn, maar niet beperkt tot:
+Enkele voorbeelden van wat men kan doen met de API zijn, maar niet beperkt tot:
 
 \begin{itemize}
     \item IP-adressen toewijzen aan apparaten
@@ -245,7 +245,7 @@ Enkele voorbeelden van wat we kunnen doen met de API zijn, maar niet beperkt tot
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
     {./graphics/state-of-the-art/netbox-dashboard.png}
-    \caption[NetBox dashboard voor DM-Scraton.]{\label{fig:netbox-dashboard}NetBox dashboard waarin we de informatie kunnen terug vinden over de DM-Scraton site van een bepaalde organisatie~\autocite{netbox-dashboard}.}
+    \caption[NetBox dashboard voor DM-Scraton.]{\label{fig:netbox-dashboard}NetBox dashboard waarin men de informatie kunnen terug vinden over de DM-Scraton site van een bepaalde organisatie~\autocite{netbox-dashboard}.}
 \end{figure}
 
 \subsection{Snipe-IT}
@@ -258,7 +258,7 @@ Het doel was om een applicatie te ontwikkelen die deze taak op een meer georgani
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]
     {./graphics/state-of-the-art/snipe-dashboard.png}
-    \caption[Snipe-IT dashboard voor assets.]{\label{fig:snipe-it-dashboard}Snipe-IT dashboard waarin we het totale aantal assets binnen de organisatie kunnen zien, alsook een oplijsting van verschillende toestellen recent toegekend zijn~\autocite{snipe-it-dashboard}.}
+    \caption[Snipe-IT dashboard voor assets.]{\label{fig:snipe-it-dashboard}Snipe-IT dashboard waarin men het totale aantal assets binnen de organisatie kunnen zien, alsook een oplijsting van verschillende toestellen recent toegekend zijn~\autocite{snipe-it-dashboard}.}
 \end{figure}
 
 De software biedt een gebruiksvriendelijke webinterface (\ref{fig:snipe-it-dashboard}) waarmee bedrijfsmiddelen, licenties, garanties en meer gemakkelijk kunnen worden beheerd.

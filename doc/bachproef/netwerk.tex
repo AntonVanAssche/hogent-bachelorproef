@@ -12,7 +12,7 @@ Tegenwoordig heeft vrijwel elke server toegang nodig tot het netwerk om te kunne
 Dit vormt een essentieel onderdeel van de serverfunctionaliteit, aangezien het zonder netwerkconnectiviteit niet bereikbaar zou zijn.
 Om deze connectiviteit te realiseren, zijn er verschillende concepten en technologie\"en beschikbaar die kunnen worden toegepast.
 
-In dit hoofdstuk zullen we enkele van deze concepten en technologie\"en bespreken die ons later zullen helpen bij het identificeren van wat het beste kan worden opgenomen in ons configuratie-inventaris.
+In dit hoofdstuk zal men enkele van deze concepten en technologie\"en bespreken die ons later zullen helpen bij het identificeren van wat het beste kan worden opgenomen in ons configuratie-inventaris.
 
 \section{Netwerkinterface}
 \label{netwerk_netwerkinterface}
@@ -67,7 +67,7 @@ Wanneer de TTL is verstreken, wordt het pakket verwijderd en wordt er een ICMP-p
 
 Ipv4 maakt gebruik van 32-bit adressen en ondersteunt ongeveer \(2^{32}\) adressen, wat neerkomt op ongeveer 4,3 miljard unieke adressen.
 Een adres wordt gelinkt aan een specifieke netwerkinterface en maakt het mogelijk om deze interface te identificeren en te lokaliseren binnen een netwerk.
-Wanneer we spreken over een IPv4-adres, verwijzen we meestal naar een van de volgende notaties:
+Wanneer men spreekt over een IPv4-adres, verwijst men meestal naar een van de volgende notaties:
 
 \begin{itemize}
     \item \texttt{192.168.0.82}
@@ -75,7 +75,7 @@ Wanneer we spreken over een IPv4-adres, verwijzen we meestal naar een van de vol
 \end{itemize}
 
 Dit zijn zogenaamde dotted-decimal notaties, waarbij elk octet van het adres wordt gescheiden door een punt.
-Als we echter een adres in een binair formaat willen weergeven, kunnen we dit doen door elk octet te converteren naar een 8-bit binair getal en deze aan elkaar te koppelen.
+Als men echter een adres in een binair formaat willen weergeven, kan men dit doen door elk octet te converteren naar een 8-bit binair getal en deze aan elkaar te koppelen.
 Dit resulteert in volgende notatie, respectievelijk voor de bovenstaande voorbeelden:
 
 \begin{itemize}
@@ -83,8 +83,8 @@ Dit resulteert in volgende notatie, respectievelijk voor de bovenstaande voorbee
     \item \texttt{01111111.00000000.00000000.00000001}
 \end{itemize}
 
-Deze IP-adressen kunnen we verdelen in twee delen: het netwerkdeel en het hostdeel.
-Neem bijvoorbeeld het adres \texttt{192.168.0.82}, dat we kunnen opsplitsen in \texttt{192.168.0} en \texttt{82}.
+Deze IP-adressen kan men verdelen in twee delen: het netwerkdeel en het hostdeel.
+Neem bijvoorbeeld het adres \texttt{192.168.0.82}, dat men kan opsplitsen in \texttt{192.\\ 168.0} en \texttt{82}.
 Deze scheiding is nuttig om vast te stellen welke hosts zich in hetzelfde netwerk bevinden en welke niet.
 De splitsing wordt bepaald door een subnetmask, dat aangeeft welke bits van het adres het netwerkdeel vormen en welke het hostdeel.
 In het geval van \texttt{192.168.0.82} zou het subnetmask bijvoorbeeld \texttt{255.255.255.0} zijn, wat overeenkomt met 24 bits voor het netwerkdeel en 8 bits voor het hostdeel.
@@ -146,7 +146,7 @@ Het matchen van een pakketadres met een vermelding in de forwardingtabel vereist
 
 UDP, voluit User Datagram Protocol, is een ander protocol dat, net als TCP, opereert op de transportlaag van het OSI-model.
 Het onderscheidt zich doordat het een eenvoudig protocol is dat communicatie mogelijk maakt tussen twee hosts zonder dat er eerst een verbinding hoeft te worden opgezet.
-Dit betekent dat het een connectionless protocol is, in tegenstelling tot TCP, waarover we later zullen praten.
+Dit betekent dat het een connectionless protocol is, in tegenstelling tot TCP, waarover men later zal praten.
 
 Het staat bekend als een lichtgewicht protocol dat snel en effici\"ent werkt, maar geen garanties biedt voor de levering van pakketten.
 Wanneer een zender een pakket naar de ontvanger stuurt, is er geen bevestiging van ontvangst, wat betekent dat pakketten verloren kunnen gaan zonder dat de zender hiervan op de hoogte is.
@@ -210,7 +210,7 @@ Het onthouden en gebruiken van lange reeksen cijfers is niet praktisch in het da
 Om deze uitdaging aan te pakken en het internet toegankelijker te maken, is het Domain Name System (DNS) ontwikkeld.
 
 Het hele protocol zou men kunnen vergelijken met een telefoonboek, waarbij domeinnamen worden vertaald naar IP-adressen en omgekeerd.
-Gelijkaarig aan een telefoonboek waar we de namen van personen kunnen opzoeken en hun telefoonnummer kunnen vinden, kunnen we met DNS de IP-adressen van domeinnamen opzoeken.
+Gelijkaarig aan een telefoonboek waar men de namen van personen kunnen opzoeken en hun telefoonnummer kunnen vinden, kan men met DNS de IP-adressen van domeinnamen opzoeken.
 
 De structuur van DNS is hi\"erarchisch van aard, waarbij domeinnamen worden opgedeeld in verschillende niveaus.
 Neem bijvoorbeeld het domein \texttt{www.google.com}. Dit wordt opgedeeld in drie niveaus: \texttt{www}, \texttt{google}, en \texttt{com}.
