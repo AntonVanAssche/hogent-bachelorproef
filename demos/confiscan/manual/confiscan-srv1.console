@@ -1,0 +1,743 @@
+root@srv1:~# /tmp/confiscan.sh -t /etc/bind/named.conf /etc/node_exporter/config.yaml
+Info: You are running: ConfiScan v0.8-devel
+Info: Using config file(s): /etc/bind/named.conf /etc/node_exporter/config.yaml /etc/ssh/ssh_config /etc/ssh/ssh_config.d/ /etc/ssh/sshd_config /etc/ssh/sshd_config.d/
+Info: Creating directories...
+Info: Hardware Information:
+Info: System Information:
+# dmidecode 3.4
+Getting SMBIOS data from sysfs.
+SMBIOS 2.5 present.
+
+Handle 0x0001, DMI type 1, 27 bytes
+System Information
+        Manufacturer: innotek GmbH
+        Product Name: VirtualBox
+        Version: 1.2
+        Serial Number: 0
+        UUID: c03d3922-a5d0-4f1f-9c48-11d34c3d7b7a
+        Wake-up Type: Power Switch
+        SKU Number: Not Specified
+        Family: Virtual Machine
+
+Info: Processor Information:
+# dmidecode 3.4
+Getting SMBIOS data from sysfs.
+SMBIOS 2.5 present.
+
+Info: Memory Information:
+# dmidecode 3.4
+Getting SMBIOS data from sysfs.
+SMBIOS 2.5 present.
+
+Info: BIOS Information:
+# dmidecode 3.4
+Getting SMBIOS data from sysfs.
+SMBIOS 2.5 present.
+
+Handle 0x0000, DMI type 0, 20 bytes
+BIOS Information
+        Vendor: innotek GmbH
+        Version: VirtualBox
+        Release Date: 12/01/2006
+        Address: 0xE0000
+        Runtime Size: 128 kB
+        ROM Size: 128 kB
+        Characteristics:
+                ISA is supported
+                PCI is supported
+                Boot from CD is supported
+                Selectable boot is supported
+                8042 keyboard services are supported (int 9h)
+                CGA/mono video services are supported (int 10h)
+                ACPI is supported
+
+Info: OS Information:
+Hostname  OperatingSystem  Name                            Version  Version_ID     Codename  Kernel
+srv1      GNU/Linux        Debian GNU/Linux 12 (bookworm)  12       12 (bookworm)  bookworm  6.1.0-18-amd64
+Info: Boot parameters:
+BOOT_IMAGE=/boot/vmlinuz-6.1.0-18-amd64
+root=UUID=e40706ce-053f-451f-b6fe-0979430677a4
+ro
+consoleblank=0
+elevator=noop
+scsi_mod.use_blk_mq=Y
+net.ifnames=0
+biosdevname=0
+BOOT_IMAGE=/boot/vmlinuz-6.1.0-18-amd64
+root=UUID=e40706ce-053f-451f-b6fe-0979430677a4
+ro
+consoleblank=0
+elevator=noop
+scsi_mod.use_blk_mq=Y
+net.ifnames=0
+biosdevname=0
+Info: Kernel modules:
+Module               Size    UsedBy
+udp_diag             16384   0 -
+tcp_diag             16384   0 -
+inet_diag            24576   2 udp_diag tcp_diag
+nf_tables            303104  0 -
+libcrc32c            16384   1 nf_tables
+nfnetlink            20480   1 nf_tables
+vboxsf               45056   1 -
+binfmt_misc          24576   1 -
+intel_rapl_msr       20480   0 -
+intel_rapl_common    32768   1 intel_rapl_msr
+intel_pmc_core       53248   0 -
+ghash_clmulni_intel  16384   0 -
+sha512_ssse3         49152   0 -
+sha512_generic       16384   1 sha512_ssse3
+sha256_ssse3         32768   0 -
+sha1_ssse3           32768   0 -
+aesni_intel          393216  0 -
+crypto_simd          16384   1 aesni_intel
+cryptd               28672   2 ghash_clmulni_intel crypto_simd
+rapl                 20480   0 -
+vmwgfx               376832  1 -
+drm_ttm_helper       16384   1 vmwgfx
+joydev               28672   0 -
+ttm                  94208   2 vmwgfx drm_ttm_helper
+drm_kms_helper       204800  1 vmwgfx
+vboxguest            49152   1 vboxsf
+button               24576   0 -
+ac                   20480   0 -
+evdev                28672   3 -
+serio_raw            20480   0 -
+sg                   40960   0 -
+fuse                 176128  1 -
+drm                  614400  5 vmwgfx drm_ttm_helper ttm drm_kms_helper
+loop                 32768   0 -
+efi_pstore           16384   0 -
+dm_mod               184320  0 -
+configfs             57344   1 -
+ip_tables            36864   0 -
+x_tables             61440   1 ip_tables
+autofs4              53248   2 -
+ext4                 983040  1 -
+crc16                16384   1 ext4
+mbcache              16384   1 ext4
+jbd2                 167936  1 ext4
+crc32c_generic       16384   0 -
+sd_mod               65536   1 -
+t10_pi               16384   1 sd_mod
+crc64_rocksoft       20480   1 t10_pi
+crc64                20480   1 crc64_rocksoft
+crc_t10dif           20480   1 t10_pi
+crct10dif_generic    16384   0 -
+ahci                 49152   1 -
+libahci              49152   1 ahci
+libata               401408  2 ahci libahci
+crct10dif_pclmul     16384   1 -
+crct10dif_common     16384   3 crc_t10dif crct10dif_generic crct10dif_pclmul
+crc32_pclmul         16384   0 -
+crc32c_intel         24576   3 -
+psmouse              184320  0 -
+floppy               86016   0 -
+scsi_mod             286720  3 sg sd_mod libata
+battery              28672   0 -
+video                65536   0 -
+wmi                  36864   1 video
+e1000                163840  0 -
+scsi_common          16384   3 sg libata scsi_mod
+i2c_piix4            28672   0 -
+Info: Users found on the system:
+Username          UID    GID    Shell              Home
+root              0      0      /bin/bash          /root
+daemon            1      1      /usr/sbin/nologin  /usr/sbin
+bin               2      2      /usr/sbin/nologin  /bin
+sys               3      3      /usr/sbin/nologin  /dev
+sync              4      65534  /bin/sync          /bin
+games             5      60     /usr/sbin/nologin  /usr/games
+man               6      12     /usr/sbin/nologin  /var/cache/man
+lp                7      7      /usr/sbin/nologin  /var/spool/lpd
+mail              8      8      /usr/sbin/nologin  /var/mail
+news              9      9      /usr/sbin/nologin  /var/spool/news
+uucp              10     10     /usr/sbin/nologin  /var/spool/uucp
+proxy             13     13     /usr/sbin/nologin  /bin
+www-data          33     33     /usr/sbin/nologin  /var/www
+backup            34     34     /usr/sbin/nologin  /var/backups
+list              38     38     /usr/sbin/nologin  /var/list
+irc               39     39     /usr/sbin/nologin  /run/ircd
+_apt              42     65534  /usr/sbin/nologin  /nonexistent
+messagebus        100    106    /usr/sbin/nologin  /nonexistent
+_chrony           101    109    /usr/sbin/nologin  /var/lib/chrony
+sshd              102    65534  /usr/sbin/nologin  /run/sshd
+bind              103    110    /usr/sbin/nologin  /var/cache/bind
+systemd-timesync  997    997    /usr/sbin/nologin  /
+systemd-network   998    998    /usr/sbin/nologin  /
+node-exp          999    100    /usr/sbin/nologin  /
+vagrant           1000   1000   /bin/bash          /home/vagrant
+nobody            65534  65534  /usr/sbin/nologin  /nonexistent
+Info: Privileged users:
+
+Info: Custom sudo rules for each user:
+Username  Privilege
+root      (ALL : ALL) ALL
+vagrant   (ALL) NOPASSWD: ALL
+Info: Groups found on the system:
+Groupname         GID    Members
+root              0
+daemon            1
+bin               2
+sys               3
+adm               4
+tty               5
+disk              6
+lp                7
+mail              8
+news              9
+uucp              10
+man               12
+proxy             13
+kmem              15
+dialout           20
+fax               21
+voice             22
+cdrom             24
+floppy            25
+tape              26
+sudo              27
+audio             29
+dip               30
+www-data          33
+backup            34
+operator          37
+list              38
+irc               39
+src               40
+shadow            42
+utmp              43
+video             44
+sasl              45
+plugdev           46
+staff             50
+games             60
+users             100
+nogroup           65534
+crontab           101
+systemd-journal   999
+systemd-network   998
+systemd-timesync  997
+input             102
+sgx               103
+kvm               104
+render            105
+messagebus        106
+_ssh              107
+netdev            108
+_chrony           109
+vagrant           1000
+bind              110
+node-exp          996    node-exp
+Info: Package info:
+Info: Packages found on the system:
+Package                     Version                         Architecture
+adduser                     3.134                           all
+apparmor                    3.0.8-3                         amd64
+apt                         2.6.1                           amd64
+apt-listchanges             3.24                            all
+apt-utils                   2.6.1                           amd64         apt
+base-files                  12.4+deb12u5                    amd64
+base-passwd                 3.6.1                           amd64
+bash                        5.2.15-2+b2                     amd64         bash (5.2.15-2)
+bash-completion             1:2.11-6                        all
+bind9                       1:9.18.24-1                     amd64
+bind9-dnsutils              1:9.18.24-1                     amd64         bind9
+bind9-host                  1:9.18.24-1                     amd64         bind9
+bind9-libs                  1:9.18.24-1                     amd64         bind9
+bind9-utils                 1:9.18.24-1                     amd64         bind9
+bind9utils                  1:9.18.24-1                     all           bind9
+bsdextrautils               2.38.1-5+deb12u1                amd64         util-linux
+bsdutils                    1:2.38.1-5+deb12u1              amd64         util-linux (2.38.1-5+deb12u1)
+bzip2                       1.0.8-5+b1                      amd64         bzip2 (1.0.8-5)
+ca-certificates             20230311                        all
+chrony                      4.3-2+deb12u1                   amd64
+cloud-guest-utils           0.33-1                          all           cloud-utils
+cloud-image-utils           0.33-1                          all           cloud-utils
+cloud-initramfs-growroot    0.18.debian13                   all           cloud-initramfs-tools
+cloud-utils                 0.33-1                          all
+coreutils                   9.1-1                           amd64
+cpio                        2.13+dfsg-7.1                   amd64
+cron                        3.0pl1-162                      amd64
+cron-daemon-common          3.0pl1-162                      all           cron
+dash                        0.5.12-2                        amd64
+dbus                        1.14.10-1~deb12u1               amd64
+dbus-bin                    1.14.10-1~deb12u1               amd64         dbus
+dbus-daemon                 1.14.10-1~deb12u1               amd64         dbus
+dbus-session-bus-common     1.14.10-1~deb12u1               all           dbus
+dbus-system-bus-common      1.14.10-1~deb12u1               all           dbus
+debconf                     1.5.82                          all
+debconf-i18n                1.5.82                          all           debconf
+debian-archive-keyring      2023.3+deb12u1                  all
+debian-faq                  11.1                            all
+debianutils                 5.7-0.5~deb12u1                 amd64
+diffutils                   1:3.8-4                         amd64
+distro-info-data            0.58+deb12u1                    all
+dmidecode                   3.4-1                           amd64
+dmsetup                     2:1.02.185-2                    amd64         lvm2 (2.03.16-2)
+dns-root-data               2023010101                      all
+doc-debian                  11.3+nmu1                       all
+dpkg                        1.21.22                         amd64
+e2fsprogs                   1.47.0-2                        amd64
+fdisk                       2.38.1-5+deb12u1                amd64         util-linux
+file                        1:5.44-3                        amd64
+findutils                   4.9.0-4                         amd64
+firmware-linux-free         20200122-1                      all           firmware-free
+gcc-12-base                 12.2.0-14                       amd64         gcc-12
+genisoimage                 9:1.1.11-3.4                    amd64         cdrkit
+gettext-base                0.21-12                         amd64         gettext
+gpgv                        2.2.40-1.1                      amd64         gnupg2
+grep                        3.8-5                           amd64
+groff-base                  1.22.4-10                       amd64         groff
+grub-common                 2.06-13+deb12u1                 amd64         grub2
+grub-pc                     2.06-13+deb12u1                 amd64         grub2
+grub-pc-bin                 2.06-13+deb12u1                 amd64         grub2
+grub2-common                2.06-13+deb12u1                 amd64         grub2
+gzip                        1.12-1                          amd64
+hostname                    3.23+nmu1                       amd64
+ieee-data                   20220827.1                      all
+ifupdown                    0.8.41                          amd64
+inetutils-telnet            2:2.4-2+deb12u1                 amd64         inetutils
+init                        1.65.2                          amd64         init-system-helpers
+init-system-helpers         1.65.2                          all
+initramfs-tools             0.142                           all
+initramfs-tools-core        0.142                           all           initramfs-tools
+iproute2                    6.1.0-3                         amd64
+iptables                    1.8.9-2                         amd64
+iputils-ping                3:20221126-1                    amd64         iputils
+isc-dhcp-client             4.4.3-P1-2                      amd64         isc-dhcp
+isc-dhcp-common             4.4.3-P1-2                      amd64         isc-dhcp
+klibc-utils                 2.0.12-1                        amd64         klibc
+kmod                        30+20221128-1                   amd64
+krb5-locales                1.20.1-2+deb12u1                all           krb5
+less                        590-2.1~deb12u2                 amd64
+libacl1                     2.3.1-3                         amd64         acl
+libaio1                     0.3.113-4                       amd64         libaio
+libapparmor1                3.0.8-3                         amd64         apparmor
+libapt-pkg6.0               2.6.1                           amd64         apt
+libargon2-1                 0~20171227-0.3+deb12u1          amd64         argon2
+libattr1                    1:2.5.1-4                       amd64         attr
+libaudit-common             1:3.0.9-1                       all           audit
+libaudit1                   1:3.0.9-1                       amd64         audit
+libblkid1                   2.38.1-5+deb12u1                amd64         util-linux
+libbpf1                     1:1.1.0-1                       amd64         libbpf (1.1.0-1)
+libbrotli1                  1.0.9-2+b6                      amd64         brotli (1.0.9-2)
+libbsd0                     0.11.7-2                        amd64         libbsd
+libbz2-1.0                  1.0.8-5+b1                      amd64         bzip2 (1.0.8-5)
+libc-bin                    2.36-9+deb12u7                  amd64         glibc
+libc-l10n                   2.36-9+deb12u7                  all           glibc
+libc6                       2.36-9+deb12u7                  amd64         glibc
+libcap-ng0                  0.8.3-1+b3                      amd64         libcap-ng (0.8.3-1)
+libcap2                     1:2.66-4                        amd64
+libcap2-bin                 1:2.66-4                        amd64         libcap2
+libcbor0.8                  0.8.0-2+b1                      amd64         libcbor (0.8.0-2)
+libcom-err2                 1.47.0-2                        amd64         e2fsprogs
+libcrypt1                   1:4.4.33-2                      amd64         libxcrypt
+libcryptsetup12             2:2.6.1-4~deb12u2               amd64         cryptsetup
+libcurl3-gnutls             7.88.1-10+deb12u5               amd64         curl
+libdb5.3                    5.3.28+dfsg2-1                  amd64         db5.3
+libdbus-1-3                 1.14.10-1~deb12u1               amd64         dbus
+libdebconfclient0           0.270                           amd64         cdebconf
+libdevmapper1.02.1          2:1.02.185-2                    amd64         lvm2 (2.03.16-2)
+libedit2                    3.1-20221030-2                  amd64         libedit
+libefiboot1                 37-6                            amd64         efivar
+libefivar1                  37-6                            amd64         efivar
+libelf1                     0.188-2.1                       amd64         elfutils
+libestr0                    0.1.11-1                        amd64         libestr
+libexpat1                   2.5.0-1                         amd64         expat
+libext2fs2                  1.47.0-2                        amd64         e2fsprogs
+libfastjson4                1.2304.0-1                      amd64         libfastjson
+libfdisk1                   2.38.1-5+deb12u1                amd64         util-linux
+libffi8                     3.4.4-1                         amd64         libffi
+libfido2-1                  1.12.0-2+b1                     amd64         libfido2 (1.12.0-2)
+libfile-find-rule-perl      0.34-3                          all
+libfreetype6                2.12.1+dfsg-5                   amd64         freetype
+libfstrm0                   0.6.1-1                         amd64         fstrm
+libfuse2                    2.9.9-6+b1                      amd64         fuse (2.9.9-6)
+libfuse3-3                  3.14.0-4                        amd64         fuse3
+libgcc-s1                   12.2.0-14                       amd64         gcc-12
+libgcrypt20                 1.10.1-3                        amd64
+libgdbm-compat4             1.23-3                          amd64         gdbm
+libgdbm6                    1.23-3                          amd64         gdbm
+libglib2.0-0                2.74.6-2+deb12u2                amd64         glib2.0
+libgmp10                    2:6.2.1+dfsg1-1.1               amd64         gmp
+libgnutls30                 3.7.9-2+deb12u2                 amd64         gnutls28
+libgpg-error0               1.46-1                          amd64         libgpg-error
+libgssapi-krb5-2            1.20.1-2+deb12u1                amd64         krb5
+libhogweed6                 3.8.1-2                         amd64         nettle
+libicu72                    72.1-3                          amd64         icu
+libidn2-0                   2.3.3-1+b1                      amd64         libidn2 (2.3.3-1)
+libip4tc2                   1.8.9-2                         amd64         iptables
+libip6tc2                   1.8.9-2                         amd64         iptables
+libjansson4                 2.14-2                          amd64         jansson
+libjemalloc2                5.3.0-1                         amd64         jemalloc
+libjson-c5                  0.16-2                          amd64         json-c
+libk5crypto3                1.20.1-2+deb12u1                amd64         krb5
+libkeyutils1                1.6.3-2                         amd64         keyutils
+libklibc                    2.0.12-1                        amd64         klibc
+libkmod2                    30+20221128-1                   amd64         kmod
+libkrb5-3                   1.20.1-2+deb12u1                amd64         krb5
+libkrb5support0             1.20.1-2+deb12u1                amd64         krb5
+libldap-2.5-0               2.5.13+dfsg-5                   amd64         openldap
+liblmdb0                    0.9.24-1                        amd64         lmdb
+liblocale-gettext-perl      1.07-5                          amd64
+liblockfile-bin             1.17-1+b1                       amd64         liblockfile (1.17-1)
+liblognorm5                 2.0.6-4                         amd64         liblognorm
+liblz4-1                    1.9.4-1                         amd64         lz4
+liblzma5                    5.4.1-0.2                       amd64         xz-utils
+libmagic-mgc                1:5.44-3                        amd64         file
+libmagic1                   1:5.44-3                        amd64         file
+libmaxminddb0               1.7.1-1                         amd64         libmaxminddb
+libmd0                      1.0.4-2                         amd64         libmd
+libmnl0                     1.0.4-3                         amd64         libmnl
+libmount1                   2.38.1-5+deb12u1                amd64         util-linux
+libncursesw6                6.4-4                           amd64         ncurses
+libnetfilter-conntrack3     1.0.9-3                         amd64         libnetfilter-conntrack
+libnettle8                  3.8.1-2                         amd64         nettle
+libnewt0.52                 0.52.23-1+b1                    amd64         newt (0.52.23-1)
+libnfnetlink0               1.0.2-2                         amd64         libnfnetlink
+libnftables1                1.0.6-2+deb12u2                 amd64         nftables
+libnftnl11                  1.2.4-2                         amd64         libnftnl
+libnghttp2-14               1.52.0-1+deb12u1                amd64         nghttp2
+libnsl2                     1.3.0-2                         amd64         libnsl
+libnss-systemd              252.22-1~deb12u1                amd64         systemd
+libnuma1                    2.0.16-1                        amd64         numactl
+libnumber-compare-perl      0.03-3                          all
+libp11-kit0                 0.24.1-2                        amd64         p11-kit
+libpam-modules              1.5.2-6+deb12u1                 amd64         pam
+libpam-modules-bin          1.5.2-6+deb12u1                 amd64         pam
+libpam-runtime              1.5.2-6+deb12u1                 all           pam
+libpam-systemd              252.22-1~deb12u1                amd64         systemd
+libpam0g                    1.5.2-6+deb12u1                 amd64         pam
+libpci3                     1:3.9.0-4                       amd64         pciutils
+libpcre2-8-0                10.42-1                         amd64         pcre2
+libperl5.36                 5.36.0-7+deb12u1                amd64         perl
+libpipeline1                1.5.7-1                         amd64         libpipeline
+libpng16-16                 1.6.39-2                        amd64         libpng1.6
+libpopt0                    1.19+dfsg-1                     amd64         popt
+libproc2-0                  2:4.0.2-3                       amd64         procps
+libprotobuf-c1              1.4.1-1+b1                      amd64         protobuf-c (1.4.1-1)
+libpsl5                     0.21.2-1                        amd64         libpsl
+libpython3-stdlib           3.11.2-1+b1                     amd64         python3-defaults (3.11.2-1)
+libpython3.11-minimal       3.11.2-6                        amd64         python3.11
+libpython3.11-stdlib        3.11.2-6                        amd64         python3.11
+libreadline8                8.2-1.3                         amd64         readline
+librtmp1                    2.4+20151223.gitfa8646d.1-2+b2  amd64         rtmpdump (2.4+20151223.gitfa8646d.1-2)
+libsasl2-2                  2.1.28+dfsg-10                  amd64         cyrus-sasl2
+libsasl2-modules-db         2.1.28+dfsg-10                  amd64         cyrus-sasl2
+libseccomp2                 2.5.4-1+b3                      amd64         libseccomp (2.5.4-1)
+libselinux1                 3.4-1+b6                        amd64         libselinux (3.4-1)
+libsemanage-common          3.4-1                           all           libsemanage
+libsemanage2                3.4-1+b5                        amd64         libsemanage (3.4-1)
+libsepol2                   3.4-2.1                         amd64         libsepol
+libslang2                   2.3.3-3                         amd64         slang2
+libsmartcols1               2.38.1-5+deb12u1                amd64         util-linux
+libsqlite3-0                3.40.1-2                        amd64         sqlite3
+libss2                      1.47.0-2                        amd64         e2fsprogs
+libssh2-1                   1.10.0-3+b1                     amd64         libssh2 (1.10.0-3)
+libssl3                     3.0.11-1~deb12u2                amd64         openssl
+libstdc++6                  12.2.0-14                       amd64         gcc-12
+libsystemd-shared           252.22-1~deb12u1                amd64         systemd
+libsystemd0                 252.22-1~deb12u1                amd64         systemd
+libtasn1-6                  4.19.0-2                        amd64
+libtext-charwidth-perl      0.04-11                         amd64
+libtext-glob-perl           0.11-3                          all
+libtext-iconv-perl          1.7-8                           amd64
+libtext-wrapi18n-perl       0.06-10                         all
+libtinfo6                   6.4-4                           amd64         ncurses
+libtirpc-common             1.3.3+ds-1                      all           libtirpc
+libtirpc3                   1.3.3+ds-1                      amd64         libtirpc
+libuchardet0                0.0.7-1                         amd64         uchardet
+libudev1                    252.22-1~deb12u1                amd64         systemd
+libunistring2               1.0-2                           amd64         libunistring
+liburing2                   2.3-3                           amd64         liburing
+libuuid1                    2.38.1-5+deb12u1                amd64         util-linux
+libuv1                      1.44.2-1+deb12u1                amd64
+libwrap0                    7.6.q-32                        amd64         tcp-wrappers
+libxml2                     2.9.14+dfsg-1.3~deb12u1         amd64
+libxtables12                1.8.9-2                         amd64         iptables
+libxxhash0                  0.8.1-1                         amd64         xxhash
+libzstd1                    1.5.4+dfsg2-5                   amd64         libzstd
+linux-base                  4.9                             all
+linux-image-6.1.0-18-amd64  6.1.76-1                        amd64         linux-signed-amd64 (6.1.76+1)
+linux-image-6.1.0-21-amd64  6.1.90-1                        amd64         linux-signed-amd64 (6.1.90+1)
+linux-image-amd64           6.1.90-1                        amd64         linux-signed-amd64 (6.1.90+1)
+locales                     2.36-9+deb12u7                  all           glibc
+login                       1:4.13+dfsg1-1+b1               amd64         shadow (1:4.13+dfsg1-1)
+logrotate                   3.21.0-1                        amd64
+logsave                     1.47.0-2                        amd64         e2fsprogs
+lsb-release                 12.0-1                          all           lsb-release-minimal
+lsof                        4.95.0-1                        amd64
+mailcap                     3.70+nmu1                       all
+man-db                      2.11.2-2                        amd64
+manpages                    6.03-2                          all
+mawk                        1.3.4.20200120-3.1              amd64
+media-types                 10.0.0                          all
+mime-support                3.66                            all
+mount                       2.38.1-5+deb12u1                amd64         util-linux
+nano                        7.2-1                           amd64
+ncurses-base                6.4-4                           all           ncurses
+ncurses-bin                 6.4-4                           amd64         ncurses
+ncurses-term                6.4-4                           all           ncurses
+net-tools                   2.10-0.1                        amd64
+netbase                     6.4                             all
+netcat-traditional          1.10-47                         amd64         netcat
+nftables                    1.0.6-2+deb12u2                 amd64
+openssh-client              1:9.2p1-2+deb12u2               amd64         openssh
+openssh-server              1:9.2p1-2+deb12u2               amd64         openssh
+openssh-sftp-server         1:9.2p1-2+deb12u2               amd64         openssh
+openssl                     3.0.11-1~deb12u2                amd64
+passwd                      1:4.13+dfsg1-1+b1               amd64         shadow (1:4.13+dfsg1-1)
+pci.ids                     0.0~2023.04.11-1                all
+pciutils                    1:3.9.0-4                       amd64
+perl                        5.36.0-7+deb12u1                amd64
+perl-base                   5.36.0-7+deb12u1                amd64         perl
+perl-modules-5.36           5.36.0-7+deb12u1                all           perl
+procps                      2:4.0.2-3                       amd64
+python-apt-common           2.6.0                           all           python-apt
+python3                     3.11.2-1+b1                     amd64         python3-defaults (3.11.2-1)
+python3-anyio               3.6.2-1                         all           python-anyio
+python3-apt                 2.6.0                           amd64         python-apt
+python3-certifi             2022.9.24-1                     all           python-certifi
+python3-cffi-backend        1.15.1-5+b1                     amd64         python-cffi (1.15.1-5)
+python3-chardet             5.1.0+dfsg-2                    all           chardet
+python3-charset-normalizer  3.0.1-2                         all           python-charset-normalizer
+python3-click               8.1.3-2                         all           python-click
+python3-colorama            0.4.6-2                         all           python-colorama
+python3-cryptography        38.0.4-3                        amd64         python-cryptography
+python3-dbus                1.3.2-4+b1                      amd64         dbus-python (1.3.2-4)
+python3-debconf             1.5.82                          all           debconf
+python3-debian              0.1.49                          all           python-debian
+python3-debianbts           4.0.1                           all           python-debianbts
+python3-distro-info         1.5+deb12u1                     all           distro-info
+python3-dnspython           2.3.0-1                         all           dnspython
+python3-h11                 0.14.0-1                        all           python-h11
+python3-h2                  4.1.0-4                         all           python-h2
+python3-hpack               4.0.0-2                         all           python-hpack
+python3-httpcore            0.16.3-1                        all           httpcore
+python3-httplib2            0.20.4-3                        all           python-httplib2
+python3-httpx               0.23.3-1                        all           httpx
+python3-hyperframe          6.0.0-1                         all           python-hyperframe
+python3-idna                3.3-1                           all           python-idna
+python3-markdown-it         2.1.0-5                         all           markdown-it-py
+python3-mdurl               0.1.2-1                         all           mdurl
+python3-minimal             3.11.2-1+b1                     amd64         python3-defaults (3.11.2-1)
+python3-netaddr             0.8.0-2                         all           python-netaddr
+python3-pkg-resources       66.1.1-1                        all           setuptools
+python3-pycurl              7.45.2-3                        amd64         pycurl
+python3-pygments            2.14.0+dfsg-1                   all           pygments
+python3-pyparsing           3.0.9-1                         all           pyparsing
+python3-pysimplesoap        1.16.2-5                        all           pysimplesoap
+python3-reportbug           12.0.0                          all           reportbug
+python3-requests            2.28.1+dfsg-1                   all           requests
+python3-requests-toolbelt   0.10.1-1                        all           python-requests-toolbelt
+python3-rfc3986             1.5.0-2                         all           python-rfc3986
+python3-rich                13.3.1-1                        all           rich
+python3-six                 1.16.0-4                        all           six
+python3-sniffio             1.2.0-1                         all           python-sniffio
+python3-urllib3             1.26.12-1                       all           python-urllib3
+python3.11                  3.11.2-6                        amd64
+python3.11-minimal          3.11.2-6                        amd64         python3.11
+qemu-utils                  1:7.2+dfsg-7+deb12u5            amd64         qemu
+readline-common             8.2-1.3                         all           readline
+reportbug                   12.0.0                          all
+rsyslog                     8.2302.0-1                      amd64
+runit-helper                2.15.2                          all           dh-runit
+sed                         4.9-1                           amd64
+sensible-utils              0.0.17+nmu1                     all
+sudo                        1.9.13p3-1+deb12u1              amd64
+systemd                     252.22-1~deb12u1                amd64
+systemd-sysv                252.22-1~deb12u1                amd64         systemd
+systemd-timesyncd           252.22-1~deb12u1                amd64         systemd
+sysvinit-utils              3.06-4                          amd64         sysvinit
+tar                         1.34+dfsg-1.2+deb12u1           amd64
+tasksel                     3.73                            all
+tasksel-data                3.73                            all           tasksel
+traceroute                  1:2.1.2-1                       amd64
+tzdata                      2024a-0+deb12u1                 all
+ucf                         3.0043+nmu1                     all
+udev                        252.22-1~deb12u1                amd64         systemd
+unattended-upgrades         2.9.1+nmu3                      all
+usr-is-merged               37~deb12u1                      all           usrmerge
+usrmerge                    37~deb12u1                      all
+util-linux                  2.38.1-5+deb12u1                amd64
+util-linux-extra            2.38.1-5+deb12u1                amd64         util-linux
+vim-common                  2:9.0.1378-2                    all           vim
+vim-tiny                    2:9.0.1378-2                    amd64         vim
+wamerican                   2020.12.07-2                    all           scowl
+wget                        1.21.3-1+b2                     amd64         wget (1.21.3-1)
+whiptail                    0.52.23-1+b1                    amd64         newt (0.52.23-1)
+xz-utils                    5.4.1-0.2                       amd64
+zlib1g                      1:1.2.13.dfsg-1                 amd64         zlib
+Info: Package repositories:
+deb https://deb.debian.org/debian bookworm main
+deb-src https://deb.debian.org/debian bookworm main
+deb https://security.debian.org/debian-security bookworm-security main
+deb-src https://security.debian.org/debian-security bookworm-security main
+deb https://deb.debian.org/debian bookworm-updates main
+deb-src https://deb.debian.org/debian bookworm-updates main
+deb https://deb.debian.org/debian bookworm-backports main
+deb-src https://deb.debian.org/debian bookworm-backports main
+Info: Network devices:
+Device  IPv4          Netmask        Broadcast       IPv6                      Prefix  DHCP   DHCPServer
+lo      127.0.0.1     255.0.0.0      N/A             ::1                       128     false  N/A
+eth0    10.0.2.15     255.255.255.0  10.0.2.255      fe80::a00:27ff:fe8d:c04d  64      true   10.0.2.2
+eth1    172.16.128.1  255.255.0.0    172.16.255.255  fe80::a00:27ff:fe20:9a49  64      false  N/A
+Info: Routing table:
+Destination  Gateway   Genmask        Flags  Metric  Ref  Use  Iface
+0.0.0.0      10.0.2.2  0.0.0.0        UG     0       0    0    eth0
+10.0.2.0     0.0.0.0   255.255.255.0  U      0       0    0    eth0
+172.16.0.0   0.0.0.0   255.255.0.0    U      0       0    0    eth1
+Info: Nameservers:
+Nameserver
+172.16.128.1
+Info: Firewall rules:
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+Info: Listening ports (TCP):
+State   Recv-Q  Send-Q  Local                               Address:Port  Peer                     Address:PortProcess
+LISTEN  0       128     0.0.0.0:22                          0.0.0.0:*     users:(("sshd"           pid=585              fd=3))
+LISTEN  0       5       127.0.0.1:8053                      0.0.0.0:*     users:(("named"          pid=11738            fd=55))
+LISTEN  0       5       127.0.0.1:8053                      0.0.0.0:*     users:(("named"          pid=11738            fd=56))
+LISTEN  0       10      10.0.2.15:53                        0.0.0.0:*     users:(("named"          pid=11738            fd=33))
+LISTEN  0       10      10.0.2.15:53                        0.0.0.0:*     users:(("named"          pid=11738            fd=34))
+LISTEN  0       10      127.0.0.1:53                        0.0.0.0:*     users:(("named"          pid=11738            fd=27))
+LISTEN  0       10      127.0.0.1:53                        0.0.0.0:*     users:(("named"          pid=11738            fd=28))
+LISTEN  0       10      172.16.128.1:53                     0.0.0.0:*     users:(("named"          pid=11738            fd=37))
+LISTEN  0       10      172.16.128.1:53                     0.0.0.0:*     users:(("named"          pid=11738            fd=38))
+LISTEN  0       5       127.0.0.1:953                       0.0.0.0:*     users:(("named"          pid=11738            fd=24))
+LISTEN  0       5       127.0.0.1:953                       0.0.0.0:*     users:(("named"          pid=11738            fd=51))
+LISTEN  0       128     [::]:22                             [::]:*        users:(("sshd"           pid=585              fd=4))
+LISTEN  0       10      [fe80::a00:27ff:fe8d:c04d]%eth0:53  [::]:*        users:(("named"          pid=11738            fd=46))
+LISTEN  0       10      [fe80::a00:27ff:fe8d:c04d]%eth0:53  [::]:*        users:(("named"          pid=11738            fd=45))
+LISTEN  0       10      [::1]:53                            [::]:*        users:(("named"          pid=11738            fd=42))
+LISTEN  0       10      [::1]:53                            [::]:*        users:(("named"          pid=11738            fd=41))
+LISTEN  0       4096    *:9100                              *:*           users:(("node_exporter"  pid=12636            fd=3))
+LISTEN  0       10      [fe80::a00:27ff:fe20:9a49]%eth1:53  [::]:*        users:(("named"          pid=11738            fd=50))
+LISTEN  0       10      [fe80::a00:27ff:fe20:9a49]%eth1:53  [::]:*        users:(("named"          pid=11738            fd=49))
+LISTEN  0       5       [::1]:953                           [::]:*        users:(("named"          pid=11738            fd=52))
+LISTEN  0       5       [::1]:953                           [::]:*        users:(("named"          pid=11738            fd=53))
+Info: Listening ports (UDP):
+State   Recv-Q  Send-Q  Local                               Address:Port  Peer                Address:PortProcess
+UNCONN  0       0       172.16.128.1:53                     0.0.0.0:*     users:(("named"     pid=11738            fd=35))
+UNCONN  0       0       172.16.128.1:53                     0.0.0.0:*     users:(("named"     pid=11738            fd=36))
+UNCONN  0       0       10.0.2.15:53                        0.0.0.0:*     users:(("named"     pid=11738            fd=31))
+UNCONN  0       0       10.0.2.15:53                        0.0.0.0:*     users:(("named"     pid=11738            fd=32))
+UNCONN  0       0       127.0.0.1:53                        0.0.0.0:*     users:(("named"     pid=11738            fd=25))
+UNCONN  0       0       127.0.0.1:53                        0.0.0.0:*     users:(("named"     pid=11738            fd=26))
+UNCONN  0       0       127.0.0.1:323                       0.0.0.0:*     users:(("chronyd"   pid=396              fd=5))
+UNCONN  0       0       0.0.0.0:68                          0.0.0.0:*     users:(("dhclient"  pid=1190             fd=7))
+UNCONN  0       0       [::1]:53                            [::]:*        users:(("named"     pid=11738            fd=40))
+UNCONN  0       0       [::1]:53                            [::]:*        users:(("named"     pid=11738            fd=39))
+UNCONN  0       0       [fe80::a00:27ff:fe8d:c04d]%eth0:53  [::]:*        users:(("named"     pid=11738            fd=44))
+UNCONN  0       0       [fe80::a00:27ff:fe8d:c04d]%eth0:53  [::]:*        users:(("named"     pid=11738            fd=43))
+UNCONN  0       0       [fe80::a00:27ff:fe20:9a49]%eth1:53  [::]:*        users:(("named"     pid=11738            fd=47))
+UNCONN  0       0       [fe80::a00:27ff:fe20:9a49]%eth1:53  [::]:*        users:(("named"     pid=11738            fd=48))
+UNCONN  0       0       [::1]:323                           [::]:*        users:(("chronyd"   pid=396              fd=6))
+Info: Disk info:
+Disk      Size  Bytes        Sectors
+/dev/sda  20    21474836480  41943040
+Info: Partitions:
+Device     Boot  Start  End       Sectors   Size  ID  Type
+/dev/sda1  *     2048   41943039  41940992  20G   83  Linux
+Info: Used filesystems:
+Filesystem   IsUsed
+sysfs        false
+tmpfs        false
+bdev         false
+proc         false
+cgroup       false
+cgroup2      false
+cpuset       false
+devtmpfs     false
+debugfs      false
+tracefs      false
+securityfs   false
+sockfs       false
+bpf          false
+pipefs       false
+ramfs        false
+hugetlbfs    false
+devpts       false
+mqueue       false
+pstore       false
+ext3         true
+ext2         true
+ext4         true
+autofs       false
+configfs     false
+fuseblk      true
+fuse         false
+fusectl      false
+binfmt_misc  false
+vboxsf       false
+Info: Mount points:
+Device       MountPoint                                           FSType       Options
+sysfs        /sys                                                 sysfs        rw nosuid nodev noexec relatime                                                          0  0
+proc         /proc                                                proc         rw nosuid nodev noexec relatime                                                          0  0
+udev         /dev                                                 devtmpfs     rw nosuid relatime size=211652k nr_inodes=52913 mode=755 inode64                         0  0
+devpts       /dev/pts                                             devpts       rw nosuid noexec relatime gid=5 mode=620 ptmxmode=000                                    0  0
+tmpfs        /run                                                 tmpfs        rw nosuid nodev noexec relatime size=46828k mode=755 inode64                             0  0
+/dev/sda1    /                                                    ext4         rw relatime discard errors=remount-ro                                                    0  0
+securityfs   /sys/kernel/security                                 securityfs   rw nosuid nodev noexec relatime                                                          0  0
+tmpfs        /dev/shm                                             tmpfs        rw nosuid nodev inode64                                                                  0  0
+tmpfs        /run/lock                                            tmpfs        rw nosuid nodev noexec relatime size=5120k inode64                                       0  0
+cgroup2      /sys/fs/cgroup                                       cgroup2      rw nosuid nodev noexec relatime nsdelegate memory_recursiveprot                          0  0
+pstore       /sys/fs/pstore                                       pstore       rw nosuid nodev noexec relatime                                                          0  0
+bpf          /sys/fs/bpf                                          bpf          rw nosuid nodev noexec relatime mode=700                                                 0  0
+systemd-1    /proc/sys/fs/binfmt_misc                             autofs       rw relatime fd=30 pgrp=1 timeout=0 minproto=5 maxproto=5 direct pipe_ino=13652           0  0
+hugetlbfs    /dev/hugepages                                       hugetlbfs    rw relatime pagesize=2M                                                                  0  0
+mqueue       /dev/mqueue                                          mqueue       rw nosuid nodev noexec relatime                                                          0  0
+debugfs      /sys/kernel/debug                                    debugfs      rw nosuid nodev noexec relatime                                                          0  0
+tracefs      /sys/kernel/tracing                                  tracefs      rw nosuid nodev noexec relatime                                                          0  0
+fusectl      /sys/fs/fuse/connections                             fusectl      rw nosuid nodev noexec relatime                                                          0  0
+configfs     /sys/kernel/config                                   configfs     rw nosuid nodev noexec relatime                                                          0  0
+ramfs        /run/credentials/systemd-sysctl.service              ramfs        ro nosuid nodev noexec relatime mode=700                                                 0  0
+ramfs        /run/credentials/systemd-sysusers.service            ramfs        ro nosuid nodev noexec relatime mode=700                                                 0  0
+ramfs        /run/credentials/systemd-tmpfiles-setup-dev.service  ramfs        ro nosuid nodev noexec relatime mode=700                                                 0  0
+ramfs        /run/credentials/systemd-tmpfiles-setup.service      ramfs        ro nosuid nodev noexec relatime mode=700                                                 0  0
+binfmt_misc  /proc/sys/fs/binfmt_misc                             binfmt_misc  rw nosuid nodev noexec relatime                                                          0  0
+vagrant      /vagrant                                             vboxsf       rw relatime                                                                              0  0
+tmpfs        /run/user/1000                                       tmpfs        rw nosuid nodev relatime size=46828k nr_inodes=11707 mode=700 uid=1000 gid=1000 inode64  0  0
+Info: Enabled systemd units:
+Unit                         State    Preset
+apparmor.service             enabled  enabled
+chrony.service               enabled  enabled
+cron.service                 enabled  enabled
+e2scrub_reap.service         enabled  enabled
+getty@.service               enabled  enabled
+named.service                enabled  enabled
+networking.service           enabled  enabled
+node_exporter.service        enabled  enabled
+rsyslog.service              enabled  enabled
+ssh.service                  enabled  enabled
+systemd-pstore.service       enabled  enabled
+unattended-upgrades.service  enabled  enabled
+remote-fs.target             enabled  enabled
+apt-daily-upgrade.timer      enabled  enabled
+apt-daily.timer              enabled  enabled
+dpkg-db-backup.timer         enabled  enabled
+e2scrub_all.timer            enabled  enabled
+fstrim.timer                 enabled  enabled
+logrotate.timer              enabled  enabled
+man-db.timer                 enabled  enabled
+Info: Getting: /etc/bind/named.conf
+Info: Getting: /etc/node_exporter/config.yaml
+Info: Getting: /etc/ssh/ssh_config
+Info: Getting: /etc/ssh/ssh_config.d/
+Info: Getting: /etc/ssh/sshd_config
+Info: Getting: /etc/ssh/sshd_config.d/
+Info: Getting: /etc/systemd/system/
+Info: Getting: /etc/systemd/user/
+Info: Getting: /usr/lib/systemd/system/
+Info: Getting: /etc/cron.d
+Info: Getting: /etc/cron.daily
+Info: Getting: /etc/cron.weekly
+Info: Getting: /etc/cron.monthly
+Info: Creating tarball...
